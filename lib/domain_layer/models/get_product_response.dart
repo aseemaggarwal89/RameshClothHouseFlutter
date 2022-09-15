@@ -1,14 +1,17 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:rameshclothhouse/domain_layer/models/product_dto.dart';
+
+import '../domain_layer.dart';
 
 part 'get_product_response.g.dart';
 
 @JsonSerializable()
 class GetProductsResponse {
+  String status;
+  num results;
   @JsonKey(name: 'data')
-  Map<String, ProductDTO> products;
+  List<ProductDTO> products;
 
-  GetProductsResponse(this.products);
+  GetProductsResponse(this.results, this.products, this.status);
 
   factory GetProductsResponse.fromJson(Map<String, dynamic> json) {
     return _$GetProductsResponseFromJson(json);

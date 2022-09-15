@@ -8,13 +8,17 @@ part of 'get_product_response.dart';
 
 GetProductsResponse _$GetProductsResponseFromJson(Map<String, dynamic> json) =>
     GetProductsResponse(
-      (json['data'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(k, ProductDTO.fromJson(e as Map<String, dynamic>)),
-      ),
+      json['results'] as num,
+      (json['data'] as List<dynamic>)
+          .map((e) => ProductDTO.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      json['status'] as String,
     );
 
 Map<String, dynamic> _$GetProductsResponseToJson(
         GetProductsResponse instance) =>
     <String, dynamic>{
+      'status': instance.status,
+      'results': instance.results,
       'data': instance.products,
     };

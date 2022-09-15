@@ -1,0 +1,213 @@
+{
+    "appTitle" : "Healofy",
+    "home": {
+        "todayLabel": "Today:",
+        "babySaysLabel": "BABY SAYS:",
+        "daysLeftLabel": "Days Left",
+        "nextWeeklyTipAvailableLabel": "Next weekly tip visible in {}"
+    },
+    "mall": {
+        "relevantProductLabel": "Relevant Product",
+        "exploreProductLabel": "Explore Products",
+        "allProductLabel": "All Product"
+    },
+    "productDetails": {
+        "searchHint" : "Search your product here",
+        "sellLabel" : "SELL",
+        "productDescriptionLabel" : "Product Description",
+        "similarProductReviewsLabel" : "See product reviews by other similar buyers",
+        "totalBuyersLabel": "{} Buyers",
+        "productsCountLabel": {
+            "zero": "Product",
+            "one": "{} Product ",
+            "many": "{} Products",
+            "other": "{} Products"
+        },
+        "section": {
+            "otherSimilarProductsLabel" : "Other Similar Products",
+            "productDescriptionLabel" : "Product Description",
+            "priceBreakupDetailsLabel" : "Price Breakup Details",
+            "featureProductVideoLabel" : "Watch Featured Product Video",
+            "readReviewsLabel" : "Read Reviews",
+            "womanPlanningPregnancyLabel" : "Women Planning for Pregnancy also bought",
+            "relevantCategoryLabel" : "Shop by Most Relevant Mom & Baby Categories \uD83D\uDECD",
+            "productRatingAndReviewsLabel" : "{ratings} Ratings & {reviews} Reviews",
+            "recentlyViewedProductLabel" : "Recently Viewed Products"
+        }
+    },
+    "cartDetails": {
+        "needHelpAndContactLabel": "Need Help? Contact Us",
+        "freeShippingLabel": "Free shipping order above \u0930{}",
+        "sectionTitle": {
+            "priceBreakupLabel" : "Price Breakup",
+            "productsLabel": {
+                "zero": "Product",
+                "one": "Product ({})",
+                "many": "Products ({})",
+                "other": "Products ({})"
+            }
+        }
+    },
+    "orderDetails": {
+        "orderIdLabel": "OrderId : {}",
+        "qtyLabel": "QTY : {}",
+        "sizeLabel": "SIZE: {}"
+    },
+    "orderConfirm": {
+        "sameDayDeliveryMessageLabel" : "Order placed before 1PM will be eligible for Same Day Delivery",
+        "allowLocationMessageLabel": "Allow Location To Get!",
+        "freeDeliveryMessageLabel": "Free Same Day Delivery"
+    },
+    "channels": {
+        "channelsStatLabel" : "{}+ Posts  |  {}+ Followers",
+        "channelsTitleLabel": "{} Categories Suggested for You"
+    },
+    "buttons" : {
+        "addToWishlistLabel" : "Add to Wishlist",
+        "shareLabel" : "Share",
+        "seeAllCountLabel" : "See All {count}",
+        "seeAllLabel" : "See All",
+        "viewAllLabel" : "VIEW ALL",
+        "addToCartLabel" : "ADD TO CART",
+        "goToCartLabel" : "GO TO CART",
+        "buyNowLabel" : "BUY NOW",
+        "viewMoreProductsLabel": "View More\nProducts",
+        "seeOrderDetailsLabel" : "See Order Details",
+        "allowLocationLabel": "Allow Location",
+        "outOfStockLabel": "Out of Stock",
+        "clearCartLabel": "Clear Cart",
+        "viewAllProductsLabel": "View All {} Products",
+        "viewLabel": "VIEW",
+        "readMoreLabel": "Read More",
+        "viewProductLabel": "View Product",
+        "viewAllTopicsLabel": "View All {} Topics"
+    },
+    "priceBreakup": {
+        "mrpLabel": {
+            "zero": "MRP",
+            "one": "MRP ({} Item)",
+            "many": "MRP ({} Items)",
+            "other": "MRP ({} Items)"
+        },
+        "healofyPriceLabel": "Healofy Price",
+        "deliveryChargeLabel": "Delivery Charge",
+        "totalAmountLabel": "Total Amount",
+        "codMessageLabel": "To pe paid when the product arrives at doorstep",
+        "totalSavingLabel": "Wohoo! You are saving total \u0930{}"
+    },
+    "searchProductLabel" : "Search your product here",
+    "productPolicy": {
+        "returnPolicyLabel": "Easy 3 days\nreturn Policy",
+        "refundPolicyLabel": "Get 100%\nmoney back\nin 1 hour",
+        "paymentPolicyLabel": "Pay Cash on\nDelivery"
+    },
+    "userProfile": {
+        "myProfile":"My Profile",
+        "sellAndEarn": "Sell & Earn Upto",
+        "growYour": "Grow Your",
+        "priceDummyData":"₹ 25000/Month",
+        "followers": "Followers",
+        "following": "Following",
+        "myPost": "My Post",
+        "viewAll": "VIEW All",
+        "uploadPhotoAndVideo": "UPLOAD PHOTO & VIDEO",
+        "myOrder": "My Orders",
+        "savedItems": "Saved Items",
+        "contactUs": "Contact Us",
+        "MyRecentOrder": "My Recent Order",
+        "youSave": "You Save : {}",
+        "mrp": "MRP :",
+        "updateMyProfile": "Update My Profile",
+        "fullName": "Full Name",
+        "username": "Username",
+        "aboutMe": "About Me",
+        "hideBio": "Hide Bio",
+        "lifeStage": "Life Stage",
+        "language": "Language",
+        "changeUsername": "Change Username",
+        "suggestedUsername": "Suggested usernames",
+        "unableToLoadImage": "Unable to load Image",
+        "chat":"Chat",
+        "attemptsLeft":"Attempts left",
+        "growFollowers":{
+            "inviteWomenFriend":"Invite Women Friend",
+            "easilyInvite":"Easily invite your friend below & they will automatically become your followers on Healofy",
+            "invitePhoneContact":"Invite from Phone Contacts",
+            "youCanCopy":"You can also copy & share the below personal link with women to invite them on Healofy",
+            "copyLink":"Copy Link",
+            "note":"Note : SMS will sent free of cost",
+            "bringYourFolllowers":"Bring Your Followers Faster From Other Apps",
+            "shareTheImage":"Share the image below to invite your followers from Instagram & Facebook and they will automatically become your follower on Healofy",
+            "shareEasily":"Share easily by clicking on any of the below buttons:",
+            "fbPost":"post on Facebook",
+            "fbStories":"post on FB Stories",
+            "whatsAppStories":"post on Whatsapp Stories",
+            "instaPost":"post on Instagram",
+            "instaStory":"post on Instagram Stories"
+        },
+        "followSection":{
+            "followerHeading":"People who are following will show up here. You don't have any fan following yet. Don't worry you can be famous on Healofy. Follow these tips & get followers",
+            "create":"Create/Share Informational",
+            "post":"posts with healofy users",
+            "followingHeading":"People whom you are following will show up here. You are not following anyone yet. Follow people to get  intersting content in your Home Tab",
+            "step1":"Step : 01",
+            "step2":"Step : 02",
+            "goToHome":"Go to home bottom navbar",
+            "followYourFavourait":"Follow here Your Favourait individuals/Channel"
+
+        }
+    },
+    "onBoarding": {
+        "tagLine": "India’s Largest Women Social Network",
+        "heading": "Based on selected date, Healofy will show relevent info & tips",
+        "genderView": {
+            "heading": "Based on your gender, Healofy to show relevant content for you",
+            "oneLastThing": "One Last Thing",
+            "female": "Female",
+            "male": "Male"
+        },
+        "languageView": {
+            "chooseLanguage": "Choose your Language",
+            "heading": "Healofy shows information as per your chosen language",
+            "english": "English",
+            "hindi": "हिंदी",
+            "tamil": "தமிழ்",
+            "malayalam": "മലയാളം",
+            "bangla": "বাংলা",
+            "kannada": "ಕನ್ನಡ",
+            "telugu": "తెలుగు",
+            "marathi": "मराठी",
+            "gujrati": "ગુજરાતી"
+        },
+        "motherThreePlus":{
+            "chooseKidsBirthDate": "Choose Your Kid's Birth Date",
+            "womenWithChild": "Women with Child",
+            "childAge": "Child age : 3-30 years"
+        },
+        "MotherWithKid": {
+            "ChooseKidsBirthDate": "Choose Your Baby's Birth Date",
+            "iHaveBaby": "I Have a Baby",
+            "childAge": "Child age : 0-3"
+        },
+        "pfp": {
+            "chooseLastPeriodDate": "Choose Your Last Period Date",
+            "pfp": "I am Planing for Pregnancy",
+            "dummyText": "Sample Dummy Text"
+        },
+        "pregnantView":{
+            "chooseDeliveryDate": "Choose Your Delivery Date",
+            "iAmPregnant": "I am Already Pregnant",
+            "dummyText": "Sample Dummy Text",
+            "doNotKnowDate": "I don't know the date"
+        },
+        "userTypeView":{
+            "tellUsAboutYou":"Tell Us About You",
+            "heading": "Your life stage allows Healofy to show relevant content for you",
+            "unmarried": "Unmarried/Newly Married",
+            "notPlanningForChild": "I dont have a child/\nNot Planning for Pragnancy"
+        },
+        "buttons": {
+            "nextStep": "Next Step"
+        }
+    }
+}

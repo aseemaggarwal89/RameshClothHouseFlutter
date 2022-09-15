@@ -1,0 +1,4 @@
+generateLocaleKeys: flutter pub run easy_localization:generate -O lib/presentation/core/language -f keys -o locale_keys.g.dart --source-dir ./assets/translations
+autoGenerateBuild : flutter pub run build_runner build
+autoGenerateWatch : flutter pub run build_runner watch
+autoGenerateAssets: fgen -o lib/presentation/core/resource/app_assets.dart -n R

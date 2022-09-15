@@ -1,62 +1,84 @@
-import 'package:objectbox/objectbox.dart';
-import 'package:rameshclothhouse/data_layer/data_layer.dart';
-// ignore: depend_on_referenced_packages
-import 'package:path_provider/path_provider.dart';
-import 'package:rameshclothhouse/objectbox.g.dart';
+// import 'package:rameshclothhouse/data_layer/data_layer.dart';
+// // ignore: depend_on_referenced_packages
+// import 'package:path_provider/path_provider.dart';
+// import 'package:rameshclothhouse/objectbox.g.dart';
 
-abstract class IAppDatabaseBuilder {}
+// abstract class IAppDatabaseBuilder {}
 
-class _$AppDatabaseBuilder extends IAppDatabaseBuilder {
-  final String name;
-  _$AppDatabaseBuilder(this.name);
+// class _$AppDatabaseBuilder extends IAppDatabaseBuilder {
+//   final String name;
+//   _$AppDatabaseBuilder(this.name);
 
-  Future<AppDatabase> build() async {
-    final directory = await getApplicationDocumentsDirectory();
-    Store store =
-        Store(getObjectBoxModel(), directory: '${directory.path}/$name');
+//   Future<AppDatabase> build() async {
+//     final directory = await getApplicationDocumentsDirectory();
+//     Store store =
+//         Store(getObjectBoxModel(), directory: '${directory.path}/$name');
 
-    return AppDatabase(store);
-  }
-}
+//     return AppDatabase(store);
+//   }
+// }
 
-abstract class IAppDatabase {
-  Store get store;
-  clear();
-}
+// abstract class IAppDatabase {
+//   Store get store;
+//   clear();
+// }
 
-class AppDatabase extends IAppDatabase {
-  // ignore: library_private_types_in_public_api
-  static _$AppDatabaseBuilder databaseBuilder(String name) =>
-      _$AppDatabaseBuilder(name);
+// class AppDatabase extends IAppDatabase {
+//   // ignore: library_private_types_in_public_api
+//   static _$AppDatabaseBuilder databaseBuilder(String name) =>
+//       _$AppDatabaseBuilder(name);
 
-  final Store _store;
+//   final Store _store;
 
-  AppDatabase(this._store);
+//   AppDatabase(this._store);
 
-  @override
-  Store get store {
-    return _store;
-  }
+//   @override
+//   Store get store {
+//     return _store;
+//   }
 
-  @override
-  clear() {
-    _store.close();
-  }
-}
+//   @override
+//   clear() {
+//     _store.close();
+//   }
+// }
 
-class DatabaseRoom<T> extends DatabaseInjection {
-  Box<T> get storageBox {
-    var store = database.store;
-    var box = store.box<T>();
+// class DatabaseRoom<T> extends DatabaseInjection {
+//   Box<T> get storageBox {
+//     var store = database.store;
+//     var box = store.box<T>();
 
-    return box;
-  }
-}
+//     return box;
+//   }
 
-abstract class DatabaseInjection {}
+//   List<T> fetchAllItems() {
+//     return storageBox.getAll();
+//   }
 
-extension DatabaseInjectionExtension on DatabaseInjection {
-  IAppDatabase get database {
-    return injector<IAppDatabase>();
-  }
-}
+//   Future<int> insert(T item) async {
+//     return storageBox.putAsync(item);
+//   }
+
+//   List<int> insertMany(List<T> products) {
+//     List<int> ids = storageBox.putMany(products);
+//     return ids;
+//   }
+
+//   Future<List<int>> insertManyAsync(List<T> items) async {
+//     List<int> ids = [];
+//     for (var item in items) {
+//       int id = await insert(item);
+//       ids.add(id);
+//     }
+
+//     return ids;
+//   }
+// }
+
+// abstract class DatabaseInjection {}
+
+// extension DatabaseInjectionExtension on DatabaseInjection {
+//   IAppDatabase get database {
+//     return injector<IAppDatabase>();
+//   }
+// }

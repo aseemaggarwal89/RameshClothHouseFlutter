@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:rameshclothhouse/data_layer/data_source/mapper/network_mapper.dart';
 import 'package:rameshclothhouse/data_layer/networkLayer/appnetworking/api_contants.dart';
-import 'package:rameshclothhouse/data_layer/networkLayer/appnetworking/app_api_request_type.dart';
+import 'package:rameshclothhouse/data_layer/data_source/remote/app_api_request_type.dart';
 import 'package:rameshclothhouse/data_layer/networkLayer/appnetworking/networkClient/app_http_exceptions.dart';
 import 'package:rameshclothhouse/data_layer/networkLayer/appnetworking/networkClient/http_client.dart';
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';

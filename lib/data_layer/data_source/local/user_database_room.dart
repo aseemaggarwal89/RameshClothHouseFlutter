@@ -1,8 +1,7 @@
-// import 'package:data_layer/objectbox.g.dart';
-// import 'package:data_layer/src/data_source/models/user_entity.dart';
+import 'package:rameshclothhouse/data_layer/data_source/models/user_dto.dart';
+// import 'package:rameshclothhouse/objectbox.g.dart';
 
 // class UserDatabaseRoom {
-
 //   final Box<UserEntity> storageBox;
 
 //   UserDatabaseRoom(this.storageBox);

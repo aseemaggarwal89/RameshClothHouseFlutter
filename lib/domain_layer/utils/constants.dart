@@ -2,7 +2,7 @@
 
 enum ReviewStatus { REVIEW, RATING }
 
-enum AppURLsType { commerce, aggregator, ugc, feedbuilding, search, download }
+enum AppURLsType { ugc }
 
 extension EnumByName<T extends Enum> on Iterable<T> {
   T? getEnumType(String name) {

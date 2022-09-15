@@ -12,11 +12,7 @@ extension EnvironmentExtension on Environment {
     switch (this) {
       case Environment.Dev:
         return {
-          AppURLsType.commerce: 'https://commerce.healofy.com',
-          AppURLsType.aggregator: 'https://aggregator.healofy.com',
-          AppURLsType.feedbuilding: 'https://feedbuilding-dev.healofy.com',
-          AppURLsType.ugc: 'https://ugc.healofy.com/',
-          AppURLsType.search: 'https://search.healofy.com'
+          AppURLsType.ugc: 'http://127.0.0.1:3000/api/v1/',
         };
       case Environment.Prod:
         return {};
