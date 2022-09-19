@@ -53,9 +53,6 @@ void commonMain(Environment env) async {
         create: (context) => AuthenticationBloc()..add(AppStarted()),
         child: MultiProvider(
             providers: [
-              ChangeNotifierProvider(
-                create: (context) => MenuItems([]),
-              ),
               RepositoryProvider<IProductUseCases>(
                 create: (context) => injector(),
               ),

@@ -7,14 +7,30 @@ part of 'error.dart';
 // **************************************************************************
 
 ErrorModel _$ErrorModelFromJson(Map<String, dynamic> json) => ErrorModel(
-      json['statusCode'] as int,
-      json['statusMessage'] as String,
-      json['success'] as bool,
+      status: json['status'] as String,
+      error: json['error'] == null
+          ? null
+          : Error.fromJson(json['error'] as Map<String, dynamic>),
+      message: json['message'] as String,
+      stack: json['stack'] as String?,
     );
 
 Map<String, dynamic> _$ErrorModelToJson(ErrorModel instance) =>
     <String, dynamic>{
+      'status': instance.status,
+      'error': instance.error,
+      'message': instance.message,
+      'stack': instance.stack,
+    };
+
+Error _$ErrorFromJson(Map<String, dynamic> json) => Error(
+      statusCode: json['statusCode'] as int?,
+      status: json['status'] as String? ?? '',
+      isOperational: json['isOperational'] as bool? ?? false,
+    );
+
+Map<String, dynamic> _$ErrorToJson(Error instance) => <String, dynamic>{
       'statusCode': instance.statusCode,
-      'statusMessage': instance.statusMessage,
-      'success': instance.success,
+      'status': instance.status,
+      'isOperational': instance.isOperational,
     };

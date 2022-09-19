@@ -37,14 +37,14 @@ class AppAPIRequest extends IHttpRequest {
   Future<Map<String, String>> get headers async {
     var defaultHeaders = _defaultHeader();
 
-    var customHeaders = await requestType.customHeaders;
-    defaultHeaders.addAll(requestType.accessTokenHeaders());
-    defaultHeaders.addAll(customHeaders);
-    if (body != null) {
-      String json = jsonEncode(body);
-      List<int> bodyBytes = utf8.encode(json);
-      defaultHeaders[Headers.contentLengthHeader] = '${bodyBytes.length}';
-    }
+    // var customHeaders = await requestType.customHeaders;
+    // defaultHeaders.addAll(requestType.accessTokenHeaders());
+    // defaultHeaders.addAll(customHeaders);
+    // if (body != null) {
+    //   String json = jsonEncode(body);
+    //   List<int> bodyBytes = utf8.encode(json);
+    //   defaultHeaders[Headers.contentLengthHeader] = '${bodyBytes.length}';
+    // }
     return defaultHeaders;
   }
 

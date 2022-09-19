@@ -1,6 +1,4 @@
 // Home Screen Bloc States
-// Author: openflutterproject@gmail.com
-// Date: 2020-02-06
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -18,15 +16,25 @@ class HomeInitialState extends HomeState {
   String toString() => 'HomeInitialState';
 }
 
-@immutable
-class HomeLoadedState extends HomeState {
-  final List<ProductDTO> products;
+class HomePageListingState {
+  HomePageListingState({
+    this.itemList,
+    this.error,
+    this.nextPageKey = 0,
+  });
 
-  HomeLoadedState({required this.products});
-
-  @override
-  String toString() => 'HomeLoadedState';
-
-  @override
-  List<Object> get props => [products];
+  final List<ProductDTO>? itemList;
+  final dynamic error;
+  final int? nextPageKey;
 }
+
+// class HomeErrorState extends HomeState {
+//   final String message;
+//   HomeErrorState({required this.message});
+
+//   @override
+//   String toString() => 'HomeErrorState';
+
+//   @override
+//   List<Object> get props => [message];
+// }

@@ -1,6 +1,4 @@
 // Home Screen Bloc Events
-// Author: openflutterproject@gmail.com
-// Date: 2020-02-06
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +12,7 @@ abstract class HomeEvent extends Equatable {
 }
 
 @immutable
-class HomeLoadEvent extends HomeEvent {
+class GetProductsEvent extends HomeEvent {
   @override
   String toString() => 'Home is Loaded';
 }

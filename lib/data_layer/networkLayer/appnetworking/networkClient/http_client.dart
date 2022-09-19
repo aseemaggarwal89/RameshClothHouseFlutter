@@ -1,6 +1,5 @@
 // ignore: file_names
 
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -43,7 +42,7 @@ class AppHttpClient extends IAppHttpClient {
   // supported by our application.
   Future<Response<T>> _mapException<T>(HttpLibraryMethod<T> method) async {
     try {
-      final data =  await method();
+      final data = await method();
       return data;
     } on DioError catch (exception) {
       switch (exception.type) {

@@ -1,10 +1,16 @@
-
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
 
 class Generic {
   static T fromJson<T>(dynamic json) {
     try {
       switch (T) {
+        case GetProductsResponse:
+          final data = GetProductsResponse.fromJson(json) as T;
+          return data;
+        case GetBrandsResponse:
+          final data = GetBrandsResponse.fromJson(json) as T;
+          return data;
+
         default:
           if (json is List) {
             return _fromJsonList<T>(json) as T;
@@ -28,7 +34,7 @@ class Generic {
           }
       }
     } catch (e) {
-      throw NetworkExceptions.jsonDecodedException(json, e as Exception);
+      throw NetworkExceptions.unexpectedError(e);
     }
   }
 

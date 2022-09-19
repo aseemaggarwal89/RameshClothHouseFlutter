@@ -23,7 +23,7 @@ class AppRoutes {
   replaceInRouteName: 'Page,Route,Screen',
   routes: <AutoRoute>[
     AutoRoute(
-      page: HomePage,
+      page: HomeScreen,
       path: AppRoutes.home,
       initial: true,
       children: [

@@ -23,7 +23,8 @@ class NetworkExceptions with _$NetworkExceptions {
 
   const factory NetworkExceptions.conflict() = Conflict;
 
-  const factory NetworkExceptions.internalServerError() = InternalServerError;
+  const factory NetworkExceptions.internalServerError(String reason) =
+      InternalServerError;
 
   const factory NetworkExceptions.notImplemented() = NotImplemented;
 
@@ -37,7 +38,8 @@ class NetworkExceptions with _$NetworkExceptions {
 
   const factory NetworkExceptions.defaultError(String error) = DefaultError;
 
-  const factory NetworkExceptions.unexpectedError() = UnexpectedError;
+  const factory NetworkExceptions.unexpectedError(dynamic error) =
+      UnexpectedError;
 
   const factory NetworkExceptions.jsonDecodedException(
       dynamic json, Exception e) = JsonDecodedException;
@@ -64,16 +66,16 @@ class NetworkExceptions with _$NetworkExceptions {
       case 401:
       case 403:
         return NetworkExceptions.unauthorizedRequest(
-            errorModel?.statusMessage ?? "Not found");
+            errorModel?.message ?? "Not authorized to access request");
       case 404:
-        return NetworkExceptions.notFound(
-            errorModel?.statusMessage ?? "Not found");
+        return NetworkExceptions.notFound(errorModel?.message ?? "Not found");
       case 409:
         return const NetworkExceptions.conflict();
       case 408:
         return const NetworkExceptions.timeout();
       case 500:
-        return const NetworkExceptions.internalServerError();
+        String errorMessage = errorModel?.message ?? "Unkown server error";
+        return NetworkExceptions.internalServerError(errorMessage);
       case 503:
         return const NetworkExceptions.serviceUnavailable();
       default:
@@ -90,8 +92,8 @@ class NetworkExceptions with _$NetworkExceptions {
       errorMessage = "Not Implemented";
     }, requestCancelled: () {
       errorMessage = "Request Cancelled";
-    }, internalServerError: () {
-      errorMessage = "Internal Server Error";
+    }, internalServerError: (String reason) {
+      errorMessage = "Internal Server Error: $reason";
     }, notFound: (String reason) {
       errorMessage = reason;
     }, serviceUnavailable: () {
@@ -102,8 +104,8 @@ class NetworkExceptions with _$NetworkExceptions {
       errorMessage = "Bad request";
     }, unauthorizedRequest: (String error) {
       errorMessage = error;
-    }, unexpectedError: () {
-      errorMessage = "Unexpected error occurred";
+    }, unexpectedError: (error) {
+      errorMessage = "Unexpected error occurred $error";
     }, unhandledException: (Exception e) {
       errorMessage = "Connection request unknown error";
       if (kDebugMode) {

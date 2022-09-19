@@ -7,7 +7,7 @@ part 'get_product_response.g.dart';
 @JsonSerializable()
 class GetProductsResponse {
   String status;
-  num results;
+  int results;
   @JsonKey(name: 'data')
   List<ProductDTO> products;
 

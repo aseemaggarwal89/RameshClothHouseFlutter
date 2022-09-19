@@ -9,7 +9,7 @@ part of 'product_dto.dart';
 ProductDTO _$ProductDTOFromJson(Map<String, dynamic> json) => ProductDTO(
       name: json['name'] as String,
       description: json['description'] as String,
-      price: json['price'] as String,
+      price: json['price'] as num,
       summary: json['summary'] as String,
       uniqueId: json['_id'] as String,
       createdAt: json['createdAt'] as String,

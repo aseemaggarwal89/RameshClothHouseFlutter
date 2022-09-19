@@ -4,16 +4,23 @@ part 'product_param_dto.g.dart';
 
 @JsonSerializable()
 class ProductParamDTO {
+  @JsonKey(includeIfNull: false)
   final String? subCategoryId;
+  @JsonKey(includeIfNull: false)
   final String? brandId;
+  @JsonKey(includeIfNull: false)
   final String? fields;
-  final String? limit;
+  @JsonKey(name: 'limit', includeIfNull: false)
+  final String? pageSize;
+  @JsonKey(includeIfNull: false)
+  final String? page;
 
   ProductParamDTO({
     this.subCategoryId,
     this.brandId,
     this.fields,
-    this.limit,
+    this.pageSize,
+    this.page,
   });
 
   factory ProductParamDTO.fromJson(Map<String, dynamic> json) {

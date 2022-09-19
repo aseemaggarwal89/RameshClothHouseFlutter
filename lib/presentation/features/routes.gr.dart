@@ -24,8 +24,10 @@ class AppRouter extends _i3.RootStackRouter {
   @override
   final Map<String, _i3.PageFactory> pagesMap = {
     HomeScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<HomeScreenRouteArgs>(
+          orElse: () => const HomeScreenRouteArgs());
       return _i3.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i1.HomePage());
+          routeData: routeData, child: _i1.HomeScreen(key: args.key));
     },
     LoginScreenRoute.name: (routeData) {
       return _i3.AdaptivePage<dynamic>(
@@ -35,9 +37,7 @@ class AppRouter extends _i3.RootStackRouter {
 
   @override
   List<_i3.RouteConfig> get routes => [
-        _i3.RouteConfig('/#redirect',
-            path: '/', redirectTo: '/home', fullMatch: true),
-        _i3.RouteConfig(HomeScreenRoute.name, path: '/home', children: [
+        _i3.RouteConfig(HomeScreenRoute.name, path: '/', children: [
           _i3.RouteConfig('*#redirect',
               path: '*',
               parent: HomeScreenRoute.name,
@@ -52,17 +52,31 @@ class AppRouter extends _i3.RootStackRouter {
               fullMatch: true)
         ]),
         _i3.RouteConfig('*#redirect',
-            path: '*', redirectTo: '/home', fullMatch: true)
+            path: '*', redirectTo: '/', fullMatch: true)
       ];
 }
 
 /// generated route for
-/// [_i1.HomePage]
-class HomeScreenRoute extends _i3.PageRouteInfo<void> {
-  const HomeScreenRoute({List<_i3.PageRouteInfo>? children})
-      : super(HomeScreenRoute.name, path: '/home', initialChildren: children);
+/// [_i1.HomeScreen]
+class HomeScreenRoute extends _i3.PageRouteInfo<HomeScreenRouteArgs> {
+  HomeScreenRoute({_i4.Key? key, List<_i3.PageRouteInfo>? children})
+      : super(HomeScreenRoute.name,
+            path: '/',
+            args: HomeScreenRouteArgs(key: key),
+            initialChildren: children);
 
   static const String name = 'HomeScreenRoute';
+}
+
+class HomeScreenRouteArgs {
+  const HomeScreenRouteArgs({this.key});
+
+  final _i4.Key? key;
+
+  @override
+  String toString() {
+    return 'HomeScreenRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

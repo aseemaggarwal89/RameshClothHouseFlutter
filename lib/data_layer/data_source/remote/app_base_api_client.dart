@@ -23,9 +23,9 @@ class AppAPIClient extends INetworkService {
         return const ApiResult.success(null);
       }
 
-      // final data = Generic.fromJson<T>(response.data);
+      ApiResult<T> data = await parseDataInBackground(response.data);
       // return ApiResult.success(data);
-      return parseDataInBackground(response.data);
+      return data;
     } catch (e) {
       return ApiResult.failure(getException(e));
     }
@@ -40,13 +40,15 @@ class AppAPIClient extends INetworkService {
 
     final requestOptions = _setStreamType(
       RequestOptions(
-          path: path,
-          queryParameters: params,
-          baseUrl: appUrls[request.baseUrlType],
-          headers: await request.headers,
-          data: request.data,
-          method: request.method.methodName,
-          responseType: request.responseType.dioResponseType),
+        path: path,
+        queryParameters: params,
+        baseUrl: appUrls[request.baseUrlType],
+        headers: await request.headers,
+        data: request.data,
+        method: request.method.methodName,
+        responseType: request.responseType.dioResponseType,
+        connectTimeout: 1000 * 30,
+      ),
     );
 
     return httpClient.requestData(requestOptions);
@@ -80,7 +82,7 @@ class AppAPIClient extends INetworkService {
             networkExceptions = NetworkExceptions.handleResponse(
                 error.data?.data, error.statusCode);
           } else {
-            return const NetworkExceptions.unexpectedError();
+            return NetworkExceptions.unexpectedError(error);
           }
           break;
         case AppNetworkExceptionReason.other:
@@ -93,7 +95,7 @@ class AppAPIClient extends INetworkService {
     } else if (error is NetworkExceptions) {
       networkExceptions = error;
     } else {
-      networkExceptions = const NetworkExceptions.unexpectedError();
+      networkExceptions = NetworkExceptions.unexpectedError(error);
     }
     return networkExceptions;
   }
@@ -122,7 +124,7 @@ Future<ApiResult<T>> parseDataInBackground<T>(dynamic jsonData) async {
         await compute(_parse, jsonData, debugLabel: 'parseDataInBackground');
     return result;
   } catch (e, stacktrace) {
-    return ApiResult.failure(
+    throw ApiResult.failure(
         NetworkExceptions.unhandledException(e as Exception));
   }
 }

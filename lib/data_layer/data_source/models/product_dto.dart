@@ -6,15 +6,14 @@ part 'product_dto.g.dart';
 @JsonSerializable()
 // @Entity()
 class ProductDTO {
-  @JsonKey(ignore: true)
-  // @Id()
-  int? id;
+  // @JsonKey(ignore: true)
+  // // @Id()
+  // int? id;
 
   @JsonKey(name: "_id")
   // @Unique(onConflict: ConflictStrategy.replace)
   // @Index()
   final String uniqueId;
-
   final num? ratingsAverage;
   final num? ratingsQuantity;
   final num? discountPrice;
@@ -23,7 +22,7 @@ class ProductDTO {
   final List<String>? purchaseByCustomerDates;
   final String? qualityType;
   final String name;
-  final String price;
+  final num price;
   final String summary;
   final String description;
   final String? imageCover;

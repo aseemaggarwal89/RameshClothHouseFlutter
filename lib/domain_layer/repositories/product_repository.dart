@@ -9,7 +9,7 @@ abstract class IProductAPIRepository {
   //   throw UnimplementedError();
   // }
 
-  Future<ApiResult<GetProductsResponse>> getAllProducts(
+  Future<ApiResult<GetProductsResponse>> getProducts(
       [ProductParamDTO? param]);
 
   // Future<ApiResult<GetProductsResponse>> updateProductRequest(

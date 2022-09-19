@@ -26,14 +26,14 @@ mixin _$NetworkExceptions {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) =>
@@ -48,14 +48,14 @@ mixin _$NetworkExceptions {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) =>
@@ -70,14 +70,14 @@ mixin _$NetworkExceptions {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -218,14 +218,14 @@ class _$RequestCancelled implements RequestCancelled {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -243,14 +243,14 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -268,14 +268,14 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -444,14 +444,14 @@ class _$UnauthorizedRequest implements UnauthorizedRequest {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -469,14 +469,14 @@ class _$UnauthorizedRequest implements UnauthorizedRequest {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -494,14 +494,14 @@ class _$UnauthorizedRequest implements UnauthorizedRequest {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -651,14 +651,14 @@ class _$BadRequest implements BadRequest {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -676,14 +676,14 @@ class _$BadRequest implements BadRequest {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -701,14 +701,14 @@ class _$BadRequest implements BadRequest {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -875,14 +875,14 @@ class _$NotFound implements NotFound {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -900,14 +900,14 @@ class _$NotFound implements NotFound {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -925,14 +925,14 @@ class _$NotFound implements NotFound {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -1081,14 +1081,14 @@ class _$MethodNotAllowed implements MethodNotAllowed {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -1106,14 +1106,14 @@ class _$MethodNotAllowed implements MethodNotAllowed {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -1131,14 +1131,14 @@ class _$MethodNotAllowed implements MethodNotAllowed {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -1282,14 +1282,14 @@ class _$NotAcceptable implements NotAcceptable {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -1307,14 +1307,14 @@ class _$NotAcceptable implements NotAcceptable {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -1332,14 +1332,14 @@ class _$NotAcceptable implements NotAcceptable {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -1483,14 +1483,14 @@ class _$RequestTimeout implements RequestTimeout {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -1508,14 +1508,14 @@ class _$RequestTimeout implements RequestTimeout {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -1533,14 +1533,14 @@ class _$RequestTimeout implements RequestTimeout {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -1683,14 +1683,14 @@ class _$Conflict implements Conflict {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -1708,14 +1708,14 @@ class _$Conflict implements Conflict {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -1733,14 +1733,14 @@ class _$Conflict implements Conflict {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -1840,6 +1840,7 @@ abstract class _$$InternalServerErrorCopyWith<$Res> {
   factory _$$InternalServerErrorCopyWith(_$InternalServerError value,
           $Res Function(_$InternalServerError) then) =
       __$$InternalServerErrorCopyWithImpl<$Res>;
+  $Res call({String reason});
 }
 
 /// @nodoc
@@ -1852,26 +1853,50 @@ class __$$InternalServerErrorCopyWithImpl<$Res>
 
   @override
   _$InternalServerError get _value => super._value as _$InternalServerError;
+
+  @override
+  $Res call({
+    Object? reason = freezed,
+  }) {
+    return _then(_$InternalServerError(
+      reason == freezed
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InternalServerError implements InternalServerError {
-  const _$InternalServerError();
+  const _$InternalServerError(this.reason);
+
+  @override
+  final String reason;
 
   @override
   String toString() {
-    return 'NetworkExceptions.internalServerError()';
+    return 'NetworkExceptions.internalServerError(reason: $reason)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InternalServerError);
+        (other.runtimeType == runtimeType &&
+            other is _$InternalServerError &&
+            const DeepCollectionEquality().equals(other.reason, reason));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(reason));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$InternalServerErrorCopyWith<_$InternalServerError> get copyWith =>
+      __$$InternalServerErrorCopyWithImpl<_$InternalServerError>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1884,18 +1909,18 @@ class _$InternalServerError implements InternalServerError {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
-    return internalServerError();
+    return internalServerError(reason);
   }
 
   @override
@@ -1909,18 +1934,18 @@ class _$InternalServerError implements InternalServerError {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
-    return internalServerError?.call();
+    return internalServerError?.call(reason);
   }
 
   @override
@@ -1934,20 +1959,20 @@ class _$InternalServerError implements InternalServerError {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
   }) {
     if (internalServerError != null) {
-      return internalServerError();
+      return internalServerError(reason);
     }
     return orElse();
   }
@@ -2033,7 +2058,13 @@ class _$InternalServerError implements InternalServerError {
 }
 
 abstract class InternalServerError implements NetworkExceptions {
-  const factory InternalServerError() = _$InternalServerError;
+  const factory InternalServerError(final String reason) =
+      _$InternalServerError;
+
+  String get reason;
+  @JsonKey(ignore: true)
+  _$$InternalServerErrorCopyWith<_$InternalServerError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2085,14 +2116,14 @@ class _$NotImplemented implements NotImplemented {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -2110,14 +2141,14 @@ class _$NotImplemented implements NotImplemented {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -2135,14 +2166,14 @@ class _$NotImplemented implements NotImplemented {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -2286,14 +2317,14 @@ class _$ServiceUnavailable implements ServiceUnavailable {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -2311,14 +2342,14 @@ class _$ServiceUnavailable implements ServiceUnavailable {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -2336,14 +2367,14 @@ class _$ServiceUnavailable implements ServiceUnavailable {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -2487,14 +2518,14 @@ class _$NoInternetConnection implements NoInternetConnection {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -2512,14 +2543,14 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -2537,14 +2568,14 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -2688,14 +2719,14 @@ class _$FormatException implements FormatException {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -2713,14 +2744,14 @@ class _$FormatException implements FormatException {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -2738,14 +2769,14 @@ class _$FormatException implements FormatException {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -2889,14 +2920,14 @@ class _$UnableToProcess implements UnableToProcess {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -2914,14 +2945,14 @@ class _$UnableToProcess implements UnableToProcess {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -2939,14 +2970,14 @@ class _$UnableToProcess implements UnableToProcess {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -3114,14 +3145,14 @@ class _$DefaultError implements DefaultError {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -3139,14 +3170,14 @@ class _$DefaultError implements DefaultError {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -3164,14 +3195,14 @@ class _$DefaultError implements DefaultError {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -3276,6 +3307,7 @@ abstract class _$$UnexpectedErrorCopyWith<$Res> {
   factory _$$UnexpectedErrorCopyWith(
           _$UnexpectedError value, $Res Function(_$UnexpectedError) then) =
       __$$UnexpectedErrorCopyWithImpl<$Res>;
+  $Res call({dynamic error});
 }
 
 /// @nodoc
@@ -3288,26 +3320,49 @@ class __$$UnexpectedErrorCopyWithImpl<$Res>
 
   @override
   _$UnexpectedError get _value => super._value as _$UnexpectedError;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$UnexpectedError(
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UnexpectedError implements UnexpectedError {
-  const _$UnexpectedError();
+  const _$UnexpectedError(this.error);
+
+  @override
+  final dynamic error;
 
   @override
   String toString() {
-    return 'NetworkExceptions.unexpectedError()';
+    return 'NetworkExceptions.unexpectedError(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UnexpectedError);
+        (other.runtimeType == runtimeType &&
+            other is _$UnexpectedError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$UnexpectedErrorCopyWith<_$UnexpectedError> get copyWith =>
+      __$$UnexpectedErrorCopyWithImpl<_$UnexpectedError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3320,18 +3375,18 @@ class _$UnexpectedError implements UnexpectedError {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
-    return unexpectedError();
+    return unexpectedError(error);
   }
 
   @override
@@ -3345,18 +3400,18 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
-    return unexpectedError?.call();
+    return unexpectedError?.call(error);
   }
 
   @override
@@ -3370,20 +3425,20 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
   }) {
     if (unexpectedError != null) {
-      return unexpectedError();
+      return unexpectedError(error);
     }
     return orElse();
   }
@@ -3469,7 +3524,12 @@ class _$UnexpectedError implements UnexpectedError {
 }
 
 abstract class UnexpectedError implements NetworkExceptions {
-  const factory UnexpectedError() = _$UnexpectedError;
+  const factory UnexpectedError(final dynamic error) = _$UnexpectedError;
+
+  dynamic get error;
+  @JsonKey(ignore: true)
+  _$$UnexpectedErrorCopyWith<_$UnexpectedError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3556,14 +3616,14 @@ class _$JsonDecodedException implements JsonDecodedException {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -3581,14 +3641,14 @@ class _$JsonDecodedException implements JsonDecodedException {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -3606,14 +3666,14 @@ class _$JsonDecodedException implements JsonDecodedException {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),
@@ -3789,14 +3849,14 @@ class _$UnhandledException implements UnhandledException {
     required TResult Function() notAcceptable,
     required TResult Function() timeout,
     required TResult Function() conflict,
-    required TResult Function() internalServerError,
+    required TResult Function(String reason) internalServerError,
     required TResult Function() notImplemented,
     required TResult Function() serviceUnavailable,
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
     required TResult Function(String error) defaultError,
-    required TResult Function() unexpectedError,
+    required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
     required TResult Function(Exception e) unhandledException,
   }) {
@@ -3814,14 +3874,14 @@ class _$UnhandledException implements UnhandledException {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
   }) {
@@ -3839,14 +3899,14 @@ class _$UnhandledException implements UnhandledException {
     TResult Function()? notAcceptable,
     TResult Function()? timeout,
     TResult Function()? conflict,
-    TResult Function()? internalServerError,
+    TResult Function(String reason)? internalServerError,
     TResult Function()? notImplemented,
     TResult Function()? serviceUnavailable,
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
     TResult Function(String error)? defaultError,
-    TResult Function()? unexpectedError,
+    TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
     TResult Function(Exception e)? unhandledException,
     required TResult orElse(),

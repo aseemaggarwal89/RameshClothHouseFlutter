@@ -4,8 +4,8 @@ import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
 import 'package:rameshclothhouse/domain_layer/models/product_param_dto.dart';
 
 abstract class IProductUseCases {
-  Future<ApiResult<List<ProductDTO>>> fetchProductsData(
-      {ProductParamDTO? param});
+  Future<List<ProductDTO>> fetchAllProductsData();
+  Future<List<ProductDTO>> fetchProductData(int page, int pageSize);
 }
 
 class ProductsUseCase implements IProductUseCases {
@@ -18,23 +18,41 @@ class ProductsUseCase implements IProductUseCases {
   );
 
   @override
-  Future<ApiResult<List<ProductDTO>>> fetchProductsData(
-      {ProductParamDTO? param}) {
-    return _productAPIDataRepository.getAllProducts(param).then((value) {
-      return value.map(
-          success: (success) {
-            if (success.data != null && success.data!.status == "success") {
-              if (success.data!.results > 0) {
-                // _productDBRepository.saveProducts(success.data!.products);
-              }
-
-              return ApiResult.success(success.data!.products);
+  Future<List<ProductDTO>> fetchAllProductsData() async {
+    final result = await _productAPIDataRepository.getProducts();
+    return result.when(
+        success: (success) {
+          if (success != null && success.status == "success") {
+            if (success.results > 0) {
+              // _productDBRepository.saveProducts(success.data!.products);
             }
 
-            return const ApiResult.failure(
-                NetworkExceptions.notFound("Data not available"));
-          },
-          failure: (failure) => ApiResult.failure(failure.error));
-    });
+            return success.products;
+          } else {
+            return throw const NetworkExceptions.notFound("Data not available");
+          }
+        },
+        failure: (failure) => throw failure);
+  }
+
+  @override
+  Future<List<ProductDTO>> fetchProductData(int page, int pageSize) async {
+    ProductParamDTO param =
+        ProductParamDTO(page: page.toString(), pageSize: pageSize.toString());
+    final result = await _productAPIDataRepository.getProducts(param);
+
+    return result.when(
+        success: (success) {
+          if (success != null && success.status == "success") {
+            if (success.results > 0) {
+              // _productDBRepository.saveProducts(success.data!.products);
+            }
+
+            return success.products;
+          } else {
+            return throw const NetworkExceptions.notFound("Data not available");
+          }
+        },
+        failure: (failure) => throw failure);
   }
 }

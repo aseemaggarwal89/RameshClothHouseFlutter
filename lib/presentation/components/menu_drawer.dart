@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rameshclothhouse/gen/assets.gen.dart';
 import 'package:rameshclothhouse/presentation/Providers/menu_items.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
@@ -9,11 +10,8 @@ class AppDrawer extends StatelessWidget {
   final List<String> menuItems;
   final String? selectedItem;
 
-  const AppDrawer({
-    Key? key,
-    required this.menuItems,
-    this.selectedItem
-  }) : super(key: key);
+  const AppDrawer({Key? key, required this.menuItems, this.selectedItem})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +36,11 @@ class MenuDrawer extends StatelessWidget {
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       child: Column(
         children: [
-          AppBar(
-            title: LatoTextView(
-              label: "Ramesh Cloth House",
-              fontSize:
-                  Theme.of(context).appBarTheme.toolbarTextStyle?.fontSize,
-              fontType: FontType.BOLD,
-            ),
-            automaticallyImplyLeading: false,
+          verticalSpaceRegular,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Assets.images.rameshClothHouse
+                .image(height: 80, fit: BoxFit.fill),
           ),
           verticalSpaceSmall,
           ListView.builder(

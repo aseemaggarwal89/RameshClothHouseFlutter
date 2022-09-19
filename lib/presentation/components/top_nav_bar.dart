@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rameshclothhouse/gen/assets.gen.dart';
 import 'package:rameshclothhouse/presentation/Providers/menu_items.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
@@ -40,6 +41,11 @@ class TopNavBarContents extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Assets.images.rameshClothHouse.image(),
+          ),
+          const Spacer(),
           ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
@@ -56,6 +62,7 @@ class TopNavBarContents extends StatelessWidget {
               );
             },
           ),
+          const Spacer(),
         ],
       ),
     );

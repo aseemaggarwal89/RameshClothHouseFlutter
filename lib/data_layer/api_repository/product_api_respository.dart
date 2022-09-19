@@ -10,7 +10,7 @@ class ProductAPIRepository extends IProductAPIRepository {
   ProductAPIRepository(this.networkManager);
 
   @override
-  Future<ApiResult<GetProductsResponse>> getAllProducts(
+  Future<ApiResult<GetProductsResponse>> getProducts(
       [ProductParamDTO? param]) async {
     final apiRequest = AppAPIRequest(
       const ApiRequestType.product(),

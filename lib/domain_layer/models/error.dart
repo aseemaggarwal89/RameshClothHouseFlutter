@@ -4,15 +4,45 @@ part 'error.g.dart';
 
 @JsonSerializable()
 class ErrorModel {
-  int statusCode;
-  String statusMessage;
-  bool success;
+  String status;
+  Error? error;
+  String message;
+  String? stack;
 
-  ErrorModel(this.statusCode, this.statusMessage, this.success);
-
+  ErrorModel({
+    required this.status,
+    this.error,
+    required this.message,
+    this.stack,
+  });
   factory ErrorModel.fromJson(Map<String, dynamic> json) {
     return _$ErrorModelFromJson(json);
   }
 
   Map<String, dynamic> toJson() => _$ErrorModelToJson(this);
+}
+
+@JsonSerializable()
+class Error {
+  Error({
+    this.statusCode,
+    this.status = '',
+    this.isOperational = false,
+  });
+
+  int? statusCode;
+  String? status;
+  bool? isOperational;
+
+  factory Error.fromJson(Map<String, dynamic> json) => Error(
+        statusCode: json["statusCode"],
+        status: json["status"],
+        isOperational: json["isOperational"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "statusCode": statusCode,
+        "status": status,
+        "isOperational": isOperational,
+      };
 }
