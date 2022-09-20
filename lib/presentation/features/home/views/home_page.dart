@@ -42,8 +42,8 @@ class HomeScreen extends StatelessWidget {
             create: ((context) => HomeBloc()),
           ),
           BlocProvider<HomeFilterBloc>(
-            create: ((context) => HomeFilterBloc(
-                BlocProvider.of<HomeBloc>(context).onFilterUpdatedSink)),
+            create: ((context) =>
+                HomeFilterBloc(BlocProvider.of<HomeBloc>(context))),
           ),
         ], child: HomeScreenWrapper()));
   }

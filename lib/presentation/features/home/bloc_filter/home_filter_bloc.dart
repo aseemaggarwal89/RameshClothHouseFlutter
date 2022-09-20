@@ -8,6 +8,7 @@ import 'package:rxdart/rxdart.dart';
 
 import '../../../../domain_layer/domain_layer.dart';
 import '../bloc/filter_view_model.dart';
+import '../bloc/home_bloc.dart';
 
 part 'home_filter_event.dart';
 
@@ -15,9 +16,9 @@ class HomeFilterBloc extends Bloc<HomeFilterEvent, HomeFilterState> {
   final IBrandUseCases getBrandDataUseCase;
   final _loadedBrands = BehaviorSubject<List<BrandDTO>>();
   final _selectedBrands = BehaviorSubject<List<BrandDTO>>.seeded([]);
-  Sink<SelectedFilters> filterSink;
+  final HomeBloc homeBloc;
 
-  HomeFilterBloc(this.filterSink)
+  HomeFilterBloc(this.homeBloc)
       : getBrandDataUseCase = injector(),
         super(HomeFilterInitialState()) {
     on<GetFiltersEvent>(_onGetBrandsEvent);
@@ -57,7 +58,7 @@ class HomeFilterBloc extends Bloc<HomeFilterEvent, HomeFilterState> {
     } else {
       _selectedBrands.value.removeWhere((element) => element == event.brand);
     }
-    filterSink.add(SelectedFilters(_selectedBrands.value));
+    homeBloc.onFilterUpdatedSink.add(SelectedFilters(_selectedBrands.value));
     emit(HomeSelectedFilterState(event.brand, event.selected));
   }
 
