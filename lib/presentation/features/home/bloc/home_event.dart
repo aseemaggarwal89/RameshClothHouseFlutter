@@ -16,13 +16,3 @@ class GetProductsEvent extends HomeEvent {
   @override
   String toString() => 'Home is Loaded';
 }
-
-class HomeAddToFavoriteEvent extends HomeEvent {
-  final bool isFavorite;
-  final ProductDTO product;
-
-  HomeAddToFavoriteEvent(this.isFavorite, this.product);
-
-  @override
-  List<Object> get props => [isFavorite, product];
-}

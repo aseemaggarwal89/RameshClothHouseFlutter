@@ -3,30 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
-
-import '../home.dart';
+import '../../../../domain_layer/domain_layer.dart';
 import 'filter.dart';
 
-class HomeFilterView extends StatelessWidget {
+class HomeFilterView extends StatefulWidget {
   const HomeFilterView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider<HomeFilterBloc>(
-      create: (context) => HomeFilterBloc(),
-      child: const HomeFilterWrapperView(),
-    );
-  }
+  _HomeFilterViewState createState() => _HomeFilterViewState();
 }
 
-class HomeFilterWrapperView extends StatefulWidget {
-  const HomeFilterWrapperView({Key? key}) : super(key: key);
-
-  @override
-  _HomeFilterWrapperViewState createState() => _HomeFilterWrapperViewState();
-}
-
-class _HomeFilterWrapperViewState extends State<HomeFilterWrapperView> {
+class _HomeFilterViewState extends State<HomeFilterView> {
   @override
   void initState() {
     _bloc = BlocProvider.of<HomeFilterBloc>(context);
@@ -44,6 +31,8 @@ class _HomeFilterWrapperViewState extends State<HomeFilterWrapperView> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<HomeFilterBloc>(context);
+
     return BlocBuilder<HomeFilterBloc, HomeFilterState>(
         builder: (BuildContext context, HomeFilterState state) {
       switch (state.runtimeType) {
@@ -52,7 +41,7 @@ class _HomeFilterWrapperViewState extends State<HomeFilterWrapperView> {
         case HomeFilterLoadingState:
           return _buildLoading();
         case HomeFilterLoadedState:
-          HomeFilterLoadedState loadedState = (state as HomeFilterLoadedState);
+        case HomeSelectedFilterState:
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -73,7 +62,7 @@ class _HomeFilterWrapperViewState extends State<HomeFilterWrapperView> {
               divider(
                 width: double.infinity,
               ),
-              if (loadedState.activeBrands.isNotEmpty)
+              if (bloc.activeBrands.isNotEmpty)
                 const Padding(
                   padding: EdgeInsets.all(defaultPadding),
                   child: LatoTextView(
@@ -85,21 +74,11 @@ class _HomeFilterWrapperViewState extends State<HomeFilterWrapperView> {
                 ),
               ListView.builder(
                   shrinkWrap: true,
-                  itemCount: loadedState.brands.length,
+                  itemCount: bloc.activeBrands.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final brand = loadedState.activeBrands[index];
-                    return ListTile(
-                      // leading:
-                      //     SvgPicture.asset(R.ASSETS_ICON_RECENT_ICON_SVG),
-                      title: LatoTextView(
-                        label: brand.name,
-                        fontSize: 14.0,
-                        color: HomeFilterViewColor.filterTextColor,
-                        fontType: FontType.BOLD,
-                      ),
-                      // trailing:
-                      //     SvgPicture.asset(R.ASSETS_ICON_CARET_RIGHT_SVG),
-                      // onTap: model.navigateToRecentProducts,
+                    final brand = bloc.activeBrands[index];
+                    return FilterCheckBox(
+                      brand: brand,
                     );
                   })
             ],
@@ -113,4 +92,37 @@ class _HomeFilterWrapperViewState extends State<HomeFilterWrapperView> {
   }
 
   Widget _buildLoading() => const Center(child: CircularProgressIndicator());
+}
+
+class FilterCheckBox extends StatelessWidget {
+  BrandDTO brand;
+
+  FilterCheckBox({
+    Key? key,
+    required this.brand,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: [
+            Checkbox(
+              value: BlocProvider.of<HomeFilterBloc>(context).isSelected(brand),
+              onChanged: (bool? selected) {
+                BlocProvider.of<HomeFilterBloc>(context)
+                    .add(BrandCheckboxTappedEvent(brand, selected!));
+              },
+            ),
+            horizontalSpaceSmall,
+            LatoTextView(
+              label: brand.name,
+              fontSize: 14.0,
+              color: HomeFilterViewColor.filterTextColor,
+              fontType: FontType.BOLD,
+            )
+          ],
+        ));
+  }
 }

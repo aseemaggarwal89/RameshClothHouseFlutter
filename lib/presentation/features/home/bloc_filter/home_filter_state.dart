@@ -24,17 +24,13 @@ class HomeFilterLoadingState extends HomeFilterState {
 class HomeFilterLoadedState extends HomeFilterState {
   final List<BrandDTO> brands;
 
-  HomeFilterLoadedState({required this.brands});
+  HomeFilterLoadedState(this.brands);
 
   @override
   String toString() => 'HomeFilterLoadedState';
 
   @override
   List<Object> get props => [brands.map((e) => e.uniqueId)];
-
-  List<BrandDTO> get activeBrands {
-    return brands.where((element) => element.active).toList();
-  }
 }
 
 class HomeFilteErrorState extends HomeFilterState {
@@ -46,4 +42,14 @@ class HomeFilteErrorState extends HomeFilterState {
 
   @override
   List<Object> get props => [message];
+}
+
+@immutable
+class HomeSelectedFilterState extends HomeFilterState {
+  final BrandDTO brand;
+  final bool isSelected;
+  HomeSelectedFilterState(this.brand, this.isSelected);
+
+  @override
+  List<Object> get props => [brand, isSelected];
 }

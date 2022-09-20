@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'brand_dto.g.dart';
 
 @JsonSerializable()
-class BrandDTO {
+class BrandDTO extends Equatable {
   final bool active;
   @JsonKey(name: "_id")
   final String uniqueId;
@@ -16,4 +17,7 @@ class BrandDTO {
   }
 
   Map<String, dynamic> toJson() => _$BrandDTOToJson(this);
+
+  @override
+  List<Object> get props => [uniqueId];
 }

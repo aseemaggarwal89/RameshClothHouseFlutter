@@ -28,13 +28,13 @@ class HomePageListingState {
   final int? nextPageKey;
 }
 
-// class HomeErrorState extends HomeState {
-//   final String message;
-//   HomeErrorState({required this.message});
+class HomeErrorState extends HomeState {
+  final String message;
+  HomeErrorState({required this.message});
 
-//   @override
-//   String toString() => 'HomeErrorState';
+  @override
+  String toString() => 'HomeErrorState';
 
-//   @override
-//   List<Object> get props => [message];
-// }
+  @override
+  List<Object> get props => [message];
+}

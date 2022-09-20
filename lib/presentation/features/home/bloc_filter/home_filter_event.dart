@@ -14,5 +14,16 @@ abstract class HomeFilterEvent extends Equatable {
 @immutable
 class GetFiltersEvent extends HomeFilterEvent {
   @override
-  String toString() => 'Filter is Loaded';
+  String toString() => 'GetFiltersEvent';
+}
+
+@immutable
+class BrandCheckboxTappedEvent extends HomeFilterEvent {
+  final BrandDTO brand;
+  bool selected;
+
+  BrandCheckboxTappedEvent(this.brand, this.selected);
+
+  @override
+  List<Object> get props => [brand, selected];
 }

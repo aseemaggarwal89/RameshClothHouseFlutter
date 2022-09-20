@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
 import 'package:rameshclothhouse/domain_layer/models/product_param_dto.dart';
+import 'package:rameshclothhouse/presentation/features/home/bloc/filter_view_model.dart';
 
 abstract class IProductUseCases {
   Future<List<ProductDTO>> fetchAllProductsData();
-  Future<List<ProductDTO>> fetchProductData(int page, int pageSize);
+  Future<List<ProductDTO>> fetchProductData(
+      int page, int pageSize, List<BrandDTO>? brands);
 }
 
 class ProductsUseCase implements IProductUseCases {
@@ -36,9 +38,22 @@ class ProductsUseCase implements IProductUseCases {
   }
 
   @override
-  Future<List<ProductDTO>> fetchProductData(int page, int pageSize) async {
-    ProductParamDTO param =
-        ProductParamDTO(page: page.toString(), pageSize: pageSize.toString());
+  Future<List<ProductDTO>> fetchProductData(
+    int page,
+    int pageSize,
+    List<BrandDTO>? brands,
+  ) async {
+    String? brandId;
+
+    if (brands != null && brands.isNotEmpty) {
+      brandId = brands.map((e) => e.uniqueId).join(',');
+    }
+    ProductParamDTO param = ProductParamDTO(
+      page: page.toString(),
+      pageSize: pageSize.toString(),
+      brandId: brandId,
+    );
+
     final result = await _productAPIDataRepository.getProducts(param);
 
     return result.when(

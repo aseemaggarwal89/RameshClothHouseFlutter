@@ -17,6 +17,7 @@ import 'package:rameshclothhouse/presentation/components/progress_indicator_widg
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
 import 'package:rameshclothhouse/presentation/components/top_nav_bar.dart';
 
+import '../bloc_filter/home_filter_bloc.dart';
 import '../home.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -26,6 +27,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // HomeBloc homeBloc = HomeBloc();
+
     return Controller(
         drawer: Responsive.isMobile(context)
             ? AppDrawer(menuItems: menuItems, selectedItem: 'Home')
@@ -34,10 +37,15 @@ class HomeScreen extends StatelessWidget {
             title: 'Home',
             child: TopNavBar(menuItems: menuItems, selectedItem: 'Home')),
         mobileNavBar: ControllerAppBar(title: 'Home'),
-        child: BlocProvider<HomeBloc>(
-          create: ((context) => HomeBloc()),
-          child: HomeScreenWrapper(),
-        ));
+        child: MultiBlocProvider(providers: [
+          BlocProvider<HomeBloc>(
+            create: ((context) => HomeBloc()),
+          ),
+          BlocProvider<HomeFilterBloc>(
+            create: ((context) => HomeFilterBloc(
+                BlocProvider.of<HomeBloc>(context).onFilterUpdatedSink)),
+          ),
+        ], child: HomeScreenWrapper()));
   }
 }
 
