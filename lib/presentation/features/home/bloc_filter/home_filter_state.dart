@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import '../../../../domain_layer/domain_layer.dart';
+import 'home_filter_bloc.dart';
 
 @immutable
 abstract class HomeFilterState extends Equatable {
@@ -22,15 +23,15 @@ class HomeFilterLoadingState extends HomeFilterState {
 
 @immutable
 class HomeFilterLoadedState extends HomeFilterState {
-  final List<BrandDTO> brands;
+  FilterViewModel filters;
 
-  HomeFilterLoadedState(this.brands);
+  HomeFilterLoadedState(this.filters);
 
   @override
   String toString() => 'HomeFilterLoadedState';
 
   @override
-  List<Object> get props => [brands.map((e) => e.uniqueId)];
+  List<Object> get props => [filters];
 }
 
 class HomeFilteErrorState extends HomeFilterState {
@@ -46,10 +47,10 @@ class HomeFilteErrorState extends HomeFilterState {
 
 @immutable
 class HomeSelectedFilterState extends HomeFilterState {
-  final BrandDTO brand;
+  final FilterDTO filter;
   final bool isSelected;
-  HomeSelectedFilterState(this.brand, this.isSelected);
+  HomeSelectedFilterState(this.filter, this.isSelected);
 
   @override
-  List<Object> get props => [brand, isSelected];
+  List<Object> get props => [filter, isSelected];
 }

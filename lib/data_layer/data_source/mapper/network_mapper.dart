@@ -10,7 +10,9 @@ class Generic {
         case GetBrandsResponse:
           final data = GetBrandsResponse.fromJson(json) as T;
           return data;
-
+        case GetCategoriesResponse:
+          final data = GetCategoriesResponse.fromJson(json) as T;
+          return data;
         default:
           if (json is List) {
             return _fromJsonList<T>(json) as T;

@@ -7,59 +7,101 @@ import 'package:rameshclothhouse/presentation/features/home/bloc_filter/home_fil
 import 'package:rxdart/rxdart.dart';
 
 import '../../../../domain_layer/domain_layer.dart';
-import '../bloc/filter_view_model.dart';
 import '../bloc/home_bloc.dart';
 
 part 'home_filter_event.dart';
 
-class HomeFilterBloc extends Bloc<HomeFilterEvent, HomeFilterState> {
-  final IBrandUseCases getBrandDataUseCase;
-  final _loadedBrands = BehaviorSubject<List<BrandDTO>>();
-  final _selectedBrands = BehaviorSubject<List<BrandDTO>>.seeded([]);
-  final HomeBloc homeBloc;
+@immutable
+class FilterViewModel extends Equatable {
+  final List<BrandDTO> brands;
+  final List<CategoriesDTO> categories;
+  final List<FilterDTO> _selectedFilters = [];
 
-  HomeFilterBloc(this.homeBloc)
-      : getBrandDataUseCase = injector(),
-        super(HomeFilterInitialState()) {
-    on<GetFiltersEvent>(_onGetBrandsEvent);
-    on<BrandCheckboxTappedEvent>(_brandCheckBoxTapped);
+  FilterViewModel(
+    this.brands,
+    this.categories,
+  );
+
+  List<FilterDTO> activeFilters(FilterType type) {
+    switch (type) {
+      case FilterType.brand:
+        return _activeBrands;
+      case FilterType.category:
+        return _activeCategories;
+    }
   }
 
-  void _onGetBrandsEvent(
+  bool isSelected(FilterDTO filter) {
+    return _selectedFilters.contains(filter);
+  }
+
+  List<BrandDTO> get _activeBrands {
+    return brands.where((element) => element.active).toList();
+  }
+
+  List<CategoriesDTO> get _activeCategories {
+    return categories.where((element) => element.active).toList();
+  }
+
+  void updateFilter(bool isSelected, FilterDTO filter) {
+    if (isSelected) {
+      if (!_selectedFilters.contains(filter)) {
+        _selectedFilters.add(filter);
+      }
+    } else {
+      _selectedFilters.removeWhere((element) => element == filter);
+    }
+  }
+
+  List<FilterDTO> get selectedFilters {
+    return _selectedFilters;
+  }
+
+  @override
+  List<Object?> get props => [
+        brands.map((e) => e.uniqueId),
+        categories.map((e) => e.uniqueId),
+      ];
+}
+
+class HomeFilterBloc extends Bloc<HomeFilterEvent, HomeFilterState>
+    implements BrandUseCaseInjection, CategoryUseCaseInjection {
+  final _loadedFilters = BehaviorSubject<FilterViewModel>();
+  final HomeBloc homeBloc;
+
+  HomeFilterBloc(this.homeBloc) : super(HomeFilterInitialState()) {
+    on<GetFiltersEvent>(_onGetFiltersEvent);
+    on<FilterCheckboxTappedEvent>(_brandCheckBoxTapped);
+  }
+
+  void _onGetFiltersEvent(
       GetFiltersEvent event, Emitter<HomeFilterState> emit) async {
     emit(HomeFilterLoadingState());
+
     try {
+      final categories = await getCategoryDataUseCase.fetchAllCategories();
       final brands = await getBrandDataUseCase.fetchAllBrandData();
-      _loadedBrands.value = brands;
-      emit(HomeFilterLoadedState(brands));
+      _loadedFilters.value = FilterViewModel(brands, categories);
+      emit(HomeFilterLoadedState(_loadedFilters.value));
     } on NetworkExceptions catch (failure) {
       emit(HomeFilteErrorState(
           message: NetworkExceptions.getErrorMessage(failure)));
     }
   }
 
-  List<BrandDTO> get activeBrands {
-    return _loadedBrands.value.where((element) => element.active).toList();
+  List<FilterDTO> activeFilters(FilterType type) {
+    return _loadedFilters.value.activeFilters(type);
   }
 
-  bool isSelected(BrandDTO brand) {
-    List<BrandDTO> brands = _selectedBrands.value;
-    return brands.contains(brand);
+  bool isSelected(FilterDTO filter) {
+    return _loadedFilters.value.isSelected(filter);
   }
 
   void _brandCheckBoxTapped(
-      BrandCheckboxTappedEvent event, Emitter<HomeFilterState> emit) {
-    if (event.selected) {
-      List<BrandDTO> brands = _selectedBrands.value;
-      if (!brands.contains(event.brand)) {
-        brands.add(event.brand);
-      }
-      _selectedBrands.value = brands;
-    } else {
-      _selectedBrands.value.removeWhere((element) => element == event.brand);
-    }
-    homeBloc.onFilterUpdatedSink.add(SelectedFilters(_selectedBrands.value));
-    emit(HomeSelectedFilterState(event.brand, event.selected));
+      FilterCheckboxTappedEvent event, Emitter<HomeFilterState> emit) {
+    _loadedFilters.value.updateFilter(event.selected, event.filter);
+    homeBloc.onFilterUpdatedSink.add(_loadedFilters.value.selectedFilters);
+    emit(HomeSelectedFilterState(event.filter, event.selected));
   }
 
   void dispose() {}

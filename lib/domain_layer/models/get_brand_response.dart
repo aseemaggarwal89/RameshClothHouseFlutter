@@ -9,9 +9,9 @@ class GetBrandsResponse {
   String status;
   int results;
   @JsonKey(name: 'data')
-  List<BrandDTO> brands;
+  List<BrandDTO> data;
 
-  GetBrandsResponse(this.results, this.brands, this.status);
+  GetBrandsResponse(this.results, this.data, this.status);
 
   factory GetBrandsResponse.fromJson(Map<String, dynamic> json) {
     return _$GetBrandsResponseFromJson(json);

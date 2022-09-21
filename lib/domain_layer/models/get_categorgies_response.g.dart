@@ -1,21 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_brand_response.dart';
+part of 'get_categorgies_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetBrandsResponse _$GetBrandsResponseFromJson(Map<String, dynamic> json) =>
-    GetBrandsResponse(
+GetCategoriesResponse _$GetCategoriesResponseFromJson(
+        Map<String, dynamic> json) =>
+    GetCategoriesResponse(
       json['results'] as int,
       (json['data'] as List<dynamic>)
-          .map((e) => BrandDTO.fromJson(e as Map<String, dynamic>))
+          .map((e) => CategoriesDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['status'] as String,
     );
 
-Map<String, dynamic> _$GetBrandsResponseToJson(GetBrandsResponse instance) =>
+Map<String, dynamic> _$GetCategoriesResponseToJson(
+        GetCategoriesResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'results': instance.results,

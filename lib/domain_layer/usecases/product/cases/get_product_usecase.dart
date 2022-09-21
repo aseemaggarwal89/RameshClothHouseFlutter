@@ -2,12 +2,11 @@ import 'dart:async';
 
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
 import 'package:rameshclothhouse/domain_layer/models/product_param_dto.dart';
-import 'package:rameshclothhouse/presentation/features/home/bloc/filter_view_model.dart';
 
 abstract class IProductUseCases {
   Future<List<ProductDTO>> fetchAllProductsData();
   Future<List<ProductDTO>> fetchProductData(
-      int page, int pageSize, List<BrandDTO>? brands);
+      int page, int pageSize, List<FilterDTO>? filters);
 }
 
 class ProductsUseCase implements IProductUseCases {
@@ -41,17 +40,33 @@ class ProductsUseCase implements IProductUseCases {
   Future<List<ProductDTO>> fetchProductData(
     int page,
     int pageSize,
-    List<BrandDTO>? brands,
+    List<FilterDTO>? filters,
   ) async {
     String? brandId;
+    String? categoryId;
 
-    if (brands != null && brands.isNotEmpty) {
-      brandId = brands.map((e) => e.uniqueId).join(',');
+    if (filters != null && filters.isNotEmpty) {
+      List<BrandDTO> brands = filters
+          .where((element) => element.type == FilterType.brand)
+          .map((e) => e as BrandDTO)
+          .toList();
+      if (brands.isNotEmpty) {
+        brandId = brands.map((e) => e.uniqueId).join(',');
+      }
+
+      List<CategoriesDTO> categories = filters
+          .where((element) => element.type == FilterType.category)
+          .map((e) => e as CategoriesDTO)
+          .toList();
+      if (categories.isNotEmpty) {
+        categoryId = categories.map((e) => e.uniqueId).join(',');
+      }
     }
     ProductParamDTO param = ProductParamDTO(
       page: page.toString(),
       pageSize: pageSize.toString(),
       brandId: brandId,
+      subCategoryId: categoryId,
     );
 
     final result = await _productAPIDataRepository.getProducts(param);

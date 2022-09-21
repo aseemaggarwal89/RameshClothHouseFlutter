@@ -99,7 +99,13 @@ class HomeDesktopView extends StatelessWidget {
       children: [
         Expanded(
           flex: 3,
-          child: buildFilters(context),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Expanded(child: HomeFilterView()),
+            ],
+          ),
         ),
         Expanded(
           flex: 7,
@@ -121,10 +127,6 @@ class HomeDesktopView extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  Widget buildFilters(BuildContext context) {
-    return const HomeFilterView();
   }
 }
 

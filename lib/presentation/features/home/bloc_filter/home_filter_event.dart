@@ -18,12 +18,12 @@ class GetFiltersEvent extends HomeFilterEvent {
 }
 
 @immutable
-class BrandCheckboxTappedEvent extends HomeFilterEvent {
-  final BrandDTO brand;
-  bool selected;
+class FilterCheckboxTappedEvent extends HomeFilterEvent {
+  final FilterDTO filter;
+  final bool selected;
 
-  BrandCheckboxTappedEvent(this.brand, this.selected);
+  FilterCheckboxTappedEvent(this.filter, this.selected);
 
   @override
-  List<Object> get props => [brand, selected];
+  List<Object> get props => [filter, selected];
 }

@@ -5,20 +5,17 @@ import 'dart:async';
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:rameshclothhouse/presentation/features/home/bloc/filter_view_model.dart';
 import 'package:rameshclothhouse/presentation/features/home/bloc/home_event.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../../../domain_layer/domain_layer.dart';
 import 'home_state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final IProductUseCases getHomePageProductsUseCase;
+class HomeBloc extends Bloc<HomeEvent, HomeState>
+    implements ProductUseCaseInjection {
   final PagingController<int, ProductDTO> pagingController =
       PagingController(firstPageKey: 1);
 
-  HomeBloc()
-      : getHomePageProductsUseCase = injector(),
-        super(HomeInitialState()) {
+  HomeBloc() : super(HomeInitialState()) {
     _onPageRequest.stream
         .flatMap(_fetchProductList)
         .listen(_onNewListingStateController.add)
@@ -47,9 +44,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   final _onPageRequest = StreamController<int>();
 
-  final _onFilterUpdated = BehaviorSubject<SelectedFilters>();
+  final _onFilterUpdated = BehaviorSubject<List<FilterDTO>>();
 
-  Sink<SelectedFilters> get onFilterUpdatedSink => _onFilterUpdated.sink;
+  Sink<List<FilterDTO>> get onFilterUpdatedSink => _onFilterUpdated.sink;
 
   final _subscriptions = CompositeSubscription();
 
@@ -59,10 +56,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Stream<HomePageListingState> _fetchProductList(int pageKey) async* {
     final lastListingState = _onNewListingStateController.value;
     try {
-      final newItems = await getHomePageProductsUseCase.fetchProductData(
+      final newItems = await getProductDataUseCase.fetchProductData(
         pageKey,
         _pageSize,
-        _onFilterUpdated.hasValue ? _onFilterUpdated.value.brands : null,
+        _onFilterUpdated.hasValue ? _onFilterUpdated.value : null,
       );
       final isLastPage = newItems.length < _pageSize;
       final nextPageKey = isLastPage ? null : pageKey + 1;
@@ -82,14 +79,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Stream<HomePageListingState> _filterUpdateFetchProductList(
     int pageKey,
-    SelectedFilters filter,
+    List<FilterDTO> filter,
   ) async* {
     final lastListingState = _onNewListingStateController.value;
     try {
-      final newItems = await getHomePageProductsUseCase.fetchProductData(
+      final newItems = await getProductDataUseCase.fetchProductData(
         pageKey,
         _pageSize,
-        filter.brands,
+        filter,
       );
       final isLastPage = newItems.length < _pageSize;
       final nextPageKey = isLastPage ? null : pageKey + 1;

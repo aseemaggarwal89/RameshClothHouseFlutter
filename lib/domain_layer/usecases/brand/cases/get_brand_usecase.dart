@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
-import 'package:rameshclothhouse/domain_layer/repositories/brand_repository.dart';
 
 abstract class IBrandUseCases {
   Future<List<BrandDTO>> fetchAllBrandData();
@@ -22,7 +21,7 @@ class BrandsUseCase implements IBrandUseCases {
           if (success != null && success.status == "success") {
             if (success.results > 0) {}
 
-            return success.brands;
+            return success.data;
           } else {
             return throw const NetworkExceptions.notFound("Data not available");
           }

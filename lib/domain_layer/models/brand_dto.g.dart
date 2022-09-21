@@ -8,12 +8,12 @@ part of 'brand_dto.dart';
 
 BrandDTO _$BrandDTOFromJson(Map<String, dynamic> json) => BrandDTO(
       json['active'] as bool,
-      json['name'] as String,
-      json['_id'] as String,
+      uniqueId: json['_id'] as String,
+      name: json['name'] as String,
     );
 
 Map<String, dynamic> _$BrandDTOToJson(BrandDTO instance) => <String, dynamic>{
-      'active': instance.active,
-      '_id': instance.uniqueId,
       'name': instance.name,
+      '_id': instance.uniqueId,
+      'active': instance.active,
     };

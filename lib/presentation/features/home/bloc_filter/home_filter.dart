@@ -42,46 +42,38 @@ class _HomeFilterViewState extends State<HomeFilterView> {
           return _buildLoading();
         case HomeFilterLoadedState:
         case HomeSelectedFilterState:
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              verticalSpaceRegular,
-              Container(
-                color: HomeFilterViewColor.backgroundColor,
-                width: double.infinity,
-                child: const Padding(
-                  padding: EdgeInsets.all(defaultPadding),
-                  child: LatoTextView(
-                    isTranslatable: false,
-                    label: "FILTERS",
-                    fontSize: 18,
-                    fontType: FontType.BOLD,
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  color: HomeFilterViewColor.backgroundColor,
+                  width: double.infinity,
+                  child: const Padding(
+                    padding: EdgeInsets.all(8),
+                    child: LatoTextView(
+                      isTranslatable: false,
+                      label: "FILTERS",
+                      fontSize: 18,
+                      fontType: FontType.BOLD,
+                      textAlignment: TextAlign.center,
+                    ),
                   ),
                 ),
-              ),
-              divider(
-                width: double.infinity,
-              ),
-              if (bloc.activeBrands.isNotEmpty)
-                const Padding(
-                  padding: EdgeInsets.all(defaultPadding),
-                  child: LatoTextView(
-                    isTranslatable: false,
-                    label: "Brands",
-                    fontSize: 14,
-                    fontType: FontType.BOLD,
-                  ),
+                divider(
+                  width: double.infinity,
                 ),
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: bloc.activeBrands.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final brand = bloc.activeBrands[index];
-                    return FilterCheckBox(
-                      brand: brand,
-                    );
-                  })
-            ],
+                FilterSectionView(
+                    title: FilterType.brand.filterName,
+                    filters: bloc.activeFilters(FilterType.brand)),
+                verticalSpaceRegular,
+                divider(
+                  width: double.infinity,
+                ),
+                FilterSectionView(
+                    title: FilterType.category.filterName,
+                    filters: bloc.activeFilters(FilterType.category)),
+              ],
+            ),
           );
         case HomeFilteErrorState:
           return LatoTextView(label: (state as HomeFilteErrorState).message);
@@ -94,12 +86,50 @@ class _HomeFilterViewState extends State<HomeFilterView> {
   Widget _buildLoading() => const Center(child: CircularProgressIndicator());
 }
 
-class FilterCheckBox extends StatelessWidget {
-  BrandDTO brand;
+class FilterSectionView extends StatelessWidget {
+  final String title;
+  final List<FilterDTO> filters;
+  const FilterSectionView({
+    super.key,
+    required this.title,
+    this.filters = const [],
+  });
 
-  FilterCheckBox({
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        if (filters.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.all(defaultPadding),
+            child: LatoTextView(
+              isTranslatable: false,
+              label: title,
+              fontSize: 14,
+              fontType: FontType.BOLD,
+            ),
+          ),
+        ListView.builder(
+            shrinkWrap: true,
+            itemCount: filters.length,
+            itemBuilder: (BuildContext context, int index) {
+              final filter = filters[index];
+              return FilterCheckBox(
+                filter: filter,
+              );
+            })
+      ],
+    );
+  }
+}
+
+@immutable
+class FilterCheckBox extends StatelessWidget {
+  final FilterDTO filter;
+
+  const FilterCheckBox({
     Key? key,
-    required this.brand,
+    required this.filter,
   }) : super(key: key);
 
   @override
@@ -109,15 +139,16 @@ class FilterCheckBox extends StatelessWidget {
         child: Row(
           children: [
             Checkbox(
-              value: BlocProvider.of<HomeFilterBloc>(context).isSelected(brand),
+              value:
+                  BlocProvider.of<HomeFilterBloc>(context).isSelected(filter),
               onChanged: (bool? selected) {
                 BlocProvider.of<HomeFilterBloc>(context)
-                    .add(BrandCheckboxTappedEvent(brand, selected!));
+                    .add(FilterCheckboxTappedEvent(filter, selected!));
               },
             ),
             horizontalSpaceSmall,
             LatoTextView(
-              label: brand.name,
+              label: filter.name,
               fontSize: 14.0,
               color: HomeFilterViewColor.filterTextColor,
               fontType: FontType.BOLD,

@@ -6,3 +6,6 @@ export 'get_product_response.dart';
 export 'authentication_status.dart';
 export 'response_data.dart';
 export 'get_brand_response.dart';
+export 'get_categorgies_response.dart';
+export './categories_dto.dart';
+export './brand_dto.dart';

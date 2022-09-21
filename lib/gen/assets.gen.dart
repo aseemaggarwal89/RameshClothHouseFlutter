@@ -192,6 +192,9 @@ class $AssetsImagesGen {
   AssetGenImage get calendar =>
       const AssetGenImage('assets/images/calendar.png');
 
+  /// File path: assets/images/check.png
+  AssetGenImage get check => const AssetGenImage('assets/images/check.png');
+
   /// File path: assets/images/def_user.png
   AssetGenImage get defUser =>
       const AssetGenImage('assets/images/def_user.png');
@@ -280,6 +283,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/ramesh_cloth_house.png
   AssetGenImage get rameshClothHouse =>
       const AssetGenImage('assets/images/ramesh_cloth_house.png');
+
+  /// File path: assets/images/unchecked.png
+  AssetGenImage get unchecked =>
+      const AssetGenImage('assets/images/unchecked.png');
 
   /// File path: assets/images/zero_follower_placeholder.png
   AssetGenImage get zeroFollowerPlaceholder =>

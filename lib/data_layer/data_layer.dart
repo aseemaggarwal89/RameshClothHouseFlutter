@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:rameshclothhouse/data_layer/api_repository/authentication_api_respository.dart';
 import 'package:rameshclothhouse/data_layer/api_repository/brand_api_respository.dart';
+import 'package:rameshclothhouse/data_layer/api_repository/categories_api_respository.dart';
 import 'package:rameshclothhouse/data_layer/api_repository/product_api_respository.dart';
 import 'package:rameshclothhouse/data_layer/data_repository/product_db_repository.dart';
 import 'package:rameshclothhouse/data_layer/data_source/remote/app_base_api_client.dart';
@@ -33,6 +34,9 @@ class DataLayer {
 
     injector.registerFactory<IBrandAPIRepository>(
         () => BrandAPIRepository(injector()));
+
+    injector.registerFactory<ICategoriesAPIRepository>(
+        () => CategorgiesAPIRepository(injector()));
 
     // Local Storage
     // injector.registerSingleton<UserDatabaseRoom>(UserDatabaseRoom());
