@@ -44,27 +44,27 @@ class HomeFilterBloc extends Bloc<HomeFilterEvent, HomeFilterState>
   }
 
   List<FilterDTO> activeFilters(FilterType type) {
-    return loadedFilters?.activeFilters(type) ?? [];
+    return loadedFilters.activeFilters(type);
   }
 
   bool isSelected(FilterDTO filter) {
-    return loadedFilters?.isSelected(filter) ?? false;
+    return loadedFilters.isSelected(filter);
   }
 
   void _filterCheckBoxTapped(
       FilterCheckboxTappedEvent event, Emitter<HomeFilterState> emit) {
-    loadedFilters?.updateFilter(event.selected, event.filter);
+    loadedFilters.updateFilter(event.selected, event.filter);
 
-    emit(HomeSelectedFiltersState([..._loadedFilters.value.selectedFilters]));
-    homeBloc.add(ApplyFiltersEvent(_loadedFilters.value.selectedFilters));
+    emit(HomeSelectedFiltersState([...loadedFilters.selectedFilters]));
+    homeBloc.add(ApplyFiltersEvent(loadedFilters.selectedFilters));
   }
 
-  FilterViewModel? get loadedFilters {
-    return _loadedFilters.hasValue ? _loadedFilters.value : null;
+  FilterViewModel get loadedFilters {
+    return _loadedFilters.hasValue ? _loadedFilters.value : FilterViewModel.empty();
   }
 
   FilterDTO? filter(String uniqueId, FilterType type) {
-    return loadedFilters?.filter(uniqueId, type);
+    return loadedFilters.filter(uniqueId, type);
   }
 
   void dispose() {}

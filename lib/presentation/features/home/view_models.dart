@@ -3,33 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../../../domain_layer/domain_layer.dart';
 
-enum SortBy {
-  Newest,
-  PriceAsce,
-  PriceDecen,
-  Ratings,
-}
-
-extension SortByExtension on SortBy {
-  String get title {
-    switch (this) {
-      case SortBy.Newest:
-        return "Newest";
-      case SortBy.PriceAsce:
-        return "Price: Low to High";
-      case SortBy.PriceDecen:
-        return "Price: High to Low";
-      case SortBy.Ratings:
-        return "Ratings";
-    }
-  }
-}
-
 @immutable
 class FilterViewModel extends Equatable {
   final Set<BrandDTO> _brands = {};
   final Set<CategoriesDTO> _categories = {};
   final Set<FilterDTO> _selectedFilters = {};
+
+  FilterViewModel.empty();
 
   FilterViewModel(List<BrandDTO> brands, List<CategoriesDTO> categories,
       {List<FilterDTO>? selectedFilters}) {

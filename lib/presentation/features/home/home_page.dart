@@ -1,6 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -241,8 +240,10 @@ class _SortByDropDownViewState extends State<SortByDropDownView> {
               // After selecting the desired option,it will
               // change button value to selected value
               onChanged: (SortBy? newValue) {
+                BlocProvider.of<HomeBloc>(context)
+                    .add(ApplySortByEvent(newValue!));
                 setState(() {
-                  dropdownvalue = newValue!;
+                  dropdownvalue = newValue;
                 });
               },
             ),

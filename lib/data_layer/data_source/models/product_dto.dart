@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 // import 'package:objectbox/objectbox.dart';
 
@@ -5,7 +6,7 @@ part 'product_dto.g.dart';
 
 @JsonSerializable()
 // @Entity()
-class ProductDTO {
+class ProductDTO extends Equatable {
 
   @JsonKey(name: "_id")
   // @Unique(onConflict: ConflictStrategy.replace)
@@ -57,4 +58,7 @@ class ProductDTO {
   }
 
   Map<String, dynamic> toJson() => _$ProductDTOToJson(this);
+  
+  @override
+  List<Object?> get props => [uniqueId];
 }

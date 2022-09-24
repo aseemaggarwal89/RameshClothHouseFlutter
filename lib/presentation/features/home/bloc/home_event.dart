@@ -2,6 +2,7 @@
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:rameshclothhouse/presentation/features/home/view_models.dart';
 
 import '../../../../domain_layer/domain_layer.dart';
 
@@ -19,12 +20,18 @@ class GetProductsEvent extends HomeEvent {
 
 @immutable
 class ApplyFiltersEvent extends HomeEvent {
-  List<FilterDTO> filters;
+  final List<FilterDTO> filters;
   ApplyFiltersEvent(this.filters);
   
   @override
-  String toString() => 'ApplyFiltersEvent';
-
-  @override
   List<Object> get props => [filters];
+}
+
+@immutable
+class ApplySortByEvent extends HomeEvent {
+  final SortBy sortBy;
+  ApplySortByEvent(this.sortBy);
+  
+  @override
+  List<Object> get props => [sortBy];
 }

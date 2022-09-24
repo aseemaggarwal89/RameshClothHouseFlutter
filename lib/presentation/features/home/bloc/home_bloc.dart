@@ -25,7 +25,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
       pagingController.value = PagingState(
         nextPageKey: listingState.nextPageKey,
         error: listingState.error,
-        itemList: listingState.itemList,
+        itemList: listingState.itemList?.toList(),
       );
     }).addTo(_subscriptions);
 
@@ -34,9 +34,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
     });
 
     on<ApplyFiltersEvent>(_applyFilterAndUpdateProductList);
+    on<ApplySortByEvent>(_applySortByAndUpdateProductList);
 
-    _onFilterUpdated.stream
-        .flatMap((value) => _filterUpdateFetchProductList(0, value))
+    _onSelectedFilters.stream
+        .flatMap((value) => _fetchProductList(0))
+        .listen(_onNewListingStateController.add)
+        .addTo(_subscriptions);
+
+    _onSelectedSortBy.stream
+        .flatMap((value) => _fetchProductList(0))
         .listen(_onNewListingStateController.add)
         .addTo(_subscriptions);
   }
@@ -45,27 +51,36 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
 
   final _onPageRequest = StreamController<int>();
 
-  final _onFilterUpdated = BehaviorSubject<List<FilterDTO>>();
+  final _onSelectedFilters = BehaviorSubject<List<FilterDTO>>();
+
+  final _onSelectedSortBy = BehaviorSubject<SortBy>.seeded(SortBy.Newest);
 
   final _subscriptions = CompositeSubscription();
 
   final _onNewListingStateController =
       BehaviorSubject<HomePageListingState>.seeded(HomePageListingState());
 
-  Stream<HomePageListingState> _fetchProductList(int pageKey) async* {
+  Stream<HomePageListingState> _fetchProductList(
+    int pageKey,
+  ) async* {
     final lastListingState = _onNewListingStateController.value;
     try {
       final newItems = await getProductDataUseCase.fetchProductData(
         pageKey,
         _pageSize,
-        _onFilterUpdated.hasValue ? _onFilterUpdated.value : null,
+        _onSelectedFilters.hasValue ? _onSelectedFilters.value : null,
+        _onSelectedSortBy.hasValue ? _onSelectedSortBy.value : null,
       );
       final isLastPage = newItems.length < _pageSize;
       final nextPageKey = isLastPage ? null : pageKey + 1;
+      Set<ProductDTO> products = pageKey == 0
+          ? <ProductDTO>{...newItems}
+          : <ProductDTO>{...lastListingState.itemList ?? [], ...newItems};
+
       yield HomePageListingState(
         error: null,
         nextPageKey: nextPageKey,
-        itemList: [...lastListingState.itemList ?? [], ...newItems],
+        itemList: products,
       );
     } catch (e) {
       yield HomePageListingState(
@@ -80,35 +95,43 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
     ApplyFiltersEvent event,
     Emitter<HomeState> emit,
   ) async {
-    _onFilterUpdated.add(event.filters);
+    _onSelectedFilters.add([...event.filters]);
   }
 
-  Stream<HomePageListingState> _filterUpdateFetchProductList(
-    int pageKey,
-    List<FilterDTO> filter,
-  ) async* {
-    final lastListingState = _onNewListingStateController.value;
-    try {
-      final newItems = await getProductDataUseCase.fetchProductData(
-        pageKey,
-        _pageSize,
-        filter,
-      );
-      final isLastPage = newItems.length < _pageSize;
-      final nextPageKey = isLastPage ? null : pageKey + 1;
-      yield HomePageListingState(
-        error: null,
-        nextPageKey: nextPageKey,
-        itemList: newItems,
-      );
-    } catch (e) {
-      yield HomePageListingState(
-        error: e,
-        nextPageKey: lastListingState.nextPageKey,
-        itemList: lastListingState.itemList,
-      );
-    }
+  void _applySortByAndUpdateProductList(
+    ApplySortByEvent event,
+    Emitter<HomeState> emit,
+  ) async {
+    _onSelectedSortBy.add(event.sortBy);
+    emit(HomeSortByResult(event.sortBy));
   }
+
+  // Stream<HomePageListingState> _filterUpdateFetchProductList(
+  //   List<FilterDTO> filter,
+  // ) async* {
+  //   final lastListingState = _onNewListingStateController.value;
+  //   int pageKey = 0;
+  //   try {
+  //     final newItems = await getProductDataUseCase.fetchProductData(
+  //       pageKey,
+  //       _pageSize,
+  //       filter,
+  //     );
+  //     final isLastPage = newItems.length < _pageSize;
+  //     final nextPageKey = isLastPage ? null : pageKey + 1;
+  //     yield HomePageListingState(
+  //       error: null,
+  //       nextPageKey: nextPageKey,
+  //       itemList: {...newItems},
+  //     );
+  //   } catch (e) {
+  //     yield HomePageListingState(
+  //       error: e,
+  //       nextPageKey: lastListingState.nextPageKey,
+  //       itemList: lastListingState.itemList,
+  //     );
+  //   }
+  // }
 
   void dispose() {
     _onNewListingStateController.close();

@@ -14,6 +14,8 @@ class ProductParamDTO {
   final String? pageSize;
   @JsonKey(includeIfNull: false)
   final String? page;
+  @JsonKey(includeIfNull: false)
+  final String? sort;
 
   ProductParamDTO({
     this.subCategoryId,
@@ -21,6 +23,7 @@ class ProductParamDTO {
     this.fields,
     this.pageSize,
     this.page,
+    this.sort,
   });
 
   factory ProductParamDTO.fromJson(Map<String, dynamic> json) {

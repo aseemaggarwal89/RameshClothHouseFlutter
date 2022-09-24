@@ -6,7 +6,7 @@ import 'package:rameshclothhouse/domain_layer/models/product_param_dto.dart';
 abstract class IProductUseCases {
   Future<List<ProductDTO>> fetchAllProductsData();
   Future<List<ProductDTO>> fetchProductData(
-      int page, int pageSize, List<FilterDTO>? filters);
+      int page, int pageSize, List<FilterDTO>? filters, SortBy? sortBy);
 }
 
 class ProductsUseCase implements IProductUseCases, CacheInjection {
@@ -41,9 +41,11 @@ class ProductsUseCase implements IProductUseCases, CacheInjection {
     int page,
     int pageSize,
     List<FilterDTO>? filters,
+    SortBy? sortBy,
   ) async {
     String? brandId;
     String? categoryId;
+    String? sortById;
 
     if (filters != null && filters.isNotEmpty) {
       List<BrandDTO> brands = filters
@@ -62,11 +64,16 @@ class ProductsUseCase implements IProductUseCases, CacheInjection {
         categoryId = categories.map((e) => e.uniqueId).join(',');
       }
     }
+    if (sortBy != null) {
+      sortById = sortBy.sortByUrlKey;
+    }
+
     ProductParamDTO param = ProductParamDTO(
       page: page.toString(),
       pageSize: pageSize.toString(),
       brandId: brandId,
       subCategoryId: categoryId,
+      sort: sortById,
     );
 
     final result = await _productAPIDataRepository.getProducts(param);

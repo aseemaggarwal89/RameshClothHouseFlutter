@@ -157,9 +157,6 @@ class FilterCheckBox extends StatelessWidget {
                 onChanged: (bool? selected) {
                   BlocProvider.of<HomeFilterBloc>(context)
                       .add(FilterCheckboxTappedEvent(filter, selected!));
-                  // setState(() {
-                  //   isSelected = selected;
-                  // });
                 },
               ),
               horizontalSpaceSmall,
@@ -173,81 +170,3 @@ class FilterCheckBox extends StatelessWidget {
     });
   }
 }
-
-// class _FilterCheckBoxState extends State<FilterCheckBox> {
-//   bool isSelected = false;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         padding: const EdgeInsets.symmetric(horizontal: 10),
-//         child: Row(
-//           children: [
-//             horizontalSpaceRegular,
-//             Checkbox(
-//               value: BlocProvider.of<HomeFilterBloc>(context)
-//                   .isSelected(widget.filter),
-//               onChanged: (bool? selected) {
-//                 BlocProvider.of<HomeFilterBloc>(context)
-//                     .add(FilterCheckboxTappedEvent(widget.filter, selected!));
-//                 setState(() {
-//                   isSelected = selected;
-//                 });
-//               },
-//             ),
-//             horizontalSpaceSmall,
-//             LatoTextView(
-//               label: widget.filter.name,
-//               color: HomeFilterViewColor.filterTextColor,
-//               fontType: AppTextType.TitleMedium,
-//             ),
-//           ],
-//         ));
-//   }
-// }
-
-
-// @immutable
-// class FilterCheckBox extends StatefulWidget {
-//   final FilterDTO filter;
-
-//   const FilterCheckBox({
-//     Key? key,
-//     required this.filter,
-//   }) : super(key: key);
-
-//   @override
-//   State<FilterCheckBox> createState() => _FilterCheckBoxState();
-// }
-
-// class _FilterCheckBoxState extends State<FilterCheckBox> {
-//   bool isSelected = false;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         padding: const EdgeInsets.symmetric(horizontal: 10),
-//         child: Row(
-//           children: [
-//             horizontalSpaceRegular,
-//             Checkbox(
-//               value: BlocProvider.of<HomeFilterBloc>(context)
-//                   .isSelected(widget.filter),
-//               onChanged: (bool? selected) {
-//                 BlocProvider.of<HomeFilterBloc>(context)
-//                     .add(FilterCheckboxTappedEvent(widget.filter, selected!));
-//                 setState(() {
-//                   isSelected = selected;
-//                 });
-//               },
-//             ),
-//             horizontalSpaceSmall,
-//             LatoTextView(
-//               label: widget.filter.name,
-//               color: HomeFilterViewColor.filterTextColor,
-//               fontType: AppTextType.TitleMedium,
-//             ),
-//           ],
-//         ));
-//   }
-// }

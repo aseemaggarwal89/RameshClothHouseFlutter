@@ -13,6 +13,7 @@ ProductParamDTO _$ProductParamDTOFromJson(Map<String, dynamic> json) =>
       fields: json['fields'] as String?,
       pageSize: json['limit'] as String?,
       page: json['page'] as String?,
+      sort: json['sort'] as String?,
     );
 
 Map<String, dynamic> _$ProductParamDTOToJson(ProductParamDTO instance) {
@@ -29,5 +30,6 @@ Map<String, dynamic> _$ProductParamDTOToJson(ProductParamDTO instance) {
   writeNotNull('fields', instance.fields);
   writeNotNull('limit', instance.pageSize);
   writeNotNull('page', instance.page);
+  writeNotNull('sort', instance.sort);
   return val;
 }
