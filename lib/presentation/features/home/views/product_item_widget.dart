@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rameshclothhouse/presentation/components/image_view.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
-import 'package:rameshclothhouse/presentation/components/text_button_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 
@@ -14,10 +13,11 @@ class ProductItemView extends StatelessWidget {
   final ProductViewType viewType;
   final bool showViewButton;
   final double elevation;
-
+  final FilterDTO? brand;
   const ProductItemView(
       {Key? key,
       required this.product,
+      this.brand,
       required this.onItemClicked,
       this.viewType = ProductViewType.GRID,
       this.showViewButton = false,
@@ -79,9 +79,9 @@ class ProductItemView extends StatelessWidget {
               Expanded(
                 child: LatoTextView(
                   label: '${productDto.name}\n',
-                  fontSize: 14.0,
                   color: ProductItemWidgetColor.kcBlack74,
                   maxLine: 2,
+                  fontType: AppTextType.Medium,
                   textOverflow: TextOverflow.ellipsis,
                   textAlignment: TextAlign.center,
                 ),
@@ -89,28 +89,42 @@ class ProductItemView extends StatelessWidget {
               horizontalSpaceSmall,
             ],
           ),
+          if (brand != null)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: LatoTextView(
+                    label: '${brand!.name}\n',
+                    color: ProductItemWidgetColor.kcBlack74,
+                    maxLine: 2,
+                    textOverflow: TextOverflow.ellipsis,
+                    textAlignment: TextAlign.center,
+                  ),
+                ),
+                horizontalSpaceSmall,
+              ],
+            ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               LatoTextView(
                 label: formatAmountWithSymbol(productDto.price),
-                fontSize: 14.0,
-                fontType: FontType.BOLD,
+                fontType: AppTextType.Medium,
                 color: ProductItemWidgetColor.kcBlack74,
               ),
               horizontalSpaceSmall,
               LatoTextView(
                 label: formatAmountWithSymbol(productDto.discountPrice),
-                fontSize: 10.0,
                 color: ProductItemWidgetColor.kcBlack34,
                 decoration: TextDecoration.lineThrough,
               ),
               horizontalSpaceSmall,
               LatoTextView(
                 label: '${productDto.discountPercent}% Off',
-                fontSize: 10.0,
-                fontType: FontType.BOLD,
+                fontType: AppTextType.Medium,
                 color: ProductItemWidgetColor.kcDarkishGreen,
               )
             ],

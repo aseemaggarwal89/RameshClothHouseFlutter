@@ -6,7 +6,7 @@ abstract class IBrandUseCases {
   Future<List<BrandDTO>> fetchAllBrandData();
 }
 
-class BrandsUseCase implements IBrandUseCases {
+class BrandsUseCase implements IBrandUseCases, CacheInjection {
   final IBrandAPIRepository _brandAPIDataRepository;
 
   BrandsUseCase(
@@ -19,7 +19,9 @@ class BrandsUseCase implements IBrandUseCases {
     return result.when(
         success: (success) {
           if (success != null && success.status == "success") {
-            if (success.results > 0) {}
+            if (success.results > 0) {
+              homeDataCache.savedBrandsData(success.data);
+            }
 
             return success.data;
           } else {

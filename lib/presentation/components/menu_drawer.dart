@@ -83,7 +83,7 @@ class SideDrawerMenuItem extends StatelessWidget {
               label: title,
               fontSize:
                   Theme.of(context).appBarTheme.toolbarTextStyle?.fontSize,
-              fontType: FontType.BOLD,
+              fontType: AppTextType.TitleMedium,
               color: menuItems.isSelectedItem(title)
                   ? CommonColors.navBarSelectedColor
                   : Theme.of(context).appBarTheme.toolbarTextStyle?.color,

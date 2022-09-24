@@ -29,6 +29,7 @@ ProductDTO _$ProductDTOFromJson(Map<String, dynamic> json) => ProductDTO(
       subCategoryId: json['subCategoryId'] as String?,
       slug: json['slug'] as String?,
       discountPercent: json['discountPercent'] as String?,
+      isStockAvailable: json['isStockAvailable'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$ProductDTOToJson(ProductDTO instance) =>
@@ -51,4 +52,5 @@ Map<String, dynamic> _$ProductDTOToJson(ProductDTO instance) =>
       'subCategoryId': instance.subCategoryId,
       'slug': instance.slug,
       'discountPercent': instance.discountPercent,
+      'isStockAvailable': instance.isStockAvailable,
     };

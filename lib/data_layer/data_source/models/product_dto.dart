@@ -6,9 +6,6 @@ part 'product_dto.g.dart';
 @JsonSerializable()
 // @Entity()
 class ProductDTO {
-  // @JsonKey(ignore: true)
-  // // @Id()
-  // int? id;
 
   @JsonKey(name: "_id")
   // @Unique(onConflict: ConflictStrategy.replace)
@@ -31,6 +28,7 @@ class ProductDTO {
   final String? subCategoryId;
   final String? slug;
   final String? discountPercent;
+  final bool isStockAvailable;
 
   ProductDTO({
     required this.name,
@@ -51,6 +49,7 @@ class ProductDTO {
     this.subCategoryId,
     this.slug,
     this.discountPercent,
+    this.isStockAvailable = false,
   });
 
   factory ProductDTO.fromJson(Map<String, dynamic> json) {

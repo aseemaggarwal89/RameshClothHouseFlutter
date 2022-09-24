@@ -6,7 +6,7 @@ abstract class ICategoryUseCases {
   Future<List<CategoriesDTO>> fetchAllCategories();
 }
 
-class CategoriesUseCase implements ICategoryUseCases {
+class CategoriesUseCase implements ICategoryUseCases, CacheInjection {
   final ICategoriesAPIRepository _categoriesAPIDataRepository;
 
   CategoriesUseCase(
@@ -19,6 +19,15 @@ class CategoriesUseCase implements ICategoryUseCases {
     return result.when(
         success: (success) {
           if (success != null && success.status == "success") {
+            List<CategoriesDTO> categories = success.data
+                .map((e) => e.subCategories ?? [])
+                .expand((i) => i)
+                .toList();
+
+            if (categories.isNotEmpty) {
+              homeDataCache.savedCategoriessData(categories);
+            }
+
             return success.data
                 .map((e) => e.subCategories ?? [])
                 .expand((i) => i)

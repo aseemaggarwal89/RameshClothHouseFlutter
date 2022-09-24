@@ -16,7 +16,7 @@ class HomeInitialState extends HomeState {
   String toString() => 'HomeInitialState';
 }
 
-class HomePageListingState {
+class HomePageListingState extends HomeState {
   HomePageListingState({
     this.itemList,
     this.error,

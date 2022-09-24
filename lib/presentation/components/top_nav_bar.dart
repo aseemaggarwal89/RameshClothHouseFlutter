@@ -91,7 +91,7 @@ class TopNavBarMenuItem extends StatelessWidget {
           LatoTextView(
             label: title,
             fontSize: Theme.of(context).appBarTheme.toolbarTextStyle?.fontSize,
-            fontType: FontType.BOLD,
+            fontType: AppTextType.Medium,
             color: menuItems.isSelectedItem(title)
                 ? CommonColors.navBarSelectedColor
                 : Theme.of(context).appBarTheme.toolbarTextStyle?.color,

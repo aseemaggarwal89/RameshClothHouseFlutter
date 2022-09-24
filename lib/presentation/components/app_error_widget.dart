@@ -32,20 +32,17 @@ class AppErrorWidget extends StatelessWidget {
           LatoTextView(
             label: title,
             color: CommonColors.errorTitleColor,
-            fontType: FontType.BOLD,
-            fontSize: 18.0,
+            fontType: AppTextType.DisplayMedium,
           ),
           verticalSpaceSmall,
           LatoTextView(
             label: subTitle ?? '',
             color: CommonColors.errorMessageColor,
-            fontSize: 14.0,
           ),
           verticalSpaceRegular,
           TextButtonView(
             label: 'View All Products',
             fontWeight: FontWeight.bold,
-            fontSize: 14.0,
             height: 30.0,
             radius: 4.0,
             color: TextButtonViewColor.kcReddishPink,

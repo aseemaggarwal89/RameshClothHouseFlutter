@@ -16,3 +16,15 @@ class GetProductsEvent extends HomeEvent {
   @override
   String toString() => 'Home is Loaded';
 }
+
+@immutable
+class ApplyFiltersEvent extends HomeEvent {
+  List<FilterDTO> filters;
+  ApplyFiltersEvent(this.filters);
+  
+  @override
+  String toString() => 'ApplyFiltersEvent';
+
+  @override
+  List<Object> get props => [filters];
+}

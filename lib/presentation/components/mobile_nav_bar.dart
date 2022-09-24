@@ -31,7 +31,7 @@ class ControllerAppBar extends StatelessWidget with PreferredSizeWidget {
               label: title,
               fontSize:
                   Theme.of(context).appBarTheme.toolbarTextStyle?.fontSize,
-              fontType: FontType.BOLD,
+              fontType: AppTextType.TitleMedium,
               color: Theme.of(context).appBarTheme.toolbarTextStyle?.color,
             ),
       actions: actions,

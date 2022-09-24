@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:rameshclothhouse/presentation/features/home/view_models.dart';
 import '../../../../domain_layer/domain_layer.dart';
 import 'home_filter_bloc.dart';
 
@@ -23,7 +24,7 @@ class HomeFilterLoadingState extends HomeFilterState {
 
 @immutable
 class HomeFilterLoadedState extends HomeFilterState {
-  FilterViewModel filters;
+  final FilterViewModel filters;
 
   HomeFilterLoadedState(this.filters);
 
@@ -46,11 +47,10 @@ class HomeFilteErrorState extends HomeFilterState {
 }
 
 @immutable
-class HomeSelectedFilterState extends HomeFilterState {
-  final FilterDTO filter;
-  final bool isSelected;
-  HomeSelectedFilterState(this.filter, this.isSelected);
+class HomeSelectedFiltersState extends HomeFilterState {
+  final List<FilterDTO> selectedFilters;
+  HomeSelectedFiltersState(this.selectedFilters);
 
   @override
-  List<Object> get props => [filter, isSelected];
+  List<Object> get props => [selectedFilters];
 }

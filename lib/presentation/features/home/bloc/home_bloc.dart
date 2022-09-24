@@ -11,7 +11,7 @@ import '../../../../domain_layer/domain_layer.dart';
 import 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState>
-    implements ProductUseCaseInjection {
+    implements ProductUseCaseInjection, CacheInjection {
   final PagingController<int, ProductDTO> pagingController =
       PagingController(firstPageKey: 1);
 
@@ -33,11 +33,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
       _onPageRequest.add(pageKey);
     });
 
+    on<ApplyFiltersEvent>(_applyFilterAndUpdateProductList);
+
     _onFilterUpdated.stream
         .flatMap((value) => _filterUpdateFetchProductList(0, value))
         .listen(_onNewListingStateController.add)
         .addTo(_subscriptions);
-    ;
   }
 
   static const int _pageSize = 5;
@@ -45,8 +46,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
   final _onPageRequest = StreamController<int>();
 
   final _onFilterUpdated = BehaviorSubject<List<FilterDTO>>();
-
-  Sink<List<FilterDTO>> get onFilterUpdatedSink => _onFilterUpdated.sink;
 
   final _subscriptions = CompositeSubscription();
 
@@ -75,6 +74,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
         itemList: lastListingState.itemList,
       );
     }
+  }
+
+  void _applyFilterAndUpdateProductList(
+    ApplyFiltersEvent event,
+    Emitter<HomeState> emit,
+  ) async {
+    _onFilterUpdated.add(event.filters);
   }
 
   Stream<HomePageListingState> _filterUpdateFetchProductList(

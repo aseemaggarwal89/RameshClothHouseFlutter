@@ -9,7 +9,7 @@ abstract class IProductUseCases {
       int page, int pageSize, List<FilterDTO>? filters);
 }
 
-class ProductsUseCase implements IProductUseCases {
+class ProductsUseCase implements IProductUseCases, CacheInjection {
   final IProductAPIRepository _productAPIDataRepository;
   // final IProductDataDBRepository _productDBRepository;
 
@@ -25,7 +25,7 @@ class ProductsUseCase implements IProductUseCases {
         success: (success) {
           if (success != null && success.status == "success") {
             if (success.results > 0) {
-              // _productDBRepository.saveProducts(success.data!.products);
+              homeDataCache.savedProductData(success.products);
             }
 
             return success.products;

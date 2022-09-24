@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 
 import 'app_colors.dart';
 
@@ -24,25 +26,6 @@ class AppConstants {
   static const tile_width = 148.0;
   static const tile_height = 276.0;
 }
-
-// class AppColors {
-//   static const red = Color(0xFFDB3022);
-//   static const black = Color(0xFF222222);
-//   static const lightGray = Color(0xFF9B9B9B);
-//   static const darkGray = Color(0xFF979797);
-//   static const white = Color(0xFFFFFFFF);
-//   static const orange = Color(0xFFFFBA49);
-//   static const background = Color(0xFFE5E5E5);
-//   static const backgroundLight = Color(0xFFF9F9F9);
-//   static const transparent = Color(0x00000000);
-//   static const success = Color(0xFF2AA952);
-//   static const green = Color(0xFF2AA952);
-// }
-
-// class AppGlobalColors {
-//   static const kcPaleGrey = Color(0xFFEAEBF3);
-//   static const kcBlack = Color.fromRGBO(0, 0, 0, 1.0);
-// }
 
 class AppConsts {
   static const page_size = 20;
@@ -95,6 +78,62 @@ class CustomTheme with ChangeNotifier {
       canvasColor: CommonColors.canvasColor,
       fontFamily: 'Montserrat',
       scaffoldBackgroundColor: CommonColors.defaultPageBackgroundColor,
+      textTheme: TextTheme(
+        bodySmall: GoogleFonts.lato(
+          fontStyle: FontStyle.normal,
+          fontSize: AppTextType.Normal.fontSize,
+          fontWeight: AppTextType.Normal.fontType?.fontWeight,
+          color: CommonColors.bodyText1,
+        ),
+        bodyMedium: GoogleFonts.lato(
+          fontStyle: FontStyle.normal,
+          fontSize: AppTextType.Medium.fontSize,
+          fontWeight: AppTextType.Medium.fontType?.fontWeight,
+          color: CommonColors.bodyText1,
+        ),
+        bodyLarge: GoogleFonts.lato(
+          fontStyle: FontStyle.normal,
+          fontSize: AppTextType.Large.fontSize,
+          fontWeight: AppTextType.Large.fontType?.fontWeight,
+          color: CommonColors.bodyText1,
+        ),
+        titleSmall: GoogleFonts.lato(
+          fontStyle: FontStyle.normal,
+          fontSize: AppTextType.TitleNormal.fontSize,
+          fontWeight: AppTextType.TitleNormal.fontType?.fontWeight,
+          color: CommonColors.bodyText1,
+        ),
+        titleMedium: GoogleFonts.lato(
+          fontStyle: FontStyle.normal,
+          fontSize: AppTextType.TitleMedium.fontSize,
+          fontWeight: AppTextType.TitleMedium.fontType?.fontWeight,
+          color: CommonColors.bodyText1,
+        ),
+        titleLarge: GoogleFonts.lato(
+          fontStyle: FontStyle.normal,
+          fontSize: AppTextType.TitleLarge.fontSize,
+          fontWeight: AppTextType.TitleLarge.fontType?.fontWeight,
+          color: CommonColors.bodyText1,
+        ),
+        displaySmall: GoogleFonts.lato(
+          fontStyle: FontStyle.normal,
+          fontSize: AppTextType.DisplayNormal.fontSize,
+          fontWeight: AppTextType.DisplayNormal.fontType?.fontWeight,
+          color: CommonColors.bodyText1,
+        ),
+        displayMedium: GoogleFonts.lato(
+          fontStyle: FontStyle.normal,
+          fontSize: AppTextType.DisplayMedium.fontSize,
+          fontWeight: AppTextType.DisplayMedium.fontType?.fontWeight,
+          color: CommonColors.bodyText1,
+        ),
+        displayLarge: GoogleFonts.lato(
+          fontStyle: FontStyle.normal,
+          fontSize: AppTextType.DisplayLarge.fontSize,
+          fontWeight: AppTextType.DisplayLarge.fontType?.fontWeight,
+          color: CommonColors.bodyText1,
+        ),
+      ),
       appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(color: CommonColors.navBarIconColor),
         elevation: 2.0,

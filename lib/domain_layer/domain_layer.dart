@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:rameshclothhouse/domain_layer/Cache/home_data._cache.dart';
 import 'package:rameshclothhouse/domain_layer/repositories/brand_repository.dart';
 import 'package:rameshclothhouse/domain_layer/repositories/category_repository.dart';
 import 'package:rameshclothhouse/domain_layer/repositories/product_repository.dart';
@@ -35,12 +36,16 @@ export './usecases/categories/extension/categories_usecase_extension.dart';
 export './usecases/product/extension/product_usecase_extension.dart';
 export './usecases/brand/extension/brand_usecase_extension.dart';
 
+export './Cache/home_data._cache.dart';
+
 class DomainLayer {
   static Future<void> initializeDependencies(
       Environment environment, GetIt injector) async {
     injector.registerSingleton<AppConfiguration>(
         AppConfiguration(appEnv: environment));
     await DataLayer.initializeDataLayerDependencies(injector);
+
+    injector.registerSingleton(HomeDataCache());
 
     injector.registerSingleton<IProductUseCases>(
         ProductsUseCase(injector<IProductAPIRepository>()));
@@ -53,8 +58,8 @@ class DomainLayer {
 
 abstract class CacheInjection {}
 
-// extension CacheInjectionExtension on CacheInjection {
-//   FeedDataCache get feedDataCache {
-//     return injector<FeedDataCache>();
-//   }
-// }
+extension CacheInjectionExtension on CacheInjection {
+  HomeDataCache get homeDataCache {
+    return injector<HomeDataCache>();
+  }
+}

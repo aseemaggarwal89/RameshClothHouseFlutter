@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CommonColors {
   static const kcPaleGrey = Color(0xFFEAEBF3);
-  static const kcBlack = Color.fromRGBO(0, 0, 0, 1.0);
+  static const bodyText1 = Color.fromARGB(255, 101, 100, 100);
   static const statusBarBrightness = Brightness.light;
   static const statusBarColor = Colors.white;
   static const statusBarIconBrightness = Brightness.dark;
@@ -10,12 +10,12 @@ class CommonColors {
 
   static const navBarColor = Color.fromARGB(255, 204, 221, 237);
   static final navBarShadowColor = const Color(0xFFC4C4C4).withOpacity(0.1);
-  static const navBarToolBarTextColor = Color.fromARGB(255, 59, 57, 57);
-  static const navBarIconColor = Colors.blue;
+  static const navBarToolBarTextColor = Color.fromARGB(255, 166, 201, 234);
+  static const navBarIconColor = Color.fromARGB(255, 166, 201, 234);
 
   static const defaultPageBackgroundColor = Colors.white;
   static const canvasColor = Colors.white;
-  static const navBarSelectedColor = Colors.blue;
+  static const navBarSelectedColor = Color.fromARGB(255, 97, 145, 190);
   static const errorTitleColor = Color.fromRGBO(35, 35, 37, 1.0);
   static const errorMessageColor = Color(0XFF303030);
 }
@@ -42,11 +42,40 @@ class HomeScreenColor {
   static const navBarNormalTitleColor = Colors.blue;
   static const navBarHoverColor = Color(0xFF051441);
   static final sideDrawerDividerColor = Colors.blueGrey.shade400;
+  static const borderColor = Color.fromARGB(255, 205, 204, 204);
 }
 
 class HomeFilterViewColor {
   static const backgroundColor = Colors.white;
   static const filterTextColor = Colors.black54;
+}
+
+class ProductShowcaseColor {
+  static const kcCarnation = Color(0xFFff6691);
+}
+
+class ProductInfoCaseColor {
+  static const kcLightPink = Color.fromRGBO(255, 231, 237, 1.0);
+  static const kcReddishPink = Color.fromRGBO(255, 50, 120, 1.0);
+  static const kcBlackTwo = Color(0XFF303030);
+  static const kcBrownishGrey = Color.fromRGBO(80, 80, 80, 1.0);
+  static const kcGoldenRod = Color.fromRGBO(248, 211, 5, 1.0);
+  static const kcRarely = Color.fromRGBO(35, 35, 37, 1.0);
+  static const kcLiteText = Color(0xFF9898B1);
+  static const kcLightGold = Color.fromRGBO(255, 225, 88, 1.0);
+  static const kcPale = Color(0xFFfcf5eb);
+}
+
+class ProductPolicyBannerColor {
+  static const kcBlackTwo = Color(0XFF303030);
+  static const kcBlack54 = Color(0x8A000000);
+}
+
+class ProductCardWidgetColor {
+  static const kcMushroom = Color(0xFFC89494);
+  static const kcBlackTwo = Color(0XFF303030);
+  static const kcReddishPink = Color.fromRGBO(255, 50, 120, 1.0);
+  static const kcSlate = Color.fromRGBO(68, 74, 94, 1.0);
 }
 // const kcPaleOrange = Color.fromRGBO(255, 165, 87, 1.0);
 // const kcPaleOrangeTwo = Color.fromRGBO(255, 239, 207, 1.0);

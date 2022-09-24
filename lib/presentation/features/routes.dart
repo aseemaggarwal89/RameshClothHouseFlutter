@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:rameshclothhouse/presentation/features/login/login_screen.dart';
+import 'package:rameshclothhouse/presentation/features/productDetails/product_details_page.dart';
 import 'package:rameshclothhouse/presentation/features/userScreen/user_screen.dart';
 
 import 'home/home.dart';
@@ -11,7 +12,7 @@ class AppRoutes {
   static const cart = 'cart';
   static const favourites = 'favourites';
   static const productList = 'productList';
-  static const product = 'product';
+  static const product = '/product/:id';
   static const profile = 'profile';
   static const checkout = 'checkout';
   static const signup = 'signup';
@@ -30,7 +31,11 @@ class AppRoutes {
         RedirectRoute(path: '*', redirectTo: ''),
       ],
     ),
-
+    AutoRoute(
+      initial: false,
+      path: '/product/:id',
+      page: ProductDetailScreen,
+    ),
     //authentification routes
     AutoRoute(
       initial: false,

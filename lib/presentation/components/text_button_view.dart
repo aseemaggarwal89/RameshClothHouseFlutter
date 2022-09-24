@@ -9,13 +9,13 @@ class TextButtonView extends StatelessWidget {
   final Widget? leading;
   final Widget? trailing;
   final String label;
-  final double fontSize;
+  final double? fontSize;
   final Color color;
   final FontWeight fontWeight;
   final double height;
   final Color backgroundColor;
   final double radius;
-  final FontType fontStyle;
+  final AppTextType fontStyle;
 
   const TextButtonView({
     Key? key,
@@ -24,12 +24,12 @@ class TextButtonView extends StatelessWidget {
     this.trailing,
     required this.label,
     required this.fontWeight,
-    required this.fontSize,
+    this.fontSize,
     this.color = TextButtonViewColor.kcReddishPink,
     this.height = 45.0,
     this.backgroundColor = Colors.transparent,
     this.radius = 0,
-    this.fontStyle = FontType.NORMAL,
+    this.fontStyle = AppTextType.Medium,
   }) : super(key: key);
 
   @override

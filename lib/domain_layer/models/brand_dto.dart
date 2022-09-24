@@ -25,7 +25,7 @@ abstract class FilterDTO extends Equatable {
   const FilterDTO(this.name, this.uniqueId, this.type);
 
   @override
-  List<Object> get props => [uniqueId];
+  List<Object> get props => [uniqueId, name, type];
 }
 
 @JsonSerializable()
