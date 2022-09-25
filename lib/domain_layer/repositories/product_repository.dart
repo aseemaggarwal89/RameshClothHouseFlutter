@@ -1,4 +1,5 @@
 import 'package:rameshclothhouse/domain_layer/models/get_product_response.dart';
+import 'package:rameshclothhouse/domain_layer/models/get_products_count.dart';
 import 'package:rameshclothhouse/domain_layer/models/product_param_dto.dart';
 import 'package:rameshclothhouse/domain_layer/utils/api_result.dart';
 
@@ -10,6 +11,9 @@ abstract class IProductAPIRepository {
   // }
 
   Future<ApiResult<GetProductsResponse>> getProducts(
+      [ProductParamDTO? param]);
+
+  Future<ApiResult<GetProductCountResponse>> getProductsCount(
       [ProductParamDTO? param]);
 
   // Future<ApiResult<GetProductsResponse>> updateProductRequest(

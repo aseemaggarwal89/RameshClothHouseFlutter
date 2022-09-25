@@ -130,16 +130,25 @@ class HomeDesktopView extends StatelessWidget {
           ),
           height: 70,
           child: Row(
-            children: const [
+            children: [
               Padding(
-                padding: EdgeInsets.all(8.0),
-                child: LatoTextView(
-                  label: 'Product Result Found:',
-                  fontType: AppTextType.TitleMedium,
+                padding: const EdgeInsets.all(8.0),
+                child: BlocBuilder<HomeBloc, HomeState>(
+                  buildWhen: ((previous, current) =>
+                      current is HomeProductResult),
+                  builder: (context, state) {
+                    HomeBloc bloc = BlocProvider.of<HomeBloc>(context);
+                    return LatoTextView(
+                      label: bloc.productResults == 0
+                          ? ''
+                          : 'Product Result Found: ${bloc.productResults}',
+                      fontType: AppTextType.TitleMedium,
+                    );
+                  },
                 ),
               ),
-              Spacer(),
-              Padding(
+              const Spacer(),
+              const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: SortByDropDownView(),
               ),
@@ -181,24 +190,17 @@ class HomeDesktopView extends StatelessWidget {
   }
 }
 
-class SortByDropDownView extends StatefulWidget {
+class SortByDropDownView extends StatelessWidget {
   const SortByDropDownView({Key? key}) : super(key: key);
 
-  @override
-  _SortByDropDownViewState createState() => _SortByDropDownViewState();
-}
-
-class _SortByDropDownViewState extends State<SortByDropDownView> {
 // Initial Selected Value
-  SortBy dropdownvalue = SortBy.Newest;
-
-// List of items in our dropdown menu
-  var items = [
+  final items = const [
     SortBy.Newest,
     SortBy.PriceAsce,
     SortBy.PriceDecen,
     SortBy.Ratings,
   ];
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -216,35 +218,35 @@ class _SortByDropDownViewState extends State<SortByDropDownView> {
                   color: HomeScreenColor.borderColor,
                   width: 1.5,
                 )),
-            child: DropdownButton(
-              // Initial Value
-              value: dropdownvalue,
-              focusColor: Colors.transparent,
-
-              // Down Arrow Icon
-              icon: const Icon(Icons.keyboard_arrow_down),
-
-              // Array list of items
-              items: items.map((SortBy item) {
-                return DropdownMenuItem(
-                  value: item,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: LatoTextView(
-                      label: item.title,
-                      fontType: AppTextType.Medium,
-                    ),
-                  ),
+            child: BlocBuilder<HomeBloc, HomeState>(
+              buildWhen: ((previous, current) => current is HomeSortByResult),
+              builder: (context, state) {
+                return DropdownButton(
+                  // Initial Value
+                  value: BlocProvider.of<HomeBloc>(context).sortBy,
+                  focusColor: Colors.transparent,
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+                  // Array list of items
+                  items: items.map((SortBy item) {
+                    return DropdownMenuItem(
+                      value: item,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: LatoTextView(
+                          label: item.title,
+                          fontType: AppTextType.Medium,
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                  // After selecting the desired option,it will
+                  // change button value to selected value
+                  onChanged: (SortBy? newValue) {
+                    BlocProvider.of<HomeBloc>(context)
+                        .add(ApplySortByEvent(newValue!));
+                  },
                 );
-              }).toList(),
-              // After selecting the desired option,it will
-              // change button value to selected value
-              onChanged: (SortBy? newValue) {
-                BlocProvider.of<HomeBloc>(context)
-                    .add(ApplySortByEvent(newValue!));
-                setState(() {
-                  dropdownvalue = newValue;
-                });
               },
             ),
           ),

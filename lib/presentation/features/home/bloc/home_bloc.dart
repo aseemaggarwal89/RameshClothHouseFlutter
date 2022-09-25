@@ -35,6 +35,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
 
     on<ApplyFiltersEvent>(_applyFilterAndUpdateProductList);
     on<ApplySortByEvent>(_applySortByAndUpdateProductList);
+    on<UpdateNumberOfProductsEvent>(_updateProductResults);
 
     _onSelectedFilters.stream
         .flatMap((value) => _fetchProductList(0))
@@ -54,6 +55,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
   final _onSelectedFilters = BehaviorSubject<List<FilterDTO>>();
 
   final _onSelectedSortBy = BehaviorSubject<SortBy>.seeded(SortBy.Newest);
+  final _onProductResultsBy = BehaviorSubject<int>.seeded(0);
 
   final _subscriptions = CompositeSubscription();
 
@@ -65,6 +67,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
   ) async* {
     final lastListingState = _onNewListingStateController.value;
     try {
+      if (pageKey == 0) {
+        add(UpdateNumberOfProductsEvent());
+      }
+
       final newItems = await getProductDataUseCase.fetchProductData(
         pageKey,
         _pageSize,
@@ -106,32 +112,28 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
     emit(HomeSortByResult(event.sortBy));
   }
 
-  // Stream<HomePageListingState> _filterUpdateFetchProductList(
-  //   List<FilterDTO> filter,
-  // ) async* {
-  //   final lastListingState = _onNewListingStateController.value;
-  //   int pageKey = 0;
-  //   try {
-  //     final newItems = await getProductDataUseCase.fetchProductData(
-  //       pageKey,
-  //       _pageSize,
-  //       filter,
-  //     );
-  //     final isLastPage = newItems.length < _pageSize;
-  //     final nextPageKey = isLastPage ? null : pageKey + 1;
-  //     yield HomePageListingState(
-  //       error: null,
-  //       nextPageKey: nextPageKey,
-  //       itemList: {...newItems},
-  //     );
-  //   } catch (e) {
-  //     yield HomePageListingState(
-  //       error: e,
-  //       nextPageKey: lastListingState.nextPageKey,
-  //       itemList: lastListingState.itemList,
-  //     );
-  //   }
-  // }
+  void _updateProductResults(
+    UpdateNumberOfProductsEvent event,
+    Emitter<HomeState> emit,
+  ) async {
+    try {
+      final resultCount = await getProductDataUseCase.fetchProductDataCount(
+        _onSelectedFilters.hasValue ? _onSelectedFilters.value : null,
+      );
+      _onProductResultsBy.value = resultCount;
+      emit(HomeProductResult(resultCount));
+    } catch (e) {
+      _onProductResultsBy.value = 0;
+      emit(HomeProductResult(0, error: e));
+    }
+  }
+
+  SortBy get sortBy {
+    return _onSelectedSortBy.hasValue ? _onSelectedSortBy.value : SortBy.Newest;
+  }
+
+  int get productResults =>
+      _onProductResultsBy.hasValue ? _onProductResultsBy.value : 0;
 
   void dispose() {
     _onNewListingStateController.close();

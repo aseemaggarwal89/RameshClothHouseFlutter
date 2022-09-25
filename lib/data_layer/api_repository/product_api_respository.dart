@@ -3,7 +3,6 @@ import 'package:rameshclothhouse/data_layer/data_source/remote/app_api_request_t
 import 'package:rameshclothhouse/domain_layer/models/product_param_dto.dart';
 import '../../domain_layer/domain_layer.dart';
 
-
 class ProductAPIRepository extends IProductAPIRepository {
   final INetworkService networkManager;
 
@@ -14,6 +13,19 @@ class ProductAPIRepository extends IProductAPIRepository {
       [ProductParamDTO? param]) async {
     final apiRequest = AppAPIRequest(
       const ApiRequestType.product(),
+      queryParam: param?.toJson(),
+    );
+
+    return networkManager.loadRequest(apiRequest);
+  }
+
+  @override
+  Future<ApiResult<GetProductCountResponse>> getProductsCount(
+      [ProductParamDTO? param]) {
+    final apiRequest = AppAPIRequest(
+      const ApiRequestType.product(
+        path: '/count',
+      ),
       queryParam: param?.toJson(),
     );
 

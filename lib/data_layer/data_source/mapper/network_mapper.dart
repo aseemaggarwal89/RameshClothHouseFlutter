@@ -13,6 +13,9 @@ class Generic {
         case GetCategoriesResponse:
           final data = GetCategoriesResponse.fromJson(json) as T;
           return data;
+        case GetProductCountResponse:
+          final data = GetProductCountResponse.fromJson(json) as T;
+          return data;
         default:
           if (json is List) {
             return _fromJsonList<T>(json) as T;

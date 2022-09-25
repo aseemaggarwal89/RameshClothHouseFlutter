@@ -41,9 +41,12 @@ class HomeErrorState extends HomeState {
 }
 
 class HomeProductResult extends HomeState {
-  final String numberOfProducts;
+  final int numberOfProducts;
+    final dynamic error;
+
   HomeProductResult(
     this.numberOfProducts,
+    {this.error}
   );
 
     @override

@@ -10,3 +10,4 @@ export 'get_categorgies_response.dart';
 export './categories_dto.dart';
 export './brand_dto.dart';
 export './home_sort_by_enum.dart';
+export './get_products_count.dart';
