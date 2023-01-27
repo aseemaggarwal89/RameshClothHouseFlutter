@@ -5,14 +5,20 @@ import '../../../domain_layer/domain_layer.dart';
 
 @immutable
 class FilterViewModel extends Equatable {
-  final Set<BrandDTO> _brands = {};
-  final Set<CategoriesDTO> _categories = {};
-  final Set<FilterDTO> _selectedFilters = {};
+  final Set<BrandDTO> _brands;
+  final Set<CategoriesDTO> _categories;
+  final Set<FilterDTO> _selectedFilters;
 
-  FilterViewModel.empty();
+  FilterViewModel.empty()
+      : _brands = {},
+        _categories = {},
+        _selectedFilters = {};
 
   FilterViewModel(List<BrandDTO> brands, List<CategoriesDTO> categories,
-      {List<FilterDTO>? selectedFilters}) {
+      {List<FilterDTO>? selectedFilters})
+      : _brands = {},
+        _categories = {},
+        _selectedFilters = {} {
     _brands.addAll(brands);
     _categories.addAll(categories);
     _selectedFilters.addAll(selectedFilters ?? []);

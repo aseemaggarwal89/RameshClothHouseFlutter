@@ -152,6 +152,10 @@ class LatoTextView extends StatelessWidget {
       style = style?.copyWith(fontSize: fontSize);
     }
 
+    if (decoration != null) {
+      style = style?.copyWith(decoration: decoration);
+    }
+
     return Text(
       isTranslatable ? label.tr() : label,
       textAlign: textAlignment,

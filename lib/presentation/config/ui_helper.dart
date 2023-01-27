@@ -43,5 +43,5 @@ Widget divider(
     );
 
 String formatAmountWithSymbol(dynamic amount) {
-  return '\u0930$amount';
+  return '\u0930 $amount';
 }

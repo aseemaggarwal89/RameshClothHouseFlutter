@@ -22,7 +22,6 @@ class App extends StatelessWidget {
       ),
       routeInformationParser: _appRouter.defaultRouteParser(),
       locale: context.locale,
-      builder: (context, child) => child!,
       // scrollBehavior: const ConstantScrollBehavior(),
     );
   }

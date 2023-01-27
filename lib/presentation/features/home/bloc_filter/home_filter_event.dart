@@ -1,10 +1,5 @@
 part of 'home_filter_bloc.dart';
 
-// @freezed
-// class HomeFilterEvent with _$HomeFilterEvent {
-//   const factory HomeFilterEvent.started() = _Started;
-// }
-
 @immutable
 abstract class HomeFilterEvent extends Equatable {
   @override

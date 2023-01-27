@@ -1,6 +1,4 @@
-import '../../data_layer/data_source/models/product_dto.dart';
-import '../models/brand_dto.dart';
-import '../models/categories_dto.dart';
+import '../models/entities.dart';
 
 class HomeDataCache {
   List<BrandDTO> loadedBrands = [];

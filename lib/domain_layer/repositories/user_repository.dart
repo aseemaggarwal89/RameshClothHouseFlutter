@@ -1,4 +1,4 @@
-import '../../data_layer/data_layer.dart';
+import '../models/entities.dart';
 
 abstract class IUserDataDBRepository {
   UserDTO? fetchUser(String userId);

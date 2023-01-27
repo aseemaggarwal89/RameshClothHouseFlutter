@@ -42,7 +42,7 @@ class HomeScreenColor {
   static const navBarNormalTitleColor = Colors.blue;
   static const navBarHoverColor = Color(0xFF051441);
   static final sideDrawerDividerColor = Colors.blueGrey.shade400;
-  static const borderColor = Color.fromARGB(255, 205, 204, 204);
+  static const borderColor = Color.fromARGB(255, 153, 153, 153);
 }
 
 class HomeFilterViewColor {

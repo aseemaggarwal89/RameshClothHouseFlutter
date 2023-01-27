@@ -27,11 +27,17 @@ class ProductItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: ProductItemWidgetColor.backgroundColor,
+      // color: ProductItemWidgetColor.kcDarkishGreen,
       elevation: elevation,
       child: InkWell(
+        customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
         onTap: () => onItemClicked(product.uniqueId),
         child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+          ),
           margin: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -41,15 +47,11 @@ class ProductItemView extends StatelessWidget {
                 flex: 6,
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: Container(
-                    color: ProductItemWidgetColor.kcDarkishGreen,
-                    child: ImageView(
-                      radius: 0,
-                      url:
-                          product.imageCover ?? 'https://picsum.photos/200/300',
-                      alignment: Alignment.topCenter,
-                      fit: BoxFit.fill,
-                    ),
+                  child: ImageView(
+                    radius: 8,
+                    url: product.imageCover ?? 'https://picsum.photos/200/300',
+                    alignment: Alignment.topCenter,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -110,23 +112,37 @@ class ProductItemView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              LatoTextView(
-                label: formatAmountWithSymbol(productDto.price),
-                fontType: AppTextType.Medium,
-                color: ProductItemWidgetColor.kcBlack74,
-              ),
-              horizontalSpaceSmall,
-              LatoTextView(
-                label: formatAmountWithSymbol(productDto.discountPrice),
-                color: ProductItemWidgetColor.kcBlack34,
-                decoration: TextDecoration.lineThrough,
-              ),
-              horizontalSpaceSmall,
-              LatoTextView(
-                label: '${productDto.discountPercent}% Off',
-                fontType: AppTextType.Medium,
-                color: ProductItemWidgetColor.kcDarkishGreen,
-              )
+              if (productDto.discountPrice == null ||
+                  (productDto.discountPrice ?? 0) <= 0)
+                LatoTextView(
+                  label: formatAmountWithSymbol(productDto.price),
+                  fontType: AppTextType.Medium,
+                ),
+              if (productDto.discountPrice != null &&
+                  productDto.discountPrice! > 0)
+                LatoTextView(
+                  label: formatAmountWithSymbol(productDto.price),
+                  fontType: AppTextType.Medium,
+                  decoration: TextDecoration.lineThrough,
+                ),
+              if (productDto.discountPrice != null &&
+                  productDto.discountPrice! > 0)
+                horizontalSpaceSmall,
+              if (productDto.discountPrice != null &&
+                  productDto.discountPrice! > 0)
+                LatoTextView(
+                  label: formatAmountWithSymbol(productDto.discountPrice),
+                ),
+              if (productDto.discountPrice != null &&
+                  productDto.discountPrice! > 0)
+                horizontalSpaceSmall,
+              if (productDto.discountPrice != null &&
+                  productDto.discountPrice! > 0)
+                LatoTextView(
+                  label: '${productDto.discountPercent} Off',
+                  fontType: AppTextType.Medium,
+                  color: ProductItemWidgetColor.kcDarkishGreen,
+                )
             ],
           ),
         ],

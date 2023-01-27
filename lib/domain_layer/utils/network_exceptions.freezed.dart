@@ -32,6 +32,7 @@ mixin _$NetworkExceptions {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -54,6 +55,7 @@ mixin _$NetworkExceptions {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -76,6 +78,7 @@ mixin _$NetworkExceptions {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -99,6 +102,7 @@ mixin _$NetworkExceptions {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -121,6 +125,7 @@ mixin _$NetworkExceptions {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -143,6 +148,7 @@ mixin _$NetworkExceptions {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -224,6 +230,7 @@ class _$RequestCancelled implements RequestCancelled {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -249,6 +256,7 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -274,6 +282,7 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -303,6 +312,7 @@ class _$RequestCancelled implements RequestCancelled {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -328,6 +338,7 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -353,6 +364,7 @@ class _$RequestCancelled implements RequestCancelled {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -450,6 +462,7 @@ class _$UnauthorizedRequest implements UnauthorizedRequest {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -475,6 +488,7 @@ class _$UnauthorizedRequest implements UnauthorizedRequest {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -500,6 +514,7 @@ class _$UnauthorizedRequest implements UnauthorizedRequest {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -529,6 +544,7 @@ class _$UnauthorizedRequest implements UnauthorizedRequest {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -554,6 +570,7 @@ class _$UnauthorizedRequest implements UnauthorizedRequest {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -579,6 +596,7 @@ class _$UnauthorizedRequest implements UnauthorizedRequest {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -657,6 +675,7 @@ class _$BadRequest implements BadRequest {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -682,6 +701,7 @@ class _$BadRequest implements BadRequest {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -707,6 +727,7 @@ class _$BadRequest implements BadRequest {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -736,6 +757,7 @@ class _$BadRequest implements BadRequest {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -761,6 +783,7 @@ class _$BadRequest implements BadRequest {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -786,6 +809,7 @@ class _$BadRequest implements BadRequest {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -881,6 +905,7 @@ class _$NotFound implements NotFound {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -906,6 +931,7 @@ class _$NotFound implements NotFound {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -931,6 +957,7 @@ class _$NotFound implements NotFound {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -960,6 +987,7 @@ class _$NotFound implements NotFound {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -985,6 +1013,7 @@ class _$NotFound implements NotFound {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1010,6 +1039,7 @@ class _$NotFound implements NotFound {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1087,6 +1117,7 @@ class _$MethodNotAllowed implements MethodNotAllowed {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -1112,6 +1143,7 @@ class _$MethodNotAllowed implements MethodNotAllowed {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1137,6 +1169,7 @@ class _$MethodNotAllowed implements MethodNotAllowed {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1166,6 +1199,7 @@ class _$MethodNotAllowed implements MethodNotAllowed {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -1191,6 +1225,7 @@ class _$MethodNotAllowed implements MethodNotAllowed {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1216,6 +1251,7 @@ class _$MethodNotAllowed implements MethodNotAllowed {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1288,6 +1324,7 @@ class _$NotAcceptable implements NotAcceptable {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -1313,6 +1350,7 @@ class _$NotAcceptable implements NotAcceptable {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1338,6 +1376,7 @@ class _$NotAcceptable implements NotAcceptable {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1367,6 +1406,7 @@ class _$NotAcceptable implements NotAcceptable {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -1392,6 +1432,7 @@ class _$NotAcceptable implements NotAcceptable {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1417,6 +1458,7 @@ class _$NotAcceptable implements NotAcceptable {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1489,6 +1531,7 @@ class _$RequestTimeout implements RequestTimeout {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -1514,6 +1557,7 @@ class _$RequestTimeout implements RequestTimeout {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1539,6 +1583,7 @@ class _$RequestTimeout implements RequestTimeout {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1568,6 +1613,7 @@ class _$RequestTimeout implements RequestTimeout {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -1593,6 +1639,7 @@ class _$RequestTimeout implements RequestTimeout {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1618,6 +1665,7 @@ class _$RequestTimeout implements RequestTimeout {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1689,6 +1737,7 @@ class _$Conflict implements Conflict {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -1714,6 +1763,7 @@ class _$Conflict implements Conflict {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1739,6 +1789,7 @@ class _$Conflict implements Conflict {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1768,6 +1819,7 @@ class _$Conflict implements Conflict {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -1793,6 +1845,7 @@ class _$Conflict implements Conflict {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1818,6 +1871,7 @@ class _$Conflict implements Conflict {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -1915,6 +1969,7 @@ class _$InternalServerError implements InternalServerError {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -1940,6 +1995,7 @@ class _$InternalServerError implements InternalServerError {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1965,6 +2021,7 @@ class _$InternalServerError implements InternalServerError {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -1994,6 +2051,7 @@ class _$InternalServerError implements InternalServerError {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -2019,6 +2077,7 @@ class _$InternalServerError implements InternalServerError {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2044,6 +2103,7 @@ class _$InternalServerError implements InternalServerError {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2122,6 +2182,7 @@ class _$NotImplemented implements NotImplemented {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -2147,6 +2208,7 @@ class _$NotImplemented implements NotImplemented {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -2172,6 +2234,7 @@ class _$NotImplemented implements NotImplemented {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -2201,6 +2264,7 @@ class _$NotImplemented implements NotImplemented {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -2226,6 +2290,7 @@ class _$NotImplemented implements NotImplemented {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2251,6 +2316,7 @@ class _$NotImplemented implements NotImplemented {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2323,6 +2389,7 @@ class _$ServiceUnavailable implements ServiceUnavailable {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -2348,6 +2415,7 @@ class _$ServiceUnavailable implements ServiceUnavailable {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -2373,6 +2441,7 @@ class _$ServiceUnavailable implements ServiceUnavailable {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -2402,6 +2471,7 @@ class _$ServiceUnavailable implements ServiceUnavailable {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -2427,6 +2497,7 @@ class _$ServiceUnavailable implements ServiceUnavailable {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2452,6 +2523,7 @@ class _$ServiceUnavailable implements ServiceUnavailable {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2524,6 +2596,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -2549,6 +2622,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -2574,6 +2648,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -2603,6 +2678,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -2628,6 +2704,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2653,6 +2730,7 @@ class _$NoInternetConnection implements NoInternetConnection {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2725,6 +2803,7 @@ class _$FormatException implements FormatException {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -2750,6 +2829,7 @@ class _$FormatException implements FormatException {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -2775,6 +2855,7 @@ class _$FormatException implements FormatException {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -2804,6 +2885,7 @@ class _$FormatException implements FormatException {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -2829,6 +2911,7 @@ class _$FormatException implements FormatException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2854,6 +2937,7 @@ class _$FormatException implements FormatException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -2926,6 +3010,7 @@ class _$UnableToProcess implements UnableToProcess {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -2951,6 +3036,7 @@ class _$UnableToProcess implements UnableToProcess {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -2976,6 +3062,7 @@ class _$UnableToProcess implements UnableToProcess {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -3005,6 +3092,7 @@ class _$UnableToProcess implements UnableToProcess {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -3030,6 +3118,7 @@ class _$UnableToProcess implements UnableToProcess {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -3055,6 +3144,7 @@ class _$UnableToProcess implements UnableToProcess {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -3070,6 +3160,243 @@ class _$UnableToProcess implements UnableToProcess {
 
 abstract class UnableToProcess implements NetworkExceptions {
   const factory UnableToProcess() = _$UnableToProcess;
+}
+
+/// @nodoc
+abstract class _$$UnableToDecodeJsonCopyWith<$Res> {
+  factory _$$UnableToDecodeJsonCopyWith(_$UnableToDecodeJson value,
+          $Res Function(_$UnableToDecodeJson) then) =
+      __$$UnableToDecodeJsonCopyWithImpl<$Res>;
+  $Res call({dynamic error});
+}
+
+/// @nodoc
+class __$$UnableToDecodeJsonCopyWithImpl<$Res>
+    extends _$NetworkExceptionsCopyWithImpl<$Res>
+    implements _$$UnableToDecodeJsonCopyWith<$Res> {
+  __$$UnableToDecodeJsonCopyWithImpl(
+      _$UnableToDecodeJson _value, $Res Function(_$UnableToDecodeJson) _then)
+      : super(_value, (v) => _then(v as _$UnableToDecodeJson));
+
+  @override
+  _$UnableToDecodeJson get _value => super._value as _$UnableToDecodeJson;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$UnableToDecodeJson(
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnableToDecodeJson implements UnableToDecodeJson {
+  const _$UnableToDecodeJson(this.error);
+
+  @override
+  final dynamic error;
+
+  @override
+  String toString() {
+    return 'NetworkExceptions.unableToDecodeJson(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UnableToDecodeJson &&
+            const DeepCollectionEquality().equals(other.error, error));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$UnableToDecodeJsonCopyWith<_$UnableToDecodeJson> get copyWith =>
+      __$$UnableToDecodeJsonCopyWithImpl<_$UnableToDecodeJson>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() requestCancelled,
+    required TResult Function(String reason) unauthorizedRequest,
+    required TResult Function() badRequest,
+    required TResult Function(String reason) notFound,
+    required TResult Function() methodNotAllowed,
+    required TResult Function() notAcceptable,
+    required TResult Function() timeout,
+    required TResult Function() conflict,
+    required TResult Function(String reason) internalServerError,
+    required TResult Function() notImplemented,
+    required TResult Function() serviceUnavailable,
+    required TResult Function() noInternetConnection,
+    required TResult Function() formatException,
+    required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
+    required TResult Function(String error) defaultError,
+    required TResult Function(dynamic error) unexpectedError,
+    required TResult Function(dynamic json, Exception e) jsonDecodedException,
+    required TResult Function(Exception e) unhandledException,
+  }) {
+    return unableToDecodeJson(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? requestCancelled,
+    TResult Function(String reason)? unauthorizedRequest,
+    TResult Function()? badRequest,
+    TResult Function(String reason)? notFound,
+    TResult Function()? methodNotAllowed,
+    TResult Function()? notAcceptable,
+    TResult Function()? timeout,
+    TResult Function()? conflict,
+    TResult Function(String reason)? internalServerError,
+    TResult Function()? notImplemented,
+    TResult Function()? serviceUnavailable,
+    TResult Function()? noInternetConnection,
+    TResult Function()? formatException,
+    TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
+    TResult Function(String error)? defaultError,
+    TResult Function(dynamic error)? unexpectedError,
+    TResult Function(dynamic json, Exception e)? jsonDecodedException,
+    TResult Function(Exception e)? unhandledException,
+  }) {
+    return unableToDecodeJson?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? requestCancelled,
+    TResult Function(String reason)? unauthorizedRequest,
+    TResult Function()? badRequest,
+    TResult Function(String reason)? notFound,
+    TResult Function()? methodNotAllowed,
+    TResult Function()? notAcceptable,
+    TResult Function()? timeout,
+    TResult Function()? conflict,
+    TResult Function(String reason)? internalServerError,
+    TResult Function()? notImplemented,
+    TResult Function()? serviceUnavailable,
+    TResult Function()? noInternetConnection,
+    TResult Function()? formatException,
+    TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
+    TResult Function(String error)? defaultError,
+    TResult Function(dynamic error)? unexpectedError,
+    TResult Function(dynamic json, Exception e)? jsonDecodedException,
+    TResult Function(Exception e)? unhandledException,
+    required TResult orElse(),
+  }) {
+    if (unableToDecodeJson != null) {
+      return unableToDecodeJson(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RequestCancelled value) requestCancelled,
+    required TResult Function(UnauthorizedRequest value) unauthorizedRequest,
+    required TResult Function(BadRequest value) badRequest,
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(MethodNotAllowed value) methodNotAllowed,
+    required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(RequestTimeout value) timeout,
+    required TResult Function(Conflict value) conflict,
+    required TResult Function(InternalServerError value) internalServerError,
+    required TResult Function(NotImplemented value) notImplemented,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(FormatException value) formatException,
+    required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(JsonDecodedException value) jsonDecodedException,
+    required TResult Function(UnhandledException value) unhandledException,
+  }) {
+    return unableToDecodeJson(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RequestCancelled value)? requestCancelled,
+    TResult Function(UnauthorizedRequest value)? unauthorizedRequest,
+    TResult Function(BadRequest value)? badRequest,
+    TResult Function(NotFound value)? notFound,
+    TResult Function(MethodNotAllowed value)? methodNotAllowed,
+    TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(RequestTimeout value)? timeout,
+    TResult Function(Conflict value)? conflict,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(NotImplemented value)? notImplemented,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(FormatException value)? formatException,
+    TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(JsonDecodedException value)? jsonDecodedException,
+    TResult Function(UnhandledException value)? unhandledException,
+  }) {
+    return unableToDecodeJson?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RequestCancelled value)? requestCancelled,
+    TResult Function(UnauthorizedRequest value)? unauthorizedRequest,
+    TResult Function(BadRequest value)? badRequest,
+    TResult Function(NotFound value)? notFound,
+    TResult Function(MethodNotAllowed value)? methodNotAllowed,
+    TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(RequestTimeout value)? timeout,
+    TResult Function(Conflict value)? conflict,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(NotImplemented value)? notImplemented,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(FormatException value)? formatException,
+    TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(JsonDecodedException value)? jsonDecodedException,
+    TResult Function(UnhandledException value)? unhandledException,
+    required TResult orElse(),
+  }) {
+    if (unableToDecodeJson != null) {
+      return unableToDecodeJson(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnableToDecodeJson implements NetworkExceptions {
+  const factory UnableToDecodeJson(final dynamic error) = _$UnableToDecodeJson;
+
+  dynamic get error;
+  @JsonKey(ignore: true)
+  _$$UnableToDecodeJsonCopyWith<_$UnableToDecodeJson> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3151,6 +3478,7 @@ class _$DefaultError implements DefaultError {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -3176,6 +3504,7 @@ class _$DefaultError implements DefaultError {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -3201,6 +3530,7 @@ class _$DefaultError implements DefaultError {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -3230,6 +3560,7 @@ class _$DefaultError implements DefaultError {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -3255,6 +3586,7 @@ class _$DefaultError implements DefaultError {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -3280,6 +3612,7 @@ class _$DefaultError implements DefaultError {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -3381,6 +3714,7 @@ class _$UnexpectedError implements UnexpectedError {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -3406,6 +3740,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -3431,6 +3766,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -3460,6 +3796,7 @@ class _$UnexpectedError implements UnexpectedError {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -3485,6 +3822,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -3510,6 +3848,7 @@ class _$UnexpectedError implements UnexpectedError {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -3622,6 +3961,7 @@ class _$JsonDecodedException implements JsonDecodedException {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -3647,6 +3987,7 @@ class _$JsonDecodedException implements JsonDecodedException {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -3672,6 +4013,7 @@ class _$JsonDecodedException implements JsonDecodedException {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -3701,6 +4043,7 @@ class _$JsonDecodedException implements JsonDecodedException {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -3726,6 +4069,7 @@ class _$JsonDecodedException implements JsonDecodedException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -3751,6 +4095,7 @@ class _$JsonDecodedException implements JsonDecodedException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -3855,6 +4200,7 @@ class _$UnhandledException implements UnhandledException {
     required TResult Function() noInternetConnection,
     required TResult Function() formatException,
     required TResult Function() unableToProcess,
+    required TResult Function(dynamic error) unableToDecodeJson,
     required TResult Function(String error) defaultError,
     required TResult Function(dynamic error) unexpectedError,
     required TResult Function(dynamic json, Exception e) jsonDecodedException,
@@ -3880,6 +4226,7 @@ class _$UnhandledException implements UnhandledException {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -3905,6 +4252,7 @@ class _$UnhandledException implements UnhandledException {
     TResult Function()? noInternetConnection,
     TResult Function()? formatException,
     TResult Function()? unableToProcess,
+    TResult Function(dynamic error)? unableToDecodeJson,
     TResult Function(String error)? defaultError,
     TResult Function(dynamic error)? unexpectedError,
     TResult Function(dynamic json, Exception e)? jsonDecodedException,
@@ -3934,6 +4282,7 @@ class _$UnhandledException implements UnhandledException {
     required TResult Function(NoInternetConnection value) noInternetConnection,
     required TResult Function(FormatException value) formatException,
     required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(UnableToDecodeJson value) unableToDecodeJson,
     required TResult Function(DefaultError value) defaultError,
     required TResult Function(UnexpectedError value) unexpectedError,
     required TResult Function(JsonDecodedException value) jsonDecodedException,
@@ -3959,6 +4308,7 @@ class _$UnhandledException implements UnhandledException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,
@@ -3984,6 +4334,7 @@ class _$UnhandledException implements UnhandledException {
     TResult Function(NoInternetConnection value)? noInternetConnection,
     TResult Function(FormatException value)? formatException,
     TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(UnableToDecodeJson value)? unableToDecodeJson,
     TResult Function(DefaultError value)? defaultError,
     TResult Function(UnexpectedError value)? unexpectedError,
     TResult Function(JsonDecodedException value)? jsonDecodedException,

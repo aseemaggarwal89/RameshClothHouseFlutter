@@ -8,6 +8,7 @@ abstract class IProductUseCases {
   Future<List<ProductDTO>> fetchProductData(
       int page, int pageSize, List<FilterDTO>? filters, SortBy? sortBy);
   Future<int> fetchProductDataCount(List<FilterDTO>? filters);
+  Future<ProductDetailDTO> fetchProductDetailData(String productId);
 }
 
 class ProductsUseCase implements IProductUseCases, CacheInjection {
@@ -18,6 +19,22 @@ class ProductsUseCase implements IProductUseCases, CacheInjection {
     this._productAPIDataRepository,
     // this._productDBRepository,
   );
+
+  @override
+  Future<ProductDetailDTO> fetchProductDetailData(String productId) async {
+    final result = await _productAPIDataRepository.getProductDetail(productId);
+    return result.when(
+        success: (success) {
+          if (success != null &&
+              success.status == "success" &&
+              success.data != null) {
+            return success.data!;
+          } else {
+            return throw const NetworkExceptions.notFound("Data not available");
+          }
+        },
+        failure: (failure) => throw failure);
+  }
 
   @override
   Future<List<ProductDTO>> fetchAllProductsData() async {

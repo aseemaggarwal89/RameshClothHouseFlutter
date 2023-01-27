@@ -214,6 +214,9 @@ class $AssetsImagesGen {
   AssetGenImage get exploreAll =>
       const AssetGenImage('assets/images/explore_all.webp');
 
+  /// File path: assets/images/filter.png
+  AssetGenImage get filter => const AssetGenImage('assets/images/filter1.png');
+
   /// File path: assets/images/happy_face.png
   AssetGenImage get happyFace =>
       const AssetGenImage('assets/images/happy_face.png');

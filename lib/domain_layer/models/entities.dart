@@ -11,3 +11,8 @@ export './categories_dto.dart';
 export './brand_dto.dart';
 export './home_sort_by_enum.dart';
 export './get_products_count.dart';
+export './product_detail_dto.dart';
+export './product_dto.dart';
+export './user_dto.dart';
+export './base_response.dart';
+export './product_attributes_dto.dart';

@@ -8,7 +8,6 @@ import 'package:rameshclothhouse/presentation/features/home/view_models.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../../../domain_layer/domain_layer.dart';
-import '../bloc/home_bloc.dart';
 import '../home.dart';
 
 part 'home_filter_event.dart';
@@ -25,17 +24,18 @@ class HomeFilterBloc extends Bloc<HomeFilterEvent, HomeFilterState>
   void _onGetFiltersEvent(
       GetFiltersEvent event, Emitter<HomeFilterState> emit) async {
     emit(HomeFilterLoadingState());
-
+    if (_loadedFilters.hasValue) {
+      emit(HomeFilterLoadedState(_loadedFilters.value));
+    }
     try {
       final categories = await getCategoryDataUseCase.fetchAllCategories();
       final brands = await getBrandDataUseCase.fetchAllBrandData();
-      if (loadedFilters != null) {
+      if (loadedFilters.selectedFilters.isNotEmpty) {
         _loadedFilters.value = FilterViewModel(brands, categories,
-            selectedFilters: loadedFilters?.selectedFilters);
+            selectedFilters: loadedFilters.selectedFilters);
       } else {
         _loadedFilters.value = FilterViewModel(brands, categories);
       }
-
       emit(HomeFilterLoadedState(_loadedFilters.value));
     } on NetworkExceptions catch (failure) {
       emit(HomeFilteErrorState(
@@ -60,12 +60,16 @@ class HomeFilterBloc extends Bloc<HomeFilterEvent, HomeFilterState>
   }
 
   FilterViewModel get loadedFilters {
-    return _loadedFilters.hasValue ? _loadedFilters.value : FilterViewModel.empty();
+    return _loadedFilters.hasValue
+        ? _loadedFilters.value
+        : FilterViewModel.empty();
   }
 
   FilterDTO? filter(String uniqueId, FilterType type) {
     return loadedFilters.filter(uniqueId, type);
   }
 
-  void dispose() {}
+  void dispose() {
+    _loadedFilters.close();
+  }
 }

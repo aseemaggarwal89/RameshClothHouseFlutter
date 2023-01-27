@@ -34,42 +34,41 @@ class AppConsts {
 CustomTheme currentTheme = CustomTheme();
 
 class CustomTheme with ChangeNotifier {
-  static bool _isDarkTheme = true;
-  static ThemeData get currentTheme =>
-      _isDarkTheme ? CustomTheme.basicThemeData : CustomTheme.basicThemeData;
+  // static bool _isDarkTheme = true;
+  static ThemeData get currentTheme => CustomTheme.basicThemeData;
 
-  void toggleTheme() {
-    _isDarkTheme = !_isDarkTheme;
-    notifyListeners();
-  }
+  // void toggleTheme() {
+  //   _isDarkTheme = !_isDarkTheme;
+  //   notifyListeners();
+  // }
 
-  static ThemeData get lightTheme {
-    //1
-    return ThemeData(
-        //2
-        primaryColor: Colors.purple,
-        scaffoldBackgroundColor: Colors.white,
-        fontFamily: 'Montserrat', //3
-        buttonTheme: ButtonThemeData(
-          // 4
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-          buttonColor: Colors.purpleAccent,
-        ));
-  }
+  // static ThemeData get lightTheme {
+  //   //1
+  //   return ThemeData(
+  //       //2
+  //       primaryColor: Colors.purple,
+  //       scaffoldBackgroundColor: Colors.white,
+  //       fontFamily: 'Montserrat', //3
+  //       buttonTheme: ButtonThemeData(
+  //         // 4
+  //         shape:
+  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
+  //         buttonColor: Colors.purpleAccent,
+  //       ));
+  // }
 
-  static ThemeData get darkTheme {
-    return ThemeData(
-        primaryColor: Colors.grey,
-        scaffoldBackgroundColor: Colors.black,
-        fontFamily: 'Montserrat',
-        textTheme: ThemeData.dark().textTheme,
-        buttonTheme: ButtonThemeData(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-          buttonColor: Colors.purpleAccent,
-        ));
-  }
+  // static ThemeData get darkTheme {
+  //   return ThemeData(
+  //       primaryColor: Colors.grey,
+  //       scaffoldBackgroundColor: Colors.black,
+  //       fontFamily: 'Montserrat',
+  //       textTheme: ThemeData.dark().textTheme,
+  //       buttonTheme: ButtonThemeData(
+  //         shape:
+  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
+  //         buttonColor: Colors.purpleAccent,
+  //       ));
+  // }
 
   static ThemeData get basicThemeData {
     return ThemeData(
@@ -135,7 +134,7 @@ class CustomTheme with ChangeNotifier {
         ),
       ),
       appBarTheme: AppBarTheme(
-        iconTheme: IconThemeData(color: CommonColors.navBarIconColor),
+        iconTheme: const IconThemeData(color: CommonColors.navBarIconColor),
         elevation: 2.0,
         shadowColor: CommonColors.navBarShadowColor,
         backgroundColor: CommonColors.navBarColor,

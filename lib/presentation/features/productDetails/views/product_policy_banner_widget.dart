@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rameshclothhouse/gen/assets.gen.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
-import 'package:rameshclothhouse/presentation/core/resource/app_assets.dart';
 
 import '../../../config/app_colors.dart';
 
@@ -29,7 +29,7 @@ class ProductPolicyBannerWidget extends StatelessWidget {
             child: Row(
               children: [
                 SvgPicture.asset(
-                  R.ASSETS_ICON_RETURN_POLICY_SVG,
+                  Assets.icon.returnPolicy,
                   width: 24.0,
                   height: 24.0,
                 ),
@@ -54,7 +54,7 @@ class ProductPolicyBannerWidget extends StatelessWidget {
             child: Row(
               children: [
                 SvgPicture.asset(
-                  R.ASSETS_ICON_REFUND_POLICY_SVG,
+                  Assets.icon.refundPolicy,
                   width: 24.0,
                   height: 24.0,
                 ),
@@ -78,7 +78,7 @@ class ProductPolicyBannerWidget extends StatelessWidget {
             child: Row(
               children: [
                 SvgPicture.asset(
-                  R.ASSETS_ICON_CASH_ON_DELIVERY_SVG,
+                  Assets.icon.cashOnDelivery,
                   width: 24.0,
                   height: 24.0,
                 ),

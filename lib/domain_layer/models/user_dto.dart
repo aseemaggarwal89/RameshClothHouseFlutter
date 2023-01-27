@@ -6,13 +6,7 @@ part 'user_dto.g.dart';
 @JsonSerializable()
 // @Entity()
 class UserDTO {
-  @JsonKey(ignore: true)
-  // @Id()
-  int? id;
-
   @JsonKey(name: "_id")
-  // @Unique(onConflict: ConflictStrategy.replace)
-  // @Index()
   final String uniqueId;
 
   String? token;
@@ -36,4 +30,10 @@ class UserDTO {
     email: "-",
     role: "-",
   );
+
+  factory UserDTO.fromJson(Map<String, dynamic> json) {
+    return _$UserDTOFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() => _$UserDTOToJson(this);
 }

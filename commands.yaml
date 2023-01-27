@@ -2,3 +2,5 @@ generateLocaleKeys: flutter pub run easy_localization:generate -O lib/presentati
 autoGenerateBuild: flutter pub run build_runner build
 autoGenerateWatch: flutter pub run build_runner watch
 autoGenerateAssets: $ flutter packages pub run build_runner build
+runChrome: flutter run -d chrome --web-renderer html
+getPackages: flutter packages get

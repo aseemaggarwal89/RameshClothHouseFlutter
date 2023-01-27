@@ -12,6 +12,7 @@ final detailsReviewSectionKey =
     GlobalKey(debugLabel: 'ProductDetailsReviewSection');
 final recommendedSectionKey =
     GlobalKey(debugLabel: 'ProductRecommendedSection');
-final categorySectionKey = GlobalKey(debugLabel: 'ProductCategorySection');
 
+final categorySectionKey = GlobalKey(debugLabel: 'ProductCategorySection');
 final filterHomeSectionKey = GlobalKey(debugLabel: 'HomeFilterSectionKey');
+final productDetailViewKey = GlobalKey(debugLabel: 'ProductDetailViewKey');

@@ -16,6 +16,10 @@ class Generic {
         case GetProductCountResponse:
           final data = GetProductCountResponse.fromJson(json) as T;
           return data;
+        case GetProductDetailResponse:
+          final data = GetProductDetailResponse.fromJson(json) as T;
+          return data;
+
         default:
           if (json is List) {
             return _fromJsonList<T>(json) as T;
@@ -32,14 +36,14 @@ class Generic {
                 json is Map<String, dynamic>) {
               return json;
             } else {
-              throw const NetworkExceptions.unableToProcess();
+              throw const NetworkExceptions.unableToDecodeJson(null);
             }
           } else {
-            throw const NetworkExceptions.unableToProcess();
+            throw const NetworkExceptions.unableToDecodeJson(null);
           }
       }
     } catch (e) {
-      throw NetworkExceptions.unexpectedError(e);
+      throw NetworkExceptions.unableToDecodeJson(e);
     }
   }
 

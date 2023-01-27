@@ -21,6 +21,20 @@ class CategoriesDTO extends FilterDTO {
   final bool active;
   final List<CategoriesDTO>? subCategories;
 
+  CategoriesDTO? subCategoryFromCategory(String subCategoryId) {
+    if (subCategories?.isNotEmpty ?? false) {
+      try {
+        CategoriesDTO subCategory = subCategories!
+            .firstWhere((element) => element.uniqueId == subCategoryId);
+        return subCategory;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    return null;
+  }
+
   factory CategoriesDTO.fromJson(Map<String, dynamic> json) {
     return _$CategoriesDTOFromJson(json);
   }

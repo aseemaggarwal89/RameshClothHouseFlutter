@@ -1,20 +1,17 @@
-import 'package:rameshclothhouse/domain_layer/models/get_product_response.dart';
-import 'package:rameshclothhouse/domain_layer/models/get_products_count.dart';
 import 'package:rameshclothhouse/domain_layer/models/product_param_dto.dart';
-import 'package:rameshclothhouse/domain_layer/utils/api_result.dart';
 
-import '../../data_layer/data_layer.dart';
+import '../domain_layer.dart';
 
 abstract class IProductAPIRepository {
   // Future<ApiResult<AddResponse>> addProductRequest(ProductDTO product) async {
   //   throw UnimplementedError();
   // }
 
-  Future<ApiResult<GetProductsResponse>> getProducts(
-      [ProductParamDTO? param]);
+  Future<ApiResult<GetProductsResponse>> getProducts([ProductParamDTO? param]);
 
   Future<ApiResult<GetProductCountResponse>> getProductsCount(
       [ProductParamDTO? param]);
+  Future<ApiResult<GetProductDetailResponse>> getProductDetail(String productId);
 
   // Future<ApiResult<GetProductsResponse>> updateProductRequest(
   //     Product product) async {

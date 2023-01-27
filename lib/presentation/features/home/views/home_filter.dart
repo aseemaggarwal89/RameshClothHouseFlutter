@@ -25,7 +25,6 @@ class _HomeFilterViewState extends State<HomeFilterView> {
 
   @override
   void dispose() {
-    _bloc.dispose();
     super.dispose();
   }
 
@@ -37,7 +36,8 @@ class _HomeFilterViewState extends State<HomeFilterView> {
         buildWhen: (previous, current) {
       return (current is HomeFilterLoadedState) ||
           (current is HomeFilterInitialState) ||
-          (current is HomeFilterLoadingState);
+          (current is HomeFilterLoadingState) ||
+          (current is HomeFilteErrorState);
     }, builder: (BuildContext context, HomeFilterState state) {
       switch (state.runtimeType) {
         case HomeFilterInitialState:

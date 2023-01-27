@@ -32,6 +32,18 @@ class ProductAPIRepository extends IProductAPIRepository {
     return networkManager.loadRequest(apiRequest);
   }
 
+  @override
+  Future<ApiResult<GetProductDetailResponse>> getProductDetail(
+      String productId) {
+    final apiRequest = AppAPIRequest(
+      ApiRequestType.product(
+        path: '/$productId',
+      ),
+    );
+
+    return networkManager.loadRequest(apiRequest);
+  }
+
   // @override
   // Future<ApiResult<AddResponse>> addProductRequest(ProductDTO product) async {
   //   const request = ApiRequestType.product(HttpMethod.post);

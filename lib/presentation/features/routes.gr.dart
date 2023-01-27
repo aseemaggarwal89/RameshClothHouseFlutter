@@ -13,7 +13,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:flutter/material.dart' as _i5;
-import 'package:rameshclothhouse/domain_layer/domain_layer.dart' as _i6;
 import 'package:rameshclothhouse/presentation/features/home/home.dart' as _i1;
 import 'package:rameshclothhouse/presentation/features/login/login_screen.dart'
     as _i3;
@@ -33,14 +32,14 @@ class AppRouter extends _i4.RootStackRouter {
           routeData: routeData, child: _i1.HomeScreen(key: args.key));
     },
     ProductDetailScreenRoute.name: (routeData) {
-      final args = routeData.argsAs<ProductDetailScreenRouteArgs>();
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<ProductDetailScreenRouteArgs>(
+          orElse: () => ProductDetailScreenRouteArgs(
+              productId: pathParams.getString('id')));
       return _i4.AdaptivePage<dynamic>(
           routeData: routeData,
           child: _i2.ProductDetailScreen(
-              key: args.key,
-              product: args.product,
-              brand: args.brand,
-              id: args.id));
+              key: args.key, productId: args.productId));
     },
     LoginScreenRoute.name: (routeData) {
       return _i4.AdaptivePage<dynamic>(
@@ -97,35 +96,25 @@ class HomeScreenRouteArgs {
 /// [_i2.ProductDetailScreen]
 class ProductDetailScreenRoute
     extends _i4.PageRouteInfo<ProductDetailScreenRouteArgs> {
-  ProductDetailScreenRoute(
-      {_i5.Key? key,
-      required _i6.ProductDTO product,
-      _i6.BrandDTO? brand,
-      String? id})
+  ProductDetailScreenRoute({_i5.Key? key, required String productId})
       : super(ProductDetailScreenRoute.name,
             path: '/product/:id',
-            args: ProductDetailScreenRouteArgs(
-                key: key, product: product, brand: brand, id: id),
-            rawPathParams: {'id': id});
+            args: ProductDetailScreenRouteArgs(key: key, productId: productId),
+            rawPathParams: {'id': productId});
 
   static const String name = 'ProductDetailScreenRoute';
 }
 
 class ProductDetailScreenRouteArgs {
-  const ProductDetailScreenRouteArgs(
-      {this.key, required this.product, this.brand, this.id});
+  const ProductDetailScreenRouteArgs({this.key, required this.productId});
 
   final _i5.Key? key;
 
-  final _i6.ProductDTO product;
-
-  final _i6.BrandDTO? brand;
-
-  final String? id;
+  final String productId;
 
   @override
   String toString() {
-    return 'ProductDetailScreenRouteArgs{key: $key, product: $product, brand: $brand, id: $id}';
+    return 'ProductDetailScreenRouteArgs{key: $key, productId: $productId}';
   }
 }
 

@@ -1,10 +1,9 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:rameshclothhouse/gen/assets.gen.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
-import 'package:rameshclothhouse/presentation/components/text_button_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
-import 'package:rameshclothhouse/presentation/core/resource/app_assets.dart';
 
 class AppErrorWidget extends StatelessWidget {
   final String title;
@@ -23,11 +22,11 @@ class AppErrorWidget extends StatelessWidget {
     return SizedBox(
       width: screenWidth(context),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           verticalSpaceRegular,
-          ExtendedImage.asset(R.ASSETS_IMAGES_EMPTY_CART_PNG),
+          ExtendedImage.asset(Assets.images.emptyCart.path),
           verticalSpaceRegular,
           LatoTextView(
             label: title,
@@ -40,15 +39,6 @@ class AppErrorWidget extends StatelessWidget {
             color: CommonColors.errorMessageColor,
           ),
           verticalSpaceRegular,
-          TextButtonView(
-            label: 'View All Products',
-            fontWeight: FontWeight.bold,
-            height: 30.0,
-            radius: 4.0,
-            color: TextButtonViewColor.kcReddishPink,
-            backgroundColor: TextButtonViewColor.kcLightPink,
-            onPressed: tryAgain,
-          )
         ],
       ),
     );

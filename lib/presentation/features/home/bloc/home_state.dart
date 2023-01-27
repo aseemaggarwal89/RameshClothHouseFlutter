@@ -2,7 +2,6 @@
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:rameshclothhouse/presentation/features/home/view_models.dart';
 import '../../../../domain_layer/domain_layer.dart';
 
 @immutable
@@ -29,27 +28,13 @@ class HomePageListingState extends HomeState {
   final int? nextPageKey;
 }
 
-class HomeErrorState extends HomeState {
-  final String message;
-  HomeErrorState({required this.message});
-
-  @override
-  String toString() => 'HomeErrorState';
-
-  @override
-  List<Object> get props => [message];
-}
-
 class HomeProductResult extends HomeState {
   final int numberOfProducts;
-    final dynamic error;
+  final dynamic error;
 
-  HomeProductResult(
-    this.numberOfProducts,
-    {this.error}
-  );
+  HomeProductResult(this.numberOfProducts, {this.error});
 
-    @override
+  @override
   List<Object> get props => [numberOfProducts];
 }
 
@@ -59,6 +44,6 @@ class HomeSortByResult extends HomeState {
     this.sortBy,
   );
 
-    @override
+  @override
   List<Object> get props => [sortBy];
 }

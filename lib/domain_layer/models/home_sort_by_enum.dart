@@ -1,4 +1,5 @@
 enum SortBy {
+  CuratedForYou,
   Newest,
   PriceAsce,
   PriceDecen,
@@ -8,6 +9,8 @@ enum SortBy {
 extension SortByExtension on SortBy {
   String get title {
     switch (this) {
+      case SortBy.CuratedForYou:
+        return "Curated For You";
       case SortBy.Newest:
         return "Newest";
       case SortBy.PriceAsce:
@@ -29,6 +32,8 @@ extension SortByExtension on SortBy {
         return "-price";
       case SortBy.Ratings:
         return "-ratingsAverage";
+      case SortBy.CuratedForYou:
+        return "";
     }
   }
 }

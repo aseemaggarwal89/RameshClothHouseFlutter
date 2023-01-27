@@ -36,6 +36,9 @@ class NetworkExceptions with _$NetworkExceptions {
 
   const factory NetworkExceptions.unableToProcess() = UnableToProcess;
 
+  const factory NetworkExceptions.unableToDecodeJson(dynamic error) =
+      UnableToDecodeJson;
+
   const factory NetworkExceptions.defaultError(String error) = DefaultError;
 
   const factory NetworkExceptions.unexpectedError(dynamic error) =
@@ -126,6 +129,8 @@ class NetworkExceptions with _$NetworkExceptions {
     }, notAcceptable: () {
       errorMessage = "Not acceptable";
     }, jsonDecodedException: (json, e) {
+      errorMessage = "Failure during json decoding";
+    }, unableToDecodeJson: (error) {
       errorMessage = "Failure during json decoding";
     });
     return errorMessage;

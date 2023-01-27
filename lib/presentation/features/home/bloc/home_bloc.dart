@@ -54,7 +54,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
 
   final _onSelectedFilters = BehaviorSubject<List<FilterDTO>>();
 
-  final _onSelectedSortBy = BehaviorSubject<SortBy>.seeded(SortBy.Newest);
+  final _onSelectedSortBy =
+      BehaviorSubject<SortBy>.seeded(SortBy.CuratedForYou);
   final _onProductResultsBy = BehaviorSubject<int>.seeded(0);
 
   final _subscriptions = CompositeSubscription();
