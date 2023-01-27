@@ -9,7 +9,8 @@ class CommonColors {
   static const themePrimary = Colors.blue;
 
   static const navBarColor = Color.fromARGB(255, 204, 221, 237);
-  static final navBarShadowColor = const Color(0xFFC4C4C4).withOpacity(0.1);
+  static final navBarShadowColor =
+      Color.fromARGB(255, 76, 75, 75).withOpacity(0.1);
   static const navBarToolBarTextColor = Color.fromARGB(255, 166, 201, 234);
   static const navBarIconColor = Color.fromARGB(255, 166, 201, 234);
 

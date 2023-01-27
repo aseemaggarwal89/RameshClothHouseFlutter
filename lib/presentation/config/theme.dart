@@ -7,26 +7,6 @@ import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 
 import 'app_colors.dart';
 
-class AppConstants {
-  static const num desktopNavbarHeight = 70;
-
-  static const int splashScreenTitleFontSize = 48;
-  static const int titleFontSize = 34;
-  static const double sidePadding = 15;
-  static const double widgetSidePadding = 20;
-  static const double buttonRadius = 25;
-  static const double imageRadius = 8;
-  static const double linePadding = 4;
-  static const double widgetBorderRadius = 34;
-  static const double textFieldRadius = 4.0;
-  static const EdgeInsets bottomSheetPadding =
-      EdgeInsets.symmetric(horizontal: 16, vertical: 10);
-  static const app_bar_size = 56.0;
-  static const app_bar_expanded_size = 180.0;
-  static const tile_width = 148.0;
-  static const tile_height = 276.0;
-}
-
 class AppConsts {
   static const page_size = 20;
 }
@@ -72,7 +52,7 @@ class CustomTheme with ChangeNotifier {
 
   static ThemeData get basicThemeData {
     return ThemeData(
-      primarySwatch: CommonColors.themePrimary,
+      primarySwatch: CommonColors.bodyText1,
       backgroundColor: CommonColors.canvasColor,
       canvasColor: CommonColors.canvasColor,
       fontFamily: 'Montserrat',
@@ -134,12 +114,12 @@ class CustomTheme with ChangeNotifier {
         ),
       ),
       appBarTheme: AppBarTheme(
-        iconTheme: const IconThemeData(color: CommonColors.navBarIconColor),
+        iconTheme: const IconThemeData(color: Colors.white),
         elevation: 2.0,
         shadowColor: CommonColors.navBarShadowColor,
-        backgroundColor: CommonColors.navBarColor,
+        backgroundColor: Colors.white,
         toolbarTextStyle: const TextStyle(
-          color: CommonColors.navBarToolBarTextColor,
+          color: CommonColors.bodyText1,
           fontSize: 18,
         ),
         systemOverlayStyle: const SystemUiOverlayStyle(

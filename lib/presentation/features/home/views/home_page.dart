@@ -123,59 +123,77 @@ class HomeDesktopView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ToogleFilterView>(builder: ((context, value, child) {
-      return Column(
-        children: [
-          const HomePageHeaderView(),
-          verticalSpaceSmall,
-          Expanded(
-            child: Row(
-              children: [
-                if (value.isFilterViewOpen)
-                  Expanded(
-                    flex: 2,
-                    child: filterView,
-                  ),
-                Expanded(
-                  flex: 8,
-                  child: CustomScrollView(
-                    slivers: <Widget>[
-                      PagedSliverGrid<int, ProductDTO>(
-                        pagingController:
-                            BlocProvider.of<HomeBloc>(context).pagingController,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          childAspectRatio: 0.82,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          crossAxisCount: 4,
-                        ),
-                        builderDelegate: pageBuilder,
+      return SingleChildScrollView(
+        child: SizedBox(
+          height: screenHeight(context),
+          child: Column(
+            children: [
+              const HomePageHeaderView(),
+              verticalSpaceSmall,
+              Expanded(
+                child: Row(
+                  children: [
+                    if (value.isFilterViewOpen)
+                      Expanded(
+                        flex: 2,
+                        child: filterView,
                       ),
-                    ],
-                  ),
+                    Expanded(
+                      flex: 8,
+                      child: CustomScrollView(
+                        slivers: <Widget>[
+                          PagedSliverGrid<int, ProductDTO>(
+                            pagingController: BlocProvider.of<HomeBloc>(context)
+                                .pagingController,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              childAspectRatio: 0.82,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10,
+                              crossAxisCount: 4,
+                            ),
+                            builderDelegate: pageBuilder,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       );
     }));
+  }
+}
 
-    return Column(
-      children: [
-        const HomePageHeaderView(),
-        verticalSpaceSmall,
-        Expanded(
-          child: Row(
+class HomePageMobileView extends StatelessWidget {
+  final PagedChildBuilderDelegate<ProductDTO> pageBuilder;
+  final HomeFilterView filterView;
+
+  const HomePageMobileView({
+    Key? key,
+    required this.pageBuilder,
+    required this.filterView,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<ToogleFilterView>(builder: ((context, value, child) {
+      return SingleChildScrollView(
+        child: SizedBox(
+          height: screenHeight(context),
+          child: Column(
             children: [
-              if (Provider.of<ToogleFilterView>(context, listen: true)
-                  .isFilterViewOpen)
+              const HomePageHeaderView(),
+              if (value.isFilterViewOpen)
                 Expanded(
                   flex: 2,
                   child: filterView,
                 ),
+              verticalSpaceSmall,
               Expanded(
-                flex: 8,
                 child: CustomScrollView(
                   slivers: <Widget>[
                     PagedSliverGrid<int, ProductDTO>(
@@ -186,7 +204,7 @@ class HomeDesktopView extends StatelessWidget {
                         childAspectRatio: 0.82,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
-                        crossAxisCount: 4,
+                        crossAxisCount: 2,
                       ),
                       builderDelegate: pageBuilder,
                     ),
@@ -196,8 +214,8 @@ class HomeDesktopView extends StatelessWidget {
             ],
           ),
         ),
-      ],
-    );
+      );
+    }));
   }
 }
 
@@ -217,18 +235,8 @@ class HomePageHeaderView extends StatelessWidget {
         }
 
         return Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                spreadRadius: 2,
-                blurRadius: 3,
-                offset: const Offset(0, 1), // changes position of shadow
-              ),
-            ],
-          ),
           height: 70,
+          margin: EdgeInsets.all(10),
           child: Row(
             children: [
               GestureDetector(
@@ -238,10 +246,18 @@ class HomePageHeaderView extends StatelessWidget {
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Assets.images.filter.image(
-                      height: 30,
-                      fit: BoxFit.fill,
-                      color: CommonColors.bodyText1),
+                  child: Consumer<ToogleFilterView>(
+                    builder: (context, value, _) => value.isFilterViewOpen
+                        ? Assets.images.icCancle.image(
+                            height: 20,
+                            fit: BoxFit.fill,
+                            color: CommonColors.bodyText1,
+                          )
+                        : Assets.images.filter.image(
+                            height: 30,
+                            fit: BoxFit.fill,
+                            color: CommonColors.bodyText1),
+                  ),
                 ),
               ),
               const LatoTextView(
@@ -266,7 +282,6 @@ class HomePageHeaderView extends StatelessWidget {
                   },
                 ),
               ),
-              const Spacer(),
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: SortByDropDownView(),
@@ -293,92 +308,49 @@ class SortByDropDownView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
-                border: Border.all(
-                  color: HomeScreenColor.borderColor,
-                  width: 1.5,
-                )),
-            child: BlocBuilder<HomeBloc, HomeState>(
-              buildWhen: ((previous, current) => current is HomeSortByResult),
-              builder: (context, state) {
-                return SizedBox(
-                  child: DropdownButton(
-                    borderRadius: BorderRadius.circular(4),
-                    // Initial Value
-                    value: BlocProvider.of<HomeBloc>(context).sortBy,
-                    focusColor: Colors.transparent,
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),
-                    // Array list of items
-                    items: items.map((SortBy item) {
-                      return DropdownMenuItem(
-                        value: item,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: LatoTextView(
-                            label: item.title,
-                            fontType: AppTextType.Medium,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                    // After selecting the desired option,it will
-                    // change button value to selected value
-                    onChanged: (SortBy? newValue) {
-                      BlocProvider.of<HomeBloc>(context)
-                          .add(ApplySortByEvent(newValue!));
-                    },
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            border: Border.all(
+              color: HomeScreenColor.borderColor,
+              width: 1.5,
+            )),
+        child: BlocBuilder<HomeBloc, HomeState>(
+          buildWhen: ((previous, current) => current is HomeSortByResult),
+          builder: (context, state) {
+            return DropdownButton(
+              underline: Container(),
+              borderRadius: BorderRadius.circular(4),
+              // Initial Value
+              value: BlocProvider.of<HomeBloc>(context).sortBy,
+              focusColor: Colors.white,
+              // Down Arrow Icon
+              icon: const Icon(Icons.keyboard_arrow_down),
+              // Array list of items
+              items: items.map((SortBy item) {
+                return DropdownMenuItem(
+                  value: item,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: LatoTextView(
+                      label: item.title,
+                      fontType: AppTextType.Medium,
+                    ),
                   ),
                 );
+              }).toList(),
+              // After selecting the desired option,it will
+              // change button value to selected value
+              onChanged: (SortBy? newValue) {
+                BlocProvider.of<HomeBloc>(context)
+                    .add(ApplySortByEvent(newValue!));
               },
-            ),
-          ),
+            );
+          },
         ),
-      ],
-    );
-  }
-}
-
-class HomePageMobileView extends StatelessWidget {
-  final PagedChildBuilderDelegate<ProductDTO> pageBuilder;
-  final HomeFilterView filterView;
-
-  const HomePageMobileView({
-    Key? key,
-    required this.pageBuilder,
-    required this.filterView,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const HomePageHeaderView(),
-        verticalSpaceSmall,
-        Expanded(
-          child: CustomScrollView(
-            slivers: <Widget>[
-              PagedSliverGrid<int, ProductDTO>(
-                pagingController:
-                    BlocProvider.of<HomeBloc>(context).pagingController,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 0.82,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  crossAxisCount: 2,
-                ),
-                builderDelegate: pageBuilder,
-              ),
-            ],
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

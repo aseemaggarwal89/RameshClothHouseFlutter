@@ -8,6 +8,8 @@ import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 import 'package:rameshclothhouse/presentation/config/theme.dart';
 
+import '../config/constants.dart';
+
 class TopNavBar extends StatelessWidget {
   final List<String> menuItems;
   final String? selectedItem;
@@ -36,7 +38,18 @@ class TopNavBarContents extends StatelessWidget {
   Widget build(BuildContext context) {
     final menuItems = Provider.of<MenuItems>(context);
     return Container(
-      color: Theme.of(context).appBarTheme.backgroundColor,
+      decoration: BoxDecoration(
+        color: Theme.of(context).appBarTheme.backgroundColor,
+        boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).appBarTheme.shadowColor ??
+                CommonColors.navBarShadowColor,
+            spreadRadius: 2,
+            blurRadius: 3,
+            offset: const Offset(0, 1), // changes position of shadow
+          ),
+        ],
+      ),
       height: AppConstants.desktopNavbarHeight.toDouble(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
