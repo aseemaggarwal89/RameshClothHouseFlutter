@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rameshclothhouse/gen/assets.gen.dart';
 import 'lato_text_view.dart';
 
 class ControllerAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -24,7 +25,11 @@ class ControllerAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-      leading: leadingWidget,
+      leading: leadingWidget ??
+          IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
       title: titleIcon != null
           ? SvgPicture.asset(titleIcon!)
           : LatoTextView(

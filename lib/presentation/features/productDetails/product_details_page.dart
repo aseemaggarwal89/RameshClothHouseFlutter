@@ -26,47 +26,23 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<String> menuItems = ['Home', 'Shop', 'About', 'Contact Us'];
 
-    return Controller(
-        drawer: Responsive.isMobile(context)
-            ? AppDrawer(menuItems: menuItems, selectedItem: 'Home')
-            : null,
-        desktopNavBar: DesktopAppBar(
-            title: 'Home', child: TopNavBar(menuItems: menuItems)),
-        mobileNavBar: ControllerAppBar(title: 'Home'),
-        child: MultiProvider(
-          providers: [
-            ChangeNotifierProvider(
-              create: (context) => ProductShowCaseSectionProvider(),
-            ),
-            ChangeNotifierProvider(
-              create: (context) => ProductInfoSectionProvider(),
-            ),
-            BlocProvider<ProductDetailPageBloc>(
-              create: ((context) => ProductDetailPageBloc()),
-            ),
-          ],
-          child: ProductDetailView(
-            productId: productId,
-            key: productDetailViewKey,
-          ),
-        ));
-    // return Controller(
-    //     drawer: Responsive.isMobile(context)
-    //         ? AppDrawer(menuItems: menuItems, selectedItem: 'Home')
-    //         : null,
-    //     desktopNavBar: DesktopAppBar(
-    //         title: 'Home', child: TopNavBar(menuItems: menuItems)),
-    //     mobileNavBar: ControllerAppBar(title: 'Home'),
-    //     child: MultiBlocProvider(
-    //         providers: [
-    //           BlocProvider<ProductDetailPageBloc>(
-    //             create: ((context) => ProductDetailPageBloc()),
-    //           ),
-    //         ],
-    //         child: ProductDetailView(
-    //           productId: productId,
-    //           key: productDetailViewKey,
-    //         )));
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ProductShowCaseSectionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProductInfoSectionProvider(),
+        ),
+        BlocProvider<ProductDetailPageBloc>(
+          create: ((context) => ProductDetailPageBloc()),
+        ),
+      ],
+      child: ProductDetailView(
+        productId: productId,
+        key: productDetailViewKey,
+      ),
+    );
   }
 }
 

@@ -7,12 +7,8 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
 import 'package:rameshclothhouse/gen/assets.gen.dart';
-import 'package:rameshclothhouse/presentation/components/app_controller.dart';
 import 'package:rameshclothhouse/presentation/components/app_error_widget.dart';
-import 'package:rameshclothhouse/presentation/components/desktop_nar_bar.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
-import 'package:rameshclothhouse/presentation/components/menu_drawer.dart';
-import 'package:rameshclothhouse/presentation/components/mobile_nav_bar.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 import 'package:rameshclothhouse/presentation/config/section_keys.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
@@ -20,36 +16,25 @@ import 'package:rameshclothhouse/presentation/features/home/views/home_filter.da
 import 'package:rameshclothhouse/presentation/features/home/views/product_item_widget.dart';
 import 'package:rameshclothhouse/presentation/components/progress_indicator_widget.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
-import 'package:rameshclothhouse/presentation/components/top_nav_bar.dart';
 import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
 import '../bloc_filter/home_filter_bloc.dart';
 import '../home.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
-
-  final List<String> menuItems = ['Home', 'Shop', 'About', 'Contact Us'];
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Controller(
-        drawer: Responsive.isMobile(context)
-            ? AppDrawer(menuItems: menuItems, selectedItem: 'Home')
-            : null,
-        desktopNavBar: DesktopAppBar(
-            title: 'Home',
-            child: TopNavBar(menuItems: menuItems, selectedItem: 'Home')),
-        mobileNavBar: ControllerAppBar(title: 'Home'),
-        child: MultiBlocProvider(providers: [
-          BlocProvider<HomeBloc>(
-            create: ((context) => HomeBloc()),
-          ),
-          BlocProvider<HomeFilterBloc>(
-            create: ((context) =>
-                HomeFilterBloc(BlocProvider.of<HomeBloc>(context))),
-          ),
-        ], child: HomeScreenWrapper(key: key)));
+    return MultiBlocProvider(providers: [
+      BlocProvider<HomeBloc>(
+        create: ((context) => HomeBloc()),
+      ),
+      BlocProvider<HomeFilterBloc>(
+        create: ((context) =>
+            HomeFilterBloc(BlocProvider.of<HomeBloc>(context))),
+      ),
+    ], child: HomeScreenWrapper(key: key));
   }
 }
 
@@ -84,8 +69,8 @@ class HomeScreenWrapper extends StatelessWidget {
     // noMoreItemsIndicatorBuilder: (_) => NoMoreItemsIndicator(),
   );
   final filterView = HomeFilterView(key: filterHomeSectionKey);
-  late HomeDesktopView _homeDesktopView;
-  late HomePageMobileView _homePageMobileView;
+  late final HomeDesktopView _homeDesktopView;
+  late final HomePageMobileView _homePageMobileView;
   HomeScreenWrapper({
     Key? key,
   }) : super(key: key) {
@@ -122,14 +107,14 @@ class HomeDesktopView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ToogleFilterView>(builder: ((context, value, child) {
-      return SingleChildScrollView(
-        child: SizedBox(
-          height: screenHeight(context),
-          child: Column(
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(5),
+      child: SizedBox(
+        height: screenHeight(context),
+        child: Consumer<ToogleFilterView>(builder: ((context, value, child) {
+          return Column(
             children: [
               const HomePageHeaderView(),
-              verticalSpaceSmall,
               Expanded(
                 child: Row(
                   children: [
@@ -161,10 +146,10 @@ class HomeDesktopView extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
-      );
-    }));
+          );
+        })),
+      ),
+    );
   }
 }
 
@@ -227,6 +212,7 @@ class HomePageHeaderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
+      buildWhen: (previous, current) => current is HomeProductResult,
       builder: (context, state) {
         HomeBloc bloc = BlocProvider.of<HomeBloc>(context);
         if (bloc.pagingController.itemList?.isEmpty ??

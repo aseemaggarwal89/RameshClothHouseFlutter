@@ -6,7 +6,6 @@ import 'package:rameshclothhouse/gen/assets.gen.dart';
 import 'package:rameshclothhouse/presentation/Providers/menu_items.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
-import 'package:rameshclothhouse/presentation/config/theme.dart';
 
 import '../config/constants.dart';
 

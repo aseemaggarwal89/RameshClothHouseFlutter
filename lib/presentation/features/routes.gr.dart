@@ -26,10 +26,8 @@ class AppRouter extends _i4.RootStackRouter {
   @override
   final Map<String, _i4.PageFactory> pagesMap = {
     HomeScreenRoute.name: (routeData) {
-      final args = routeData.argsAs<HomeScreenRouteArgs>(
-          orElse: () => const HomeScreenRouteArgs());
       return _i4.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i1.HomeScreen(key: args.key));
+          routeData: routeData, child: const _i1.HomeScreen());
     },
     ProductDetailScreenRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
@@ -71,25 +69,11 @@ class AppRouter extends _i4.RootStackRouter {
 
 /// generated route for
 /// [_i1.HomeScreen]
-class HomeScreenRoute extends _i4.PageRouteInfo<HomeScreenRouteArgs> {
-  HomeScreenRoute({_i5.Key? key, List<_i4.PageRouteInfo>? children})
-      : super(HomeScreenRoute.name,
-            path: '/',
-            args: HomeScreenRouteArgs(key: key),
-            initialChildren: children);
+class HomeScreenRoute extends _i4.PageRouteInfo<void> {
+  const HomeScreenRoute({List<_i4.PageRouteInfo>? children})
+      : super(HomeScreenRoute.name, path: '/', initialChildren: children);
 
   static const String name = 'HomeScreenRoute';
-}
-
-class HomeScreenRouteArgs {
-  const HomeScreenRouteArgs({this.key});
-
-  final _i5.Key? key;
-
-  @override
-  String toString() {
-    return 'HomeScreenRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for

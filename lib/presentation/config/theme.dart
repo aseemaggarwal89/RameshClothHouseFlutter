@@ -17,42 +17,9 @@ class CustomTheme with ChangeNotifier {
   // static bool _isDarkTheme = true;
   static ThemeData get currentTheme => CustomTheme.basicThemeData;
 
-  // void toggleTheme() {
-  //   _isDarkTheme = !_isDarkTheme;
-  //   notifyListeners();
-  // }
-
-  // static ThemeData get lightTheme {
-  //   //1
-  //   return ThemeData(
-  //       //2
-  //       primaryColor: Colors.purple,
-  //       scaffoldBackgroundColor: Colors.white,
-  //       fontFamily: 'Montserrat', //3
-  //       buttonTheme: ButtonThemeData(
-  //         // 4
-  //         shape:
-  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-  //         buttonColor: Colors.purpleAccent,
-  //       ));
-  // }
-
-  // static ThemeData get darkTheme {
-  //   return ThemeData(
-  //       primaryColor: Colors.grey,
-  //       scaffoldBackgroundColor: Colors.black,
-  //       fontFamily: 'Montserrat',
-  //       textTheme: ThemeData.dark().textTheme,
-  //       buttonTheme: ButtonThemeData(
-  //         shape:
-  //             RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-  //         buttonColor: Colors.purpleAccent,
-  //       ));
-  // }
-
   static ThemeData get basicThemeData {
     return ThemeData(
-      primarySwatch: CommonColors.bodyText1,
+      primarySwatch: CommonColors.themePrimary,
       backgroundColor: CommonColors.canvasColor,
       canvasColor: CommonColors.canvasColor,
       fontFamily: 'Montserrat',
@@ -114,10 +81,10 @@ class CustomTheme with ChangeNotifier {
         ),
       ),
       appBarTheme: AppBarTheme(
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: CommonColors.navBarIconColor),
         elevation: 2.0,
         shadowColor: CommonColors.navBarShadowColor,
-        backgroundColor: Colors.white,
+        backgroundColor: CommonColors.navBarColor,
         toolbarTextStyle: const TextStyle(
           color: CommonColors.bodyText1,
           fontSize: 18,

@@ -33,7 +33,7 @@ class AppRoutes {
     ),
     AutoRoute(
       initial: false,
-      path: '/product/:id',
+      path: AppRoutes.product,
       page: ProductDetailScreen,
     ),
     //authentification routes
