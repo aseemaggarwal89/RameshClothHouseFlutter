@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:rameshclothhouse/presentation/components/desktop_nar_bar.dart';
-import 'package:rameshclothhouse/presentation/components/mobile_nav_bar.dart';
+import 'package:rameshclothhouse/presentation/components/appNavBar/desktop_nar_bar.dart';
+import 'package:rameshclothhouse/presentation/components/appNavBar/mobile_nav_bar.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
+import 'package:rameshclothhouse/presentation/components/text_button_view.dart';
+
+import '../config/app_router.dart';
 
 class Controller extends StatelessWidget {
   final Widget child;
-  final ControllerAppBar mobileNavBar;
-  final DesktopAppBar desktopNavBar;
   final Widget? drawer;
   final Color? backgroundColor;
+  final MobileNavBar mobileNavBar = const MobileNavBar();
+  final DesktopAppBar desktopNavBar = DesktopAppBar();
 
-  const Controller({
+  Controller({
     required this.child,
-    required this.mobileNavBar,
-    required this.desktopNavBar,
     this.drawer,
     this.backgroundColor,
     Key? key,
@@ -25,9 +26,7 @@ class Controller extends StatelessWidget {
     this.drawer,
     this.backgroundColor,
     Key? key,
-  })  : mobileNavBar = ControllerAppBar(title: title),
-        desktopNavBar = DesktopAppBar(title: title),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

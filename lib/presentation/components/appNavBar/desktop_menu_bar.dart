@@ -3,39 +3,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rameshclothhouse/gen/assets.gen.dart';
-import 'package:rameshclothhouse/presentation/Providers/menu_items.dart';
+import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view_model.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 
-import '../config/constants.dart';
+import '../../config/constants.dart';
 
-class TopNavBar extends StatelessWidget {
-  final List<String> menuItems;
-  final String? selectedItem;
-
-  const TopNavBar({
+class DesktopMenuBar extends StatelessWidget {
+  const DesktopMenuBar({
     Key? key,
-    required this.menuItems,
-    this.selectedItem,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final menuItems = Provider.of<MenuItems>(context);
-    // menuItems.addMenuItems(this.menuItems);
-    return ChangeNotifierProvider(
-      create: (context) => MenuItems(menuItems, selectedItem: selectedItem),
-      child: const TopNavBarContents(),
-    );
-  }
-}
-
-class TopNavBarContents extends StatelessWidget {
-  const TopNavBarContents({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final menuItems = Provider.of<MenuItems>(context);
+    final menuItems = Provider.of<AppMenuItems>(context);
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).appBarTheme.backgroundColor,
@@ -64,14 +45,16 @@ class TopNavBarContents extends StatelessWidget {
             itemCount: menuItems.itemCount,
             itemBuilder: (ctx, i) {
               final item = menuItems.menuItem(i);
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: TopNavBarMenuItem(
-                    title: item ?? '',
-                  ),
-                ),
-              );
+              return item != null
+                  ? Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: DesktopMenuBarItem(
+                          menuItemType: item,
+                        ),
+                      ),
+                    )
+                  : Container();
             },
           ),
           const Spacer(),
@@ -81,41 +64,47 @@ class TopNavBarContents extends StatelessWidget {
   }
 }
 
-class TopNavBarMenuItem extends StatelessWidget {
-  final String title;
-  const TopNavBarMenuItem({
+class DesktopMenuBarItem extends StatelessWidget {
+  final MenuItemType menuItemType;
+  const DesktopMenuBarItem({
     Key? key,
-    required this.title,
+    required this.menuItemType,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final menuItems = Provider.of<MenuItems>(context);
+    final menuItems = Provider.of<AppMenuItems>(context);
 
     return InkWell(
       onHover: (value) {
-        menuItems.updateHoveringForMenu(title, value);
+        menuItems.updateHoveringForMenu(menuItemType, value);
       },
       onTap: () {},
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          LatoTextView(
-            label: title,
-            fontSize: Theme.of(context).appBarTheme.toolbarTextStyle?.fontSize,
-            fontType: AppTextType.Medium,
-            color: menuItems.isSelectedItem(title)
-                ? CommonColors.navBarSelectedColor
-                : Theme.of(context).appBarTheme.toolbarTextStyle?.color,
-            // ? HomeScreenColor.navBarActiveTitleColor
-            // : HomeScreenColor.navBarNormalTitleColor,
+          GestureDetector(
+            onTap: (() {
+              menuItems.updateSelectedMenu(menuItemType, context);
+            }),
+            child: LatoTextView(
+              label: menuItemType.title,
+              fontSize:
+                  Theme.of(context).appBarTheme.toolbarTextStyle?.fontSize,
+              fontType: AppTextType.Medium,
+              color: menuItems.isSelectedItem(menuItemType)
+                  ? CommonColors.navBarSelectedColor
+                  : Theme.of(context).appBarTheme.toolbarTextStyle?.color,
+              // ? HomeScreenColor.navBarActiveTitleColor
+              // : HomeScreenColor.navBarNormalTitleColor,
+            ),
           ),
           const SizedBox(height: 5),
           Visibility(
             maintainAnimation: true,
             maintainState: true,
             maintainSize: true,
-            visible: menuItems.isHovering(title),
+            visible: menuItems.isHovering(menuItemType),
             child: Container(
               height: 2,
               width: 30,

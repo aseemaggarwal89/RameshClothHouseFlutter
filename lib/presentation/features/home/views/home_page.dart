@@ -10,6 +10,7 @@ import 'package:rameshclothhouse/gen/assets.gen.dart';
 import 'package:rameshclothhouse/presentation/components/app_error_widget.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
+import 'package:rameshclothhouse/presentation/config/app_router.dart';
 import 'package:rameshclothhouse/presentation/config/section_keys.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/features/home/views/home_filter.dart';
@@ -49,9 +50,7 @@ class HomeScreenWrapper extends StatelessWidget {
               .filter(item.brandId!, FilterType.brand)
           : null,
       onItemClicked: (id) {
-        AutoRouter.of(context).push(ProductDetailScreenRoute(
-          productId: item.uniqueId,
-        ));
+        AppNavigator.navigateToProductDetail(context, item.uniqueId);
       },
     ),
     firstPageProgressIndicatorBuilder: (context) =>

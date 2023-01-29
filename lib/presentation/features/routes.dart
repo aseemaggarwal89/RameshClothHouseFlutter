@@ -1,24 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:rameshclothhouse/presentation/config/app_router.dart';
+import 'package:rameshclothhouse/presentation/features/contactUs/contact_screen.dart';
 import 'package:rameshclothhouse/presentation/features/login/login_screen.dart';
 import 'package:rameshclothhouse/presentation/features/productDetails/product_details_page.dart';
-import 'package:rameshclothhouse/presentation/features/userScreen/user_screen.dart';
-
+import 'package:rameshclothhouse/presentation/features/shop/shop_screen.dart';
 import 'home/home.dart';
-
-class AppRoutes {
-  static const home = '/';
-  static const login = '/login';
-  static const shop = 'shop';
-  static const cart = 'cart';
-  static const favourites = 'favourites';
-  static const productList = 'productList';
-  static const product = '/product/:id';
-  static const profile = 'profile';
-  static const checkout = 'checkout';
-  static const signup = 'signup';
-  static const forgotPassword = 'forgot_pass';
-  static const filters = 'filters';
-}
 
 @AdaptiveAutoRouter(
   replaceInRouteName: 'Page,Route,Screen',
@@ -33,7 +19,7 @@ class AppRoutes {
     ),
     AutoRoute(
       initial: false,
-      path: AppRoutes.product,
+      path: AppRoutes.productDetail,
       page: ProductDetailScreen,
     ),
     //authentification routes
@@ -45,7 +31,22 @@ class AppRoutes {
         RedirectRoute(path: '*', redirectTo: ''),
       ],
     ),
-
+    AutoRoute(
+      initial: false,
+      path: AppRoutes.shop,
+      page: ShopScreen,
+      children: [
+        RedirectRoute(path: '*', redirectTo: ''),
+      ],
+    ),
+    AutoRoute(
+      initial: false,
+      path: AppRoutes.contactUs,
+      page: ContactScreen,
+      children: [
+        RedirectRoute(path: '*', redirectTo: ''),
+      ],
+    ),
     // user routes with a nested router
     // AutoRoute(
     //   path: '/user',

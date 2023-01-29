@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rameshclothhouse/gen/assets.gen.dart';
-import 'lato_text_view.dart';
+import 'package:provider/provider.dart';
+import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view_model.dart';
+import '../lato_text_view.dart';
 
-class ControllerAppBar extends StatelessWidget with PreferredSizeWidget {
-  final String title;
+class MobileNavBar extends StatelessWidget with PreferredSizeWidget {
   final Widget? leading;
   final List<Widget>? actions;
   final Color? backgroundColor;
   final Widget? leadingWidget;
   final String? titleIcon;
 
-  ControllerAppBar({
+  const MobileNavBar({
     Key? key,
-    required this.title,
     this.leading,
     this.actions,
     this.backgroundColor = Colors.blueGrey,
@@ -33,7 +32,9 @@ class ControllerAppBar extends StatelessWidget with PreferredSizeWidget {
       title: titleIcon != null
           ? SvgPicture.asset(titleIcon!)
           : LatoTextView(
-              label: title,
+              label:
+                  Provider.of<AppMenuItems>(context).selectedMenuItem?.title ??
+                      "",
               fontSize:
                   Theme.of(context).appBarTheme.toolbarTextStyle?.fontSize,
               fontType: AppTextType.TitleMedium,
