@@ -2,17 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rameshclothhouse/main.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view_model.dart';
 import 'package:rameshclothhouse/presentation/components/app_controller.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/menu_drawer.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
-import 'package:rameshclothhouse/presentation/components/text_button_view.dart';
-import 'package:rameshclothhouse/presentation/config/app_router.dart';
 import 'package:rameshclothhouse/presentation/config/theme.dart';
 import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
 class App extends StatelessWidget {
-  final _appRouter = AppRouter();
+  final _appRouter = getIt<AppRouter>();
 
   App({Key? key}) : super(key: key);
 

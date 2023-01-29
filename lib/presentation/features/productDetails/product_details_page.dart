@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view_model.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/section_keys.dart';
 import 'package:rameshclothhouse/presentation/features/productDetails/bloc/product_detail_page_bloc.dart';
@@ -18,8 +19,6 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> menuItems = ['Home', 'Shop', 'About', 'Contact Us'];
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(

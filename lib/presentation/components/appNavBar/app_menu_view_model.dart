@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:rameshclothhouse/presentation/config/app_router.dart';
-import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
 class AppMenuItems extends ChangeNotifier {
   Map<MenuItemType, bool> _itemHoveringState = {};
@@ -34,7 +33,12 @@ class AppMenuItems extends ChangeNotifier {
 
   void updateSelectedMenu(MenuItemType menuItemType, BuildContext context) {
     _selectedItem = menuItemType;
-    AppNavigator.navigateOnSelectedMenu(menuItemType, context);
+    AppNavigator.navigateOnSelectedMenu(menuItemType);
+    notifyListeners();
+  }
+
+  void unSelectedMenu() {
+    _selectedItem = null;
     notifyListeners();
   }
 

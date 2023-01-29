@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'presentation/core/language/app_language.dart';
 import 'presentation/features/app/app.dart';
+import 'presentation/features/routes.gr.dart';
 
 class SimpleBlocDelegate extends BlocObserver {
   @override
@@ -36,7 +37,12 @@ void main() {
 
 final getIt = GetIt.instance;
 
+void dependencies() {
+  getIt.registerSingleton<AppRouter>(AppRouter());
+}
+
 void commonMain(Environment env) async {
+  dependencies();
   await EasyLocalization.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
   await DomainLayer.initializeDependencies(env, getIt);

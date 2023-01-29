@@ -1,47 +1,51 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:rameshclothhouse/main.dart';
 import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
 import '../components/appNavBar/app_menu_view_model.dart';
 
 class AppNavigator {
-  static void navigateOnSelectedMenu(
-      MenuItemType menuItemType, BuildContext context) {
+  static final appRouter = getIt<AppRouter>();
+  static void navigateOnSelectedMenu(MenuItemType menuItemType) {
     switch (menuItemType) {
       case MenuItemType.home:
-        AppNavigator.navigateToHome(context);
+        AppNavigator.navigateToHome();
         break;
       case MenuItemType.shop:
-        navigateToShop(context);
+        navigateToShop();
         break;
       case MenuItemType.about:
         // TODO: Handle this case.
         break;
       case MenuItemType.contactUs:
-        navigateToContactUs(context);
+        navigateToContactUs();
         break;
     }
   }
 
   static void navigateToProductDetail(
-    BuildContext context,
     String producId,
   ) {
-    AutoRouter.of(context).push(ProductDetailScreenRoute(
+    appRouter.navigate(ProductDetailScreenRoute(
       productId: producId,
     ));
+    // appRouter.push(ProductDetailScreenRoute(
+    //   productId: producId,
+    // ));
   }
 
-  static void navigateToHome(BuildContext context) {
-    AutoRouter.of(context).push(const HomeScreenRoute());
+  static void navigateToHome() {
+    getIt<AppRouter>().navigate(const HomeScreenRoute());
   }
 
-  static void navigateToShop(BuildContext context) {
-    AutoRouter.of(context).push(const ShopScreenRoute());
+  static void navigateToShop() {
+    getIt<AppRouter>().navigate(const ShopScreenRoute());
   }
 
-  static void navigateToContactUs(BuildContext context) {
-    AutoRouter.of(context).push(const ContactScreenRoute());
+  static void navigateToContactUs() {
+    getIt<AppRouter>().navigate(const ContactScreenRoute());
   }
 }
 

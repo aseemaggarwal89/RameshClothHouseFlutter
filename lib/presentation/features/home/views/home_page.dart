@@ -50,7 +50,7 @@ class HomeScreenWrapper extends StatelessWidget {
               .filter(item.brandId!, FilterType.brand)
           : null,
       onItemClicked: (id) {
-        AppNavigator.navigateToProductDetail(context, item.uniqueId);
+        AppNavigator.navigateToProductDetail(item.uniqueId);
       },
     ),
     firstPageProgressIndicatorBuilder: (context) =>
