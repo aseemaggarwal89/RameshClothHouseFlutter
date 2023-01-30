@@ -31,9 +31,6 @@ class AppNavigator {
     appRouter.navigate(ProductDetailScreenRoute(
       productId: producId,
     ));
-    // appRouter.push(ProductDetailScreenRoute(
-    //   productId: producId,
-    // ));
   }
 
   static void navigateToHome() {

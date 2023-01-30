@@ -65,6 +65,7 @@ class _HomeFilterViewState extends State<HomeFilterView> {
                   width: double.infinity,
                 ),
                 FilterSectionView(
+                    key: ValueKey(FilterType.brand.filterName),
                     title: FilterType.brand.filterName,
                     filters: bloc.activeFilters(FilterType.brand)),
                 verticalSpaceRegular,
@@ -72,6 +73,7 @@ class _HomeFilterViewState extends State<HomeFilterView> {
                   width: double.infinity,
                 ),
                 FilterSectionView(
+                    key: ValueKey(FilterType.category.filterName),
                     title: FilterType.category.filterName,
                     filters: bloc.activeFilters(FilterType.category)),
               ],
@@ -122,6 +124,7 @@ class FilterSectionView extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               final filter = filters[index];
               return FilterCheckBox(
+                key: ValueKey(filter.uniqueId),
                 filter: filter,
               );
             })

@@ -1,6 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -17,7 +16,6 @@ import 'package:rameshclothhouse/presentation/features/home/views/home_filter.da
 import 'package:rameshclothhouse/presentation/features/home/views/product_item_widget.dart';
 import 'package:rameshclothhouse/presentation/components/progress_indicator_widget.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
-import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
 import '../bloc_filter/home_filter_bloc.dart';
 import '../home.dart';
@@ -35,7 +33,7 @@ class HomeScreen extends StatelessWidget {
         create: ((context) =>
             HomeFilterBloc(BlocProvider.of<HomeBloc>(context))),
       ),
-    ], child: HomeScreenWrapper(key: key));
+    ], child: HomeScreenWrapper(key: kHomeScreenWrapperKey));
   }
 }
 
@@ -43,6 +41,7 @@ class HomeScreenWrapper extends StatelessWidget {
   final PagedChildBuilderDelegate<ProductDTO> pageBuilder =
       PagedChildBuilderDelegate<ProductDTO>(
     itemBuilder: (context, item, index) => ProductItemView(
+      key: ValueKey(item.uniqueId),
       elevation: 0,
       product: item,
       brand: item.brandId != null
@@ -67,24 +66,33 @@ class HomeScreenWrapper extends StatelessWidget {
     // noItemsFoundIndicatorBuilder: (_) => NoItemsFoundIndicator(),
     // noMoreItemsIndicatorBuilder: (_) => NoMoreItemsIndicator(),
   );
-  final filterView = HomeFilterView(key: filterHomeSectionKey);
+  final filterView = const HomeFilterView(key: kFilterHomeSectionKey);
+  final homePageHeaderView = const HomePageHeaderView(
+    key: kHomePageHeaderViewKey,
+  );
   late final HomeDesktopView _homeDesktopView;
   late final HomePageMobileView _homePageMobileView;
   HomeScreenWrapper({
     Key? key,
   }) : super(key: key) {
-    _homeDesktopView =
-        HomeDesktopView(filterView: filterView, pageBuilder: pageBuilder);
+    _homeDesktopView = HomeDesktopView(
+      key: kHomeDesktopViewKey,
+      filterView: filterView,
+      pageBuilder: pageBuilder,
+      homePageHeaderView: homePageHeaderView,
+    );
     _homePageMobileView = HomePageMobileView(
+      key: kHomePageMobileViewKey,
       pageBuilder: pageBuilder,
       filterView: filterView,
+      homePageHeaderView: homePageHeaderView,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ToogleFilterView>(
-      create: (context) => ToogleFilterView(),
+    return ChangeNotifierProvider<OpenFilterViewProvider>(
+      create: (context) => OpenFilterViewProvider(),
       child: Responsive(
         key: key,
         mobile: _homePageMobileView,
@@ -97,11 +105,13 @@ class HomeScreenWrapper extends StatelessWidget {
 class HomeDesktopView extends StatelessWidget {
   final PagedChildBuilderDelegate<ProductDTO> pageBuilder;
   final HomeFilterView filterView;
+  final HomePageHeaderView homePageHeaderView;
 
   const HomeDesktopView({
     Key? key,
     required this.filterView,
     required this.pageBuilder,
+    required this.homePageHeaderView,
   }) : super(key: key);
 
   @override
@@ -110,10 +120,11 @@ class HomeDesktopView extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       child: SizedBox(
         height: screenHeight(context),
-        child: Consumer<ToogleFilterView>(builder: ((context, value, child) {
+        child:
+            Consumer<OpenFilterViewProvider>(builder: ((context, value, child) {
           return Column(
             children: [
-              const HomePageHeaderView(),
+              homePageHeaderView,
               Expanded(
                 child: Row(
                   children: [
@@ -155,22 +166,23 @@ class HomeDesktopView extends StatelessWidget {
 class HomePageMobileView extends StatelessWidget {
   final PagedChildBuilderDelegate<ProductDTO> pageBuilder;
   final HomeFilterView filterView;
-
+  final HomePageHeaderView homePageHeaderView;
   const HomePageMobileView({
     Key? key,
     required this.pageBuilder,
     required this.filterView,
+    required this.homePageHeaderView,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ToogleFilterView>(builder: ((context, value, child) {
+    return Consumer<OpenFilterViewProvider>(builder: ((context, value, child) {
       return SingleChildScrollView(
         child: SizedBox(
           height: screenHeight(context),
           child: Column(
             children: [
-              const HomePageHeaderView(),
+              homePageHeaderView,
               if (value.isFilterViewOpen)
                 Expanded(
                   flex: 2,
@@ -221,17 +233,17 @@ class HomePageHeaderView extends StatelessWidget {
 
         return Container(
           height: 70,
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           child: Row(
             children: [
               GestureDetector(
                 onTap: () {
-                  Provider.of<ToogleFilterView>(context, listen: false)
+                  Provider.of<OpenFilterViewProvider>(context, listen: false)
                       .tooglefilterViewState();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Consumer<ToogleFilterView>(
+                  child: Consumer<OpenFilterViewProvider>(
                     builder: (context, value, _) => value.isFilterViewOpen
                         ? Assets.images.icCancle.image(
                             height: 20,
@@ -316,6 +328,7 @@ class SortByDropDownView extends StatelessWidget {
               // Array list of items
               items: items.map((SortBy item) {
                 return DropdownMenuItem(
+                  key: ObjectKey(item),
                   value: item,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -340,7 +353,7 @@ class SortByDropDownView extends StatelessWidget {
   }
 }
 
-class ToogleFilterView extends ChangeNotifier {
+class OpenFilterViewProvider extends ChangeNotifier {
   var _isFilterViewOpen = false;
   bool get isFilterViewOpen {
     return _isFilterViewOpen;
