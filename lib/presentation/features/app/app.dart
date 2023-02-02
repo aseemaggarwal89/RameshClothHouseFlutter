@@ -8,6 +8,7 @@ import 'package:rameshclothhouse/presentation/components/app_controller.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/menu_drawer.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
 import 'package:rameshclothhouse/presentation/config/theme.dart';
+import 'package:rameshclothhouse/presentation/features/productDetails/views/product_showcase_section.dart';
 import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
 class App extends StatelessWidget {
@@ -34,24 +35,23 @@ class App extends StatelessWidget {
   }
 }
 
-class AppView extends StatefulWidget {
+class AppView extends StatelessWidget {
   final Widget child;
 
-  AppView({super.key, required this.child});
+  const AppView({super.key, required this.child});
 
-  @override
-  _AppViewState createState() => _AppViewState();
-}
-
-class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => AppMenuItems(selectedItem: MenuItemType.home),
-      child: Controller(
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<AppMenuItems>(
+            create: (context) => AppMenuItems(selectedItem: MenuItemType.home),
+          ),
+        ],
+        child: Controller(
           drawer: Responsive.isMobile(context) ? const AppDrawer() : null,
-          child: widget.child),
-    );
+          child: child,
+        ));
   }
 }
 

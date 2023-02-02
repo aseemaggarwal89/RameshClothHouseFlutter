@@ -45,3 +45,5 @@ Widget divider(
 String formatAmountWithSymbol(dynamic amount) {
   return '\u0930 $amount';
 }
+
+Widget buildLoading() => const Center(child: CircularProgressIndicator());

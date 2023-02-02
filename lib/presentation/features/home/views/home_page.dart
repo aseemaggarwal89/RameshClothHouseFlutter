@@ -14,7 +14,6 @@ import 'package:rameshclothhouse/presentation/config/section_keys.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/features/home/views/home_filter.dart';
 import 'package:rameshclothhouse/presentation/features/home/views/product_item_widget.dart';
-import 'package:rameshclothhouse/presentation/components/progress_indicator_widget.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
 
 import '../bloc_filter/home_filter_bloc.dart';
@@ -30,8 +29,8 @@ class HomeScreen extends StatelessWidget {
         create: ((context) => HomeBloc()),
       ),
       BlocProvider<HomeFilterBloc>(
-        create: ((context) =>
-            HomeFilterBloc(BlocProvider.of<HomeBloc>(context))),
+        create: ((context) => HomeFilterBloc(BlocProvider.of<HomeBloc>(context))
+          ..add(GetFiltersEvent())),
       ),
     ], child: HomeScreenWrapper(key: kHomeScreenWrapperKey));
   }
@@ -52,8 +51,7 @@ class HomeScreenWrapper extends StatelessWidget {
         AppNavigator.navigateToProductDetail(item.uniqueId);
       },
     ),
-    firstPageProgressIndicatorBuilder: (context) =>
-        const ProgressIndicatorWidget(),
+    firstPageProgressIndicatorBuilder: (context) => buildLoading(),
     firstPageErrorIndicatorBuilder: (context) => AppErrorWidget(
       title: 'No Item Found',
       subTitle: '',
@@ -61,8 +59,7 @@ class HomeScreenWrapper extends StatelessWidget {
           .pagingController
           .retryLastFailedRequest(),
     ),
-    newPageProgressIndicatorBuilder: (_) =>
-        const Center(child: CircularProgressIndicator()),
+    newPageProgressIndicatorBuilder: (_) => buildLoading(),
     // noItemsFoundIndicatorBuilder: (_) => NoItemsFoundIndicator(),
     // noMoreItemsIndicatorBuilder: (_) => NoMoreItemsIndicator(),
   );

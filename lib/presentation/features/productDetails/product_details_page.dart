@@ -2,9 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view_model.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
-import 'package:rameshclothhouse/presentation/config/section_keys.dart';
+import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/features/productDetails/bloc/product_detail_page_bloc.dart';
 import 'package:rameshclothhouse/presentation/features/productDetails/views/product_info_section.dart';
 import 'package:rameshclothhouse/presentation/features/productDetails/views/product_showcase_section.dart';
@@ -25,7 +24,7 @@ class ProductDetailScreen extends StatelessWidget {
           create: (context) => ProductShowCaseSectionProvider(),
         ),
         ChangeNotifierProvider(
-          create: (context) => ProductInfoSectionProvider(),
+          create: (context) => ProductColorThumbnailWidgetProvider(),
         ),
         BlocProvider<ProductDetailPageBloc>(
           create: ((context) => ProductDetailPageBloc()),
@@ -33,7 +32,7 @@ class ProductDetailScreen extends StatelessWidget {
       ],
       child: ProductDetailView(
         productId: productId,
-        key: productDetailViewKey,
+        key: ValueKey(productId),
       ),
     );
   }
@@ -48,31 +47,21 @@ class ProductDetailView extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ProductDetailViewState createState() => _ProductDetailViewState();
+  State<ProductDetailView> createState() => _ProductDetailViewState();
 }
 
 class _ProductDetailViewState extends State<ProductDetailView> {
-  late ProductDetailPageBloc _bloc;
-
   @override
   void initState() {
-    _bloc = BlocProvider.of<ProductDetailPageBloc>(context);
-    _bloc.add(ProductDetailPageEvent.getProductDetail(
+    BlocProvider.of<ProductDetailPageBloc>(context)
+        .add(ProductDetailPageEvent.getProductDetail(
       widget.productId,
     ));
     super.initState();
   }
 
   @override
-  void dispose() {
-    _bloc.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<ProductDetailPageBloc>(context);
-
     return BlocBuilder<ProductDetailPageBloc, ProductDetailPageState>(
         buildWhen: (previous, current) {
       return (current is Initial) ||
@@ -81,8 +70,8 @@ class _ProductDetailViewState extends State<ProductDetailView> {
           (current is LoadedError);
     }, builder: (BuildContext context, ProductDetailPageState state) {
       return state.map(
-        initial: (value) => _buildLoading(),
-        loading: (value) => _buildLoading(),
+        initial: (value) => buildLoading(),
+        loading: (value) => buildLoading(),
         loaded: (value) => _buidloaded(value),
         error: (value) =>
             LatoTextView(label: (state as LoadedError).errorMessage),
@@ -90,22 +79,22 @@ class _ProductDetailViewState extends State<ProductDetailView> {
     });
   }
 
-  Widget _buildLoading() => const Center(child: CircularProgressIndicator());
-
   Widget _buidloaded(Loaded state) => SingleChildScrollView(
         primary: true,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Showcase Product Images
             Expanded(
               flex: 4,
               child: ProductShowCaseSection(
-                  key: showCaseSectionKey, product: state.product),
+                  key: ObjectKey(state.product), product: state.product),
             ),
+            horizontalSpaceLarge,
             Expanded(
-              flex: 6,
+              flex: 5,
               child: ProductInfoSection(
-                key: infoSectionKey,
+                key: ObjectKey(state.product),
                 product: state.product,
               ),
             )

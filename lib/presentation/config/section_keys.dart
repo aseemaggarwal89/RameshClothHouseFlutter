@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kHomeScreenWrapperKey = ValueKey("HomeScreenWrapperKey")
+const kHomeScreenWrapperKey = ValueKey("HomeScreenWrapperKey");
 const kFilterHomeSectionKey = ValueKey('HomeFilterSectionKey');
 const kHomeDesktopViewKey = ValueKey('HomeDesktopViewKey');
 const kHomePageMobileViewKey = ValueKey('HomePageMobileViewKey');

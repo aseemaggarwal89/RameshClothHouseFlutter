@@ -64,6 +64,8 @@ class ProductInfoCaseColor {
   static const kcLiteText = Color(0xFF9898B1);
   static const kcLightGold = Color.fromRGBO(255, 225, 88, 1.0);
   static const kcPale = Color(0xFFfcf5eb);
+  static const kTitleColor = Color.fromARGB(255, 159, 156, 156);
+  static const kBoxBorderColor = Colors.black26;
 }
 
 class ProductPolicyBannerColor {

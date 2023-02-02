@@ -6,27 +6,8 @@ import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import '../../../../domain_layer/domain_layer.dart';
 import '../bloc_filter/filter.dart';
 
-class HomeFilterView extends StatefulWidget {
+class HomeFilterView extends StatelessWidget {
   const HomeFilterView({Key? key}) : super(key: key);
-
-  @override
-  _HomeFilterViewState createState() => _HomeFilterViewState();
-}
-
-class _HomeFilterViewState extends State<HomeFilterView> {
-  @override
-  void initState() {
-    _bloc = BlocProvider.of<HomeFilterBloc>(context);
-    _bloc.add(GetFiltersEvent());
-    super.initState();
-  }
-
-  late HomeFilterBloc _bloc;
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +22,9 @@ class _HomeFilterViewState extends State<HomeFilterView> {
     }, builder: (BuildContext context, HomeFilterState state) {
       switch (state.runtimeType) {
         case HomeFilterInitialState:
-          return _buildLoading();
+          return buildLoading();
         case HomeFilterLoadingState:
-          return _buildLoading();
+          return buildLoading();
         case HomeFilterLoadedState:
           return SingleChildScrollView(
             child: Column(
@@ -86,8 +67,6 @@ class _HomeFilterViewState extends State<HomeFilterView> {
       }
     });
   }
-
-  Widget _buildLoading() => const Center(child: CircularProgressIndicator());
 }
 
 class FilterSectionView extends StatelessWidget {
