@@ -31,7 +31,7 @@ class ProductShowcaseThumbnailWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
               border: Border.all(
                 color: isSelected
-                    ? ProductShowcaseColor.kcCarnation
+                    ? Theme.of(context).primaryColorDark
                     : const Color.fromRGBO(196, 196, 196, 1.0),
               ),
             ),

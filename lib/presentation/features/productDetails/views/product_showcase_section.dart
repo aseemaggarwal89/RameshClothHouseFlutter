@@ -270,7 +270,7 @@ class ImageDialog extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   icon: const Icon(Icons.close_rounded),
-                  color: Colors.redAccent,
+                  color: Theme.of(context).primaryColorLight,
                 ),
               ],
             ),
@@ -286,5 +286,85 @@ class ImageDialog extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class ProductShowCaseMobileSection extends StatelessWidget {
+  final ProductDetailDTO product;
+  const ProductShowCaseMobileSection({Key? key, required this.product})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final viewModel = Provider.of<ProductBatchShowCaseProvider>(context);
+    viewModel.update(product);
+    if (viewModel.selectedBatch == null &&
+        (product.batches?.isNotEmpty ?? false)) {
+      viewModel.updateSelectedBatch(product.batches!.first);
+    }
+
+    return viewModel.productImageUrls.isNotEmpty
+        ? Column(
+            children: [
+              CarouselSlider.builder(
+                carouselController: viewModel.carouselController,
+                options: CarouselOptions(
+                  height: 300,
+                  viewportFraction: 1.0,
+                  autoPlay: false,
+                  initialPage: viewModel.index,
+                  autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+                  onPageChanged: (index, reason) =>
+                      viewModel.onChangeIndex(index),
+                ),
+                itemCount: viewModel.productImageUrls.length,
+                itemBuilder: (_, index, realIndex) {
+                  var media = viewModel.productImageUrls[index];
+                  return GestureDetector(
+                    onTap: () async {
+                      await showDialog(
+                          context: context,
+                          builder: (_) => ImageDialog(
+                                imageUrl: media,
+                              ));
+                    },
+                    child: CarouselItemWidget(
+                      key: ValueKey(media),
+                      url: media,
+                      isVideo: false,
+                    ),
+                  );
+                },
+              ),
+              Container(
+                height: 100,
+                color: Colors.white,
+                alignment: Alignment.centerLeft,
+                padding:
+                    const EdgeInsets.only(top: 16.0, bottom: 16.0, left: 16.0),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    final media = viewModel.productImageUrls[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: ProductShowcaseThumbnailWidget(
+                        key: ValueKey(media),
+                        thumbnailUrl: media,
+                        type: MediaType.IMAGE,
+                        isSelected: viewModel.index == index,
+                        onTap: () {
+                          viewModel.tappedOnIndex(index);
+                        },
+                      ),
+                    );
+                  },
+                  itemCount: viewModel.productImageUrls.length,
+                ),
+              ),
+            ],
+          )
+        : Container();
   }
 }
