@@ -2,6 +2,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
+import 'package:rameshclothhouse/presentation/components/product_attribute_drop_down.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/features/productDetails/views/product_showcase_section.dart';
@@ -147,61 +148,38 @@ class ProductInfoSection extends StatelessWidget {
                     SizesBatchWidget(product: product),
                   ],
                 ),
+              Column(
+                children: [
+                  verticalSpaceMedium,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const LatoTextView(
+                        label: 'Quantity',
+                        fontType: AppTextType.DisplayLarge,
+                        color: ProductInfoCaseColor.kTitleColor,
+                      ),
+                      horizontalSpaceRegular,
+                      ProductAttributeDropDown(
+                        value: viewModel.productSelectedQuantity,
+                        isExpanded: false,
+                        isDense: true,
+                        attributes: [
+                          for (var i = 1;
+                              i <= viewModel.maximumQuantityAllowed;
+                              i++)
+                            i
+                        ],
+                        onChanged: (value) {
+                          viewModel.onProductQuantityChange(value!);
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              )
             ],
           ),
-        Container(
-          color: Colors.white,
-          // padding: const EdgeInsets.all(16.0),
-          // width: screenWidth(context),
-          child: Column(
-            children: [
-              verticalSpaceRegular,
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   crossAxisAlignment: CrossAxisAlignment.center,
-              //   children: [
-              //     Expanded(
-              //       flex: 1,
-              //       child: StreamBuilder<ProductAttributes>(
-              //         stream: viewModel.productQuantity,
-              //         initialData: viewModel.defaultQuantityAttributes(),
-              //         builder: (context, snapshot) {
-              //           return ProductAttributeDropDown(
-              //             value: snapshot.data,
-              //             isExpanded: false,
-              //             isDense: true,
-              //             attributes: viewModel.getQuantityAttributes(),
-              //             label: 'QTY',
-              //             onChanged: (value) {
-              //               viewModel.onProductQuantityChange(value!);
-              //             },
-              //           );
-              //         },
-              //       ),
-              //     ),
-              //     horizontalSpaceRegular,
-              //     Expanded(
-              //       flex: 1,
-              //       child: StreamBuilder<ProductAttributes>(
-              //         stream: viewModel.productSize,
-              //         initialData: viewModel.defaultSizeAttributes(),
-              //         builder: (context, snapshot) {
-              //           return ProductAttributeDropDown(
-              //             value: snapshot.data,
-              //             attributes: viewModel.sizeAttributes,
-              //             label: 'SIZE',
-              //             isExpanded: false,
-              //             isDense: true,
-              //             onChanged: viewModel.onProductSizeChange,
-              //           );
-              //         },
-              //       ),
-              //     ),
-              //   ],
-              // )
-            ],
-          ),
-        ),
       ],
     );
   }

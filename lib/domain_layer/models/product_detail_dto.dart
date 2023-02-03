@@ -55,6 +55,7 @@ class ProductDetailDTO {
     this.reviews,
     required this.quantityType,
     this.batches,
+    required this.maxQuantityAllowed,
   });
 
   @JsonKey(name: "_id")
@@ -80,7 +81,7 @@ class ProductDetailDTO {
   List<ProductReviewDTO>? reviews;
   Attributes? sizAttributesId;
   List<String>? sizeNotAllowed;
-  // final num quantity;
+  final num maxQuantityAllowed;
 
   @JsonKey(name: "batch")
   List<ProductBatch>? batches;
@@ -157,14 +158,14 @@ class ProductBatch extends Equatable {
     this.quantityUnitType,
     this.images,
     this.isAvailable,
-    this.quantity,
+    this.maxQuantityAllowed,
     this.uniqueId,
     this.sizesNotAvailable,
   );
 
   @JsonKey(name: "_id")
   final String uniqueId;
-  final int quantity;
+  final int maxQuantityAllowed;
   final bool isAvailable;
   final List<String>? images;
   final String quantityUnitType;

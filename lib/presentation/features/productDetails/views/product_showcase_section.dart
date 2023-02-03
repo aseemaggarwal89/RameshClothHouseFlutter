@@ -107,6 +107,7 @@ class ProductBatchShowCaseProvider with ChangeNotifier {
   ProductDetailDTO product;
   ProductBatch? selectedBatch;
   SizeInfo? selectedSizeInfo;
+  int selectedQuantity = 1;
 
   final _controller = CarouselController();
 
@@ -226,6 +227,24 @@ class ProductBatchShowCaseProvider with ChangeNotifier {
     }
 
     return product.isStockAvailable;
+  }
+
+  void onProductQuantityChange(int quantity) {
+    selectedQuantity = quantity;
+    notifyListeners();
+  }
+
+  int get productSelectedQuantity {
+    return selectedQuantity;
+  }
+
+  int get maximumQuantityAllowed {
+    if (selectedBatch != null &&
+        selectedBatch!.maxQuantityAllowed <= product.maxQuantityAllowed) {
+      return selectedBatch!.maxQuantityAllowed;
+    }
+
+    return product.maxQuantityAllowed.toInt();
   }
 }
 

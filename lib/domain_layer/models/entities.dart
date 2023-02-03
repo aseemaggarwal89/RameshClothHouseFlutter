@@ -15,4 +15,3 @@ export './product_detail_dto.dart';
 export './product_dto.dart';
 export './user_dto.dart';
 export './base_response.dart';
-export './product_attributes_dto.dart';

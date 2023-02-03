@@ -54,6 +54,7 @@ ProductDetailDTO _$ProductDetailDTOFromJson(Map<String, dynamic> json) =>
       batches: (json['batch'] as List<dynamic>?)
           ?.map((e) => ProductBatch.fromJson(e as Map<String, dynamic>))
           .toList(),
+      maxQuantityAllowed: json['maxQuantityAllowed'] as num,
     )
       ..sizAttributesId = json['sizAttributesId'] == null
           ? null
@@ -86,6 +87,7 @@ Map<String, dynamic> _$ProductDetailDTOToJson(ProductDetailDTO instance) =>
       'reviews': instance.reviews,
       'sizAttributesId': instance.sizAttributesId,
       'sizeNotAllowed': instance.sizeNotAllowed,
+      'maxQuantityAllowed': instance.maxQuantityAllowed,
       'batch': instance.batches,
     };
 
@@ -117,7 +119,7 @@ ProductBatch _$ProductBatchFromJson(Map<String, dynamic> json) => ProductBatch(
       json['quantityUnitType'] as String,
       (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['isAvailable'] as bool,
-      json['quantity'] as int,
+      json['maxQuantityAllowed'] as int,
       json['_id'] as String,
       (json['sizesNotAvailable'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -127,7 +129,7 @@ ProductBatch _$ProductBatchFromJson(Map<String, dynamic> json) => ProductBatch(
 Map<String, dynamic> _$ProductBatchToJson(ProductBatch instance) =>
     <String, dynamic>{
       '_id': instance.uniqueId,
-      'quantity': instance.quantity,
+      'maxQuantityAllowed': instance.maxQuantityAllowed,
       'isAvailable': instance.isAvailable,
       'images': instance.images,
       'quantityUnitType': instance.quantityUnitType,
