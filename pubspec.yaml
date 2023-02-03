@@ -62,12 +62,16 @@ dev_dependencies:
   json_serializable: ^6.3.2
   freezed: any
   flutter_gen_runner:
-
+  photo_view: ^0.14.0
+  flutter_rating_bar: ^4.0.1
+  popover: ^0.2.8
+  enum_to_string: ^2.0.1
   # flutter_resource_generator:
   # objectbox_generator: any
   # objectbox_flutter_libs: any
   path_provider: ^2.0.9
   flutter_secure_storage: ^6.0.0
+  hexcolor:
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
