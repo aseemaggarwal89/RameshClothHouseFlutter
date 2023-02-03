@@ -8,6 +8,7 @@ import 'package:rameshclothhouse/domain_layer/models/brand_dto.dart';
 import 'package:rameshclothhouse/domain_layer/models/categories_dto.dart';
 import 'package:rameshclothhouse/domain_layer/models/review_dto.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
+import 'package:enum_to_string/enum_to_string.dart';
 
 part 'product_detail_dto.g.dart';
 
@@ -26,7 +27,9 @@ class GetProductDetailResponse {
   Map<String, dynamic> toJson() => _$GetProductDetailResponseToJson(this);
 }
 
-enum QuantityType { Meter, Unit }
+enum QuantityType { unstiched, stiched }
+
+enum QualityType { standard, medium, expensive }
 
 @JsonSerializable()
 class ProductDetailDTO {
@@ -41,7 +44,7 @@ class ProductDetailDTO {
     this.ratingsQuantity,
     this.discountPrice,
     this.images,
-    this.qualityType,
+    required this.qualityType,
     this.isStockAvailable = true,
     this.imageCover,
     this.categoryId,
@@ -50,7 +53,7 @@ class ProductDetailDTO {
     this.slug,
     this.discountPercent,
     this.reviews,
-    // required this.quantity,
+    required this.quantityType,
     this.batches,
   });
 
@@ -61,7 +64,8 @@ class ProductDetailDTO {
   final num? discountPrice;
   final List<String>? images;
   final String createdAt;
-  final String? qualityType;
+  final String qualityType;
+  final String quantityType;
   final String name;
   final num price;
   final String summary;
@@ -87,14 +91,16 @@ class ProductDetailDTO {
 
   Map<String, dynamic> toJson() => _$ProductDetailDTOToJson(this);
 
-  QuantityType get productQualityType {
-    if (qualityType == 'meter') {
-      return QuantityType.Meter;
-    } else if (qualityType == 'unit') {
-      return QuantityType.Unit;
-    }
+  QuantityType get productQuantityType {
+    QuantityType? type =
+        EnumToString.fromString(QuantityType.values, quantityType);
+    return type ?? QuantityType.unstiched;
+  }
 
-    return QuantityType.Meter;
+  QualityType get productQualityType {
+    QualityType? type =
+        EnumToString.fromString(QualityType.values, qualityType);
+    return type ?? QualityType.standard;
   }
 
   String productDetailName() {
@@ -118,10 +124,19 @@ class ProductDetailDTO {
 
 @JsonSerializable()
 class Attributes extends Equatable {
-  const Attributes(this.size);
+  const Attributes(
+    this.sizes,
+    this.name,
+    this.unit,
+    this.uniqueId,
+  );
 
   @JsonKey(name: 'sizes')
-  final List<String>? size;
+  final List<SizeInfo>? sizes;
+  final String name;
+  final String unit;
+  @JsonKey(name: "_id")
+  final String uniqueId;
 
   factory Attributes.fromJson(Map<String, dynamic> json) {
     return _$AttributesFromJson(json);
@@ -130,7 +145,7 @@ class Attributes extends Equatable {
   Map<String, dynamic> toJson() => _$AttributesToJson(this);
 
   @override
-  List<Object?> get props => [size];
+  List<Object?> get props => [uniqueId];
 }
 
 @JsonSerializable()
@@ -144,17 +159,19 @@ class ProductBatch extends Equatable {
     this.isAvailable,
     this.quantity,
     this.uniqueId,
+    this.sizesNotAvailable,
   );
 
   @JsonKey(name: "_id")
   final String uniqueId;
   final int quantity;
-  final bool? isAvailable;
+  final bool isAvailable;
   final List<String>? images;
   final String quantityUnitType;
   final List<DateTime>? purchaseByCustomerDates;
   final String product;
   final ColorInfo? color;
+  final List<String>? sizesNotAvailable;
 
   factory ProductBatch.fromJson(Map<String, dynamic> json) {
     return _$ProductBatchFromJson(json);
@@ -187,4 +204,27 @@ class ColorInfo extends Equatable {
   }
 
   Map<String, dynamic> toJson() => _$ColorInfoToJson(this);
+}
+
+@JsonSerializable()
+class SizeInfo extends Equatable {
+  final String display;
+  final num value;
+  @JsonKey(name: "_id")
+  final String uniqueId;
+
+  const SizeInfo(
+    this.display,
+    this.value,
+    this.uniqueId,
+  );
+
+  @override
+  List<Object?> get props => [uniqueId];
+
+  factory SizeInfo.fromJson(Map<String, dynamic> json) {
+    return _$SizeInfoFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() => _$SizeInfoToJson(this);
 }

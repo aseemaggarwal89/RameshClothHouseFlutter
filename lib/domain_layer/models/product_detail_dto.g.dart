@@ -35,7 +35,7 @@ ProductDetailDTO _$ProductDetailDTOFromJson(Map<String, dynamic> json) =>
       discountPrice: json['discountPrice'] as num?,
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      qualityType: json['qualityType'] as String?,
+      qualityType: json['qualityType'] as String,
       isStockAvailable: json['isStockAvailable'] as bool? ?? true,
       imageCover: json['imageCover'] as String?,
       categoryId: json['categoryId'] == null
@@ -50,6 +50,7 @@ ProductDetailDTO _$ProductDetailDTOFromJson(Map<String, dynamic> json) =>
       reviews: (json['reviews'] as List<dynamic>?)
           ?.map((e) => ProductReviewDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
+      quantityType: json['quantityType'] as String,
       batches: (json['batch'] as List<dynamic>?)
           ?.map((e) => ProductBatch.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -70,6 +71,7 @@ Map<String, dynamic> _$ProductDetailDTOToJson(ProductDetailDTO instance) =>
       'images': instance.images,
       'createdAt': instance.createdAt,
       'qualityType': instance.qualityType,
+      'quantityType': instance.quantityType,
       'name': instance.name,
       'price': instance.price,
       'summary': instance.summary,
@@ -88,12 +90,20 @@ Map<String, dynamic> _$ProductDetailDTOToJson(ProductDetailDTO instance) =>
     };
 
 Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
-      (json['sizes'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      (json['sizes'] as List<dynamic>?)
+          ?.map((e) => SizeInfo.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      json['name'] as String,
+      json['unit'] as String,
+      json['_id'] as String,
     );
 
 Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
     <String, dynamic>{
-      'sizes': instance.size,
+      'sizes': instance.sizes,
+      'name': instance.name,
+      'unit': instance.unit,
+      '_id': instance.uniqueId,
     };
 
 ProductBatch _$ProductBatchFromJson(Map<String, dynamic> json) => ProductBatch(
@@ -106,9 +116,12 @@ ProductBatch _$ProductBatchFromJson(Map<String, dynamic> json) => ProductBatch(
           .toList(),
       json['quantityUnitType'] as String,
       (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      json['isAvailable'] as bool?,
+      json['isAvailable'] as bool,
       json['quantity'] as int,
       json['_id'] as String,
+      (json['sizesNotAvailable'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$ProductBatchToJson(ProductBatch instance) =>
@@ -123,6 +136,7 @@ Map<String, dynamic> _$ProductBatchToJson(ProductBatch instance) =>
           .toList(),
       'product': instance.product,
       'color': instance.color,
+      'sizesNotAvailable': instance.sizesNotAvailable,
     };
 
 ColorInfo _$ColorInfoFromJson(Map<String, dynamic> json) => ColorInfo(
@@ -134,5 +148,17 @@ ColorInfo _$ColorInfoFromJson(Map<String, dynamic> json) => ColorInfo(
 Map<String, dynamic> _$ColorInfoToJson(ColorInfo instance) => <String, dynamic>{
       'name': instance.name,
       'colorCode': instance.colorCode,
+      '_id': instance.uniqueId,
+    };
+
+SizeInfo _$SizeInfoFromJson(Map<String, dynamic> json) => SizeInfo(
+      json['display'] as String,
+      json['value'] as num,
+      json['_id'] as String,
+    );
+
+Map<String, dynamic> _$SizeInfoToJson(SizeInfo instance) => <String, dynamic>{
+      'display': instance.display,
+      'value': instance.value,
       '_id': instance.uniqueId,
     };

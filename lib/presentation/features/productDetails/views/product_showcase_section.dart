@@ -149,12 +149,8 @@ class ProductBatchShowCaseProvider with ChangeNotifier {
     return product.batches ?? [];
   }
 
-  List<ProductBatch> get batchsWithColor {
-    return batchs;
-  }
-
-  bool isColorBatchAvailable() {
-    return batchsWithColor.isNotEmpty;
+  bool isBatchAvailable() {
+    return batchs.isNotEmpty;
   }
 
   bool isBatchSelected(ProductBatch batch) {
@@ -171,6 +167,28 @@ class ProductBatchShowCaseProvider with ChangeNotifier {
 
   bool isBatchStockAvailable() {
     return selectedBatch?.isAvailable ?? false;
+  }
+
+  Attributes? get sizeAttributes {
+    return product.sizAttributesId;
+  }
+
+  bool isSizeAttributesAvailable() {
+    return product.sizAttributesId?.sizes?.isNotEmpty ?? false;
+  }
+
+  List<SizeInfo> get productSizes {
+    return product.sizAttributesId?.sizes ?? [];
+  }
+
+  bool isSizeStockAvailable(SizeInfo sizeInfo) {
+    if (selectedBatch != null && product.isStockAvailable) {
+      ProductBatch batch = selectedBatch!;
+      return batch.isAvailable &&
+          !(batch.sizesNotAvailable ?? []).contains(sizeInfo.uniqueId);
+    }
+
+    return product.isStockAvailable;
   }
 }
 

@@ -135,7 +135,19 @@ class ProductInfoSection extends StatelessWidget {
             children: [
               // Color Batch
               if (viewModel.isBatchAvailable())
-                ColorBatchWidget(product: product),
+                Column(
+                  children: [
+                    verticalSpaceMedium,
+                    ColorBatchWidget(product: product),
+                  ],
+                ),
+              if (viewModel.isSizeAttributesAvailable())
+                Column(
+                  children: [
+                    verticalSpaceMedium,
+                    SizesBatchWidget(product: product),
+                  ],
+                ),
             ],
           ),
         Container(
@@ -268,7 +280,6 @@ class ColorBatchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<ProductBatchShowCaseProvider>(context);
-    viewModel.update(product);
     return SizedBox(
       height: 80,
       child: Row(
@@ -279,7 +290,7 @@ class ColorBatchWidget extends StatelessWidget {
             fontType: AppTextType.DisplayLarge,
             color: ProductInfoCaseColor.kTitleColor,
           ),
-          horizontalSpaceSmall,
+          horizontalSpaceRegular,
           ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -309,7 +320,7 @@ class ColorBatchWidget extends StatelessWidget {
                           color: HexColor(colorBatch.color!.colorCode),
                           borderRadius: BorderRadius.circular(8.0),
                           border: Border.all(
-                            color: colorBatch.isAvailable ?? false
+                            color: colorBatch.isAvailable
                                 ? const Color.fromRGBO(196, 196, 196, 1.0)
                                 : Colors.red,
                           ),
@@ -331,9 +342,8 @@ class ProductColorThumbnailWidget extends StatelessWidget {
   final ProductBatch colorBatch;
   final Function()? onTap;
   final bool isSelected;
-  final GlobalKey<TooltipState> tooltipkey = GlobalKey<TooltipState>();
 
-  ProductColorThumbnailWidget({
+  const ProductColorThumbnailWidget({
     Key? key,
     required this.index,
     required this.colorBatch,
@@ -344,9 +354,7 @@ class ProductColorThumbnailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onHover: (value) {
-        tooltipkey.currentState?.ensureTooltipVisible();
-      },
+      onHover: (value) {},
       onTap: onTap,
       child: Stack(
         children: [
@@ -356,14 +364,12 @@ class ProductColorThumbnailWidget extends StatelessWidget {
                 height: 60,
                 margin: const EdgeInsets.only(right: 8.0),
                 decoration: BoxDecoration(
-                  color: colorBatch.isAvailable ?? false
-                      ? Colors.white
-                      : const Color.fromRGBO(196, 196, 196, 1.0),
+                  color: ProductInfoCaseColor.kBoxColorActive,
                   borderRadius: BorderRadius.circular(8.0),
                   border: Border.all(
                       color: isSelected
                           ? Theme.of(context).primaryColor
-                          : const Color.fromRGBO(196, 196, 196, 1.0)
+                          : ProductInfoCaseColor.kBoxBorderColor
                       // : Colors.red,
                       ),
                 ),
@@ -394,6 +400,60 @@ class ProductColorThumbnailWidget extends StatelessWidget {
               )
             ],
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class SizesBatchWidget extends StatelessWidget {
+  const SizesBatchWidget({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  final ProductDetailDTO product;
+
+  @override
+  Widget build(BuildContext context) {
+    final viewModel = Provider.of<ProductBatchShowCaseProvider>(context);
+    return SizedBox(
+      height: 50,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const LatoTextView(
+            label: 'Size',
+            fontType: AppTextType.DisplayLarge,
+            color: ProductInfoCaseColor.kTitleColor,
+          ),
+          horizontalSpaceRegular,
+          ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: viewModel.productSizes.length,
+              itemBuilder: ((context, index) {
+                SizeInfo sizeInfo = viewModel.productSizes[index];
+                return Container(
+                  width: 50,
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: viewModel.isSizeStockAvailable(sizeInfo)
+                        ? ProductInfoCaseColor.kBoxColorActive
+                        : ProductInfoCaseColor.kBoxColorUnActive,
+                    borderRadius: BorderRadius.circular(8.0),
+                    border: Border.all(
+                      // color: ProductInfoCaseColor.kBoxBorderColor,
+                      color: const Color.fromRGBO(196, 196, 196, 1.0),
+                    ),
+                  ),
+                  child: Center(
+                      child: LatoTextView(
+                    label: sizeInfo.display,
+                  )),
+                );
+              })),
         ],
       ),
     );
