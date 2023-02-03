@@ -15,83 +15,87 @@ class ProductShowCaseSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<ProductShowCaseSectionProvider>(context);
-    viewModel.updateImageUrls(product);
-    return Column(
-      children: [
-        verticalSpaceRegular,
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
+    final viewModel = Provider.of<ProductBatchShowCaseProvider>(context);
+    viewModel.update(product);
+    if (viewModel.selectedBatch == null &&
+        (product.batches?.isNotEmpty ?? false)) {
+      viewModel.updateSelectedBatch(product.batches!.first);
+    }
+
+    return viewModel.productImageUrls.isNotEmpty
+        ? Column(
             children: [
-              Container(
-                width: 80.0,
-                height: viewHeight(context),
-                color: Colors.white,
-                alignment: Alignment.centerLeft,
-                padding:
-                    const EdgeInsets.only(top: 16.0, bottom: 16.0, left: 16.0),
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: (context, index) {
-                    final media = viewModel.productImageUrls[index];
-                    return Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: ProductShowcaseThumbnailWidget(
-                        key: ValueKey(media),
-                        thumbnailUrl: media,
-                        type: MediaType.IMAGE,
-                        isSelected: viewModel.index == index,
-                        onTap: () {
-                          viewModel.tappedOnIned(index);
+              verticalSpaceRegular,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 80.0,
+                      height: viewHeight(context),
+                      color: Colors.white,
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.only(
+                          top: 16.0, bottom: 16.0, left: 16.0),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemBuilder: (context, index) {
+                          final media = viewModel.productImageUrls[index];
+                          return Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: ProductShowcaseThumbnailWidget(
+                              key: ValueKey(media),
+                              thumbnailUrl: media,
+                              type: MediaType.IMAGE,
+                              isSelected: viewModel.index == index,
+                              onTap: () {
+                                viewModel.tappedOnIndex(index);
+                              },
+                            ),
+                          );
+                        },
+                        itemCount: viewModel.productImageUrls.length,
+                      ),
+                    ),
+                    Expanded(
+                      child: CarouselSlider.builder(
+                        carouselController: viewModel.carouselController,
+                        options: CarouselOptions(
+                          height: viewHeight(context),
+                          viewportFraction: 1.0,
+                          autoPlay: false,
+                          initialPage: viewModel.index,
+                          autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+                          onPageChanged: (index, reason) =>
+                              viewModel.onChangeIndex(index),
+                        ),
+                        itemCount: viewModel.productImageUrls.length,
+                        itemBuilder: (_, index, realIndex) {
+                          var media = viewModel.productImageUrls[index];
+                          return GestureDetector(
+                            onTap: () async {
+                              await showDialog(
+                                  context: context,
+                                  builder: (_) => ImageDialog(
+                                        imageUrl: media,
+                                      ));
+                            },
+                            child: CarouselItemWidget(
+                              key: ValueKey(media),
+                              url: media,
+                              isVideo: false,
+                            ),
+                          );
                         },
                       ),
-                    );
-                  },
-                  itemCount: viewModel.productImageUrls.length,
-                ),
-              ),
-              Expanded(
-                child: CarouselSlider.builder(
-                  carouselController: viewModel.carouselController,
-                  options: CarouselOptions(
-                    height: viewHeight(context),
-                    viewportFraction: 1.0,
-                    autoPlay: false,
-                    initialPage: viewModel.index,
-                    autoPlayCurve: Curves.fastLinearToSlowEaseIn,
-                    onPageChanged: (index, reason) =>
-                        viewModel.onChangeIndex(index),
-                  ),
-                  itemBuilder: (_, index, realIndex) {
-                    var media = viewModel.productImageUrls.length > index
-                        ? viewModel.productImageUrls[index]
-                        : null;
-
-                    return GestureDetector(
-                      onTap: () async {
-                        await showDialog(
-                            context: context,
-                            builder: (_) => ImageDialog(
-                                  productShowCaseSectionProvider: viewModel,
-                                ));
-                      },
-                      child: CarouselItemWidget(
-                        key: ValueKey(media),
-                        url: media ?? '',
-                        isVideo: false,
-                      ),
-                    );
-                  },
-                  itemCount: viewModel.productImageUrls.length,
+                    ),
+                  ],
                 ),
               ),
             ],
-          ),
-        ),
-      ],
-    );
+          )
+        : Container();
   }
 
   double viewHeight(BuildContext context) {
@@ -99,11 +103,12 @@ class ProductShowCaseSection extends StatelessWidget {
   }
 }
 
-class ProductShowCaseSectionProvider with ChangeNotifier {
-  List<String> _imageUrls = [];
+class ProductBatchShowCaseProvider with ChangeNotifier {
+  ProductDetailDTO product;
+  ProductBatch? selectedBatch;
   final _controller = CarouselController();
 
-  ProductShowCaseSectionProvider();
+  ProductBatchShowCaseProvider(this.product);
   int _currentIndex = 0;
 
   int get index => _currentIndex;
@@ -115,36 +120,67 @@ class ProductShowCaseSectionProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void updateImageUrls(ProductDetailDTO product) {
-    if (product.images != null && product.images!.isNotEmpty) {
-      _imageUrls = product.images!;
-    } else {
-      _imageUrls = product.imageCover != null ? [product.imageCover!] : [];
-    }
+  void update(ProductDetailDTO product) {
+    product = product;
   }
 
-  void tappedOnIned(int index) {
+  void updateSelectedBatch(ProductBatch productBatch) {
+    selectedBatch = productBatch;
+    notifyListeners();
+  }
+
+  void tappedOnIndex(int index) {
     _controller.animateToPage(index);
   }
 
   List<String> get productImageUrls {
-    return _imageUrls;
+    return selectedBatch?.images ?? product.images ?? [];
   }
 
-  String get currentImageUrl {
-    return _imageUrls[_currentIndex];
+  String? get currentImageUrl {
+    if (_currentIndex < productImageUrls.length) {
+      return productImageUrls[_currentIndex];
+    }
+
+    return null;
+  }
+
+  List<ProductBatch> get batchs {
+    return product.batches ?? [];
+  }
+
+  List<ProductBatch> get batchsWithColor {
+    return batchs;
+  }
+
+  bool isColorBatchAvailable() {
+    return batchsWithColor.isNotEmpty;
+  }
+
+  bool isBatchSelected(ProductBatch batch) {
+    if (selectedBatch != null) {
+      return selectedBatch == batch;
+    }
+
+    return false;
+  }
+
+  bool isSelectedBatchAvailable() {
+    return selectedBatch != null;
+  }
+
+  bool isBatchStockAvailable() {
+    return selectedBatch?.isAvailable ?? false;
   }
 }
 
 class ImageDialog extends StatelessWidget {
-  final ProductShowCaseSectionProvider productShowCaseSectionProvider;
+  final String imageUrl;
 
-  const ImageDialog({required this.productShowCaseSectionProvider, super.key});
+  const ImageDialog({required this.imageUrl, super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = productShowCaseSectionProvider;
-
     return Dialog(
       child: Column(
         // mainAxisSize: MainAxisSize.min,
@@ -169,7 +205,7 @@ class ImageDialog extends StatelessWidget {
             // width: 220,
             height: screenHeightPercentage(context, percentage: 0.6),
             child: PhotoView(
-              imageProvider: NetworkImage(viewModel.currentImageUrl),
+              imageProvider: NetworkImage(imageUrl),
               backgroundDecoration: const BoxDecoration(color: Colors.white),
             ),
           ),

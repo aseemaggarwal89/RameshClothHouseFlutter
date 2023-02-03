@@ -33,7 +33,7 @@ extension SortByExtension on SortBy {
       case SortBy.Ratings:
         return "-ratingsAverage";
       case SortBy.CuratedForYou:
-        return "";
+        return "-createdAt";
     }
   }
 }

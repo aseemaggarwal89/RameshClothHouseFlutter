@@ -20,12 +20,6 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => ProductShowCaseSectionProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ProductColorThumbnailWidgetProvider(),
-        ),
         BlocProvider<ProductDetailPageBloc>(
           create: ((context) => ProductDetailPageBloc()),
         ),
@@ -80,27 +74,33 @@ class _ProductDetailViewState extends State<ProductDetailView> {
   }
 
   Widget _buidloaded(Loaded state) => SingleChildScrollView(
-        primary: true,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Showcase Product Images
-            Expanded(
-              flex: 4,
-              child: ProductShowCaseSection(
-                  key: ObjectKey(state.product), product: state.product),
-            ),
-            horizontalSpaceLarge,
-            Expanded(
-              flex: 5,
-              child: ProductInfoSection(
-                key: ObjectKey(state.product),
-                product: state.product,
-              ),
-            )
-          ],
-        ),
-      );
+      primary: true,
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => ProductBatchShowCaseProvider(state.product),
+          ),
+        ],
+        builder: ((context, child) => Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Showcase Product Images
+                Expanded(
+                  flex: 4,
+                  child: ProductShowCaseSection(
+                      key: ObjectKey(state.product), product: state.product),
+                ),
+                horizontalSpaceLarge,
+                Expanded(
+                  flex: 5,
+                  child: ProductInfoSection(
+                    key: ObjectKey(state.product),
+                    product: state.product,
+                  ),
+                )
+              ],
+            )),
+      ));
 }
 
 // class ProductDetailScreen extends StatelessWidget {

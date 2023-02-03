@@ -35,12 +35,7 @@ ProductDetailDTO _$ProductDetailDTOFromJson(Map<String, dynamic> json) =>
       discountPrice: json['discountPrice'] as num?,
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      purchaseByCustomerDates:
-          (json['purchaseByCustomerDates'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList(),
       qualityType: json['qualityType'] as String?,
-      secretProduct: json['secretProduct'] as bool? ?? false,
       isStockAvailable: json['isStockAvailable'] as bool? ?? true,
       imageCover: json['imageCover'] as String?,
       categoryId: json['categoryId'] == null
@@ -55,7 +50,9 @@ ProductDetailDTO _$ProductDetailDTOFromJson(Map<String, dynamic> json) =>
       reviews: (json['reviews'] as List<dynamic>?)
           ?.map((e) => ProductReviewDTO.fromJson(e as Map<String, dynamic>))
           .toList(),
-      quantity: json['quantity'] as num,
+      batches: (json['batch'] as List<dynamic>?)
+          ?.map((e) => ProductBatch.fromJson(e as Map<String, dynamic>))
+          .toList(),
     )
       ..sizAttributesId = json['sizAttributesId'] == null
           ? null
@@ -72,7 +69,6 @@ Map<String, dynamic> _$ProductDetailDTOToJson(ProductDetailDTO instance) =>
       'discountPrice': instance.discountPrice,
       'images': instance.images,
       'createdAt': instance.createdAt,
-      'purchaseByCustomerDates': instance.purchaseByCustomerDates,
       'qualityType': instance.qualityType,
       'name': instance.name,
       'price': instance.price,
@@ -83,13 +79,12 @@ Map<String, dynamic> _$ProductDetailDTOToJson(ProductDetailDTO instance) =>
       'slug': instance.slug,
       'discountPercent': instance.discountPercent,
       'isStockAvailable': instance.isStockAvailable,
-      'secretProduct': instance.secretProduct,
       'categoryId': instance.categoryId,
       'brandId': instance.brandId,
       'reviews': instance.reviews,
       'sizAttributesId': instance.sizAttributesId,
       'sizeNotAllowed': instance.sizeNotAllowed,
-      'quantity': instance.quantity,
+      'batch': instance.batches,
     };
 
 Attributes _$AttributesFromJson(Map<String, dynamic> json) => Attributes(
@@ -101,15 +96,43 @@ Map<String, dynamic> _$AttributesToJson(Attributes instance) =>
       'sizes': instance.size,
     };
 
-ProductAvailability _$ProductAvailabilityFromJson(Map<String, dynamic> json) =>
-    ProductAvailability(
-      json['Size'] as String?,
-      json['available'] as bool?,
+ProductBatch _$ProductBatchFromJson(Map<String, dynamic> json) => ProductBatch(
+      json['color'] == null
+          ? null
+          : ColorInfo.fromJson(json['color'] as Map<String, dynamic>),
+      json['product'] as String,
+      (json['purchaseByCustomerDates'] as List<dynamic>?)
+          ?.map((e) => DateTime.parse(e as String))
+          .toList(),
+      json['quantityUnitType'] as String,
+      (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      json['isAvailable'] as bool?,
+      json['quantity'] as int,
+      json['_id'] as String,
     );
 
-Map<String, dynamic> _$ProductAvailabilityToJson(
-        ProductAvailability instance) =>
+Map<String, dynamic> _$ProductBatchToJson(ProductBatch instance) =>
     <String, dynamic>{
-      'Size': instance.size,
-      'available': instance.available,
+      '_id': instance.uniqueId,
+      'quantity': instance.quantity,
+      'isAvailable': instance.isAvailable,
+      'images': instance.images,
+      'quantityUnitType': instance.quantityUnitType,
+      'purchaseByCustomerDates': instance.purchaseByCustomerDates
+          ?.map((e) => e.toIso8601String())
+          .toList(),
+      'product': instance.product,
+      'color': instance.color,
+    };
+
+ColorInfo _$ColorInfoFromJson(Map<String, dynamic> json) => ColorInfo(
+      json['name'] as String,
+      json['colorCode'] as String,
+      json['_id'] as String,
+    );
+
+Map<String, dynamic> _$ColorInfoToJson(ColorInfo instance) => <String, dynamic>{
+      'name': instance.name,
+      'colorCode': instance.colorCode,
+      '_id': instance.uniqueId,
     };
