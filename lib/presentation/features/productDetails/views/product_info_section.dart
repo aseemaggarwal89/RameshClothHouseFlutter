@@ -112,9 +112,8 @@ class ProductInfoSection extends StatelessWidget {
               )
             ],
           ),
-        if (product.isStockAvailable &&
-            viewModel.isSelectedBatchAvailable() &&
-            !viewModel.isBatchStockAvailable())
+        if (viewModel.isSelectedBatchStockNotAvailable() ||
+            viewModel.isSelectedSizeStockNotAvailable())
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             // ignore: prefer_const_literals_to_create_immutables
@@ -124,7 +123,7 @@ class ProductInfoSection extends StatelessWidget {
                 fontType: AppTextType.DisplayLarge,
               ),
               const LatoTextView(
-                label: 'This color is currently out of stock',
+                label: 'This item is currently out of stock',
                 fontType: AppTextType.DisplayNormal,
               )
             ],
@@ -156,67 +155,6 @@ class ProductInfoSection extends StatelessWidget {
           // width: screenWidth(context),
           child: Column(
             children: [
-              // Container(
-              //   padding: const EdgeInsets.all(8.0),
-              //   decoration: BoxDecoration(
-              //     gradient: LinearGradient(
-              //       colors: [
-              //         ProductInfoCaseColor.kcLightGold,
-              //         ProductInfoCaseColor.kcLightGold.withOpacity(0.7),
-              //         ProductInfoCaseColor.kcPale,
-              //       ],
-              //       begin: Alignment.topLeft,
-              //       end: Alignment.bottomRight,
-              //     ),
-              //     borderRadius: BorderRadius.circular(4.0),
-              //   ),
-              //   child: Column(
-              //     children: [
-              //       Padding(
-              //         padding: const EdgeInsets.all(8.0),
-              //         child: Row(
-              //           mainAxisAlignment: MainAxisAlignment.start,
-              //           crossAxisAlignment: CrossAxisAlignment.center,
-              //           children: [
-              //             Image.asset(
-              //               R.ASSETS_ICON_TRUST_STAMP_ICON_PNG,
-              //               height: 70.0,
-              //               width: 70.0,
-              //             ),
-              //             horizontalSpaceSmallRegular,
-              //             Expanded(
-              //               child: Column(
-              //                 mainAxisAlignment: MainAxisAlignment.start,
-              //                 crossAxisAlignment: CrossAxisAlignment.start,
-              //                 children: const [
-              //                   LatoTextView(
-              //                     label: 'Don\'t worry!',
-              //                     color: Color.fromRGBO(42, 48, 48, 1.0),
-              //                     fontType: AppTextType.DisplayMedium,
-              //                   ),
-              //                   verticalSpaceSmall,
-              //                   LatoTextView(
-              //                     label:
-              //                         'we have 100% money back in 1 hour if you don\'t like the product',
-              //                     color: Color.fromRGBO(42, 48, 48, 1.0),
-              //                     fontType: AppTextType.DisplayMedium,
-              //                   ),
-              //                 ],
-              //               ),
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //       const Divider(
-              //         thickness: 1.0,
-              //         indent: 0.0,
-              //         endIndent: 0.0,
-              //         color: Color.fromRGBO(0, 0, 0, 0.08),
-              //       ),
-              //       const ProductPolicyBannerWidget(),
-              //     ],
-              //   ),
-              // ),
               verticalSpaceRegular,
               // Row(
               //   mainAxisAlignment: MainAxisAlignment.center,
@@ -270,12 +208,16 @@ class ProductInfoSection extends StatelessWidget {
 }
 
 class ColorBatchWidget extends StatelessWidget {
+  final ProductDetailDTO product;
+  Function get onTapped =>
+      (ProductBatch productBatch, ProductBatchShowCaseProvider viewModel) {
+        viewModel.updateSelectedBatch(productBatch);
+      };
+
   const ColorBatchWidget({
     Key? key,
     required this.product,
   }) : super(key: key);
-
-  final ProductDetailDTO product;
 
   @override
   Widget build(BuildContext context) {
@@ -304,31 +246,29 @@ class ColorBatchWidget extends StatelessWidget {
                             colorBatch: colorBatch,
                             index: index,
                             isSelected: viewModel.isBatchSelected(colorBatch),
-                            onTap: (() {
-                              if (colorBatch.images?.isNotEmpty ?? false) {
-                                viewModel.updateSelectedBatch(colorBatch);
-                              }
-                              // showColorInfoPopover(context, colorBatch.color!);
-                            }),
+                            onTap: (() => onTapped(colorBatch, viewModel)),
                           ),
                         ],
                       )
-                    : Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 5),
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: HexColor(colorBatch.color!.colorCode),
-                          borderRadius: BorderRadius.circular(8.0),
-                          border: Border.all(
-                            color: colorBatch.isAvailable
-                                ? const Color.fromRGBO(196, 196, 196, 1.0)
-                                : Colors.red,
+                    : GestureDetector(
+                        onTap: (() => onTapped(colorBatch, viewModel)),
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 5),
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: HexColor(colorBatch.color!.colorCode),
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: viewModel.isBatchSelected(colorBatch)
+                                  ? Theme.of(context).primaryColor
+                                  : ProductInfoCaseColor.kBoxBorderColor,
+                            ),
                           ),
+                          child: Center(
+                              child: LatoTextView(
+                            label: colorBatch.color?.name ?? "",
+                          )),
                         ),
-                        child: Center(
-                            child: LatoTextView(
-                          label: colorBatch.color?.name ?? "",
-                        )),
                       );
               })),
         ],
@@ -407,54 +347,90 @@ class ProductColorThumbnailWidget extends StatelessWidget {
 }
 
 class SizesBatchWidget extends StatelessWidget {
+  final ProductDetailDTO product;
+  Function get onTapped =>
+      (SizeInfo sizeInfo, ProductBatchShowCaseProvider viewModel) {
+        viewModel.updateSelectedSizeInfo(sizeInfo);
+      };
+
   const SizesBatchWidget({
     Key? key,
     required this.product,
   }) : super(key: key);
 
-  final ProductDetailDTO product;
-
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<ProductBatchShowCaseProvider>(context);
-    return SizedBox(
-      height: 50,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const LatoTextView(
-            label: 'Size',
-            fontType: AppTextType.DisplayLarge,
-            color: ProductInfoCaseColor.kTitleColor,
+    return Center(
+      child: SizedBox(
+        height: 50,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const LatoTextView(
+              label: 'Size',
+              fontType: AppTextType.DisplayLarge,
+              color: ProductInfoCaseColor.kTitleColor,
+            ),
+            horizontalSpaceRegular,
+            ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: viewModel.productSizes.length,
+                itemBuilder: ((context, index) {
+                  SizeInfo sizeInfo = viewModel.productSizes[index];
+                  return ProductSizeBatchWidget(
+                    sizeInfo: sizeInfo,
+                    isSelected: viewModel.isSizeInfoSelected(sizeInfo),
+                    isStockAvailable: viewModel.isSizeStockAvailable(sizeInfo),
+                    onTapped: (() => onTapped(sizeInfo, viewModel)),
+                  );
+                })),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProductSizeBatchWidget extends StatelessWidget {
+  final bool isSelected;
+  final bool isStockAvailable;
+  final Function()? onTapped;
+
+  const ProductSizeBatchWidget({
+    Key? key,
+    required this.sizeInfo,
+    this.isSelected = false,
+    this.isStockAvailable = true,
+    required this.onTapped,
+  }) : super(key: key);
+
+  final SizeInfo sizeInfo;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTapped,
+      child: Container(
+        width: 50,
+        margin: const EdgeInsets.symmetric(horizontal: 5),
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: isStockAvailable
+              ? ProductInfoCaseColor.kBoxColorActive
+              : ProductInfoCaseColor.kBoxColorUnActive,
+          borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(
+            color: isSelected
+                ? Theme.of(context).primaryColor
+                : ProductInfoCaseColor.kBoxBorderColor,
           ),
-          horizontalSpaceRegular,
-          ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: viewModel.productSizes.length,
-              itemBuilder: ((context, index) {
-                SizeInfo sizeInfo = viewModel.productSizes[index];
-                return Container(
-                  width: 50,
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: viewModel.isSizeStockAvailable(sizeInfo)
-                        ? ProductInfoCaseColor.kBoxColorActive
-                        : ProductInfoCaseColor.kBoxColorUnActive,
-                    borderRadius: BorderRadius.circular(8.0),
-                    border: Border.all(
-                      // color: ProductInfoCaseColor.kBoxBorderColor,
-                      color: const Color.fromRGBO(196, 196, 196, 1.0),
-                    ),
-                  ),
-                  child: Center(
-                      child: LatoTextView(
-                    label: sizeInfo.display,
-                  )),
-                );
-              })),
-        ],
+        ),
+        child: Center(
+            child: LatoTextView(
+          label: sizeInfo.display,
+        )),
       ),
     );
   }

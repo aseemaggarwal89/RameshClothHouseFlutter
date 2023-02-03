@@ -106,6 +106,8 @@ class ProductShowCaseSection extends StatelessWidget {
 class ProductBatchShowCaseProvider with ChangeNotifier {
   ProductDetailDTO product;
   ProductBatch? selectedBatch;
+  SizeInfo? selectedSizeInfo;
+
   final _controller = CarouselController();
 
   ProductBatchShowCaseProvider(this.product);
@@ -126,6 +128,11 @@ class ProductBatchShowCaseProvider with ChangeNotifier {
 
   void updateSelectedBatch(ProductBatch productBatch) {
     selectedBatch = productBatch;
+    notifyListeners();
+  }
+
+  void updateSelectedSizeInfo(SizeInfo sizeInfo) {
+    selectedSizeInfo = sizeInfo;
     notifyListeners();
   }
 
@@ -153,6 +160,28 @@ class ProductBatchShowCaseProvider with ChangeNotifier {
     return batchs.isNotEmpty;
   }
 
+  bool isSelectedBatchStockNotAvailable() {
+    return product.isStockAvailable &&
+        isAnyBatchSelected() &&
+        !isSelectedBatchStockAvailable();
+  }
+
+  bool isSelectedSizeStockNotAvailable() {
+    if (selectedSizeInfo != null && product.isStockAvailable) {
+      if (selectedBatch != null && selectedBatch!.isAvailable) {
+        // ignore: iterable_contains_unrelated_type
+        return (selectedBatch!.sizesNotAvailable ?? [])
+            .contains(selectedSizeInfo!.uniqueId);
+      }
+    }
+
+    return false;
+  }
+
+  bool isStockAvailable() {
+    return product.isStockAvailable;
+  }
+
   bool isBatchSelected(ProductBatch batch) {
     if (selectedBatch != null) {
       return selectedBatch == batch;
@@ -161,11 +190,19 @@ class ProductBatchShowCaseProvider with ChangeNotifier {
     return false;
   }
 
-  bool isSelectedBatchAvailable() {
+  bool isSizeInfoSelected(SizeInfo sizeInfo) {
+    if (selectedSizeInfo != null) {
+      return selectedSizeInfo == sizeInfo;
+    }
+
+    return false;
+  }
+
+  bool isAnyBatchSelected() {
     return selectedBatch != null;
   }
 
-  bool isBatchStockAvailable() {
+  bool isSelectedBatchStockAvailable() {
     return selectedBatch?.isAvailable ?? false;
   }
 
