@@ -5,6 +5,7 @@ import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/components/product_attribute_drop_down.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
+import 'package:rameshclothhouse/presentation/features/productDetails/views/product_description_section.dart';
 import 'package:rameshclothhouse/presentation/features/productDetails/views/product_showcase_section.dart';
 import '../../../../domain_layer/domain_layer.dart';
 // ignore: depend_on_referenced_packages
@@ -180,6 +181,10 @@ class ProductInfoSection extends StatelessWidget {
               )
             ],
           ),
+        ProductDescriptionSection(
+          productDetails: product.productDetailInfo(),
+          productDetail: product,
+        )
       ],
     );
   }

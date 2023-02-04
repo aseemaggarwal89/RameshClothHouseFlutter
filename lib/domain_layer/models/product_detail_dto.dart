@@ -35,7 +35,6 @@ enum QualityType { standard, medium, expensive }
 class ProductDetailDTO {
   ProductDetailDTO({
     required this.name,
-    required this.description,
     required this.price,
     required this.summary,
     required this.uniqueId,
@@ -56,6 +55,7 @@ class ProductDetailDTO {
     required this.quantityType,
     this.batches,
     required this.maxQuantityAllowed,
+    this.productDetails,
   });
 
   @JsonKey(name: "_id")
@@ -70,7 +70,6 @@ class ProductDetailDTO {
   final String name;
   final num price;
   final String summary;
-  final String description;
   final String? imageCover;
   final String? subCategoryId;
   final String? slug;
@@ -82,6 +81,7 @@ class ProductDetailDTO {
   Attributes? sizAttributesId;
   List<String>? sizeNotAllowed;
   final num maxQuantityAllowed;
+  List<ProductDetail>? productDetails;
 
   @JsonKey(name: "batch")
   List<ProductBatch>? batches;
@@ -120,6 +120,11 @@ class ProductDetailDTO {
     } else {
       return formatAmountWithSymbol(price);
     }
+  }
+
+  List<ProductDetail> productDetailInfo() {
+    productDetails?.sort(((a, b) => a.order.compareTo(b.order)));
+    return productDetails ?? [];
   }
 }
 
@@ -228,4 +233,29 @@ class SizeInfo extends Equatable {
   }
 
   Map<String, dynamic> toJson() => _$SizeInfoToJson(this);
+}
+
+@JsonSerializable()
+class ProductDetail extends Equatable {
+  final String display;
+  final num order;
+  final String value;
+  @JsonKey(name: "_id")
+  final String uniqueId;
+
+  const ProductDetail(
+    this.display,
+    this.value,
+    this.uniqueId,
+    this.order,
+  );
+
+  @override
+  List<Object?> get props => [uniqueId];
+
+  factory ProductDetail.fromJson(Map<String, dynamic> json) {
+    return _$ProductDetailFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() => _$ProductDetailToJson(this);
 }

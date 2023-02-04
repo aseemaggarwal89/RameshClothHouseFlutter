@@ -25,7 +25,6 @@ Map<String, dynamic> _$GetProductDetailResponseToJson(
 ProductDetailDTO _$ProductDetailDTOFromJson(Map<String, dynamic> json) =>
     ProductDetailDTO(
       name: json['name'] as String,
-      description: json['description'] as String,
       price: json['price'] as num,
       summary: json['summary'] as String,
       uniqueId: json['_id'] as String,
@@ -55,6 +54,9 @@ ProductDetailDTO _$ProductDetailDTOFromJson(Map<String, dynamic> json) =>
           ?.map((e) => ProductBatch.fromJson(e as Map<String, dynamic>))
           .toList(),
       maxQuantityAllowed: json['maxQuantityAllowed'] as num,
+      productDetails: (json['productDetails'] as List<dynamic>?)
+          ?.map((e) => ProductDetail.fromJson(e as Map<String, dynamic>))
+          .toList(),
     )
       ..sizAttributesId = json['sizAttributesId'] == null
           ? null
@@ -76,7 +78,6 @@ Map<String, dynamic> _$ProductDetailDTOToJson(ProductDetailDTO instance) =>
       'name': instance.name,
       'price': instance.price,
       'summary': instance.summary,
-      'description': instance.description,
       'imageCover': instance.imageCover,
       'subCategoryId': instance.subCategoryId,
       'slug': instance.slug,
@@ -88,6 +89,7 @@ Map<String, dynamic> _$ProductDetailDTOToJson(ProductDetailDTO instance) =>
       'sizAttributesId': instance.sizAttributesId,
       'sizeNotAllowed': instance.sizeNotAllowed,
       'maxQuantityAllowed': instance.maxQuantityAllowed,
+      'productDetails': instance.productDetails,
       'batch': instance.batches,
     };
 
@@ -161,6 +163,22 @@ SizeInfo _$SizeInfoFromJson(Map<String, dynamic> json) => SizeInfo(
 
 Map<String, dynamic> _$SizeInfoToJson(SizeInfo instance) => <String, dynamic>{
       'display': instance.display,
+      'value': instance.value,
+      '_id': instance.uniqueId,
+    };
+
+ProductDetail _$ProductDetailFromJson(Map<String, dynamic> json) =>
+    ProductDetail(
+      json['display'] as String,
+      json['value'] as String,
+      json['_id'] as String,
+      json['order'] as num,
+    );
+
+Map<String, dynamic> _$ProductDetailToJson(ProductDetail instance) =>
+    <String, dynamic>{
+      'display': instance.display,
+      'order': instance.order,
       'value': instance.value,
       '_id': instance.uniqueId,
     };

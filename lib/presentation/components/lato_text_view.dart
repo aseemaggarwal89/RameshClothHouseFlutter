@@ -2,7 +2,6 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 enum FontType { NORMAL, MEDIUM, BOLD, SEMIBOLD, EXTRABOLD }
 
@@ -119,6 +118,7 @@ class LatoTextView extends StatelessWidget {
   final double? lineHeight;
   final FontStyle? fontStyle;
   final bool isTranslatable;
+  final bool wordWrapp;
 
   const LatoTextView({
     Key? key,
@@ -134,6 +134,7 @@ class LatoTextView extends StatelessWidget {
     this.fontStyle = FontStyle.normal,
     this.isTranslatable = true,
     this.fontSize,
+    this.wordWrapp = false,
   }) : super(key: key);
 
   @override
@@ -155,13 +156,21 @@ class LatoTextView extends StatelessWidget {
     if (decoration != null) {
       style = style?.copyWith(decoration: decoration);
     }
-
-    return Text(
-      isTranslatable ? label.tr() : label,
-      textAlign: textAlignment,
-      maxLines: maxLine,
-      overflow: textOverflow,
-      style: style,
-    );
+    return wordWrapp
+        ? Flexible(
+            child: Text(
+            isTranslatable ? label.tr() : label,
+            textAlign: textAlignment,
+            maxLines: maxLine,
+            overflow: textOverflow,
+            style: style,
+          ))
+        : Text(
+            isTranslatable ? label.tr() : label,
+            textAlign: textAlignment,
+            maxLines: maxLine,
+            overflow: textOverflow,
+            style: style,
+          );
   }
 }
