@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rameshclothhouse/domain_layer/models/entities.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
-
+import 'package:html_unescape/html_unescape.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import '../../../config/ui_helper.dart';
 
 class ProductDescriptionSection extends StatelessWidget {
@@ -20,16 +21,12 @@ class ProductDescriptionSection extends StatelessWidget {
     if (productDetails.isEmpty) {
       return Container();
     }
+
+    var unescape = HtmlUnescape();
+    var text = unescape.convert(productDetail.summary);
+
     return Column(
       children: [
-        SizedBox(
-          height: 00,
-          width: 200,
-          child: LatoTextView(
-            label: productDetail.summary,
-            isHtml: true,
-          ),
-        ),
         ProductDescriptionExpandableWidget(
           cardLabel: "Product Details",
           builder: (context) {
@@ -69,7 +66,15 @@ class ProductDescriptionSection extends StatelessWidget {
         ),
         Container(
           height: 20,
-        )
+        ),
+        verticalSpaceMedium,
+        HtmlWidget(
+          text,
+          textStyle: Theme.of(context).textTheme.displayMedium,
+          customStylesBuilder: ((element) {
+            // console.log(element);
+          }),
+        ),
       ],
     );
   }

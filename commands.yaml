@@ -4,3 +4,5 @@ autoGenerateWatch: flutter pub run build_runner watch
 autoGenerateAssets: $ flutter packages pub run build_runner build
 runChrome: flutter run -d chrome --web-renderer html
 getPackages: flutter packages get
+
+# https://onlinehtmleditor.dev/
