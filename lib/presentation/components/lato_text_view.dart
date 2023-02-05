@@ -2,6 +2,10 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:html_unescape/html_unescape.dart';
 
 enum FontType { NORMAL, MEDIUM, BOLD, SEMIBOLD, EXTRABOLD }
 
@@ -155,6 +159,36 @@ class LatoTextView extends StatelessWidget {
 
     if (decoration != null) {
       style = style?.copyWith(decoration: decoration);
+    }
+    if (isHtml) {
+      var unescape = new HtmlUnescape();
+      var text = unescape.convert(label);
+      print(text);
+      final _htmlContent = """
+<ul><li>List 1</li><li>List 2</li><li>List 3</li></ul>
+  <div>
+    <h1>This is a title</h1>
+    <p>This is a <strong>paragraph</strong>.</p>
+    <p>I like <i>dogs</i></p>
+    <p>Red text</p>
+    <ul>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    <img src='https://www.kindacode.com/wp-content/uploads/2020/11/my-dog.jpg' />
+  </div>
+  """;
+      return Html(
+        data: """
+$text
+""",
+        // Styling with CSS (not real CSS)
+        style: {
+          'h1': Style(color: Colors.red),
+          'p': Style(color: Colors.black87, fontSize: FontSize.medium),
+        },
+      );
     }
     return wordWrapp
         ? Flexible(

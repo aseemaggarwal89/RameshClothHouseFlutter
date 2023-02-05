@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view_model.dart';
+import 'package:rameshclothhouse/presentation/components/appNavBar/user_right_menu_bar.dart';
 import '../lato_text_view.dart';
 
 class MobileNavBar extends StatelessWidget with PreferredSizeWidget {
@@ -31,14 +32,21 @@ class MobileNavBar extends StatelessWidget with PreferredSizeWidget {
           ),
       title: titleIcon != null
           ? SvgPicture.asset(titleIcon!)
-          : LatoTextView(
-              label:
-                  Provider.of<AppMenuItems>(context).selectedMenuItem?.title ??
+          : Row(
+              children: [
+                LatoTextView(
+                  label: Provider.of<AppMenuItems>(context)
+                          .selectedMenuItem
+                          ?.title ??
                       "",
-              fontSize:
-                  Theme.of(context).appBarTheme.toolbarTextStyle?.fontSize,
-              fontType: AppTextType.TitleMedium,
-              color: Theme.of(context).appBarTheme.toolbarTextStyle?.color,
+                  fontSize:
+                      Theme.of(context).appBarTheme.toolbarTextStyle?.fontSize,
+                  fontType: AppTextType.TitleMedium,
+                  color: Theme.of(context).appBarTheme.toolbarTextStyle?.color,
+                ),
+                const Spacer(),
+                const UserRightMenuBar(),
+              ],
             ),
       actions: actions,
       elevation: 1,

@@ -44,6 +44,10 @@ class AppNavigator {
   static void navigateToContactUs() {
     getIt<AppRouter>().navigate(const ContactScreenRoute());
   }
+
+  static void navigateToLogin() {
+    getIt<AppRouter>().navigate(const LoginScreenRoute());
+  }
 }
 
 enum AppRouteType { home, login, shop, productDetail, contactUs }

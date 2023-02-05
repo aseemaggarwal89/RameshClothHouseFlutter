@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rameshclothhouse/gen/assets.gen.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view_model.dart';
+import 'package:rameshclothhouse/presentation/components/appNavBar/user_right_menu_bar.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
+import 'package:rameshclothhouse/presentation/config/app_router.dart';
 
 import '../../config/constants.dart';
 
@@ -58,6 +60,7 @@ class DesktopMenuBar extends StatelessWidget {
             },
           ),
           const Spacer(),
+          const UserRightMenuBar(),
         ],
       ),
     );
