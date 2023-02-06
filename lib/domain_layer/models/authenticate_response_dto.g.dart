@@ -10,8 +10,7 @@ AuthenticateResponseDTO _$AuthenticateResponseDTOFromJson(
         Map<String, dynamic> json) =>
     AuthenticateResponseDTO(
       token: json['token'] as String,
-      expiryDate:
-          AuthenticateResponseDTO._fromJson(json['expiresIn'] as String),
+      expiryDate: AuthenticateResponseDTO._fromJson(json['expiresIn'] as num),
       user: UserDTO.fromJson(json['data'] as Map<String, dynamic>),
       status: json['status'] as String,
     );

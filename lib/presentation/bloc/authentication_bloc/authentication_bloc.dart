@@ -1,18 +1,20 @@
 import 'dart:async';
-
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rameshclothhouse/presentation/config/storage.dart';
 
 import '../../../domain_layer/domain_layer.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
+part 'authentication_bloc.freezed.dart';
 
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
     implements UserUseCaseInjection {
-  AuthenticationBloc() : super(const AuthenticationState.uninitialized()) {
+  AuthenticateResponseDTO? authenticateResponseDTO;
+
+  AuthenticationBloc() : super(const AuthenticationState.initial()) {
     on<AppStarted>(_appStarted);
     on<UserLogout>(_onLogoutRequested);
     on<UserLoggedIn>(_userLogin);
@@ -26,23 +28,19 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
         : null;
 
     if (authenticateUser != null) {
-      emit(AuthenticationState.authenticated(authenticateUser));
+      emit(AuthenticationState.authenticated(user: authenticateUser));
     } else {
-      emit(const AuthenticationState.unauthenticated());
+      emit(const AuthenticationState.initial());
     }
   }
 
   void _userLogin(UserLoggedIn event, Emitter<AuthenticationState> emit) async {
-    LoginUserDTO loginUserDTO =
-        LoginUserDTO(password: event.password, email: event.email);
-
-    final user =
-        await getUserDataUseCase.authenticateUser(loginUserDTO: loginUserDTO);
-    if (user != null) {
-      Storage().saveUser(loginUserDTO);
-      emit(AuthenticationState.authenticated(user));
+    authenticateResponseDTO = event.authenticateResponseDTO;
+    if (authenticateResponseDTO != null) {
+      Storage().saveUser(event.userDTO);
+      emit(AuthenticationState.authenticated(user: authenticateResponseDTO!));
     } else {
-      emit(const AuthenticationState.unauthenticated());
+      emit(const AuthenticationState.initial());
     }
   }
 
@@ -50,16 +48,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
     UserLogout event,
     Emitter<AuthenticationState> emit,
   ) async {
-    getUserDataUseCase.logOut();
-    emit(const AuthenticationState.unauthenticated());
+    emit(const AuthenticationState.initial());
   }
 
-  void dispose() {
-    print("AuthenticationBloc dispose");
-  }
-
-  @override
-  Future<void> close() {
-    return super.close();
-  }
+  void dispose() {}
 }

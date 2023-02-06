@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_login/flutter_login.dart';
-import 'package:rameshclothhouse/gen/assets.gen.dart';
+import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
 import 'package:rameshclothhouse/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
 import 'package:rameshclothhouse/presentation/config/section_keys.dart';
-import 'package:rameshclothhouse/presentation/features/home/home.dart';
 import 'package:rameshclothhouse/presentation/features/login/bloc/login_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rameshclothhouse/presentation/features/login/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -38,10 +35,27 @@ class LoginScreenWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Responsive(
-      key: key,
-      mobile: _loginDesktopView,
-      desktop: _loginDesktopView,
+    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+      buildWhen: (previous, current) => previous != current,
+      builder: (context, state) {
+        if (state is Authenticated) {
+          return Responsive(
+              key: key,
+              mobile: UserProfilePage(
+                key: key,
+                user: state.user,
+              ),
+              desktop: UserProfilePage(
+                key: key,
+                user: state.user,
+              ));
+        }
+        return Responsive(
+          key: key,
+          mobile: _loginDesktopView,
+          desktop: _loginDesktopView,
+        );
+      },
     );
   }
 }
@@ -60,8 +74,8 @@ class LoginPage extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColorLight,
+          decoration: const BoxDecoration(
+            color: Colors.white,
           ),
         ),
         SingleChildScrollView(
@@ -79,14 +93,8 @@ class LoginPage extends StatelessWidget {
                         vertical: 8.0, horizontal: 94.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Theme.of(context).primaryColorLight,
-                      boxShadow: const [
-                        // BoxShadow(
-                        //   blurRadius: 8,
-                        //   color: Colors.black26,
-                        //   offset: Offset(0, 2),
-                        // )
-                      ],
+                      color: Colors.white,
+                      boxShadow: const [],
                     ),
                     child: Text(
                       'Ramesh Cloth House',
@@ -109,6 +117,67 @@ class LoginPage extends StatelessWidget {
                 Flexible(
                   flex: deviceSize.width > 600 ? 2 : 1,
                   child: const LoginForm(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class UserProfilePage extends StatelessWidget {
+  AuthenticateResponseDTO user;
+  static Route route() {
+    return MaterialPageRoute<void>(builder: (_) => const LoginPage());
+  }
+
+  UserProfilePage({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
+
+    return Stack(
+      children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+          ),
+        ),
+        SingleChildScrollView(
+          child: SizedBox(
+            height: deviceSize.height,
+            width: deviceSize.width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Flexible(
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 50, bottom: 10.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 94.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: const [],
+                    ),
+                    child: Row(
+                      children: [
+                        Card(
+                          child: LatoTextView(
+                            label: user.user.name,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

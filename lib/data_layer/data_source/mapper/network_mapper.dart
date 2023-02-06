@@ -19,7 +19,9 @@ class Generic {
         case GetProductDetailResponse:
           final data = GetProductDetailResponse.fromJson(json) as T;
           return data;
-
+        case AuthenticateResponseDTO:
+          final data = AuthenticateResponseDTO.fromJson(json) as T;
+          return data;
         default:
           if (json is List) {
             return _fromJsonList<T>(json) as T;

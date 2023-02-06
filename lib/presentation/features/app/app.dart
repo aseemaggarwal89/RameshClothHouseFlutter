@@ -3,12 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rameshclothhouse/main.dart';
+import 'package:rameshclothhouse/presentation/bloc/authentication_bloc/authentication.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view_model.dart';
 import 'package:rameshclothhouse/presentation/components/app_controller.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/menu_drawer.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
 import 'package:rameshclothhouse/presentation/config/theme.dart';
-import 'package:rameshclothhouse/presentation/features/productDetails/views/product_showcase_section.dart';
 import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
 class App extends StatelessWidget {
@@ -18,6 +18,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<AuthenticationBloc>().add(const AppStarted());
     return MaterialApp.router(
       title: "Ramesh Cloth House",
       debugShowCheckedModeBanner: false,

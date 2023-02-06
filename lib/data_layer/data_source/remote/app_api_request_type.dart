@@ -98,6 +98,10 @@ extension ApiRequesstTypeExtension on ApiRequestType {
     return {};
   }
 
+  bool get isContentLengthHeaderRequired {
+    return nodeType.isContentLengthHeaderRequired;
+  }
+
   DataResponseType get responseType {
     DataResponseType type = map(
         auth: (_AuthRequest value) => value.nodeType.responseType,
@@ -166,9 +170,9 @@ extension RequestTypeExtension on APIRequestNodeType {
 
   bool get isContentLengthHeaderRequired {
     switch (this) {
-      case APIRequestNodeType.orders:
       case APIRequestNodeType.auth:
-        return false;
+        return true;
+      case APIRequestNodeType.orders:
       case APIRequestNodeType.product:
       case APIRequestNodeType.userFavorites:
       case APIRequestNodeType.brand:

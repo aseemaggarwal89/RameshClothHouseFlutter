@@ -1,24 +1,48 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:encrypt/encrypt.dart';
 
 class Storage {
+  String kSecureKey = 'CBoaDQIQAgceGg8dFAkMDBEOECEZCxgMBiAUFQwKFhg=';
+
   static final Storage _instance = Storage._internal();
   factory Storage() => _instance;
   Storage._internal();
-  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
   final String _userKey = 'LoginUserId';
   final String _userPasswordKey = 'LoginUserPassword';
-  void saveUser(LoginUserDTO user) {
-    _secureStorage.write(key: _userKey, value: user.email);
-    _secureStorage.write(key: _userPasswordKey, value: user.password);
+
+  void saveUser(LoginUserDTO user) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_userKey, user.email);
+    String encryptValue = encryptPassword(user.password);
+    await prefs.setString(_userPasswordKey, encryptValue);
+  }
+
+  String encryptPassword(String value) {
+    final key = Key.fromUtf8(kSecureKey);
+    final iv = IV.fromLength(8);
+    final encrypter = Encrypter(Salsa20(key));
+
+    final encrypted = encrypter.encrypt(value, iv: iv);
+    return encrypted.base64;
+  }
+
+  String decryptPassword(String value) {
+    final key = Key.fromUtf8(kSecureKey);
+    final iv = IV.fromLength(8);
+    final encrypter = Encrypter(Salsa20(key));
+    final decrypted = encrypter.decrypt64(value, iv: iv);
+    return decrypted;
   }
 
   Future<LoginUserDTO?> get loginUserId async {
-    String? email = await _secureStorage.read(key: _userKey);
+    final prefs = await SharedPreferences.getInstance();
+    String? email = prefs.getString(_userKey);
     if (email != null) {
-      String? password = await _secureStorage.read(key: _userPasswordKey);
+      String? password = prefs.getString(_userPasswordKey);
       if (password != null) {
-        return LoginUserDTO(password: password, email: email);
+        String decrypt = decryptPassword(password);
+        return LoginUserDTO(password: decrypt, email: email);
       }
     }
     return null;

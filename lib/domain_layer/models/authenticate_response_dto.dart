@@ -14,14 +14,9 @@ class AuthenticateResponseDTO {
   @JsonKey(name: "expiresIn", fromJson: _fromJson, toJson: _toJson)
   final DateTime expiryDate;
 
-  static DateTime _fromJson(String date) {
-    return DateTime.now().add(
-      Duration(
-        seconds: int.parse(
-          date,
-        ),
-      ),
-    );
+  static DateTime _fromJson(num timestamp) {
+    var date = DateTime.fromMicrosecondsSinceEpoch(timestamp.toInt() * 1000);
+    return date;
   }
 
   String? get validToken {
@@ -32,7 +27,7 @@ class AuthenticateResponseDTO {
   }
 
   static String _toJson(DateTime date) {
-    final remaingSeconds = date.difference(DateTime.now()).inSeconds;
+    final remaingSeconds = date.second;
     return "$remaingSeconds";
   }
 
