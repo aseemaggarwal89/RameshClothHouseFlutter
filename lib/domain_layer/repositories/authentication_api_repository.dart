@@ -1,9 +1,13 @@
-import 'package:rameshclothhouse/domain_layer/models/signup_response_dto.dart';
-import 'package:rameshclothhouse/domain_layer/utils/api_result.dart';
+import '../domain_layer.dart';
 
 abstract class IAuthenticationAPIRepository {
-  Future<ApiResult<SignupResponseDTO>> signup(
-      String email, String password, String urlSegment) async {
+  Future<ApiResult<AuthenticateResponseDTO>> loginUser(
+      LoginUserDTO loginUserDTO) async {
     throw UnimplementedError();
-  }  
+  }
+
+  Future<ApiResult<AuthenticateResponseDTO>> signupUser(
+      SignupUserDTO userDTO) async {
+    throw UnimplementedError();
+  }
 }

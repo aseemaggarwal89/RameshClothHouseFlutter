@@ -8,8 +8,6 @@ part 'user_dto.g.dart';
 class UserDTO {
   @JsonKey(name: "_id")
   final String uniqueId;
-
-  String? token;
   final String name;
   final String email;
   String? photo;
@@ -17,19 +15,11 @@ class UserDTO {
 
   UserDTO({
     required this.uniqueId,
-    this.token,
     required this.name,
     required this.email,
     this.photo,
-    this.role = "user",
+    required this.role,
   });
-
-  static final empty = UserDTO(
-    uniqueId: "-",
-    name: "-",
-    email: "-",
-    role: "-",
-  );
 
   factory UserDTO.fromJson(Map<String, dynamic> json) {
     return _$UserDTOFromJson(json);

@@ -3,12 +3,12 @@ import 'package:rameshclothhouse/domain_layer/Cache/home_data._cache.dart';
 import 'package:rameshclothhouse/domain_layer/repositories/brand_repository.dart';
 import 'package:rameshclothhouse/domain_layer/repositories/category_repository.dart';
 import 'package:rameshclothhouse/domain_layer/repositories/product_repository.dart';
-import 'package:rameshclothhouse/domain_layer/repositories/user_repository.dart';
 import 'package:rameshclothhouse/domain_layer/usecases/brand/cases/get_brand_usecase.dart';
 import 'package:rameshclothhouse/domain_layer/usecases/categories/cases/get_category_usecase.dart';
 
 import '../data_layer/data_layer.dart';
 import 'app_configuration.dart';
+import 'repositories/authentication_api_repository.dart';
 import 'usecases/product/cases/get_product_usecase.dart';
 import 'usecases/user/cases/user_case.dart';
 
@@ -33,9 +33,6 @@ export 'usecases/user/extension/user_case_extension.dart';
 export '../../../locator.dart';
 
 export './usecases/categories/extension/categories_usecase_extension.dart';
-export './usecases/product/extension/product_usecase_extension.dart';
-export './usecases/brand/extension/brand_usecase_extension.dart';
-
 export './Cache/home_data._cache.dart';
 
 class DomainLayer {
@@ -53,6 +50,9 @@ class DomainLayer {
         BrandsUseCase(injector<IBrandAPIRepository>()));
     injector.registerSingleton<ICategoryUseCases>(
         CategoriesUseCase(injector<ICategoriesAPIRepository>()));
+
+    injector.registerSingleton<UserUseCase>(
+        UserUseCase(injector<IAuthenticationAPIRepository>()));
   }
 }
 

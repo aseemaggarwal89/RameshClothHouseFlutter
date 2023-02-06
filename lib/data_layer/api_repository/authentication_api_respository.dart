@@ -9,13 +9,19 @@ class AuthenticationAPIRepository extends IAuthenticationAPIRepository {
   AuthenticationAPIRepository(this.networkManager);
 
   @override
-  Future<ApiResult<SignupResponseDTO>> signup(
-      String email, String password, String urlSegment) async {
-    final SignupDTO signupDTO =
-        SignupDTO(password: password, email: email, returnSecureToken: true);
-    final apiRequest = AppAPIRequest(ApiRequestType.auth(path: urlSegment),
-        queryParam: {"key": "AIzaSyCzBkPrYH0HtvKNVhaVQVBZFfscWKnGyIQ"},
-        body: signupDTO.toJson());
+  Future<ApiResult<AuthenticateResponseDTO>> loginUser(
+      LoginUserDTO loginUserDTO) async {
+    final apiRequest = AppAPIRequest(const ApiRequestType.auth(path: '/login'),
+        body: loginUserDTO.toJson());
+
+    return networkManager.loadRequest(apiRequest);
+  }
+
+  @override
+  Future<ApiResult<AuthenticateResponseDTO>> signupUser(
+      SignupUserDTO userDTO) async {
+    final apiRequest = AppAPIRequest(const ApiRequestType.auth(path: '/signup'),
+        body: userDTO.toJson());
 
     return networkManager.loadRequest(apiRequest);
   }

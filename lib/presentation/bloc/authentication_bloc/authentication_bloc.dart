@@ -20,22 +20,26 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
 
   Future<void> _appStarted(
       AppStarted event, Emitter<AuthenticationState> emit) async {
-    var userId = await Storage().loginUserId;
-    UserDTO? user =
-        userId != null ? await getUserDataUseCase.loginUser(userId) : null;
+    var user = await Storage().loginUserId;
+    AuthenticateResponseDTO? authenticateUser = user != null
+        ? await getUserDataUseCase.authenticateUser(loginUserDTO: user)
+        : null;
 
-    if (user != null && user.token != null) {
-      emit(AuthenticationState.authenticated(user));
+    if (authenticateUser != null) {
+      emit(AuthenticationState.authenticated(authenticateUser));
     } else {
       emit(const AuthenticationState.unauthenticated());
     }
   }
 
   void _userLogin(UserLoggedIn event, Emitter<AuthenticationState> emit) async {
-    final user = await getUserDataUseCase.authenticateUser(
-        email: event.email, password: event.password);
+    LoginUserDTO loginUserDTO =
+        LoginUserDTO(password: event.password, email: event.email);
+
+    final user =
+        await getUserDataUseCase.authenticateUser(loginUserDTO: loginUserDTO);
     if (user != null) {
-      Storage().saveUserId(user.uniqueId);
+      Storage().saveUser(loginUserDTO);
       emit(AuthenticationState.authenticated(user));
     } else {
       emit(const AuthenticationState.unauthenticated());

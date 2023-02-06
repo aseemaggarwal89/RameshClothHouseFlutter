@@ -1,18 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
 
-part 'signup_response_dto.g.dart';
+part 'authenticate_response_dto.g.dart';
 
 @JsonSerializable()
-class SignupResponseDTO {
-  @JsonKey(name: "idToken")
+class AuthenticateResponseDTO {
+  @JsonKey(name: "token")
   final String token;
+  final String status;
+  @JsonKey(name: "data")
+  final UserDTO user;
 
   @JsonKey(name: "expiresIn", fromJson: _fromJson, toJson: _toJson)
   final DateTime expiryDate;
 
-  @JsonKey(name: "localId")
-  final String userId;
-  
   static DateTime _fromJson(String date) {
     return DateTime.now().add(
       Duration(
@@ -35,12 +36,16 @@ class SignupResponseDTO {
     return "$remaingSeconds";
   }
 
-  SignupResponseDTO(
-      {required this.token, required this.expiryDate, required this.userId});
+  AuthenticateResponseDTO({
+    required this.token,
+    required this.expiryDate,
+    required this.user,
+    required this.status,
+  });
 
-  factory SignupResponseDTO.fromJson(Map<String, dynamic> json) {
-    return _$SignupResponseDTOFromJson(json);
+  factory AuthenticateResponseDTO.fromJson(Map<String, dynamic> json) {
+    return _$AuthenticateResponseDTOFromJson(json);
   }
 
-  Map<String, dynamic> toJson() => _$SignupResponseDTOToJson(this);
+  Map<String, dynamic> toJson() => _$AuthenticateResponseDTOToJson(this);
 }
