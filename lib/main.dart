@@ -55,7 +55,7 @@ void commonMain(Environment env) async {
   Bloc.observer = SimpleBlocDelegate();
   runApp(
     BlocProvider<AuthenticationBloc>(
-        create: (context) => AuthenticationBloc()..add(AppStarted()),
+        create: (context) => AuthenticationBloc(),
         child: MultiProvider(
             providers: [
               RepositoryProvider<IProductUseCases>(
@@ -71,25 +71,6 @@ void commonMain(Environment env) async {
               fallbackLocale: AppLanguage.defaultLocale,
               startLocale: AppLanguage.defaultLocale,
               child: App(),
-            ))
-
-        // MultiRepositoryProvider(
-        //   providers: [
-        // RepositoryProvider<IProductUseCases>(
-        //   create: (context) => injector(),
-        // ),
-        // RepositoryProvider<IUserUseCases>(
-        //   create: (context) => injector(),
-        // ),
-        //   ],
-        //   child: EasyLocalization(
-        //     supportedLocales: AppLanguage.supportedLocale,
-        //     path: AppLanguage.languagePath,
-        //     fallbackLocale: AppLanguage.defaultLocale,
-        //     startLocale: AppLanguage.defaultLocale,
-        //     child: App(),
-        //   ),
-        // ),
-        ),
+            ))),
   );
 }

@@ -214,8 +214,15 @@ class $AssetsImagesGen {
   AssetGenImage get exploreAll =>
       const AssetGenImage('assets/images/explore_all.webp');
 
-  /// File path: assets/images/filter.png
-  AssetGenImage get filter => const AssetGenImage('assets/images/filter1.png');
+  /// File path: assets/images/filter.jpg
+  AssetGenImage get filter => const AssetGenImage('assets/images/filter.jpg');
+
+  /// File path: assets/images/filter1.png
+  AssetGenImage get filter1 => const AssetGenImage('assets/images/filter1.png');
+
+  /// File path: assets/images/filter_icon.png
+  AssetGenImage get filterIcon =>
+      const AssetGenImage('assets/images/filter_icon.png');
 
   /// File path: assets/images/happy_face.png
   AssetGenImage get happyFace =>
@@ -274,6 +281,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/ic_women_baby.png
   AssetGenImage get icWomenBaby =>
       const AssetGenImage('assets/images/ic_women_baby.png');
+
+  /// File path: assets/images/icons8-close-window-96.png
+  AssetGenImage get icons8CloseWindow96 =>
+      const AssetGenImage('assets/images/icons8-close-window-96.png');
 
   /// File path: assets/images/location_access.png
   AssetGenImage get locationAccess =>

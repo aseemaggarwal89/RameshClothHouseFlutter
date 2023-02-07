@@ -247,7 +247,7 @@ class HomePageHeaderView extends StatelessWidget {
                             fit: BoxFit.fill,
                             color: CommonColors.bodyText1,
                           )
-                        : Assets.images.filter.image(
+                        : Assets.images.filterIcon.image(
                             height: 30,
                             fit: BoxFit.fill,
                             color: CommonColors.bodyText1),

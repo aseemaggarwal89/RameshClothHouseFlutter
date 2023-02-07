@@ -43,10 +43,14 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isAdmin = context.read<AuthenticationBloc>().isUserAdmin();
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<AppMenuItems>(
-            create: (context) => AppMenuItems(selectedItem: MenuItemType.home),
+            create: (context) => AppMenuItems(
+              selectedItem: MenuItemType.home,
+              isAdmin: isAdmin,
+            ),
           ),
         ],
         child: Controller(

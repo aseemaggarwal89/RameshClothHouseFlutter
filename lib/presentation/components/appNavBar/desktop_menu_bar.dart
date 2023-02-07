@@ -1,8 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api, unnecessary_brace_in_string_interps
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:rameshclothhouse/gen/assets.gen.dart';
+import 'package:rameshclothhouse/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view_model.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/user_right_menu_bar.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
@@ -19,50 +21,60 @@ class DesktopMenuBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final menuItems = Provider.of<AppMenuItems>(context);
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).appBarTheme.backgroundColor,
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).appBarTheme.shadowColor ??
-                CommonColors.navBarShadowColor,
-            spreadRadius: 2,
-            blurRadius: 3,
-            offset: const Offset(0, 1), // changes position of shadow
+    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+      builder: (context, state) {
+        bool isAdmin = false;
+        if (state is Authenticated) {
+          isAdmin = state.user.user.role == 'admin';
+        }
+        menuItems.updateMenuItems(isAdmin);
+        return Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).appBarTheme.backgroundColor,
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).appBarTheme.shadowColor ??
+                    CommonColors.navBarShadowColor,
+                spreadRadius: 2,
+                blurRadius: 3,
+                offset: const Offset(0, 1), // changes position of shadow
+              ),
+            ],
           ),
-        ],
-      ),
-      height: AppConstants.desktopNavbarHeight.toDouble(),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Assets.images.rameshClothHouse.image(),
+          height: AppConstants.desktopNavbarHeight.toDouble(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Assets.images.rameshClothHouse.image(),
+              ),
+              const Spacer(),
+              ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: menuItems.itemCount,
+                itemBuilder: (ctx, i) {
+                  final item = menuItems.menuItem(i);
+                  return item != null
+                      ? Center(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: DesktopMenuBarItem(
+                              menuItemType: item,
+                            ),
+                          ),
+                        )
+                      : Container();
+                },
+              ),
+              const Spacer(),
+              const UserRightMenuBar(),
+            ],
           ),
-          const Spacer(),
-          ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: menuItems.itemCount,
-            itemBuilder: (ctx, i) {
-              final item = menuItems.menuItem(i);
-              return item != null
-                  ? Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: DesktopMenuBarItem(
-                          menuItemType: item,
-                        ),
-                      ),
-                    )
-                  : Container();
-            },
-          ),
-          const Spacer(),
-          const UserRightMenuBar(),
-        ],
-      ),
+        );
+      },
     );
   }
 }

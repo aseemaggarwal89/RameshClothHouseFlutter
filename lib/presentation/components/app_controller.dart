@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rameshclothhouse/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/desktop_nar_bar.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/mobile_nav_bar.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
@@ -38,11 +40,15 @@ class Controller extends StatelessWidget {
       child: child,
     );
 
-    return Scaffold(
-      appBar: appBar,
-      body: pageBody,
-      drawer: drawer,
-      backgroundColor: backgroundColor,
+    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: appBar,
+          body: pageBody,
+          drawer: drawer,
+          backgroundColor: backgroundColor,
+        );
+      },
     );
   }
 }

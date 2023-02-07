@@ -1,14 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:rameshclothhouse/presentation/config/app_router.dart';
 import 'package:rameshclothhouse/presentation/features/contactUs/contact_screen.dart';
+import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
+// import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
 import 'package:rameshclothhouse/presentation/features/login/login_screen.dart';
 import 'package:rameshclothhouse/presentation/features/productDetails/product_details_page.dart';
 import 'package:rameshclothhouse/presentation/features/shop/shop_screen.dart';
 import 'home/home.dart';
 
-@AdaptiveAutoRouter(
+@MaterialAutoRouter(
   replaceInRouteName: 'Page,Route,Screen',
   routes: <AutoRoute>[
+    AutoRoute(
+      page: EditProductScreen,
+      path: AppRoutes.dashboard,
+    ),
     AutoRoute(
       page: HomeScreen,
       path: AppRoutes.home,
@@ -47,6 +53,14 @@ import 'home/home.dart';
         RedirectRoute(path: '*', redirectTo: ''),
       ],
     ),
+    // AutoRoute(
+    //   initial: false,
+    //   path: AppRoutes.dashboard,
+    //   page: ProductDashboardScreen,
+    //   children: [
+    //     RedirectRoute(path: '*', redirectTo: ''),
+    //   ],
+    // ),
     // user routes with a nested router
     // AutoRoute(
     //   path: '/user',
@@ -62,7 +76,7 @@ import 'home/home.dart';
     // ),
 
     // redirect all other paths
-    RedirectRoute(path: '*', redirectTo: AppRoutes.home),
+    // RedirectRoute(path: '*', redirectTo: AppRoutes.home),
   ],
 )
 class $AppRouter {}

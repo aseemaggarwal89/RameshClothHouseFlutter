@@ -1,3 +1,4 @@
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
@@ -5,6 +6,7 @@ import 'package:rameshclothhouse/presentation/bloc/authentication_bloc/authentic
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
 import 'package:rameshclothhouse/presentation/config/section_keys.dart';
+import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/features/login/bloc/login_bloc.dart';
 import 'package:rameshclothhouse/presentation/features/login/login_form.dart';
 
@@ -170,11 +172,57 @@ class UserProfilePage extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        Card(
-                          child: LatoTextView(
-                            label: user.user.name,
+                        Expanded(
+                          flex: 3,
+                          child: Card(
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    if (user.user.photo != null)
+                                      Container(
+                                        height: 60,
+                                        width: 60,
+                                        decoration: BoxDecoration(
+                                            color: Colors.amber,
+                                            borderRadius:
+                                                BorderRadius.circular(30)),
+                                        child: ClipOval(
+                                          child: SizedBox.fromSize(
+                                            size: const Size.fromRadius(
+                                                30), // Image radius
+                                            child: Image.network(
+                                                user.user.photo!,
+                                                fit: BoxFit.cover),
+                                          ),
+                                        ),
+                                      ),
+                                    horizontalSpaceRegular,
+                                    LatoTextView(
+                                      label: user.user.name,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
+                        Expanded(
+                          flex: 5,
+                          child: Container(
+                            child: SizedBox(
+                              width: 100,
+                              child: Card(
+                                child: Column(
+                                  children: [
+                                    LatoTextView(label: user.user.name),
+                                    LatoTextView(label: user.user.email),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),

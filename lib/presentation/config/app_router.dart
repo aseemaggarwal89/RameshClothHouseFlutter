@@ -22,6 +22,9 @@ class AppNavigator {
       case MenuItemType.contactUs:
         navigateToContactUs();
         break;
+      case MenuItemType.dashboard:
+        navigateToDashboard();
+        break;
     }
   }
 
@@ -48,9 +51,13 @@ class AppNavigator {
   static void navigateToLogin() {
     getIt<AppRouter>().navigate(const LoginScreenRoute());
   }
+
+  static void navigateToDashboard() {
+    getIt<AppRouter>().navigate(const EditProductScreenRoute());
+  }
 }
 
-enum AppRouteType { home, login, shop, productDetail, contactUs }
+enum AppRouteType { home, login, shop, productDetail, contactUs, dashboard }
 
 extension AppRoutesExtension on AppRouteType {
   String get path {
@@ -65,6 +72,8 @@ extension AppRoutesExtension on AppRouteType {
         return AppRoutes.productDetail;
       case AppRouteType.contactUs:
         return AppRoutes.contactUs;
+      case AppRouteType.dashboard:
+        return AppRoutes.dashboard;
     }
   }
 }
@@ -74,13 +83,12 @@ class AppRoutes {
   static const login = '/login';
   static const shop = 'shop';
   static const contactUs = '/contactus';
-  static const cart = 'cart';
-  static const favourites = 'favourites';
-  static const productList = 'productList';
+  // static const cart = 'cart';
+  // static const favourites = 'favourites';
+  // static const productList = 'productList';
   static const productDetail = '/product/:id';
-  static const profile = 'profile';
-  static const checkout = 'checkout';
+  // static const profile = 'profile';
+  // static const checkout = 'checkout';
   static const signup = 'signup';
-  static const forgotPassword = 'forgot_pass';
-  static const filters = 'filters';
+  static const dashboard = '/dashboard';
 }

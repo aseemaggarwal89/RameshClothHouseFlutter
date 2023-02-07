@@ -3,20 +3,32 @@ import 'package:rameshclothhouse/presentation/config/app_router.dart';
 
 class AppMenuItems extends ChangeNotifier {
   Map<MenuItemType, bool> _itemHoveringState = {};
-  final List<MenuItemType> _items;
+  List<MenuItemType> _items;
   MenuItemType? _selectedItem;
 
   AppMenuItems._(this._itemHoveringState, this._selectedItem, this._items);
 
-  factory AppMenuItems({MenuItemType? selectedItem}) {
+  factory AppMenuItems({
+    MenuItemType? selectedItem,
+    bool isAdmin = false,
+  }) {
     Map<MenuItemType, bool> itemHoveringState = {};
-    List<MenuItemType> menuItems = MenuItemType.values;
+    List<MenuItemType> menuItems = isAdmin
+        ? MenuItemType.values
+        : MenuItemTypeExtension.menuItemsForNonAdmin();
 
     for (var menuItem in menuItems) {
       itemHoveringState[menuItem] = false;
     }
 
     return AppMenuItems._(itemHoveringState, selectedItem, menuItems);
+  }
+
+  void updateMenuItems(bool isAdmin) {
+    _items = isAdmin
+        ? MenuItemType.values
+        : MenuItemTypeExtension.menuItemsForNonAdmin();
+    notifyListeners();
   }
 
   int get itemCount {
@@ -61,9 +73,18 @@ class AppMenuItems extends ChangeNotifier {
   }
 }
 
-enum MenuItemType { home, shop, about, contactUs }
+enum MenuItemType { home, shop, about, contactUs, dashboard }
 
 extension MenuItemTypeExtension on MenuItemType {
+  static List<MenuItemType> menuItemsForNonAdmin() {
+    return [
+      MenuItemType.home,
+      MenuItemType.shop,
+      MenuItemType.about,
+      MenuItemType.contactUs,
+    ];
+  }
+
   String get title {
     switch (this) {
       case MenuItemType.home:
@@ -74,6 +95,8 @@ extension MenuItemTypeExtension on MenuItemType {
         return "About";
       case MenuItemType.contactUs:
         return "Contact Us";
+      case MenuItemType.dashboard:
+        return "Dashboard";
     }
   }
 }

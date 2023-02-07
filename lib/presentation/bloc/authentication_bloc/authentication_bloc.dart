@@ -44,6 +44,14 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
     }
   }
 
+  bool isUserAdmin() {
+    if (authenticateResponseDTO != null) {
+      return authenticateResponseDTO!.user.role == 'admin';
+    }
+
+    return false;
+  }
+
   void _onLogoutRequested(
     UserLogout event,
     Emitter<AuthenticationState> emit,
