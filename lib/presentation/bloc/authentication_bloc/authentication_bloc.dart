@@ -56,6 +56,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
     UserLogout event,
     Emitter<AuthenticationState> emit,
   ) async {
+    Storage().removeSavedUser();
     emit(const AuthenticationState.initial());
   }
 

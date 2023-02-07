@@ -227,6 +227,11 @@ class UserProfilePage extends StatelessWidget {
                     ),
                   ),
                 ),
+                TextButton(
+                    onPressed: () {
+                      context.read<LoginBloc>().add(const LoginEvent.logout());
+                    },
+                    child: const LatoTextView(label: "Logout"))
               ],
             ),
           ),

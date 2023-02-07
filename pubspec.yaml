@@ -44,7 +44,7 @@ dependencies:
   formz: ^0.4.0
   easy_localization: ^3.0.1
   logger: ^1.1.0
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
   intl: ^0.17.0
   auto_route: ^5.0.4
   provider: ^6.0.3
@@ -75,7 +75,7 @@ dev_dependencies:
   flutter_widget_from_html: ^0.9.1
   html_unescape: ^2.0.0
   font_awesome_flutter: ^10.3.0
-  email_validator: '^2.1.16'
+  email_validator: "^2.1.16"
   shared_preferences: ^2.0.17
   encrypt: ^5.0.1
   # The "flutter_lints" package below contains a set of recommended lints to

@@ -21,6 +21,7 @@ mixin _$LoginEvent {
     required TResult Function(String password) passwordchanged,
     required TResult Function(String username) usernamechanges,
     required TResult Function() loginuser,
+    required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$LoginEvent {
     TResult Function(String password)? passwordchanged,
     TResult Function(String username)? usernamechanges,
     TResult Function()? loginuser,
+    TResult Function()? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$LoginEvent {
     TResult Function(String password)? passwordchanged,
     TResult Function(String username)? usernamechanges,
     TResult Function()? loginuser,
+    TResult Function()? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$LoginEvent {
     required TResult Function(PasswordChanged value) passwordchanged,
     required TResult Function(UsernameChanged value) usernamechanges,
     required TResult Function(AuthenticateUser value) loginuser,
+    required TResult Function(Logout value) logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$LoginEvent {
     TResult Function(PasswordChanged value)? passwordchanged,
     TResult Function(UsernameChanged value)? usernamechanges,
     TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$LoginEvent {
     TResult Function(PasswordChanged value)? passwordchanged,
     TResult Function(UsernameChanged value)? usernamechanges,
     TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,6 +152,7 @@ class _$PasswordChanged implements PasswordChanged {
     required TResult Function(String password) passwordchanged,
     required TResult Function(String username) usernamechanges,
     required TResult Function() loginuser,
+    required TResult Function() logout,
   }) {
     return passwordchanged(password);
   }
@@ -156,6 +163,7 @@ class _$PasswordChanged implements PasswordChanged {
     TResult Function(String password)? passwordchanged,
     TResult Function(String username)? usernamechanges,
     TResult Function()? loginuser,
+    TResult Function()? logout,
   }) {
     return passwordchanged?.call(password);
   }
@@ -166,6 +174,7 @@ class _$PasswordChanged implements PasswordChanged {
     TResult Function(String password)? passwordchanged,
     TResult Function(String username)? usernamechanges,
     TResult Function()? loginuser,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (passwordchanged != null) {
@@ -180,6 +189,7 @@ class _$PasswordChanged implements PasswordChanged {
     required TResult Function(PasswordChanged value) passwordchanged,
     required TResult Function(UsernameChanged value) usernamechanges,
     required TResult Function(AuthenticateUser value) loginuser,
+    required TResult Function(Logout value) logout,
   }) {
     return passwordchanged(this);
   }
@@ -190,6 +200,7 @@ class _$PasswordChanged implements PasswordChanged {
     TResult Function(PasswordChanged value)? passwordchanged,
     TResult Function(UsernameChanged value)? usernamechanges,
     TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
   }) {
     return passwordchanged?.call(this);
   }
@@ -200,6 +211,7 @@ class _$PasswordChanged implements PasswordChanged {
     TResult Function(PasswordChanged value)? passwordchanged,
     TResult Function(UsernameChanged value)? usernamechanges,
     TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (passwordchanged != null) {
@@ -287,6 +299,7 @@ class _$UsernameChanged implements UsernameChanged {
     required TResult Function(String password) passwordchanged,
     required TResult Function(String username) usernamechanges,
     required TResult Function() loginuser,
+    required TResult Function() logout,
   }) {
     return usernamechanges(username);
   }
@@ -297,6 +310,7 @@ class _$UsernameChanged implements UsernameChanged {
     TResult Function(String password)? passwordchanged,
     TResult Function(String username)? usernamechanges,
     TResult Function()? loginuser,
+    TResult Function()? logout,
   }) {
     return usernamechanges?.call(username);
   }
@@ -307,6 +321,7 @@ class _$UsernameChanged implements UsernameChanged {
     TResult Function(String password)? passwordchanged,
     TResult Function(String username)? usernamechanges,
     TResult Function()? loginuser,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (usernamechanges != null) {
@@ -321,6 +336,7 @@ class _$UsernameChanged implements UsernameChanged {
     required TResult Function(PasswordChanged value) passwordchanged,
     required TResult Function(UsernameChanged value) usernamechanges,
     required TResult Function(AuthenticateUser value) loginuser,
+    required TResult Function(Logout value) logout,
   }) {
     return usernamechanges(this);
   }
@@ -331,6 +347,7 @@ class _$UsernameChanged implements UsernameChanged {
     TResult Function(PasswordChanged value)? passwordchanged,
     TResult Function(UsernameChanged value)? usernamechanges,
     TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
   }) {
     return usernamechanges?.call(this);
   }
@@ -341,6 +358,7 @@ class _$UsernameChanged implements UsernameChanged {
     TResult Function(PasswordChanged value)? passwordchanged,
     TResult Function(UsernameChanged value)? usernamechanges,
     TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (usernamechanges != null) {
@@ -404,6 +422,7 @@ class _$AuthenticateUser implements AuthenticateUser {
     required TResult Function(String password) passwordchanged,
     required TResult Function(String username) usernamechanges,
     required TResult Function() loginuser,
+    required TResult Function() logout,
   }) {
     return loginuser();
   }
@@ -414,6 +433,7 @@ class _$AuthenticateUser implements AuthenticateUser {
     TResult Function(String password)? passwordchanged,
     TResult Function(String username)? usernamechanges,
     TResult Function()? loginuser,
+    TResult Function()? logout,
   }) {
     return loginuser?.call();
   }
@@ -424,6 +444,7 @@ class _$AuthenticateUser implements AuthenticateUser {
     TResult Function(String password)? passwordchanged,
     TResult Function(String username)? usernamechanges,
     TResult Function()? loginuser,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (loginuser != null) {
@@ -438,6 +459,7 @@ class _$AuthenticateUser implements AuthenticateUser {
     required TResult Function(PasswordChanged value) passwordchanged,
     required TResult Function(UsernameChanged value) usernamechanges,
     required TResult Function(AuthenticateUser value) loginuser,
+    required TResult Function(Logout value) logout,
   }) {
     return loginuser(this);
   }
@@ -448,6 +470,7 @@ class _$AuthenticateUser implements AuthenticateUser {
     TResult Function(PasswordChanged value)? passwordchanged,
     TResult Function(UsernameChanged value)? usernamechanges,
     TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
   }) {
     return loginuser?.call(this);
   }
@@ -458,6 +481,7 @@ class _$AuthenticateUser implements AuthenticateUser {
     TResult Function(PasswordChanged value)? passwordchanged,
     TResult Function(UsernameChanged value)? usernamechanges,
     TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
     required TResult orElse(),
   }) {
     if (loginuser != null) {
@@ -469,6 +493,120 @@ class _$AuthenticateUser implements AuthenticateUser {
 
 abstract class AuthenticateUser implements LoginEvent {
   const factory AuthenticateUser() = _$AuthenticateUser;
+}
+
+/// @nodoc
+abstract class _$$LogoutCopyWith<$Res> {
+  factory _$$LogoutCopyWith(_$Logout value, $Res Function(_$Logout) then) =
+      __$$LogoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogoutCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$LogoutCopyWith<$Res> {
+  __$$LogoutCopyWithImpl(_$Logout _value, $Res Function(_$Logout) _then)
+      : super(_value, (v) => _then(v as _$Logout));
+
+  @override
+  _$Logout get _value => super._value as _$Logout;
+}
+
+/// @nodoc
+
+class _$Logout implements Logout {
+  const _$Logout();
+
+  @override
+  String toString() {
+    return 'LoginEvent.logout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Logout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String password) passwordchanged,
+    required TResult Function(String username) usernamechanges,
+    required TResult Function() loginuser,
+    required TResult Function() logout,
+  }) {
+    return logout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String password)? passwordchanged,
+    TResult Function(String username)? usernamechanges,
+    TResult Function()? loginuser,
+    TResult Function()? logout,
+  }) {
+    return logout?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String password)? passwordchanged,
+    TResult Function(String username)? usernamechanges,
+    TResult Function()? loginuser,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PasswordChanged value) passwordchanged,
+    required TResult Function(UsernameChanged value) usernamechanges,
+    required TResult Function(AuthenticateUser value) loginuser,
+    required TResult Function(Logout value) logout,
+  }) {
+    return logout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PasswordChanged value)? passwordchanged,
+    TResult Function(UsernameChanged value)? usernamechanges,
+    TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
+  }) {
+    return logout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PasswordChanged value)? passwordchanged,
+    TResult Function(UsernameChanged value)? usernamechanges,
+    TResult Function(AuthenticateUser value)? loginuser,
+    TResult Function(Logout value)? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Logout implements LoginEvent {
+  const factory Logout() = _$Logout;
 }
 
 /// @nodoc

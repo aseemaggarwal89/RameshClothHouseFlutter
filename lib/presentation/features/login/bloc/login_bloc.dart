@@ -1,5 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rameshclothhouse/presentation/bloc/authentication_bloc/authentication_bloc.dart';
@@ -14,7 +15,7 @@ part 'login_bloc.freezed.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState>
     implements UserUseCaseInjection {
   FormzStatus status = FormzStatus.pure;
-  AuthenticationBloc _authenticationBloc;
+  final AuthenticationBloc _authenticationBloc;
   Username _username = const Username.pure();
   Password _password = const Password.pure();
 
@@ -22,6 +23,17 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
     on<PasswordChanged>(_onPasswordChanged);
     on<UsernameChanged>(_onUserNameChanged);
     on<AuthenticateUser>(_onSubmitted);
+    on<Logout>(_onLogout);
+  }
+
+  void _onLogout(
+    Logout event,
+    Emitter<LoginState> emit,
+  ) {
+    _username = const Username.pure();
+    _password = const Password.pure();
+    status = FormzStatus.pure;
+    _authenticationBloc.add(const AuthenticationEvent.userLogout());
   }
 
   Username get username {

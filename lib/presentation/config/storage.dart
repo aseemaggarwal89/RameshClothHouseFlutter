@@ -18,6 +18,12 @@ class Storage {
     await prefs.setString(_userPasswordKey, encryptValue);
   }
 
+  void removeSavedUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.remove(_userKey);
+    prefs.remove(_userPasswordKey);
+  }
+
   String encryptPassword(String value) {
     final key = Key.fromUtf8(kSecureKey);
     final iv = IV.fromLength(8);
