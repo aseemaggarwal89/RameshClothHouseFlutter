@@ -9,9 +9,11 @@ class NetworkAPIRepository extends INetworkAPIRepository {
   NetworkAPIRepository(this.networkManager);
 
   @override
-  Future<ApiResult<T>> getDataAll<T>(APIRequestNodeType nodeType) {
+  Future<ApiResult<T>> getDataAll<T>(APIRequestNodeType nodeType,
+      {Map<String, dynamic>? param = const {}}) {
     final apiRequest = AppAPIRequest(
       ApiRequestType.getAll(nodeType: nodeType),
+      queryParam: param,
     );
 
     return networkManager.loadRequest(apiRequest);
