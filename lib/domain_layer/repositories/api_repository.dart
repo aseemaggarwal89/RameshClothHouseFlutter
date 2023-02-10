@@ -1,5 +1,3 @@
-import 'package:rameshclothhouse/domain_layer/models/product_param_dto.dart';
-
 import '../domain_layer.dart';
 
 abstract class INetworkAPIRepository {

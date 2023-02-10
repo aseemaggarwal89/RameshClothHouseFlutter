@@ -1,7 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:rameshclothhouse/domain_layer/Cache/home_data._cache.dart';
 import 'package:rameshclothhouse/domain_layer/repositories/api_repository.dart';
-import 'package:rameshclothhouse/domain_layer/repositories/product_repository.dart';
 import 'package:rameshclothhouse/domain_layer/usecases/getAll/cases/get_all_usecase.dart';
 import 'package:rameshclothhouse/domain_layer/usecases/getDetail/cases/get_detail_usecase.dart';
 
@@ -27,16 +25,12 @@ export '../../../locator.dart';
 export 'usecases/getAll/extension/get_all_usecase_extension.dart';
 export 'usecases/getDetail/extension/get_detail_usecase_extension.dart';
 
-export './Cache/home_data._cache.dart';
-
 class DomainLayer {
   static Future<void> initializeDependencies(
       Environment environment, GetIt injector) async {
     injector.registerSingleton<AppConfiguration>(
         AppConfiguration(appEnv: environment));
     await DataLayer.initializeDataLayerDependencies(injector);
-
-    injector.registerSingleton(HomeDataCache());
 
     injector.registerSingleton<UserUseCase>(
         UserUseCase(injector<IAuthenticationAPIRepository>()));
@@ -45,13 +39,5 @@ class DomainLayer {
         GetAllUseCase(injector<INetworkAPIRepository>()));
     injector.registerSingleton<IGetDetailUseCaseUseCases>(
         GetDetailUseCaseUseCases(injector<INetworkAPIRepository>()));
-  }
-}
-
-abstract class CacheInjection {}
-
-extension CacheInjectionExtension on CacheInjection {
-  HomeDataCache get homeDataCache {
-    return injector<HomeDataCache>();
   }
 }

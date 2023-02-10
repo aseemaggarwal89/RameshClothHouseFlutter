@@ -8,7 +8,7 @@ abstract class IGetDetailUseCaseUseCases {
 }
 
 class GetDetailUseCaseUseCases
-    implements IGetDetailUseCaseUseCases, CacheInjection {
+    implements IGetDetailUseCaseUseCases {
   final INetworkAPIRepository _networkAPIRepository;
 
   GetDetailUseCaseUseCases(

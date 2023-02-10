@@ -15,7 +15,7 @@ abstract class IGetAllUseCaseUseCases {
   Future<int> fetchProductDataCount(List<FilterDTO>? filters);
 }
 
-class GetAllUseCase implements IGetAllUseCaseUseCases, CacheInjection {
+class GetAllUseCase implements IGetAllUseCaseUseCases {
   final INetworkAPIRepository _networkAPIRepository;
 
   GetAllUseCase(

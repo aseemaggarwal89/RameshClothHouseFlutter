@@ -11,7 +11,7 @@ import '../../../../domain_layer/domain_layer.dart';
 import 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState>
-    implements CacheInjection, GetAllUseCaseInjection {
+    implements GetAllUseCaseInjection {
   final PagingController<int, ProductDTO> pagingController =
       PagingController(firstPageKey: 1);
 
