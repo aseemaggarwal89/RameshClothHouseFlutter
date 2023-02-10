@@ -7,9 +7,11 @@ abstract class INetworkAPIRepository {
   //   throw UnimplementedError();
   // }
 
-  // Future<ApiResult<GetProductsResponse>> getDataAll();
+  Future<ApiResult<GetProductCountResponse>> getDataCount(
+      {Map<String, dynamic>? param = const {}});
   Future<ApiResult<T>> getDataAll<T>(APIRequestNodeType nodeType,
       {Map<String, dynamic>? param = const {}});
+  Future<ApiResult<T>> getDetailData<T>(APIRequestNodeType nodeType, String id);
   // Future<ApiResult<GetProductCountResponse>> getProductsCount(
   //     [ProductParamDTO? param]);
   // Future<ApiResult<GetProductDetailResponse>> getProductDetail(

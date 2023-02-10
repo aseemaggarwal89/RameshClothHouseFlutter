@@ -58,9 +58,6 @@ void commonMain(Environment env) async {
         create: (context) => AuthenticationBloc(),
         child: MultiProvider(
             providers: [
-              RepositoryProvider<IProductUseCases>(
-                create: (context) => injector(),
-              ),
               RepositoryProvider<IUserUseCases>(
                 create: (context) => injector(),
               ),

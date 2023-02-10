@@ -18,3 +18,4 @@ export './base_response.dart';
 export './signup_user_dto.dart';
 export './get_colorinfo_response.dart';
 export './base_response.dart';
+export './get_product_detail_response.dart';

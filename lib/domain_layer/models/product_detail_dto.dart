@@ -12,21 +12,6 @@ import 'package:enum_to_string/enum_to_string.dart';
 
 part 'product_detail_dto.g.dart';
 
-@JsonSerializable()
-class GetProductDetailResponse {
-  String status;
-  @JsonKey(name: 'data')
-  ProductDetailDTO? data;
-
-  GetProductDetailResponse(this.data, this.status);
-
-  factory GetProductDetailResponse.fromJson(Map<String, dynamic> json) {
-    return _$GetProductDetailResponseFromJson(json);
-  }
-
-  Map<String, dynamic> toJson() => _$GetProductDetailResponseToJson(this);
-}
-
 enum QuantityType { unstiched, stiched }
 
 enum QualityType { standard, medium, expensive }

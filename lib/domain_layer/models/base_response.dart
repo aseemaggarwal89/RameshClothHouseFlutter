@@ -25,3 +25,23 @@ class GetBaseResponseDTO<T> {
   Map<String, dynamic> toJsonForObject(Object Function(T value) toJsonT) =>
       _$GetBaseResponseDTOToJson(this, toJsonT);
 }
+
+@JsonSerializable(
+  genericArgumentFactories: true,
+)
+class GetDetailBaseResponse<T> {
+  String status;
+  @JsonKey(name: 'data')
+  T? data;
+
+  GetDetailBaseResponse({required this.data, required this.status});
+
+  factory GetDetailBaseResponse.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object? json) fromJsonT,
+  ) {
+    return _$GetDetailBaseResponseFromJson(json, fromJsonT);
+  }
+
+  Map<String, dynamic> toJsonForObject(Object Function(T value) toJsonT) => _$GetDetailBaseResponseToJson(this, toJsonT);
+}

@@ -28,10 +28,6 @@ class DataLayer {
     // API
     injector.registerFactory<IAuthenticationAPIRepository>(
         () => AuthenticationAPIRepository(injector()));
-
-    injector.registerFactory<IProductAPIRepository>(
-        () => ProductAPIRepository(injector()));
-
     injector.registerFactory<INetworkAPIRepository>(
         () => NetworkAPIRepository(injector()));
 

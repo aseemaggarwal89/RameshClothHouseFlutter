@@ -10,7 +10,7 @@ part 'product_detail_page_bloc.freezed.dart';
 
 class ProductDetailPageBloc
     extends Bloc<ProductDetailPageEvent, ProductDetailPageState>
-    implements ProductUseCaseInjection {
+    implements GetDetailUseCaseInjection {
   ProductDetailPageBloc() : super(const ProductDetailPageState.initial()) {
     on<ProductDetailPageEvent>((event, emit) {});
     on<GetProductDetailEvent>(_onGetProductDetailEvent);
@@ -21,7 +21,7 @@ class ProductDetailPageBloc
     emit(const ProductDetailPageState.loading());
     try {
       final productDetail =
-          await getProductDataUseCase.fetchProductDetailData(event.productId);
+          await getDetailDataUseCase.fetchProductDetailData(event.productId);
       emit(ProductDetailPageState.loaded(productDetail));
     } on NetworkExceptions catch (failure) {
       emit(ProductDetailPageState.error(

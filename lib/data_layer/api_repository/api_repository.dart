@@ -18,4 +18,29 @@ class NetworkAPIRepository extends INetworkAPIRepository {
 
     return networkManager.loadRequest(apiRequest);
   }
+
+  @override
+  Future<ApiResult<T>> getDetailData<T>(APIRequestNodeType nodeType, String id) {
+    final apiRequest = AppAPIRequest(
+      ApiRequestType.getAll(nodeType: nodeType,
+        path: '/$id',
+      ),
+    );
+
+    return networkManager.loadRequest(apiRequest);
+  }
+
+    @override
+  Future<ApiResult<GetProductCountResponse>> getDataCount(
+      {Map<String, dynamic>? param = const {}}) {
+    final apiRequest = AppAPIRequest(
+      const ApiRequestType.product(
+        path: '/count',
+      ),
+      queryParam: param,
+    );
+
+    return networkManager.loadRequest(apiRequest);
+  }
+
 }

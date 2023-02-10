@@ -8,41 +8,6 @@ class ProductAPIRepository extends IProductAPIRepository {
 
   ProductAPIRepository(this.networkManager);
 
-  @override
-  Future<ApiResult<GetProductsResponse>> getProducts(
-      [ProductParamDTO? param]) async {
-    final apiRequest = AppAPIRequest(
-      const ApiRequestType.product(),
-      queryParam: param?.toJson(),
-    );
-
-    return networkManager.loadRequest(apiRequest);
-  }
-
-  @override
-  Future<ApiResult<GetProductCountResponse>> getProductsCount(
-      [ProductParamDTO? param]) {
-    final apiRequest = AppAPIRequest(
-      const ApiRequestType.product(
-        path: '/count',
-      ),
-      queryParam: param?.toJson(),
-    );
-
-    return networkManager.loadRequest(apiRequest);
-  }
-
-  @override
-  Future<ApiResult<GetProductDetailResponse>> getProductDetail(
-      String productId) {
-    final apiRequest = AppAPIRequest(
-      ApiRequestType.product(
-        path: '/$productId',
-      ),
-    );
-
-    return networkManager.loadRequest(apiRequest);
-  }
 
   // @override
   // Future<ApiResult<AddResponse>> addProductRequest(ProductDTO product) async {

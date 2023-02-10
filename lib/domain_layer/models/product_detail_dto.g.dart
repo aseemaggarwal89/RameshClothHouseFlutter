@@ -6,22 +6,6 @@ part of 'product_detail_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetProductDetailResponse _$GetProductDetailResponseFromJson(
-        Map<String, dynamic> json) =>
-    GetProductDetailResponse(
-      json['data'] == null
-          ? null
-          : ProductDetailDTO.fromJson(json['data'] as Map<String, dynamic>),
-      json['status'] as String,
-    );
-
-Map<String, dynamic> _$GetProductDetailResponseToJson(
-        GetProductDetailResponse instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'data': instance.data,
-    };
-
 ProductDetailDTO _$ProductDetailDTOFromJson(Map<String, dynamic> json) =>
     ProductDetailDTO(
       name: json['name'] as String,

@@ -21,44 +21,20 @@ class ApiRequestType with _$ApiRequestType {
     @Default("") String path,
   }) = _ProductRequest;
 
-  const factory ApiRequestType.brand({
-    @Default(HttpMethod.get) HttpMethod method,
-    @Default(APIRequestNodeType.brand) APIRequestNodeType nodeType,
-    @Default(AppURLsType.ugc) AppURLsType baseUrlType,
-    @Default("") String path,
-  }) = _BrandRequest;
-
-  const factory ApiRequestType.category({
-    @Default(HttpMethod.get) HttpMethod method,
-    @Default(APIRequestNodeType.category) APIRequestNodeType nodeType,
-    @Default(AppURLsType.ugc) AppURLsType baseUrlType,
-    @Default("") String path,
-  }) = _CategoryRequest;
-
   const factory ApiRequestType.auth({
     @Default(HttpMethod.post) HttpMethod method,
     @Default(APIRequestNodeType.auth) APIRequestNodeType nodeType,
     @Default(AppURLsType.ugc) AppURLsType baseUrlType,
     @Default("") String path,
   }) = _AuthRequest;
-
-  const factory ApiRequestType.colorInfo({
-    @Default(HttpMethod.get) HttpMethod method,
-    @Default(APIRequestNodeType.colorInfo) APIRequestNodeType nodeType,
-    @Default(AppURLsType.ugc) AppURLsType baseUrlType,
-    @Default("") String path,
-  }) = _ColorInfo;
 }
 
 extension ApiRequesstTypeExtension on ApiRequestType {
   Future<String> get urlPath async {
     var urlPath = map(
       product: (_ProductRequest value) => nodeType.nodeUrlEndPoint + path,
-      brand: (_BrandRequest value) => nodeType.nodeUrlEndPoint + path,
-      category: (_CategoryRequest value) => nodeType.nodeUrlEndPoint + path,
       auth: (_AuthRequest value) => nodeType.nodeUrlEndPoint + path,
-      colorInfo: (_ColorInfo value) => nodeType.nodeUrlEndPoint + path,
-      getAll: (_GetAllRequest value) => nodeType.nodeUrlEndPoint,
+      getAll: (_GetAllRequest value) => nodeType.nodeUrlEndPoint + path,
     );
     // when(
     //   auth: (HttpMethod method, APIRequestNodeType nodeType,
@@ -93,25 +69,6 @@ extension ApiRequesstTypeExtension on ApiRequestType {
         AppURLsType baseUrlType,
         String path,
       ) {},
-      brand: (
-        HttpMethod method,
-        APIRequestNodeType nodeType,
-        AppURLsType baseUrlType,
-        String path,
-      ) {},
-      category: (
-        HttpMethod method,
-        APIRequestNodeType nodeType,
-        AppURLsType baseUrlType,
-        String path,
-      ) {},
-      colorInfo: (
-        HttpMethod method,
-        APIRequestNodeType nodeType,
-        AppURLsType baseUrlType,
-        String path,
-      ) =>
-          {},
       getAll: (HttpMethod method, APIRequestNodeType nodeType,
           AppURLsType baseUrlType, String path) {},
     );
@@ -131,9 +88,6 @@ extension ApiRequesstTypeExtension on ApiRequestType {
     DataResponseType type = map(
       auth: (_AuthRequest value) => value.nodeType.responseType,
       product: (_ProductRequest value) => value.nodeType.responseType,
-      brand: (_BrandRequest value) => value.nodeType.responseType,
-      category: (_CategoryRequest value) => value.nodeType.responseType,
-      colorInfo: (_ColorInfo value) => value.nodeType.responseType,
       getAll: (_GetAllRequest value) => value.nodeType.responseType,
     );
 

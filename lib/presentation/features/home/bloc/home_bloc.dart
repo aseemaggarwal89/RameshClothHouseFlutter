@@ -11,7 +11,7 @@ import '../../../../domain_layer/domain_layer.dart';
 import 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState>
-    implements ProductUseCaseInjection, CacheInjection, GetAllUseCaseInjection {
+    implements CacheInjection, GetAllUseCaseInjection {
   final PagingController<int, ProductDTO> pagingController =
       PagingController(firstPageKey: 1);
 
@@ -118,7 +118,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
     Emitter<HomeState> emit,
   ) async {
     try {
-      final resultCount = await getProductDataUseCase.fetchProductDataCount(
+      final resultCount = await getAllDataUseCase.fetchProductDataCount(
         _onSelectedFilters.hasValue ? _onSelectedFilters.value : null,
       );
       _onProductResultsBy.value = resultCount;
