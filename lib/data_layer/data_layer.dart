@@ -1,14 +1,13 @@
 import 'package:get_it/get_it.dart';
+import 'package:rameshclothhouse/data_layer/api_repository/api_repository.dart';
 import 'package:rameshclothhouse/data_layer/api_repository/authentication_api_respository.dart';
-import 'package:rameshclothhouse/data_layer/api_repository/brand_api_respository.dart';
-import 'package:rameshclothhouse/data_layer/api_repository/categories_api_respository.dart';
 import 'package:rameshclothhouse/data_layer/api_repository/product_api_respository.dart';
 import 'package:rameshclothhouse/data_layer/data_repository/product_db_repository.dart';
 import 'package:rameshclothhouse/data_layer/data_source/remote/app_base_api_client.dart';
 import 'package:rameshclothhouse/data_layer/networkLayer/appnetworking/networkClient/http_client.dart';
+import 'package:rameshclothhouse/domain_layer/repositories/api_repository.dart';
 
 import '../domain_layer/domain_layer.dart';
-import 'api_repository/colors_api_repository.dart';
 import 'data_repository/user_db_repository.dart';
 import 'data_source/local/database.dart';
 export '../../../locator.dart';
@@ -33,13 +32,9 @@ class DataLayer {
     injector.registerFactory<IProductAPIRepository>(
         () => ProductAPIRepository(injector()));
 
-    injector.registerFactory<IBrandAPIRepository>(
-        () => BrandAPIRepository(injector()));
+    injector.registerFactory<INetworkAPIRepository>(
+        () => NetworkAPIRepository(injector()));
 
-    injector.registerFactory<ICategoriesAPIRepository>(
-        () => CategorgiesAPIRepository(injector()));
-    injector.registerFactory<IColorInfoAPIRepository>(
-        () => ColorInfoAPIRepository(injector()));
     // Local Storage
     // injector.registerSingleton<UserDatabaseRoom>(UserDatabaseRoom());
     // injector.registerSingleton<ProductDataBaseRoom>(ProductDataBaseRoom());

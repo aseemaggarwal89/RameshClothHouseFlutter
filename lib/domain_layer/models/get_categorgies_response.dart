@@ -1,20 +1,19 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rameshclothhouse/domain_layer/models/categories_dto.dart';
 
-part 'get_categorgies_response.g.dart';
+import 'base_response.dart';
 
-@JsonSerializable()
-class GetCategoriesResponse {
-  String status;
-  int results;
-  @JsonKey(name: 'data')
-  List<CategoriesDTO> data;
-
-  GetCategoriesResponse(this.results, this.data, this.status);
+class GetCategoriesResponse extends GetBaseResponseDTO<CategoriesDTO> {
+  GetCategoriesResponse(results, data, status)
+      : super(status: status, results: results, data: data);
 
   factory GetCategoriesResponse.fromJson(Map<String, dynamic> json) {
-    return _$GetCategoriesResponseFromJson(json);
+    final data = GetBaseResponseDTO.fromJson(
+        json, (json) => CategoriesDTO.fromJson(json as Map<String, dynamic>));
+
+    return GetCategoriesResponse(data.results, data.data, data.status);
   }
 
-  Map<String, dynamic> toJson() => _$GetCategoriesResponseToJson(this);
+  Map<String, dynamic> toJson() {
+    return super.toJsonForObject((value) => value.toJson());
+  }
 }

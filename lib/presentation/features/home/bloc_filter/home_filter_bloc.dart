@@ -13,7 +13,7 @@ import '../home.dart';
 part 'home_filter_event.dart';
 
 class HomeFilterBloc extends Bloc<HomeFilterEvent, HomeFilterState>
-    implements BrandUseCaseInjection, CategoryUseCaseInjection {
+    implements GetAllUseCaseInjection {
   final _loadedFilters = BehaviorSubject<FilterViewModel>();
   HomeBloc homeBloc;
   HomeFilterBloc(this.homeBloc) : super(HomeFilterInitialState()) {
@@ -27,9 +27,10 @@ class HomeFilterBloc extends Bloc<HomeFilterEvent, HomeFilterState>
     if (_loadedFilters.hasValue) {
       emit(HomeFilterLoadedState(_loadedFilters.value));
     }
+    
     try {
-      final categories = await getCategoryDataUseCase.fetchAllCategories();
-      final brands = await getBrandDataUseCase.fetchAllBrandData();
+      final categories = await getAllDataUseCase.fetchAllCategories();
+      final brands = await getAllDataUseCase.fetchAllBrandData();
       if (loadedFilters.selectedFilters.isNotEmpty) {
         _loadedFilters.value = FilterViewModel(brands, categories,
             selectedFilters: loadedFilters.selectedFilters);

@@ -7,6 +7,13 @@ part 'app_api_request_type.freezed.dart';
 
 @freezed
 class ApiRequestType with _$ApiRequestType {
+  const factory ApiRequestType.getAll({
+    @Default(HttpMethod.get) HttpMethod method,
+    required APIRequestNodeType nodeType,
+    @Default(AppURLsType.ugc) AppURLsType baseUrlType,
+    @Default("") String path,
+  }) = _GetAllRequest;
+
   const factory ApiRequestType.product({
     @Default(HttpMethod.get) HttpMethod method,
     @Default(APIRequestNodeType.product) APIRequestNodeType nodeType,
@@ -51,6 +58,7 @@ extension ApiRequesstTypeExtension on ApiRequestType {
       category: (_CategoryRequest value) => nodeType.nodeUrlEndPoint + path,
       auth: (_AuthRequest value) => nodeType.nodeUrlEndPoint + path,
       colorInfo: (_ColorInfo value) => nodeType.nodeUrlEndPoint + path,
+      getAll: (_GetAllRequest value) => nodeType.nodeUrlEndPoint,
     );
     // when(
     //   auth: (HttpMethod method, APIRequestNodeType nodeType,
@@ -104,6 +112,8 @@ extension ApiRequesstTypeExtension on ApiRequestType {
         String path,
       ) =>
           {},
+      getAll: (HttpMethod method, APIRequestNodeType nodeType,
+          AppURLsType baseUrlType, String path) {},
     );
 
     return customHeaders;
@@ -124,6 +134,7 @@ extension ApiRequesstTypeExtension on ApiRequestType {
       brand: (_BrandRequest value) => value.nodeType.responseType,
       category: (_CategoryRequest value) => value.nodeType.responseType,
       colorInfo: (_ColorInfo value) => value.nodeType.responseType,
+      getAll: (_GetAllRequest value) => value.nodeType.responseType,
     );
 
     return type;
@@ -143,16 +154,6 @@ extension DataResponseTypeExtension on DataResponseType {
         return ResponseType.bytes;
     }
   }
-}
-
-enum APIRequestNodeType {
-  product,
-  brand,
-  category,
-  orders,
-  auth,
-  userFavorites,
-  colorInfo,
 }
 
 extension RequestTypeExtension on APIRequestNodeType {

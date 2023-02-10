@@ -25,10 +25,8 @@ class DashboardViewModel {
 
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState>
     implements
-        BrandUseCaseInjection,
-        CategoryUseCaseInjection,
-        ProductUseCaseInjection,
-        ColorInfoUseCaseInjection {
+        GetAllUseCaseInjection,
+        ProductUseCaseInjection {
   DashboardBloc() : super(const Initial()) {
     on<GetAllDetailEvent>(_onGetAllDetailEvent);
   }
@@ -38,10 +36,10 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState>
     Emitter<DashboardState> emit,
   ) async {
     emit(const DashboardState.loading());
-    final categories = await getCategoryDataUseCase.fetchAllCategories();
-    final brands = await getBrandDataUseCase.fetchAllBrandData();
+    final categories = await getAllDataUseCase.fetchAllCategories();
+    final brands = await getAllDataUseCase.fetchAllBrandData();
     final products = await getProductDataUseCase.fetchAllProductsData();
-    final colorInfo = await getColorInfoDataUseCase.fetchAllColorInfoData();
+    final colorInfo = await getAllDataUseCase.fetchAllColorInfoData();
 
     final productCount =
         await getProductDataUseCase.fetchProductDataCount(null);

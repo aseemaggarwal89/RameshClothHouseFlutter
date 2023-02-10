@@ -1,16 +1,17 @@
 import 'package:rameshclothhouse/data_layer/data_source/remote/app_api_request.dart';
 import 'package:rameshclothhouse/data_layer/data_source/remote/app_api_request_type.dart';
+import 'package:rameshclothhouse/domain_layer/repositories/api_repository.dart';
 import '../../domain_layer/domain_layer.dart';
 
-class ColorInfoAPIRepository extends IColorInfoAPIRepository {
+class NetworkAPIRepository extends INetworkAPIRepository {
   final INetworkService networkManager;
 
-  ColorInfoAPIRepository(this.networkManager);
+  NetworkAPIRepository(this.networkManager);
 
   @override
-  Future<ApiResult<GetColorInfoResponse>> getColorInfo() {
+  Future<ApiResult<T>> getDataAll<T>(APIRequestNodeType nodeType) {
     final apiRequest = AppAPIRequest(
-      const ApiRequestType.colorInfo(),
+      ApiRequestType.getAll(nodeType: nodeType),
     );
 
     return networkManager.loadRequest(apiRequest);

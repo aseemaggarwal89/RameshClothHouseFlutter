@@ -1,22 +1,17 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../domain_layer.dart';
 
-part 'get_colorinfo_response.g.dart';
-
-@JsonSerializable()
-class GetColorInfoResponse {
-  String status;
-  int results;
-  @JsonKey(name: 'data')
-  List<ColorInfo>? data;
-
-  GetColorInfoResponse(this.results, this.data, this.status);
+class GetColorInfoResponse extends GetBaseResponseDTO<ColorInfo> {
+  GetColorInfoResponse(results, data, status)
+      : super(status: status, results: results, data: data);
 
   factory GetColorInfoResponse.fromJson(Map<String, dynamic> json) {
-    return _$GetColorInfoResponseFromJson(json);
+    final data = GetBaseResponseDTO.fromJson(
+        json, (json) => ColorInfo.fromJson(json as Map<String, dynamic>));
+
+    return GetColorInfoResponse(data.results, data.data, data.status);
   }
 
-  Map<String, dynamic> toJson() => _$GetColorInfoResponseToJson(this);
-
+  Map<String, dynamic> toJson() {
+    return super.toJsonForObject((value) => value.toJson());
+  }
 }
