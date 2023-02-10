@@ -1,6 +1,5 @@
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
-import 'package:flutter/foundation.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rameshclothhouse/presentation/bloc/authentication_bloc/authentication_bloc.dart';

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:rameshclothhouse/presentation/config/app_router.dart';
 import 'package:rameshclothhouse/presentation/features/contactUs/contact_screen.dart';
+import 'package:rameshclothhouse/presentation/features/dashboard/dashboard_screen.dart';
 import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
 // import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
 import 'package:rameshclothhouse/presentation/features/login/login_screen.dart';
@@ -12,9 +13,17 @@ import 'home/home.dart';
   replaceInRouteName: 'Page,Route,Screen',
   routes: <AutoRoute>[
     AutoRoute(
-      page: EditProductScreen,
+      page: DashboardScreen,
       path: AppRoutes.dashboard,
     ),
+    AutoRoute(
+      page: EditProductScreen,
+      path: AppRoutes.editPage,
+    ),
+    // AutoRoute(
+    //   page: EditProductScreen,
+    //   path: AppRoutes.createPage,
+    // ),
     AutoRoute(
       page: HomeScreen,
       path: AppRoutes.home,

@@ -1,492 +1,205 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rameshclothhouse/presentation/features/editProduct/bloc/edit_product_bloc.dart';
 
 import '../../../domain_layer/utils/network_exceptions.dart';
 
-class EditProductScreen extends StatefulWidget {
+class EditProductScreen extends StatelessWidget {
   static const routeName = '/edit-product';
 
   const EditProductScreen({Key? key}) : super(key: key);
 
   @override
-  _EditProductScreenState createState() => _EditProductScreenState();
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<EditProductBloc>(
+          create: ((context) => EditProductBloc()),
+        ),
+      ],
+      child: EditProductPage(),
+    );
+  }
 }
 
-class _EditProductScreenState extends State<EditProductScreen> {
-  final _priceFocusNode = FocusNode();
-  final _descriptionFocusNode = FocusNode();
-  final _imageUrlController = TextEditingController();
-  final _imageUrlFocusNode = FocusNode();
-  final _form = GlobalKey<FormState>();
-  // ignore: prefer_final_fields
-  var _editedProduct = Product(
-    id: '',
-    title: '',
-    description: '',
-    price: 0,
-    imageUrl: '',
-  );
-  var _isInit = true;
-  var _initValues = {
-    'title': '',
-    'description': '',
-    'price': '',
-    'imageUrl': '',
-  };
-  var _isLoading = false;
+class EditProductPage extends StatelessWidget {
+  final formGlobalKey = GlobalKey<FormState>();
+
+  static Route route() {
+    return MaterialPageRoute<void>(builder: (_) => EditProductPage());
+  }
+
+  EditProductPage({Key? key}) : super(key: key);
 
   @override
-  void initState() {
-    _imageUrlFocusNode.addListener(_updateImageUrl);
-    super.initState();
-  }
+  Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
 
-  @override
-  void didChangeDependencies() {
-    if (_isInit) {
-      // ignore: unnecessary_null_comparison
-      if (ModalRoute.of(context)?.settings.arguments != null) {
-        final productId = ModalRoute.of(context)?.settings.arguments as String;
-        _editedProduct =
-            Provider.of<Products>(context, listen: false).findById(productId);
-        _initValues = {
-          'title': _editedProduct.title,
-          'description': _editedProduct.description,
-          'price': _editedProduct.price.toString(),
-          // 'imageUrl': _editedProduct.imageUrl,
-          'imageUrl': '',
-        };
-        _imageUrlController.text = _editedProduct.imageUrl;
-      }
-    }
-    _isInit = false;
-    super.didChangeDependencies();
-  }
-
-  void _updateImageUrl() {
-    if (!_imageUrlFocusNode.hasFocus) {
-      if (_imageUrlController.text.isEmpty ||
-          !_imageUrlController.text.startsWith('http') ||
-          !_imageUrlController.text.startsWith('https')) {
-        return;
-      }
-    }
-
-    setState(() {});
-  }
-
-  Future<void> _saveForm() async {
-    final isValid = _form.currentState?.validate();
-    if (!(isValid ?? false)) {
-      return;
-    }
-    _form.currentState?.save();
-    setState(() {
-      _isLoading = true;
-    });
-    if (_editedProduct.id == '') {
-      try {
-        await Provider.of<Products>(context, listen: false)
-            .addProduct(_editedProduct);
-      } on NetworkExceptions catch (error) {
-        final errorMessage = NetworkExceptions.getErrorMessage(error);
-        await showDialog(
-          context: context,
-          builder: (ctx) => AlertDialog(
-            title: const Text('An error occured'),
-            content: Text('Something went wrong $errorMessage'),
-            actions: <Widget>[
-              TextButton(
-                child: const Text('Okay'),
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                },
-              )
-            ],
+    return Stack(
+      children: <Widget>[
+        Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
           ),
-        );
-      } finally {
-        setState(() {
-          _isLoading = false;
-        });
-        Navigator.of(context).pop();
-      }
-    } else {
-      await Provider.of<Products>(context, listen: false)
-          .updateProduct(_editedProduct.id, _editedProduct);
-      setState(() {
-        _isLoading = false;
-      });
-      Navigator.of(context).pop();
-    }
+        ),
+        SingleChildScrollView(
+          child: SizedBox(
+            height: deviceSize.height,
+            width: deviceSize.width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Flexible(
+                  flex: deviceSize.width > 600 ? 2 : 1,
+                  child: EditProductForm(
+                    form: formGlobalKey,
+                  ),
+                ),
+                const SizedBox(height: 50),
+                ElevatedButton(
+                    onPressed: () {
+                      if (formGlobalKey.currentState?.validate() ?? false) {
+                        formGlobalKey.currentState?.save();
+                        // use the email provided here
+                      }
+                    },
+                    child: Text("Submit"))
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
+}
 
-  // void _saveForm() {
-  //   final isValid = _form.currentState?.validate();
-  //   if (!(isValid ?? false)) {
-  //     return;
-  //   }
-  //   _form.currentState?.save();
-  //   setState(() {
-  //     _isLoading = true;
-  //   });
-  //   if (_editedProduct.id == '') {
-  //     Provider.of<Products>(context, listen: false)
-  //         .addProduct(_editedProduct)
-  //         .catchError((error) {
-  //       String errorMessage;
-  //       if (error is NetworkExceptions) {
-  //         errorMessage = NetworkExceptions.getErrorMessage(error);
-  //       } else {
-  //         errorMessage = error.toString();
-  //       }
-  //       return showDialog(
-  //         context: context,
-  //         builder: (ctx) => AlertDialog(
-  //           title: const Text('An error occured'),
-  //           content: Text('Something went wrong $errorMessage'),
-  //           actions: <Widget>[
-  //             TextButton(
-  //               child: const Text('Okay'),
-  //               onPressed: () {
-  //                 Navigator.of(ctx).pop();
-  //               },
-  //             )
-  //           ],
-  //         ),
-  //       );
-  //     }).then((_) {
-  //       setState(() {
-  //         _isLoading = false;
-  //       });
-  //       Navigator.of(context).pop();
-  //     });
-  //   } else {
-  //     Provider.of<Products>(context, listen: false)
-  //         .updateProduct(_editedProduct.id, _editedProduct);
-  //     setState(() {
-  //       _isLoading = false;
-  //     });
-  //     Navigator.of(context).pop();
-  //   }
-  // }
+class EditProductForm extends StatelessWidget {
+  final passwordFocusNode = FocusNode();
+  late final GlobalKey<FormState> _form;
 
-  @override
-  void dispose() {
-    _imageUrlFocusNode.removeListener(_updateImageUrl);
-    _priceFocusNode.dispose();
-    _descriptionFocusNode.dispose();
-    _imageUrlController.dispose();
-    _imageUrlFocusNode.dispose();
-    super.dispose();
+  EditProductForm({Key? key, required GlobalKey<FormState> form})
+      : super(key: key) {
+    _form = form;
   }
 
   @override
   Widget build(BuildContext context) {
-    return _isLoading
-        ? const Center(
-            child: CircularProgressIndicator(),
-          )
-        : Padding(
+    return BlocBuilder<EditProductBloc, EditProductState>(
+        builder: ((context, state) {
+      EditProductBloc bloc = context.read<EditProductBloc>();
+      return Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        elevation: 8.0,
+        child: Container(
+          height: 500,
+          constraints: const BoxConstraints(minHeight: 260),
+          width: 450,
+          padding: const EdgeInsets.all(16.0),
+          child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
               key: _form,
               child: ListView(
                 children: <Widget>[
                   TextFormField(
-                    initialValue: _initValues['title'],
-                    decoration: const InputDecoration(labelText: 'Title'),
+                    initialValue:
+                        bloc.inputField(FormFieldType.name).intialValue,
+                    decoration: InputDecoration(
+                        labelText:
+                            bloc.inputField(FormFieldType.name).fieldLabel),
                     textInputAction: TextInputAction.next,
                     onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_priceFocusNode);
+                      _validateForm();
+                      // FocusScope.of(context).requestFocus(_priceFocusNode);
                     },
-                    onSaved: (value) {
-                      _editedProduct = Product(
-                          id: _editedProduct.id,
-                          title: value ?? '',
-                          description: _editedProduct.description,
-                          price: _editedProduct.price,
-                          imageUrl: _editedProduct.imageUrl,
-                          isFavorite: _editedProduct.isFavorite);
-                    },
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) {
-                        return 'Please provide a value';
-                      }
-
-                      return null;
-                    },
+                    onSaved: (value) {},
+                    validator: (value) =>
+                        bloc.inputField(FormFieldType.name).validator(value),
                   ),
                   TextFormField(
-                    initialValue: _initValues['price'],
-                    decoration: const InputDecoration(labelText: 'Price'),
+                    initialValue:
+                        bloc.inputField(FormFieldType.price).intialValue,
+                    decoration: InputDecoration(
+                        labelText:
+                            bloc.inputField(FormFieldType.price).fieldLabel),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.number,
-                    focusNode: _priceFocusNode,
+                    // focusNode: _priceFocusNode,
                     onFieldSubmitted: (_) {
-                      FocusScope.of(context)
-                          .requestFocus(_descriptionFocusNode);
+                      _validateForm();
+                      // FocusScope.of(context)
+                      //     .requestFocus(_descriptionFocusNode);
                     },
-                    onSaved: (value) {
-                      _editedProduct = Product(
-                          id: _editedProduct.id,
-                          title: _editedProduct.title,
-                          description: _editedProduct.description,
-                          price: double.parse(value ?? '0'),
-                          imageUrl: _editedProduct.imageUrl,
-                          isFavorite: _editedProduct.isFavorite);
-                    },
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) {
-                        return 'Please enter a price';
-                        // ignore: unnecessary_null_comparison
-                      } else if (double.parse(value ?? '') == null) {
-                        return 'Please enter a valud number';
-                      } else if (double.parse(value ?? '0') <= 0) {
-                        return 'Please enter a number greater than zero';
-                      }
-
-                      return null;
-                    },
+                    onSaved: (value) =>
+                        bloc.inputField(FormFieldType.price).onSaved(value),
+                    validator: (value) =>
+                        bloc.inputField(FormFieldType.price).validator(value),
                   ),
                   TextFormField(
-                    initialValue: _initValues['description'],
-                    decoration: const InputDecoration(labelText: 'Description'),
+                    initialValue: bloc
+                        .inputField(FormFieldType.discountPrice)
+                        .intialValue,
+                    decoration: InputDecoration(
+                        labelText: bloc
+                            .inputField(FormFieldType.discountPrice)
+                            .fieldLabel),
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.number,
+                    // focusNode: _priceFocusNode,
+                    onFieldSubmitted: (_) {
+                      _validateForm();
+                      // FocusScope.of(context)
+                      //     .requestFocus(_descriptionFocusNode);
+                    },
+                    onSaved: (value) => bloc
+                        .inputField(FormFieldType.discountPrice)
+                        .onSaved(value),
+                    validator: (value) => bloc
+                        .inputField(FormFieldType.discountPrice)
+                        .validator(value),
+                  ),
+                  TextFormField(
+                    initialValue:
+                        bloc.inputField(FormFieldType.description).intialValue,
+                    decoration: InputDecoration(
+                        labelText: bloc
+                            .inputField(FormFieldType.description)
+                            .fieldLabel),
                     maxLines: 3,
                     keyboardType: TextInputType.multiline,
-                    focusNode: _descriptionFocusNode,
-                    onSaved: (value) {
-                      _editedProduct = Product(
-                          id: _editedProduct.id,
-                          title: _editedProduct.title,
-                          description: value ?? '',
-                          price: _editedProduct.price,
-                          imageUrl: _editedProduct.imageUrl,
-                          isFavorite: _editedProduct.isFavorite);
+                    // focusNode: _descriptionFocusNode,
+                    onSaved: (value) => bloc
+                        .inputField(FormFieldType.description)
+                        .onSaved(value),
+                    validator: (value) => bloc
+                        .inputField(FormFieldType.description)
+                        .validator(value),
+                    onFieldSubmitted: (_) {
+                      _validateForm();
+                      // FocusScope.of(context)
+                      //     .requestFocus(_descriptionFocusNode);
                     },
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) {
-                        return 'Please enter a description';
-                      } else if ((value?.length ?? 0) < 10) {
-                        return 'Should be at least 10 characters long';
-                      }
-
-                      return null;
-                    },
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      Container(
-                        width: 100,
-                        height: 100,
-                        margin: const EdgeInsets.only(
-                          top: 8,
-                          right: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        child: _imageUrlController.text.isEmpty
-                            ? const Text('Enter a URL')
-                            : FittedBox(
-                                child: Image.network(
-                                  _imageUrlController.text,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                            decoration:
-                                const InputDecoration(labelText: 'Image URL'),
-                            keyboardType: TextInputType.url,
-                            textInputAction: TextInputAction.done,
-                            controller: _imageUrlController,
-                            focusNode: _imageUrlFocusNode,
-                            onFieldSubmitted: (_) {
-                              _saveForm();
-                            },
-                            onSaved: (value) {
-                              _editedProduct = Product(
-                                id: _editedProduct.id,
-                                title: _editedProduct.title,
-                                description: _editedProduct.description,
-                                price: _editedProduct.price,
-                                imageUrl: value ?? '',
-                                isFavorite: _editedProduct.isFavorite,
-                              );
-                            },
-                            validator: (value) {
-                              if (value?.isEmpty ?? true) {
-                                return 'Please enter an image URL';
-                              } else if (!(value ?? '').startsWith('http') ||
-                                  !(value ?? '').startsWith('https')) {
-                                return 'Please enter a valid URL';
-                              }
-
-                              return null;
-                            }),
-                      ),
-                    ],
                   ),
                 ],
               ),
             ),
-          );
-  }
-}
-
-class Product with ChangeNotifier {
-  late final String id;
-  final String title;
-  final String description;
-  final double price;
-  final String imageUrl;
-  bool isFavorite;
-
-  Product({
-    this.id = "",
-    required this.title,
-    required this.description,
-    required this.price,
-    required this.imageUrl,
-    this.isFavorite = false,
-  });
-
-  Future<void> toggleFavoriteStatus() async {
-    final oldStatus = isFavorite;
-    isFavorite = !isFavorite;
-    notifyListeners();
-  }
-}
-
-class Products with ChangeNotifier {
-  // ignore: prefer_final_fields
-  List<Product> _items = [];
-
-  List<Product> get items {
-    return [..._items];
+          ),
+        ),
+      );
+    }));
   }
 
-  Products(this._items);
+  void _validateForm() {
+    final isValid = _form.currentState?.validate();
+    if (!(isValid ?? false)) {
+      return;
+    }
 
-  Product findById(String id) {
-    return _items.firstWhere((element) => element.id == id);
-  }
-
-  Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
-    // final result = await productApiRepository.fetchProducts(filterByUser);
-    // final favoriteResponse = await productApiRepository.fetchUserFavourite();
-    // Map<String, dynamic> favorite = favoriteResponse.map(
-    //     success: (value) {
-    //       return value.data ?? <String, dynamic>{};
-    //     },
-    //     failure: (failure) => <String, dynamic>{});
-
-    // result.when(success: (GetProductsResponse? data) {
-    //   final List<Product> loadedProducts = [];
-    //   data?.products.forEach((key, value) {
-    //     final product = Product(
-    //         id: key,
-    //         title: value.title,
-    //         description: value.description,
-    //         price: value.price,
-    //         imageUrl: value.imageUrl,
-    //         isFavorite: favorite[key] ?? false);
-    //     loadedProducts.add(product);
-    //   });
-    //   _items = loadedProducts;
-    //   notifyListeners();
-    // }, failure: (error) {
-    //   print(error);
-    // });
-  }
-
-  Future<void> addProduct(Product product) async {
-    // final user = await authenticationRepository.loginUser;
-    // if (user != null) {
-    //   final result = await productApiRepository
-    //       .addProductRequest(ProductDTO.fromProduct(product, user.id));
-    //   result.when(success: (AddResponse? data) {
-    //     if (data != null) {
-    //       final id = data.name;
-    //       final newProduct = Product(
-    //         title: product.title,
-    //         price: product.price,
-    //         description: product.description,
-    //         imageUrl: product.imageUrl,
-    //         id: id,
-    //       );
-    //       _items.add(newProduct);
-    //       notifyListeners();
-    //     }
-    //   }, failure: (NetworkExceptions error) {
-    //     print(NetworkExceptions.getErrorMessage(error));
-    //     throw error;
-    //   });
-    // } else {
-    //   throw const NetworkExceptions.unauthorizedRequest("User not login");
-    // }
-  }
-
-  // Future<void> addProduct(Product product) {
-  //   return productApiRepository.addProductRequest(product).then((value) {
-  //     value.when(
-  //       success: (AddProductResponse data) {
-  //         final id = data.name;
-  //         final newProduct = Product(
-  //           title: product.title,
-  //           price: product.price,
-  //           description: product.description,
-  //           imageUrl: product.imageUrl,
-  //           id: id,
-  //         );
-  //         _items.add(newProduct);
-  //         notifyListeners();
-  //       },
-  //       failure: (NetworkExceptions error) {
-  //         print(NetworkExceptions.getErrorMessage(error));
-  //         throw error;
-  //       },
-  //     );
-  //   });
-  // }
-
-  Future<void> updateProduct(String id, Product newProduct) async {
-    // final prodIndex = _items.indexWhere((prod) => prod.id == id);
-    // if (prodIndex >= 0) {
-    //   await productApiRepository.updateProductRequest(newProduct);
-    //   _items[prodIndex] = newProduct;
-    //   notifyListeners();
-    // } else {
-    //   // ignore: avoid_print
-    //   print('...');
-    // }
-  }
-
-  List<Product> get favoritesItems {
-    return _items.where((element) => element.isFavorite).toList();
-  }
-
-  Future<void> deleteProducts(String id) async {
-    // final existingProductIndex =
-    //     _items.indexWhere((element) => element.id == id);
-    // Product? existingProduct = _items[existingProductIndex];
-    // _items.removeAt(existingProductIndex);
-    // notifyListeners();
-
-    // await productApiRepository.deleteProductRequest(id).then((value) {
-    //   value.when(success: (success) {
-    //     existingProduct = null;
-    //   }, failure: (failure) {
-    //     _items.insert(existingProductIndex, existingProduct!);
-    //     notifyListeners();
-    //     throw failure;
-    //   });
-    // });
+    // _form.currentState?.save();
   }
 }

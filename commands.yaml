@@ -5,4 +5,6 @@ autoGenerateAssets: $ flutter packages pub run build_runner build
 runChrome: flutter run -d chrome --web-renderer html
 getPackages: flutter packages get
 
+flutter run -d chrome --web-browser-flag "--disable-web-security"
+
 # https://onlinehtmleditor.dev/

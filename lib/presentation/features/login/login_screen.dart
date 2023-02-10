@@ -118,7 +118,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 Flexible(
                   flex: deviceSize.width > 600 ? 2 : 1,
-                  child: const LoginForm(),
+                  child: LoginForm(),
                 ),
               ],
             ),

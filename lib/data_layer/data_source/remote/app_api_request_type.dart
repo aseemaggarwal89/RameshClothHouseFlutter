@@ -34,6 +34,13 @@ class ApiRequestType with _$ApiRequestType {
     @Default(AppURLsType.ugc) AppURLsType baseUrlType,
     @Default("") String path,
   }) = _AuthRequest;
+
+  const factory ApiRequestType.colorInfo({
+    @Default(HttpMethod.get) HttpMethod method,
+    @Default(APIRequestNodeType.colorInfo) APIRequestNodeType nodeType,
+    @Default(AppURLsType.ugc) AppURLsType baseUrlType,
+    @Default("") String path,
+  }) = _ColorInfo;
 }
 
 extension ApiRequesstTypeExtension on ApiRequestType {
@@ -43,6 +50,7 @@ extension ApiRequesstTypeExtension on ApiRequestType {
       brand: (_BrandRequest value) => nodeType.nodeUrlEndPoint + path,
       category: (_CategoryRequest value) => nodeType.nodeUrlEndPoint + path,
       auth: (_AuthRequest value) => nodeType.nodeUrlEndPoint + path,
+      colorInfo: (_ColorInfo value) => nodeType.nodeUrlEndPoint + path,
     );
     // when(
     //   auth: (HttpMethod method, APIRequestNodeType nodeType,
@@ -89,6 +97,13 @@ extension ApiRequesstTypeExtension on ApiRequestType {
         AppURLsType baseUrlType,
         String path,
       ) {},
+      colorInfo: (
+        HttpMethod method,
+        APIRequestNodeType nodeType,
+        AppURLsType baseUrlType,
+        String path,
+      ) =>
+          {},
     );
 
     return customHeaders;
@@ -104,10 +119,12 @@ extension ApiRequesstTypeExtension on ApiRequestType {
 
   DataResponseType get responseType {
     DataResponseType type = map(
-        auth: (_AuthRequest value) => value.nodeType.responseType,
-        product: (_ProductRequest value) => value.nodeType.responseType,
-        brand: (_BrandRequest value) => value.nodeType.responseType,
-        category: (_CategoryRequest value) => value.nodeType.responseType);
+      auth: (_AuthRequest value) => value.nodeType.responseType,
+      product: (_ProductRequest value) => value.nodeType.responseType,
+      brand: (_BrandRequest value) => value.nodeType.responseType,
+      category: (_CategoryRequest value) => value.nodeType.responseType,
+      colorInfo: (_ColorInfo value) => value.nodeType.responseType,
+    );
 
     return type;
   }
@@ -134,7 +151,8 @@ enum APIRequestNodeType {
   category,
   orders,
   auth,
-  userFavorites
+  userFavorites,
+  colorInfo,
 }
 
 extension RequestTypeExtension on APIRequestNodeType {
@@ -152,6 +170,8 @@ extension RequestTypeExtension on APIRequestNodeType {
         return '/users';
       case APIRequestNodeType.userFavorites:
         return '/userFavorites';
+      case APIRequestNodeType.colorInfo:
+        return '/colorInfo';
     }
   }
 
@@ -164,6 +184,7 @@ extension RequestTypeExtension on APIRequestNodeType {
       case APIRequestNodeType.userFavorites:
       case APIRequestNodeType.brand:
       case APIRequestNodeType.category:
+      case APIRequestNodeType.colorInfo:
         return {};
     }
   }
@@ -177,6 +198,7 @@ extension RequestTypeExtension on APIRequestNodeType {
       case APIRequestNodeType.userFavorites:
       case APIRequestNodeType.brand:
       case APIRequestNodeType.category:
+      case APIRequestNodeType.colorInfo:
         return false;
     }
   }
@@ -189,6 +211,7 @@ extension RequestTypeExtension on APIRequestNodeType {
       case APIRequestNodeType.userFavorites:
       case APIRequestNodeType.brand:
       case APIRequestNodeType.category:
+      case APIRequestNodeType.colorInfo:
         return DataResponseType.json;
     }
   }

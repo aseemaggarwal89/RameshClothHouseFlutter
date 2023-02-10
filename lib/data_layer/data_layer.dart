@@ -8,6 +8,7 @@ import 'package:rameshclothhouse/data_layer/data_source/remote/app_base_api_clie
 import 'package:rameshclothhouse/data_layer/networkLayer/appnetworking/networkClient/http_client.dart';
 
 import '../domain_layer/domain_layer.dart';
+import 'api_repository/colors_api_repository.dart';
 import 'data_repository/user_db_repository.dart';
 import 'data_source/local/database.dart';
 export '../../../locator.dart';
@@ -37,7 +38,8 @@ class DataLayer {
 
     injector.registerFactory<ICategoriesAPIRepository>(
         () => CategorgiesAPIRepository(injector()));
-
+    injector.registerFactory<IColorInfoAPIRepository>(
+        () => ColorInfoAPIRepository(injector()));
     // Local Storage
     // injector.registerSingleton<UserDatabaseRoom>(UserDatabaseRoom());
     // injector.registerSingleton<ProductDataBaseRoom>(ProductDataBaseRoom());

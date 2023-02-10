@@ -82,6 +82,7 @@ extension MenuItemTypeExtension on MenuItemType {
       MenuItemType.shop,
       MenuItemType.about,
       MenuItemType.contactUs,
+      MenuItemType.dashboard
     ];
   }
 

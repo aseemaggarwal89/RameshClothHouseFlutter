@@ -5,7 +5,9 @@ import 'package:rameshclothhouse/presentation/features/login/bloc/login_bloc.dar
 import 'package:rameshclothhouse/presentation/features/login/view_model.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({Key? key}) : super(key: key);
+  final passwordFocusNode = FocusNode();
+
+  LoginForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +34,12 @@ class LoginForm extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                _UsernameInput(),
-                _PasswordInput(),
+                _UsernameInput(
+                  passwordFocusNode: passwordFocusNode,
+                ),
+                _PasswordInput(
+                  passwordFocusNode: passwordFocusNode,
+                ),
                 const Padding(padding: EdgeInsets.all(12)),
                 _SubmitButton(),
               ],
@@ -46,6 +52,10 @@ class LoginForm extends StatelessWidget {
 }
 
 class _UsernameInput extends StatelessWidget {
+  final FocusNode passwordFocusNode;
+
+  const _UsernameInput({super.key, required this.passwordFocusNode});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
@@ -53,6 +63,9 @@ class _UsernameInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('loginForm_usernameInput_textField'),
+          onSubmitted: (_) {
+            FocusScope.of(context).requestFocus(passwordFocusNode);
+          },
           onChanged: (username) => context
               .read<LoginBloc>()
               .add(LoginEvent.usernamechanges(username: username)),
@@ -70,12 +83,17 @@ class _UsernameInput extends StatelessWidget {
 }
 
 class _PasswordInput extends StatelessWidget {
+  final FocusNode passwordFocusNode;
+
+  const _PasswordInput({super.key, required this.passwordFocusNode});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
       buildWhen: (previous, current) => current != previous,
       builder: (context, state) {
         return TextField(
+          focusNode: passwordFocusNode,
           key: const Key('loginForm_passwordInput_textField'),
           obscureText: true,
           onChanged: (password) => context
@@ -88,6 +106,9 @@ class _PasswordInput extends StatelessWidget {
                     "Please enter password")
                 : null,
           ),
+          onSubmitted: (_) {
+            context.read<LoginBloc>().add(const LoginEvent.loginuser());
+          },
         );
       },
     );

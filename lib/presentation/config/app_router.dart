@@ -1,6 +1,3 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 import 'package:rameshclothhouse/main.dart';
 import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
@@ -53,11 +50,15 @@ class AppNavigator {
   }
 
   static void navigateToDashboard() {
+    getIt<AppRouter>().navigate(const DashboardScreenRoute());
+  }
+
+  static void navigateToEditPage() {
     getIt<AppRouter>().navigate(const EditProductScreenRoute());
   }
 }
 
-enum AppRouteType { home, login, shop, productDetail, contactUs, dashboard }
+enum AppRouteType { home, login, shop, productDetail, contactUs, dashboard, editProduct }
 
 extension AppRoutesExtension on AppRouteType {
   String get path {
@@ -74,6 +75,8 @@ extension AppRoutesExtension on AppRouteType {
         return AppRoutes.contactUs;
       case AppRouteType.dashboard:
         return AppRoutes.dashboard;
+      case AppRouteType.editProduct:
+      return AppRoutes.editPage;
     }
   }
 }
@@ -91,4 +94,6 @@ class AppRoutes {
   // static const checkout = 'checkout';
   static const signup = 'signup';
   static const dashboard = '/dashboard';
+  static const editPage = '/product/:id';
+  static const createPage = '/product';
 }

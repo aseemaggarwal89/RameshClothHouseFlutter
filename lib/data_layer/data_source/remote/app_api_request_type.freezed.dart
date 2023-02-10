@@ -34,6 +34,9 @@ mixin _$ApiRequestType {
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
         auth,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        colorInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +53,9 @@ mixin _$ApiRequestType {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +72,9 @@ mixin _$ApiRequestType {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +84,7 @@ mixin _$ApiRequestType {
     required TResult Function(_BrandRequest value) brand,
     required TResult Function(_CategoryRequest value) category,
     required TResult Function(_AuthRequest value) auth,
+    required TResult Function(_ColorInfo value) colorInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +93,7 @@ mixin _$ApiRequestType {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +102,7 @@ mixin _$ApiRequestType {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -269,6 +281,9 @@ class _$_ProductRequest implements _ProductRequest {
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
         auth,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        colorInfo,
   }) {
     return product(method, nodeType, baseUrlType, path);
   }
@@ -288,6 +303,9 @@ class _$_ProductRequest implements _ProductRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
   }) {
     return product?.call(method, nodeType, baseUrlType, path);
   }
@@ -307,6 +325,9 @@ class _$_ProductRequest implements _ProductRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
     required TResult orElse(),
   }) {
     if (product != null) {
@@ -322,6 +343,7 @@ class _$_ProductRequest implements _ProductRequest {
     required TResult Function(_BrandRequest value) brand,
     required TResult Function(_CategoryRequest value) category,
     required TResult Function(_AuthRequest value) auth,
+    required TResult Function(_ColorInfo value) colorInfo,
   }) {
     return product(this);
   }
@@ -333,6 +355,7 @@ class _$_ProductRequest implements _ProductRequest {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
   }) {
     return product?.call(this);
   }
@@ -344,6 +367,7 @@ class _$_ProductRequest implements _ProductRequest {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
     required TResult orElse(),
   }) {
     if (product != null) {
@@ -494,6 +518,9 @@ class _$_BrandRequest implements _BrandRequest {
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
         auth,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        colorInfo,
   }) {
     return brand(method, nodeType, baseUrlType, path);
   }
@@ -513,6 +540,9 @@ class _$_BrandRequest implements _BrandRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
   }) {
     return brand?.call(method, nodeType, baseUrlType, path);
   }
@@ -532,6 +562,9 @@ class _$_BrandRequest implements _BrandRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
     required TResult orElse(),
   }) {
     if (brand != null) {
@@ -547,6 +580,7 @@ class _$_BrandRequest implements _BrandRequest {
     required TResult Function(_BrandRequest value) brand,
     required TResult Function(_CategoryRequest value) category,
     required TResult Function(_AuthRequest value) auth,
+    required TResult Function(_ColorInfo value) colorInfo,
   }) {
     return brand(this);
   }
@@ -558,6 +592,7 @@ class _$_BrandRequest implements _BrandRequest {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
   }) {
     return brand?.call(this);
   }
@@ -569,6 +604,7 @@ class _$_BrandRequest implements _BrandRequest {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
     required TResult orElse(),
   }) {
     if (brand != null) {
@@ -719,6 +755,9 @@ class _$_CategoryRequest implements _CategoryRequest {
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
         auth,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        colorInfo,
   }) {
     return category(method, nodeType, baseUrlType, path);
   }
@@ -738,6 +777,9 @@ class _$_CategoryRequest implements _CategoryRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
   }) {
     return category?.call(method, nodeType, baseUrlType, path);
   }
@@ -757,6 +799,9 @@ class _$_CategoryRequest implements _CategoryRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
     required TResult orElse(),
   }) {
     if (category != null) {
@@ -772,6 +817,7 @@ class _$_CategoryRequest implements _CategoryRequest {
     required TResult Function(_BrandRequest value) brand,
     required TResult Function(_CategoryRequest value) category,
     required TResult Function(_AuthRequest value) auth,
+    required TResult Function(_ColorInfo value) colorInfo,
   }) {
     return category(this);
   }
@@ -783,6 +829,7 @@ class _$_CategoryRequest implements _CategoryRequest {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
   }) {
     return category?.call(this);
   }
@@ -794,6 +841,7 @@ class _$_CategoryRequest implements _CategoryRequest {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
     required TResult orElse(),
   }) {
     if (category != null) {
@@ -944,6 +992,9 @@ class _$_AuthRequest implements _AuthRequest {
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
         auth,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        colorInfo,
   }) {
     return auth(method, nodeType, baseUrlType, path);
   }
@@ -963,6 +1014,9 @@ class _$_AuthRequest implements _AuthRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
   }) {
     return auth?.call(method, nodeType, baseUrlType, path);
   }
@@ -982,6 +1036,9 @@ class _$_AuthRequest implements _AuthRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
     required TResult orElse(),
   }) {
     if (auth != null) {
@@ -997,6 +1054,7 @@ class _$_AuthRequest implements _AuthRequest {
     required TResult Function(_BrandRequest value) brand,
     required TResult Function(_CategoryRequest value) category,
     required TResult Function(_AuthRequest value) auth,
+    required TResult Function(_ColorInfo value) colorInfo,
   }) {
     return auth(this);
   }
@@ -1008,6 +1066,7 @@ class _$_AuthRequest implements _AuthRequest {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
   }) {
     return auth?.call(this);
   }
@@ -1019,6 +1078,7 @@ class _$_AuthRequest implements _AuthRequest {
     TResult Function(_BrandRequest value)? brand,
     TResult Function(_CategoryRequest value)? category,
     TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
     required TResult orElse(),
   }) {
     if (auth != null) {
@@ -1046,5 +1106,242 @@ abstract class _AuthRequest implements ApiRequestType {
   @override
   @JsonKey(ignore: true)
   _$$_AuthRequestCopyWith<_$_AuthRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ColorInfoCopyWith<$Res>
+    implements $ApiRequestTypeCopyWith<$Res> {
+  factory _$$_ColorInfoCopyWith(
+          _$_ColorInfo value, $Res Function(_$_ColorInfo) then) =
+      __$$_ColorInfoCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {HttpMethod method,
+      APIRequestNodeType nodeType,
+      AppURLsType baseUrlType,
+      String path});
+}
+
+/// @nodoc
+class __$$_ColorInfoCopyWithImpl<$Res>
+    extends _$ApiRequestTypeCopyWithImpl<$Res>
+    implements _$$_ColorInfoCopyWith<$Res> {
+  __$$_ColorInfoCopyWithImpl(
+      _$_ColorInfo _value, $Res Function(_$_ColorInfo) _then)
+      : super(_value, (v) => _then(v as _$_ColorInfo));
+
+  @override
+  _$_ColorInfo get _value => super._value as _$_ColorInfo;
+
+  @override
+  $Res call({
+    Object? method = freezed,
+    Object? nodeType = freezed,
+    Object? baseUrlType = freezed,
+    Object? path = freezed,
+  }) {
+    return _then(_$_ColorInfo(
+      method: method == freezed
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as HttpMethod,
+      nodeType: nodeType == freezed
+          ? _value.nodeType
+          : nodeType // ignore: cast_nullable_to_non_nullable
+              as APIRequestNodeType,
+      baseUrlType: baseUrlType == freezed
+          ? _value.baseUrlType
+          : baseUrlType // ignore: cast_nullable_to_non_nullable
+              as AppURLsType,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ColorInfo implements _ColorInfo {
+  const _$_ColorInfo(
+      {this.method = HttpMethod.get,
+      this.nodeType = APIRequestNodeType.colorInfo,
+      this.baseUrlType = AppURLsType.ugc,
+      this.path = ""});
+
+  @override
+  @JsonKey()
+  final HttpMethod method;
+  @override
+  @JsonKey()
+  final APIRequestNodeType nodeType;
+  @override
+  @JsonKey()
+  final AppURLsType baseUrlType;
+  @override
+  @JsonKey()
+  final String path;
+
+  @override
+  String toString() {
+    return 'ApiRequestType.colorInfo(method: $method, nodeType: $nodeType, baseUrlType: $baseUrlType, path: $path)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ColorInfo &&
+            const DeepCollectionEquality().equals(other.method, method) &&
+            const DeepCollectionEquality().equals(other.nodeType, nodeType) &&
+            const DeepCollectionEquality()
+                .equals(other.baseUrlType, baseUrlType) &&
+            const DeepCollectionEquality().equals(other.path, path));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(method),
+      const DeepCollectionEquality().hash(nodeType),
+      const DeepCollectionEquality().hash(baseUrlType),
+      const DeepCollectionEquality().hash(path));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ColorInfoCopyWith<_$_ColorInfo> get copyWith =>
+      __$$_ColorInfoCopyWithImpl<_$_ColorInfo>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        product,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        brand,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        category,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        auth,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        colorInfo,
+  }) {
+    return colorInfo(method, nodeType, baseUrlType, path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        product,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        brand,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        category,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
+  }) {
+    return colorInfo?.call(method, nodeType, baseUrlType, path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        product,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        brand,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        category,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        auth,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        colorInfo,
+    required TResult orElse(),
+  }) {
+    if (colorInfo != null) {
+      return colorInfo(method, nodeType, baseUrlType, path);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProductRequest value) product,
+    required TResult Function(_BrandRequest value) brand,
+    required TResult Function(_CategoryRequest value) category,
+    required TResult Function(_AuthRequest value) auth,
+    required TResult Function(_ColorInfo value) colorInfo,
+  }) {
+    return colorInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ProductRequest value)? product,
+    TResult Function(_BrandRequest value)? brand,
+    TResult Function(_CategoryRequest value)? category,
+    TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
+  }) {
+    return colorInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ProductRequest value)? product,
+    TResult Function(_BrandRequest value)? brand,
+    TResult Function(_CategoryRequest value)? category,
+    TResult Function(_AuthRequest value)? auth,
+    TResult Function(_ColorInfo value)? colorInfo,
+    required TResult orElse(),
+  }) {
+    if (colorInfo != null) {
+      return colorInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ColorInfo implements ApiRequestType {
+  const factory _ColorInfo(
+      {final HttpMethod method,
+      final APIRequestNodeType nodeType,
+      final AppURLsType baseUrlType,
+      final String path}) = _$_ColorInfo;
+
+  @override
+  HttpMethod get method;
+  @override
+  APIRequestNodeType get nodeType;
+  @override
+  AppURLsType get baseUrlType;
+  @override
+  String get path;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ColorInfoCopyWith<_$_ColorInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -22,6 +22,10 @@ class Generic {
         case AuthenticateResponseDTO:
           final data = AuthenticateResponseDTO.fromJson(json) as T;
           return data;
+        case GetColorInfoResponse:
+          final data = GetColorInfoResponse.fromJson(json) as T;
+          return data;
+
         default:
           if (json is List) {
             return _fromJsonList<T>(json) as T;
