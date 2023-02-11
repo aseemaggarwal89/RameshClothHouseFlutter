@@ -11,7 +11,7 @@ part 'authentication_state.dart';
 part 'authentication_bloc.freezed.dart';
 
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
-    implements UserUseCaseInjection {
+    implements PostDataUseCaseInjection {
   AuthenticateResponseDTO? authenticateResponseDTO;
 
   AuthenticationBloc() : super(const AuthenticationState.initial()) {
@@ -24,7 +24,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
       AppStarted event, Emitter<AuthenticationState> emit) async {
     var user = await Storage().loginUserId;
     AuthenticateResponseDTO? authenticateUser = user != null
-        ? await getUserDataUseCase.authenticateUser(loginUserDTO: user)
+        ? await getPostDataUseCase.authenticateUser(loginUserDTO: user)
         : null;
 
     if (authenticateUser != null) {

@@ -27,6 +27,9 @@ mixin _$ApiRequestType {
         getAll,
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
+        postData,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
         product,
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
@@ -38,6 +41,9 @@ mixin _$ApiRequestType {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         getAll,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        postData,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         product,
@@ -53,6 +59,9 @@ mixin _$ApiRequestType {
         getAll,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
+        postData,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
         product,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
@@ -63,6 +72,7 @@ mixin _$ApiRequestType {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllRequest value) getAll,
+    required TResult Function(_PostDataRequest value) postData,
     required TResult Function(_ProductRequest value) product,
     required TResult Function(_AuthRequest value) auth,
   }) =>
@@ -70,6 +80,7 @@ mixin _$ApiRequestType {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
     TResult Function(_ProductRequest value)? product,
     TResult Function(_AuthRequest value)? auth,
   }) =>
@@ -77,6 +88,7 @@ mixin _$ApiRequestType {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
     TResult Function(_ProductRequest value)? product,
     TResult Function(_AuthRequest value)? auth,
     required TResult orElse(),
@@ -249,6 +261,9 @@ class _$_GetAllRequest implements _GetAllRequest {
         getAll,
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
+        postData,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
         product,
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
@@ -263,6 +278,9 @@ class _$_GetAllRequest implements _GetAllRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         getAll,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        postData,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         product,
@@ -281,6 +299,9 @@ class _$_GetAllRequest implements _GetAllRequest {
         getAll,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
+        postData,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
         product,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
@@ -297,6 +318,7 @@ class _$_GetAllRequest implements _GetAllRequest {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllRequest value) getAll,
+    required TResult Function(_PostDataRequest value) postData,
     required TResult Function(_ProductRequest value) product,
     required TResult Function(_AuthRequest value) auth,
   }) {
@@ -307,6 +329,7 @@ class _$_GetAllRequest implements _GetAllRequest {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
     TResult Function(_ProductRequest value)? product,
     TResult Function(_AuthRequest value)? auth,
   }) {
@@ -317,6 +340,7 @@ class _$_GetAllRequest implements _GetAllRequest {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
     TResult Function(_ProductRequest value)? product,
     TResult Function(_AuthRequest value)? auth,
     required TResult orElse(),
@@ -346,6 +370,230 @@ abstract class _GetAllRequest implements ApiRequestType {
   @override
   @JsonKey(ignore: true)
   _$$_GetAllRequestCopyWith<_$_GetAllRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PostDataRequestCopyWith<$Res>
+    implements $ApiRequestTypeCopyWith<$Res> {
+  factory _$$_PostDataRequestCopyWith(
+          _$_PostDataRequest value, $Res Function(_$_PostDataRequest) then) =
+      __$$_PostDataRequestCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {HttpMethod method,
+      APIRequestNodeType nodeType,
+      AppURLsType baseUrlType,
+      String path});
+}
+
+/// @nodoc
+class __$$_PostDataRequestCopyWithImpl<$Res>
+    extends _$ApiRequestTypeCopyWithImpl<$Res>
+    implements _$$_PostDataRequestCopyWith<$Res> {
+  __$$_PostDataRequestCopyWithImpl(
+      _$_PostDataRequest _value, $Res Function(_$_PostDataRequest) _then)
+      : super(_value, (v) => _then(v as _$_PostDataRequest));
+
+  @override
+  _$_PostDataRequest get _value => super._value as _$_PostDataRequest;
+
+  @override
+  $Res call({
+    Object? method = freezed,
+    Object? nodeType = freezed,
+    Object? baseUrlType = freezed,
+    Object? path = freezed,
+  }) {
+    return _then(_$_PostDataRequest(
+      method: method == freezed
+          ? _value.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as HttpMethod,
+      nodeType: nodeType == freezed
+          ? _value.nodeType
+          : nodeType // ignore: cast_nullable_to_non_nullable
+              as APIRequestNodeType,
+      baseUrlType: baseUrlType == freezed
+          ? _value.baseUrlType
+          : baseUrlType // ignore: cast_nullable_to_non_nullable
+              as AppURLsType,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PostDataRequest implements _PostDataRequest {
+  const _$_PostDataRequest(
+      {this.method = HttpMethod.post,
+      required this.nodeType,
+      this.baseUrlType = AppURLsType.ugc,
+      this.path = ""});
+
+  @override
+  @JsonKey()
+  final HttpMethod method;
+  @override
+  final APIRequestNodeType nodeType;
+  @override
+  @JsonKey()
+  final AppURLsType baseUrlType;
+  @override
+  @JsonKey()
+  final String path;
+
+  @override
+  String toString() {
+    return 'ApiRequestType.postData(method: $method, nodeType: $nodeType, baseUrlType: $baseUrlType, path: $path)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PostDataRequest &&
+            const DeepCollectionEquality().equals(other.method, method) &&
+            const DeepCollectionEquality().equals(other.nodeType, nodeType) &&
+            const DeepCollectionEquality()
+                .equals(other.baseUrlType, baseUrlType) &&
+            const DeepCollectionEquality().equals(other.path, path));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(method),
+      const DeepCollectionEquality().hash(nodeType),
+      const DeepCollectionEquality().hash(baseUrlType),
+      const DeepCollectionEquality().hash(path));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_PostDataRequestCopyWith<_$_PostDataRequest> get copyWith =>
+      __$$_PostDataRequestCopyWithImpl<_$_PostDataRequest>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        getAll,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        postData,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        product,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
+        auth,
+  }) {
+    return postData(method, nodeType, baseUrlType, path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        getAll,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        postData,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        product,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        auth,
+  }) {
+    return postData?.call(method, nodeType, baseUrlType, path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        getAll,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        postData,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        product,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        auth,
+    required TResult orElse(),
+  }) {
+    if (postData != null) {
+      return postData(method, nodeType, baseUrlType, path);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetAllRequest value) getAll,
+    required TResult Function(_PostDataRequest value) postData,
+    required TResult Function(_ProductRequest value) product,
+    required TResult Function(_AuthRequest value) auth,
+  }) {
+    return postData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
+    TResult Function(_ProductRequest value)? product,
+    TResult Function(_AuthRequest value)? auth,
+  }) {
+    return postData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
+    TResult Function(_ProductRequest value)? product,
+    TResult Function(_AuthRequest value)? auth,
+    required TResult orElse(),
+  }) {
+    if (postData != null) {
+      return postData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostDataRequest implements ApiRequestType {
+  const factory _PostDataRequest(
+      {final HttpMethod method,
+      required final APIRequestNodeType nodeType,
+      final AppURLsType baseUrlType,
+      final String path}) = _$_PostDataRequest;
+
+  @override
+  HttpMethod get method;
+  @override
+  APIRequestNodeType get nodeType;
+  @override
+  AppURLsType get baseUrlType;
+  @override
+  String get path;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PostDataRequestCopyWith<_$_PostDataRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -462,6 +710,9 @@ class _$_ProductRequest implements _ProductRequest {
         getAll,
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
+        postData,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
         product,
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
@@ -476,6 +727,9 @@ class _$_ProductRequest implements _ProductRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         getAll,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        postData,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         product,
@@ -494,6 +748,9 @@ class _$_ProductRequest implements _ProductRequest {
         getAll,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
+        postData,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
         product,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
@@ -510,6 +767,7 @@ class _$_ProductRequest implements _ProductRequest {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllRequest value) getAll,
+    required TResult Function(_PostDataRequest value) postData,
     required TResult Function(_ProductRequest value) product,
     required TResult Function(_AuthRequest value) auth,
   }) {
@@ -520,6 +778,7 @@ class _$_ProductRequest implements _ProductRequest {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
     TResult Function(_ProductRequest value)? product,
     TResult Function(_AuthRequest value)? auth,
   }) {
@@ -530,6 +789,7 @@ class _$_ProductRequest implements _ProductRequest {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
     TResult Function(_ProductRequest value)? product,
     TResult Function(_AuthRequest value)? auth,
     required TResult orElse(),
@@ -675,6 +935,9 @@ class _$_AuthRequest implements _AuthRequest {
         getAll,
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
+        postData,
+    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)
         product,
     required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)
@@ -689,6 +952,9 @@ class _$_AuthRequest implements _AuthRequest {
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         getAll,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
+        postData,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
         product,
@@ -707,6 +973,9 @@ class _$_AuthRequest implements _AuthRequest {
         getAll,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
+        postData,
+    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
+            AppURLsType baseUrlType, String path)?
         product,
     TResult Function(HttpMethod method, APIRequestNodeType nodeType,
             AppURLsType baseUrlType, String path)?
@@ -723,6 +992,7 @@ class _$_AuthRequest implements _AuthRequest {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllRequest value) getAll,
+    required TResult Function(_PostDataRequest value) postData,
     required TResult Function(_ProductRequest value) product,
     required TResult Function(_AuthRequest value) auth,
   }) {
@@ -733,6 +1003,7 @@ class _$_AuthRequest implements _AuthRequest {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
     TResult Function(_ProductRequest value)? product,
     TResult Function(_AuthRequest value)? auth,
   }) {
@@ -743,6 +1014,7 @@ class _$_AuthRequest implements _AuthRequest {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllRequest value)? getAll,
+    TResult Function(_PostDataRequest value)? postData,
     TResult Function(_ProductRequest value)? product,
     TResult Function(_AuthRequest value)? auth,
     required TResult orElse(),

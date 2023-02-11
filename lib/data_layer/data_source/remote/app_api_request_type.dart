@@ -14,6 +14,13 @@ class ApiRequestType with _$ApiRequestType {
     @Default("") String path,
   }) = _GetAllRequest;
 
+  const factory ApiRequestType.postData({
+    @Default(HttpMethod.post) HttpMethod method,
+    required APIRequestNodeType nodeType,
+    @Default(AppURLsType.ugc) AppURLsType baseUrlType,
+    @Default("") String path,
+  }) = _PostDataRequest;
+
   const factory ApiRequestType.product({
     @Default(HttpMethod.get) HttpMethod method,
     @Default(APIRequestNodeType.product) APIRequestNodeType nodeType,
@@ -35,6 +42,7 @@ extension ApiRequesstTypeExtension on ApiRequestType {
       product: (_ProductRequest value) => nodeType.nodeUrlEndPoint + path,
       auth: (_AuthRequest value) => nodeType.nodeUrlEndPoint + path,
       getAll: (_GetAllRequest value) => nodeType.nodeUrlEndPoint + path,
+      postData: (_PostDataRequest value) => nodeType.nodeUrlEndPoint + path,
     );
     // when(
     //   auth: (HttpMethod method, APIRequestNodeType nodeType,
@@ -71,6 +79,8 @@ extension ApiRequesstTypeExtension on ApiRequestType {
       ) {},
       getAll: (HttpMethod method, APIRequestNodeType nodeType,
           AppURLsType baseUrlType, String path) {},
+      postData: (HttpMethod method, APIRequestNodeType nodeType,
+          AppURLsType baseUrlType, String path) {},
     );
 
     return customHeaders;
@@ -89,6 +99,7 @@ extension ApiRequesstTypeExtension on ApiRequestType {
       auth: (_AuthRequest value) => value.nodeType.responseType,
       product: (_ProductRequest value) => value.nodeType.responseType,
       getAll: (_GetAllRequest value) => value.nodeType.responseType,
+      postData: (_PostDataRequest value) => value.nodeType.responseType,
     );
 
     return type;

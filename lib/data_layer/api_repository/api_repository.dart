@@ -43,4 +43,13 @@ class NetworkAPIRepository extends INetworkAPIRepository {
     return networkManager.loadRequest(apiRequest);
   }
 
+    @override
+  Future<ApiResult<T>> postData<T>(APIRequestNodeType nodeType,
+      Map<String, dynamic> body, {String endpoint = ""}) async {
+    final apiRequest = AppAPIRequest(ApiRequestType.postData(
+      path: endpoint, nodeType: nodeType),
+        body: body);
+
+    return networkManager.loadRequest(apiRequest);
+  }
 }

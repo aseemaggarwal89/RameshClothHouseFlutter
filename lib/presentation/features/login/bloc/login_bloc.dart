@@ -12,7 +12,7 @@ part 'login_state.dart';
 part 'login_bloc.freezed.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState>
-    implements UserUseCaseInjection {
+    implements PostDataUseCaseInjection {
   FormzStatus status = FormzStatus.pure;
   final AuthenticationBloc _authenticationBloc;
   Username _username = const Username.pure();
@@ -79,7 +79,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
     if (status.isValidated) {
       emit(const LoginState.loading());
       try {
-        final result = await getUserDataUseCase.authenticateUser(
+        final result = await getPostDataUseCase.authenticateUser(
             loginUserDTO: LoginUserDTO(
           password: _password.value,
           email: _username.value,
