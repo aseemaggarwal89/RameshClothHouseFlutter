@@ -5,21 +5,21 @@ import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 
 import '../../../../domain_layer/domain_layer.dart';
-import '../../../../domain_layer/utils/enum/product_view_type.dart';
 
 class ProductItemView extends StatelessWidget {
   final ProductDTO product;
   final ValueChanged<String> onItemClicked;
-  final ProductViewType viewType;
   final bool showViewButton;
   final double elevation;
   final FilterDTO? brand;
+  final Size? size;
+
   const ProductItemView(
       {Key? key,
       required this.product,
       this.brand,
+      this.size,
       required this.onItemClicked,
-      this.viewType = ProductViewType.GRID,
       this.showViewButton = false,
       this.elevation = 1.5})
       : super(key: key);
@@ -35,6 +35,8 @@ class ProductItemView extends StatelessWidget {
         ),
         onTap: () => onItemClicked(product.uniqueId),
         child: Container(
+          height: size?.height,
+          width: size?.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -45,19 +47,21 @@ class ProductItemView extends StatelessWidget {
             children: [
               Expanded(
                 flex: 6,
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: ImageView(
-                    radius: 8,
-                    url: product.imageCover ?? 'https://picsum.photos/200/300',
-                    alignment: Alignment.topCenter,
-                    fit: BoxFit.fill,
+                child: Center(
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: ImageView(
+                      radius: 8,
+                      url:
+                          product.imageCover ?? 'https://picsum.photos/200/300',
+                      alignment: Alignment.topCenter,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),
               buildProductInfo(
                 product,
-                viewType,
               ),
             ],
           ),
@@ -66,7 +70,7 @@ class ProductItemView extends StatelessWidget {
     );
   }
 
-  Widget buildProductInfo(ProductDTO productDto, ProductViewType type) {
+  Widget buildProductInfo(ProductDTO productDto) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -136,15 +140,15 @@ class ProductItemView extends StatelessWidget {
               if (productDto.discountPrice != null &&
                   productDto.discountPrice! > 0)
                 horizontalSpaceSmall,
-              if (productDto.discountPrice != null &&
-                  productDto.discountPrice! > 0)
-                LatoTextView(
-                  label: '${productDto.discountPercent} Off',
-                  fontType: AppTextType.Medium,
-                  color: ProductItemWidgetColor.kcDarkishGreen,
-                )
             ],
           ),
+          verticalSpaceSmall,
+          if (productDto.discountPrice != null && productDto.discountPrice! > 0)
+            LatoTextView(
+              label: '${productDto.discountPercent} Off',
+              fontType: AppTextType.Medium,
+              color: ProductItemWidgetColor.kcDarkishGreen,
+            )
         ],
       ),
     );

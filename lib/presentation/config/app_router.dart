@@ -1,4 +1,6 @@
 import 'package:rameshclothhouse/main.dart';
+import 'package:rameshclothhouse/presentation/features/editProduct/bloc/edit_product_bloc.dart';
+import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
 import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
 import '../components/appNavBar/app_menu_view_model.dart';
@@ -53,12 +55,22 @@ class AppNavigator {
     getIt<AppRouter>().navigate(const DashboardScreenRoute());
   }
 
-  static void navigateToEditPage() {
-    getIt<AppRouter>().navigate(const EditProductScreenRoute());
+  static void navigateToEditPage(AddProductViewModel viewModel) {
+    getIt<AppRouter>().navigate(EditProductScreenRoute(
+      viewModel: viewModel,
+    ));
   }
 }
 
-enum AppRouteType { home, login, shop, productDetail, contactUs, dashboard, editProduct }
+enum AppRouteType {
+  home,
+  login,
+  shop,
+  productDetail,
+  contactUs,
+  dashboard,
+  editProduct
+}
 
 extension AppRoutesExtension on AppRouteType {
   String get path {
@@ -76,7 +88,7 @@ extension AppRoutesExtension on AppRouteType {
       case AppRouteType.dashboard:
         return AppRoutes.dashboard;
       case AppRouteType.editProduct:
-      return AppRoutes.editPage;
+        return AppRoutes.editPage;
     }
   }
 }

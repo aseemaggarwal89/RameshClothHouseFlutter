@@ -25,6 +25,7 @@ class DashboardViewModel {
 
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState>
     implements GetAllUseCaseInjection {
+  DashboardViewModel? data;
   DashboardBloc() : super(const Initial()) {
     on<GetAllDetailEvent>(_onGetAllDetailEvent);
   }
@@ -38,13 +39,17 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState>
     final brands = await getAllDataUseCase.fetchAllBrandData();
     final products = await getAllDataUseCase.fetchAllProductsData();
     final colorInfo = await getAllDataUseCase.fetchAllColorInfoData();
-    DashboardViewModel data = DashboardViewModel(
+    data = DashboardViewModel(
       categories,
       brands,
       products,
       products.length,
       colorInfo,
     );
-    emit(DashboardState.loaded(viewModel: data));
+    emit(DashboardState.loaded(viewModel: data!));
+  }
+
+  BrandDTO? brand(String uniqueId) {
+    return data?.brands.firstWhere((element) => element.uniqueId == uniqueId);
   }
 }

@@ -161,19 +161,24 @@ class ProductInfoSection extends StatelessWidget {
                         color: ProductInfoCaseColor.kTitleColor,
                       ),
                       horizontalSpaceRegular,
-                      ProductAttributeDropDown(
-                        value: viewModel.productSelectedQuantity,
-                        isExpanded: false,
-                        isDense: true,
-                        attributes: [
-                          for (var i = 1;
-                              i <= viewModel.maximumQuantityAllowed;
-                              i++)
-                            i
-                        ],
-                        onChanged: (value) {
-                          viewModel.onProductQuantityChange(value!);
-                        },
+                      SizedBox(
+                        width: 60,
+                        child: ProductAttributeDropDown<int>(
+                          selectedItem: () => viewModel.productSelectedQuantity,
+                          attributes: [
+                            for (var i = 1;
+                                i <= viewModel.maximumQuantityAllowed;
+                                i++)
+                              i
+                          ],
+                          onChanged: (value) {
+                            viewModel.onProductQuantityChange(value!);
+                          },
+                          textValue: (int value) {
+                            return '$value';
+                          },
+                          isEmpty: () => false,
+                        ),
                       ),
                     ],
                   ),

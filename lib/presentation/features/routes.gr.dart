@@ -16,6 +16,7 @@ import 'package:flutter/material.dart' as _i9;
 
 import 'contactUs/contact_screen.dart' as _i7;
 import 'dashboard/dashboard_screen.dart' as _i1;
+import 'editProduct/bloc/edit_product_bloc.dart' as _i10;
 import 'editProduct/edit_product.dart' as _i2;
 import 'home/home.dart' as _i3;
 import 'login/login_screen.dart' as _i5;
@@ -33,8 +34,11 @@ class AppRouter extends _i8.RootStackRouter {
           routeData: routeData, child: const _i1.DashboardScreen());
     },
     EditProductScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<EditProductScreenRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.EditProductScreen());
+          routeData: routeData,
+          child:
+              _i2.EditProductScreen(key: args.key, viewModel: args.viewModel));
     },
     HomeScreenRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
@@ -111,11 +115,28 @@ class DashboardScreenRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.EditProductScreen]
-class EditProductScreenRoute extends _i8.PageRouteInfo<void> {
-  const EditProductScreenRoute()
-      : super(EditProductScreenRoute.name, path: '/product/:id');
+class EditProductScreenRoute
+    extends _i8.PageRouteInfo<EditProductScreenRouteArgs> {
+  EditProductScreenRoute(
+      {_i9.Key? key, required _i10.AddProductViewModel viewModel})
+      : super(EditProductScreenRoute.name,
+            path: '/product/:id',
+            args: EditProductScreenRouteArgs(key: key, viewModel: viewModel));
 
   static const String name = 'EditProductScreenRoute';
+}
+
+class EditProductScreenRouteArgs {
+  const EditProductScreenRouteArgs({this.key, required this.viewModel});
+
+  final _i9.Key? key;
+
+  final _i10.AddProductViewModel viewModel;
+
+  @override
+  String toString() {
+    return 'EditProductScreenRouteArgs{key: $key, viewModel: $viewModel}';
+  }
 }
 
 /// generated route for

@@ -1,19 +1,53 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../domain_layer/models/entities.dart';
+
 part 'edit_product_event.dart';
 part 'edit_product_state.dart';
 part 'edit_product_bloc.freezed.dart';
 
 enum FormFieldType { name, price, discountPrice, description }
 
+enum FormDropDownType {
+  brand,
+  categories,
+  subCategory,
+  qualityType,
+  quantityType
+}
+
+class AddProductViewModel {
+  final List<CategoriesDTO> categories;
+  final List<BrandDTO> brands;
+  final List<ColorInfo> colorInfo;
+  AddProductViewModel(
+    this.categories,
+    this.brands,
+    this.colorInfo,
+  );
+}
+
 class EditProductBloc extends Bloc<EditProductEvent, EditProductState> {
   ProductNameInput nameInput = ProductNameInput('');
   ProductPriceInput priceInput = ProductPriceInput('');
   ProductDescriptionInput descriptionInput = ProductDescriptionInput('');
   ProductDiscountPriceInput discountInput = ProductDiscountPriceInput('');
+  DropDownInputField<BrandDTO> brandDropDown = DropDownInputField<BrandDTO>([]);
+  DropDownInputField<CategoriesDTO> categoriesDropDown =
+      DropDownInputField<CategoriesDTO>([]);
+  DropDownInputField<CategoriesDTO> subCategoriesDropDown =
+      DropDownInputField<CategoriesDTO>([]);
+  DropDownInputField<QualityType> qualityTypeDropDown =
+      DropDownInputField<QualityType>(QualityType.values, selectedItem: QualityType.standard);
+  DropDownInputField<QuantityType> quantityTypeDropDown =
+      DropDownInputField<QuantityType>(QuantityType.values, selectedItem: QuantityType.unstiched);
 
-  EditProductBloc() : super(_Initial()) {
+  AddProductViewModel viewModel;
+
+  EditProductBloc(this.viewModel) : super(_Initial()) {
+    brandDropDown.updateItems(viewModel.brands);
+    categoriesDropDown.updateItems(viewModel.categories);
     on<EditProductEvent>((event, emit) {
       // TODO: implement event handler
     });
@@ -36,9 +70,44 @@ class EditProductBloc extends Bloc<EditProductEvent, EditProductState> {
         return descriptionInput;
     }
   }
+
+  DropDownInputField dropdownInputField(FormDropDownType type) {
+    switch (type) {
+      case FormDropDownType.brand:
+        return brandDropDown;
+      case FormDropDownType.categories:
+        return categoriesDropDown;
+      case FormDropDownType.subCategory:
+        return subCategoriesDropDown;
+      case FormDropDownType.qualityType:
+        return qualityTypeDropDown;
+      case FormDropDownType.quantityType:
+        return quantityTypeDropDown;
+    }
+  }
 }
 
 class EditFormInputs {}
+
+class DropDownInputField<T> {
+  List<T> items;
+  T? selectedItem;
+  late void Function(T?) onChanged;
+
+  bool isEmpty() {
+    return selectedItem == null;
+  }
+
+  void updateItems(List<T> items) {
+    this.items = items;
+  }
+
+  DropDownInputField(this.items, {this.selectedItem}) {
+    onChanged = (value) {
+      selectedItem = value;
+    };
+  }
+}
 
 abstract class ProductEditInputField {
   String fieldLabel;
@@ -128,4 +197,8 @@ class ProductDescriptionInput extends ProductEditInputField {
 
     return null;
   }
+}
+
+class BrandDropDownInput<BrandDTO> extends DropDownInputField {
+  BrandDropDownInput({required List<BrandDTO> items}) : super(items);
 }
