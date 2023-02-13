@@ -16,6 +16,8 @@ enum QuantityType { unstiched, stiched }
 
 enum QualityType { standard, medium, expensive }
 
+enum QuantityUnitType { meter, unit }
+
 @JsonSerializable()
 class ProductDetailDTO {
   ProductDetailDTO({
@@ -41,6 +43,7 @@ class ProductDetailDTO {
     this.batches,
     required this.maxQuantityAllowed,
     this.productDetails,
+    required this.quantityUnitType,
   });
 
   @JsonKey(name: "_id")
@@ -66,7 +69,8 @@ class ProductDetailDTO {
   Attributes? sizAttributesId;
   List<String>? sizeNotAllowed;
   final num maxQuantityAllowed;
-  List<ProductDetail>? productDetails;
+  List<ProductDescriptionDetail>? productDetails;
+  final String quantityUnitType;
 
   @JsonKey(name: "batch")
   List<ProductBatch>? batches;
@@ -107,7 +111,7 @@ class ProductDetailDTO {
     }
   }
 
-  List<ProductDetail> productDetailInfo() {
+  List<ProductDescriptionDetail> productDetailInfo() {
     productDetails?.sort(((a, b) => a.order.compareTo(b.order)));
     return productDetails ?? [];
   }
@@ -145,7 +149,6 @@ class ProductBatch extends Equatable {
     this.color,
     this.product,
     this.purchaseByCustomerDates,
-    this.quantityUnitType,
     this.images,
     this.isAvailable,
     this.maxQuantityAllowed,
@@ -158,7 +161,6 @@ class ProductBatch extends Equatable {
   final int maxQuantityAllowed;
   final bool isAvailable;
   final List<String>? images;
-  final String quantityUnitType;
   final List<DateTime>? purchaseByCustomerDates;
   final String product;
   final ColorInfo? color;
@@ -221,26 +223,26 @@ class SizeInfo extends Equatable {
 }
 
 @JsonSerializable()
-class ProductDetail extends Equatable {
+class ProductDescriptionDetail extends Equatable {
   final String display;
   final num order;
   final String value;
   @JsonKey(name: "_id")
-  final String uniqueId;
+  final String? uniqueId;
 
-  const ProductDetail(
+  const ProductDescriptionDetail(
     this.display,
     this.value,
+    this.order, {
     this.uniqueId,
-    this.order,
-  );
+  });
 
   @override
   List<Object?> get props => [uniqueId];
 
-  factory ProductDetail.fromJson(Map<String, dynamic> json) {
-    return _$ProductDetailFromJson(json);
+  factory ProductDescriptionDetail.fromJson(Map<String, dynamic> json) {
+    return _$ProductDescriptionDetailFromJson(json);
   }
 
-  Map<String, dynamic> toJson() => _$ProductDetailToJson(this);
+  Map<String, dynamic> toJson() => _$ProductDescriptionDetailToJson(this);
 }

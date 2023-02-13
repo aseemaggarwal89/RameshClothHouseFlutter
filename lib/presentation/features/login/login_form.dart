@@ -4,6 +4,8 @@ import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/features/login/bloc/login_bloc.dart';
 import 'package:rameshclothhouse/presentation/features/login/view_model.dart';
 
+import '../../components/elevated_button.dart';
+
 class LoginForm extends StatelessWidget {
   final passwordFocusNode = FocusNode();
 
@@ -129,12 +131,9 @@ class _SubmitButton extends StatelessWidget {
         return Container(
           margin: const EdgeInsets.only(top: 20),
           height: 40,
-          child: ElevatedButton(
+          child: AppElevatedButton(
+            label: 'LOGIN',
             key: const Key('loginForm_continue_raisedButton'),
-            child: const LatoTextView(
-              label: "LOGIN",
-              color: Colors.white,
-            ),
             onPressed: () {
               context.read<LoginBloc>().add(const LoginEvent.loginuser());
             },

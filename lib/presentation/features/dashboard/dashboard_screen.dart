@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rameshclothhouse/presentation/components/elevated_button.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_router.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/features/dashboard/bloc/dashboard_bloc.dart';
 import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
 import 'package:rameshclothhouse/presentation/features/home/views/product_item_widget.dart';
+import 'package:provider/provider.dart';
 
 import '../../../domain_layer/domain_layer.dart';
+import '../editProduct/add_product_description.dart';
 import '../editProduct/bloc/edit_product_bloc.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -135,9 +138,8 @@ class HorizontalListView extends StatelessWidget {
           ),
         ),
         verticalSpaceRegular,
-        ElevatedButton(
-            style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Colors.grey)),
+        AppElevatedButton(
+          label: 'Add Product',
             onPressed: () {
               AppNavigator.navigateToEditPage(AddProductViewModel(
                 viewModel.categories,
@@ -145,9 +147,7 @@ class HorizontalListView extends StatelessWidget {
                 viewModel.colorInfo,
               ));
             },
-            child: const LatoTextView(
-              label: 'Add Product',
-            )),
+            ),
       ],
     );
   }

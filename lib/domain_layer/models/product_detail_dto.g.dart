@@ -39,8 +39,10 @@ ProductDetailDTO _$ProductDetailDTOFromJson(Map<String, dynamic> json) =>
           .toList(),
       maxQuantityAllowed: json['maxQuantityAllowed'] as num,
       productDetails: (json['productDetails'] as List<dynamic>?)
-          ?.map((e) => ProductDetail.fromJson(e as Map<String, dynamic>))
+          ?.map((e) =>
+              ProductDescriptionDetail.fromJson(e as Map<String, dynamic>))
           .toList(),
+      quantityUnitType: json['quantityUnitType'] as String,
     )
       ..sizAttributesId = json['sizAttributesId'] == null
           ? null
@@ -74,6 +76,7 @@ Map<String, dynamic> _$ProductDetailDTOToJson(ProductDetailDTO instance) =>
       'sizeNotAllowed': instance.sizeNotAllowed,
       'maxQuantityAllowed': instance.maxQuantityAllowed,
       'productDetails': instance.productDetails,
+      'quantityUnitType': instance.quantityUnitType,
       'batch': instance.batches,
     };
 
@@ -102,7 +105,6 @@ ProductBatch _$ProductBatchFromJson(Map<String, dynamic> json) => ProductBatch(
       (json['purchaseByCustomerDates'] as List<dynamic>?)
           ?.map((e) => DateTime.parse(e as String))
           .toList(),
-      json['quantityUnitType'] as String,
       (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['isAvailable'] as bool,
       json['maxQuantityAllowed'] as int,
@@ -118,7 +120,6 @@ Map<String, dynamic> _$ProductBatchToJson(ProductBatch instance) =>
       'maxQuantityAllowed': instance.maxQuantityAllowed,
       'isAvailable': instance.isAvailable,
       'images': instance.images,
-      'quantityUnitType': instance.quantityUnitType,
       'purchaseByCustomerDates': instance.purchaseByCustomerDates
           ?.map((e) => e.toIso8601String())
           .toList(),
@@ -151,15 +152,17 @@ Map<String, dynamic> _$SizeInfoToJson(SizeInfo instance) => <String, dynamic>{
       '_id': instance.uniqueId,
     };
 
-ProductDetail _$ProductDetailFromJson(Map<String, dynamic> json) =>
-    ProductDetail(
+ProductDescriptionDetail _$ProductDescriptionDetailFromJson(
+        Map<String, dynamic> json) =>
+    ProductDescriptionDetail(
       json['display'] as String,
       json['value'] as String,
-      json['_id'] as String,
       json['order'] as num,
+      uniqueId: json['_id'] as String?,
     );
 
-Map<String, dynamic> _$ProductDetailToJson(ProductDetail instance) =>
+Map<String, dynamic> _$ProductDescriptionDetailToJson(
+        ProductDescriptionDetail instance) =>
     <String, dynamic>{
       'display': instance.display,
       'order': instance.order,
