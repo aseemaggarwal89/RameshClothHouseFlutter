@@ -6,4 +6,5 @@ class EditProductState with _$EditProductState {
       EditProductInputFields productInputFields) = _Initial;
   const factory EditProductState.validate(bool isValid) = _Validate;
   const factory EditProductState.refresh() = Refresh;
+  const factory EditProductState.loading() = EditProductLoading;
 }

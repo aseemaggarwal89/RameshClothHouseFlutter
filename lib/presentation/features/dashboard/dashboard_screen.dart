@@ -5,12 +5,10 @@ import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_router.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/features/dashboard/bloc/dashboard_bloc.dart';
-import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
 import 'package:rameshclothhouse/presentation/features/home/views/product_item_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../../domain_layer/domain_layer.dart';
-import '../editProduct/add_product_description.dart';
 import '../editProduct/bloc/edit_product_bloc.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -45,7 +43,7 @@ class DashboardPage extends StatelessWidget {
       },
       child: BlocBuilder<DashboardBloc, DashboardState>(
           builder: ((context, state) {
-        if (state is Loading) {
+        if (state is DashboardLoading) {
           return buildLoading();
         } else if (state is Initial) {
           return Container();

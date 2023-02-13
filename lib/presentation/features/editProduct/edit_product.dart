@@ -32,7 +32,12 @@ class EditProductScreen extends StatelessWidget {
           create: ((context) => EditProductBloc(viewModel)),
         ),
       ],
-      child: EditProductPage(),
+      child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            title: const Text('Add Product'),
+          ),
+          body: EditProductPage()),
     );
   }
 }
@@ -63,23 +68,33 @@ class EditProductPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Flexible(
-                  flex: deviceSize.width > 600 ? 2 : 1,
+                Expanded(
                   child: EditProductForm(),
                 ),
                 const SizedBox(height: 50),
-                // ElevatedButton(
-                //     onPressed: () {
-                //       if (formGlobalKey.currentState?.validate() ?? false) {
-                //         formGlobalKey.currentState?.save();
-                //         // use the email provided here
-                //       }
-                //     },
-                //     child: Text("Submit"))
+                AppElevatedButton(
+                  label: 'Submit',
+                  onPressed: () {
+                    EditProductBloc bloc = context.read<EditProductBloc>();
+                    bloc.add(const EditProductEvent.submittedTapped());
+                  },
+                ),
               ],
             ),
           ),
         ),
+        BlocConsumer<EditProductBloc, EditProductState>(
+            listener: (context, state) {},
+            buildWhen: (previous, current) {
+              return current != previous;
+            },
+            builder: (context, state) {
+              if (state is EditProductLoading) {
+                return buildLoading();
+              }
+
+              return Container();
+            })
       ],
     );
   }
@@ -87,7 +102,6 @@ class EditProductPage extends StatelessWidget {
 
 class EditProductForm extends StatefulWidget {
   EditProductForm({Key? key}) : super(key: key) {}
-
   @override
   State<EditProductForm> createState() => _EditProductFormState();
 }
@@ -118,13 +132,14 @@ class _EditProductFormState extends State<EditProductForm> {
           padding: const EdgeInsets.all(16.0),
           child: Form(
             key: bloc.formGlobalKey,
-            child: Center(
-              child: ListView(
+            child: SingleChildScrollView(
+              child: Column(
                 children: <Widget>[
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    initialValue:
-                        bloc.inputField(FormFieldType.name).intialValue,
+                    controller: bloc
+                        .inputField(FormFieldType.name)
+                        .textEditingController,
                     decoration: InputDecoration(
                         labelText:
                             bloc.inputField(FormFieldType.name).fieldLabel),
@@ -139,9 +154,10 @@ class _EditProductFormState extends State<EditProductForm> {
                   ),
                   verticalSpaceRegular,
                   TextFormField(
+                    controller: bloc
+                        .inputField(FormFieldType.price)
+                        .textEditingController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    initialValue:
-                        bloc.inputField(FormFieldType.price).intialValue,
                     decoration: InputDecoration(
                         labelText:
                             bloc.inputField(FormFieldType.price).fieldLabel),
@@ -160,10 +176,10 @@ class _EditProductFormState extends State<EditProductForm> {
                   ),
                   verticalSpaceRegular,
                   TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    initialValue: bloc
+                    controller: bloc
                         .inputField(FormFieldType.discountPrice)
-                        .intialValue,
+                        .textEditingController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
                         labelText: bloc
                             .inputField(FormFieldType.discountPrice)
@@ -185,14 +201,16 @@ class _EditProductFormState extends State<EditProductForm> {
                   ),
                   verticalSpaceRegular,
                   TextFormField(
+                    controller: bloc
+                        .inputField(FormFieldType.description)
+                        .textEditingController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    initialValue:
-                        bloc.inputField(FormFieldType.description).intialValue,
                     decoration: InputDecoration(
                         labelText: bloc
                             .inputField(FormFieldType.description)
                             .fieldLabel),
                     maxLines: 3,
+
                     keyboardType: TextInputType.multiline,
                     // focusNode: _descriptionFocusNode,
                     onSaved: (value) => bloc
@@ -219,8 +237,7 @@ class _EditProductFormState extends State<EditProductForm> {
 
                       final html = results['html'];
                       if (html != null && html is String) {
-                                                    bloc.add(EditProductEvent.updateSummary(html));
-                                                    
+                        bloc.add(EditProductEvent.updateSummary(html));
                       }
                     },
                   ),
@@ -238,6 +255,8 @@ class _EditProductFormState extends State<EditProductForm> {
                         Expanded(
                           flex: 9,
                           child: ProductAttributeDropDown<BrandDTO>(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             hintText: 'Select brand',
                             // isDense: true,
                             attributes: brandDropDown.items,
@@ -249,8 +268,8 @@ class _EditProductFormState extends State<EditProductForm> {
                             },
                             selectedItem: () => brandDropDown.selectedItem,
                             validator: (value) {
-                              if (brandDropDown.selectedItem != null) {
-                                return 'Please selecte brand';
+                              if (brandDropDown.selectedItem == null) {
+                                return 'Please select brand';
                               }
                               return null;
                             },
@@ -273,6 +292,8 @@ class _EditProductFormState extends State<EditProductForm> {
                         Expanded(
                           flex: 9,
                           child: ProductAttributeDropDown<CategoriesDTO>(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             hintText: 'Select category',
                             isDense: true,
                             attributes: categoryDropDown.items,
@@ -289,8 +310,8 @@ class _EditProductFormState extends State<EditProductForm> {
                             selectedItem: () => categoryDropDown.selectedItem,
                             isEmpty: () => categoryDropDown.isEmpty(),
                             validator: (value) {
-                              if (categoryDropDown.selectedItem != null) {
-                                return 'Please selecte category';
+                              if (categoryDropDown.selectedItem == null) {
+                                return 'Please select category';
                               }
                               return null;
                             },
@@ -313,6 +334,8 @@ class _EditProductFormState extends State<EditProductForm> {
                           Expanded(
                             flex: 9,
                             child: ProductAttributeDropDown<CategoriesDTO>(
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               hintText: 'Select sub category',
                               isDense: true,
                               attributes: subCategoryDropDown.items,
@@ -326,8 +349,9 @@ class _EditProductFormState extends State<EditProductForm> {
                                   subCategoryDropDown.selectedItem,
                               isEmpty: () => subCategoryDropDown.isEmpty(),
                               validator: (value) {
-                                if (subCategoryDropDown.selectedItem != null) {
-                                  return 'Please selecte sub category';
+                                if (categoryDropDown?.selectedItem != null &&
+                                    subCategoryDropDown.selectedItem == null) {
+                                  return 'Please select sub category';
                                 }
                                 return null;
                               },
@@ -349,6 +373,8 @@ class _EditProductFormState extends State<EditProductForm> {
                         Expanded(
                           flex: 9,
                           child: ProductAttributeDropDown<QualityType>(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             hintText: 'Please select quality',
                             isDense: true,
                             attributes: qualityTypeDropDown.items,
@@ -364,6 +390,12 @@ class _EditProductFormState extends State<EditProductForm> {
                             selectedItem: () =>
                                 qualityTypeDropDown.selectedItem,
                             isEmpty: () => qualityTypeDropDown.isEmpty(),
+                            validator: (value) {
+                              if (qualityTypeDropDown.selectedItem == null) {
+                                return 'Please select quality';
+                              }
+                              return null;
+                            },
                           ),
                         ),
                       ],
@@ -382,6 +414,8 @@ class _EditProductFormState extends State<EditProductForm> {
                         Expanded(
                           flex: 9,
                           child: ProductAttributeDropDown<QuantityType>(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             hintText: 'Please select quantity',
                             isDense: true,
                             attributes: quantityTypeDropDown.items,
@@ -397,6 +431,12 @@ class _EditProductFormState extends State<EditProductForm> {
                             selectedItem: () =>
                                 quantityTypeDropDown.selectedItem,
                             isEmpty: () => quantityTypeDropDown.isEmpty(),
+                            validator: (value) {
+                              if (quantityTypeDropDown.selectedItem == null) {
+                                return 'Please select quantity';
+                              }
+                              return null;
+                            },
                           ),
                         ),
                       ],

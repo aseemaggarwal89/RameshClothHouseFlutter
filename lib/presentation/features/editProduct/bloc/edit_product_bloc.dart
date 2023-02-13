@@ -127,25 +127,28 @@ class EditProductBloc extends Bloc<EditProductEvent, EditProductState> {
       productInputFields = (state as _Initial).productInputFields;
     }
 
-    on<_InputSubmitted>(_onInputChanged);
+    on<_Submitted>(_onSubmittedTapped);
     on<_ProductDetailsUpdated>(_updateProductDetail);
     on<_SummaryUpdated>(_onSummaryUpdated);
   }
 
   void _onSummaryUpdated(
       _SummaryUpdated event, Emitter<EditProductState> emit) {
-    inputField(FormFieldType.description).onSaved(event.description);
+    inputField(FormFieldType.description).textEditingController.value =
+        inputField(FormFieldType.description)
+            .textEditingController
+            .value
+            .copyWith(text: event.description);
     emit(const EditProductState.refresh());
   }
 
-  void _onInputChanged(_InputSubmitted event, Emitter<EditProductState> emit) {
+  void _onSubmittedTapped(_Submitted event, Emitter<EditProductState> emit) {
+    emit(const EditProductState.loading());
     final isValid = formGlobalKey.currentState?.validate();
     if (!(isValid ?? false)) {
       emit(const EditProductState.validate(false));
-
       return;
     }
-    emit(const EditProductState.validate(true));
   }
 
   void _updateProductDetail(
@@ -183,9 +186,10 @@ class DropDownInputField<T> {
   }
 }
 
-abstract class ProductEditInputField {
+class ProductEditInputField {
   String fieldLabel;
   String intialValue;
+  late TextEditingController textEditingController;
 
   String? validator(String? value) {
     // TODO: implement validator
@@ -197,7 +201,12 @@ abstract class ProductEditInputField {
     throw UnimplementedError();
   }
 
-  ProductEditInputField(this.fieldLabel, this.intialValue);
+  ProductEditInputField(
+    this.fieldLabel,
+    this.intialValue,
+  ) {
+    textEditingController = TextEditingController(text: intialValue);
+  }
 }
 
 class ProductNameInput extends ProductEditInputField {

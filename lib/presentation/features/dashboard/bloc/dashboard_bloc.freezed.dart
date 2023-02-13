@@ -312,7 +312,7 @@ mixin _$DashboardState {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
+    required TResult Function(DashboardLoading value) loading,
     required TResult Function(LoadedError value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -320,7 +320,7 @@ mixin _$DashboardState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -328,7 +328,7 @@ mixin _$DashboardState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
     required TResult orElse(),
   }) =>
@@ -429,7 +429,7 @@ class _$Initial implements Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
+    required TResult Function(DashboardLoading value) loading,
     required TResult Function(LoadedError value) error,
   }) {
     return initial(this);
@@ -440,7 +440,7 @@ class _$Initial implements Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
   }) {
     return initial?.call(this);
@@ -451,7 +451,7 @@ class _$Initial implements Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
     required TResult orElse(),
   }) {
@@ -567,7 +567,7 @@ class _$Loaded implements Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
+    required TResult Function(DashboardLoading value) loading,
     required TResult Function(LoadedError value) error,
   }) {
     return loaded(this);
@@ -578,7 +578,7 @@ class _$Loaded implements Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
   }) {
     return loaded?.call(this);
@@ -589,7 +589,7 @@ class _$Loaded implements Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
     required TResult orElse(),
   }) {
@@ -611,25 +611,28 @@ abstract class Loaded implements DashboardState {
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$DashboardLoadingCopyWith<$Res> {
+  factory _$$DashboardLoadingCopyWith(
+          _$DashboardLoading value, $Res Function(_$DashboardLoading) then) =
+      __$$DashboardLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res> extends _$DashboardStateCopyWithImpl<$Res>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
-      : super(_value, (v) => _then(v as _$Loading));
+class __$$DashboardLoadingCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res>
+    implements _$$DashboardLoadingCopyWith<$Res> {
+  __$$DashboardLoadingCopyWithImpl(
+      _$DashboardLoading _value, $Res Function(_$DashboardLoading) _then)
+      : super(_value, (v) => _then(v as _$DashboardLoading));
 
   @override
-  _$Loading get _value => super._value as _$Loading;
+  _$DashboardLoading get _value => super._value as _$DashboardLoading;
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$DashboardLoading implements DashboardLoading {
+  const _$DashboardLoading();
 
   @override
   String toString() {
@@ -639,7 +642,7 @@ class _$Loading implements Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$DashboardLoading);
   }
 
   @override
@@ -687,7 +690,7 @@ class _$Loading implements Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
+    required TResult Function(DashboardLoading value) loading,
     required TResult Function(LoadedError value) error,
   }) {
     return loading(this);
@@ -698,7 +701,7 @@ class _$Loading implements Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
   }) {
     return loading?.call(this);
@@ -709,7 +712,7 @@ class _$Loading implements Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
     required TResult orElse(),
   }) {
@@ -720,8 +723,8 @@ class _$Loading implements Loading {
   }
 }
 
-abstract class Loading implements DashboardState {
-  const factory Loading() = _$Loading;
+abstract class DashboardLoading implements DashboardState {
+  const factory DashboardLoading() = _$DashboardLoading;
 }
 
 /// @nodoc
@@ -839,7 +842,7 @@ class _$LoadedError implements LoadedError {
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
+    required TResult Function(DashboardLoading value) loading,
     required TResult Function(LoadedError value) error,
   }) {
     return error(this);
@@ -850,7 +853,7 @@ class _$LoadedError implements LoadedError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
   }) {
     return error?.call(this);
@@ -861,7 +864,7 @@ class _$LoadedError implements LoadedError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
     TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
+    TResult Function(DashboardLoading value)? loading,
     TResult Function(LoadedError value)? error,
     required TResult orElse(),
   }) {

@@ -19,7 +19,7 @@ mixin _$EditProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() inputSubmitted,
+    required TResult Function() submittedTapped,
     required TResult Function(List<ProductDescriptionDetail> productDetails)
         updateProductDetails,
     required TResult Function(String description) updateSummary,
@@ -28,7 +28,7 @@ mixin _$EditProductEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
@@ -37,7 +37,7 @@ mixin _$EditProductEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
@@ -47,7 +47,7 @@ mixin _$EditProductEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_InputSubmitted value) inputSubmitted,
+    required TResult Function(_Submitted value) submittedTapped,
     required TResult Function(_ProductDetailsUpdated value)
         updateProductDetails,
     required TResult Function(_SummaryUpdated value) updateSummary,
@@ -56,7 +56,7 @@ mixin _$EditProductEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
   }) =>
@@ -64,7 +64,7 @@ mixin _$EditProductEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
     required TResult orElse(),
@@ -130,7 +130,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() inputSubmitted,
+    required TResult Function() submittedTapped,
     required TResult Function(List<ProductDescriptionDetail> productDetails)
         updateProductDetails,
     required TResult Function(String description) updateSummary,
@@ -142,7 +142,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
@@ -154,7 +154,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
@@ -170,7 +170,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_InputSubmitted value) inputSubmitted,
+    required TResult Function(_Submitted value) submittedTapped,
     required TResult Function(_ProductDetailsUpdated value)
         updateProductDetails,
     required TResult Function(_SummaryUpdated value) updateSummary,
@@ -182,7 +182,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
   }) {
@@ -193,7 +193,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
     required TResult orElse(),
@@ -210,38 +210,38 @@ abstract class _Started implements EditProductEvent {
 }
 
 /// @nodoc
-abstract class _$$_InputSubmittedCopyWith<$Res> {
-  factory _$$_InputSubmittedCopyWith(
-          _$_InputSubmitted value, $Res Function(_$_InputSubmitted) then) =
-      __$$_InputSubmittedCopyWithImpl<$Res>;
+abstract class _$$_SubmittedCopyWith<$Res> {
+  factory _$$_SubmittedCopyWith(
+          _$_Submitted value, $Res Function(_$_Submitted) then) =
+      __$$_SubmittedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InputSubmittedCopyWithImpl<$Res>
+class __$$_SubmittedCopyWithImpl<$Res>
     extends _$EditProductEventCopyWithImpl<$Res>
-    implements _$$_InputSubmittedCopyWith<$Res> {
-  __$$_InputSubmittedCopyWithImpl(
-      _$_InputSubmitted _value, $Res Function(_$_InputSubmitted) _then)
-      : super(_value, (v) => _then(v as _$_InputSubmitted));
+    implements _$$_SubmittedCopyWith<$Res> {
+  __$$_SubmittedCopyWithImpl(
+      _$_Submitted _value, $Res Function(_$_Submitted) _then)
+      : super(_value, (v) => _then(v as _$_Submitted));
 
   @override
-  _$_InputSubmitted get _value => super._value as _$_InputSubmitted;
+  _$_Submitted get _value => super._value as _$_Submitted;
 }
 
 /// @nodoc
 
-class _$_InputSubmitted implements _InputSubmitted {
-  const _$_InputSubmitted();
+class _$_Submitted implements _Submitted {
+  const _$_Submitted();
 
   @override
   String toString() {
-    return 'EditProductEvent.inputSubmitted()';
+    return 'EditProductEvent.submittedTapped()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InputSubmitted);
+        (other.runtimeType == runtimeType && other is _$_Submitted);
   }
 
   @override
@@ -251,38 +251,38 @@ class _$_InputSubmitted implements _InputSubmitted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() inputSubmitted,
+    required TResult Function() submittedTapped,
     required TResult Function(List<ProductDescriptionDetail> productDetails)
         updateProductDetails,
     required TResult Function(String description) updateSummary,
   }) {
-    return inputSubmitted();
+    return submittedTapped();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
   }) {
-    return inputSubmitted?.call();
+    return submittedTapped?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
     required TResult orElse(),
   }) {
-    if (inputSubmitted != null) {
-      return inputSubmitted();
+    if (submittedTapped != null) {
+      return submittedTapped();
     }
     return orElse();
   }
@@ -291,43 +291,43 @@ class _$_InputSubmitted implements _InputSubmitted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_InputSubmitted value) inputSubmitted,
+    required TResult Function(_Submitted value) submittedTapped,
     required TResult Function(_ProductDetailsUpdated value)
         updateProductDetails,
     required TResult Function(_SummaryUpdated value) updateSummary,
   }) {
-    return inputSubmitted(this);
+    return submittedTapped(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
   }) {
-    return inputSubmitted?.call(this);
+    return submittedTapped?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
     required TResult orElse(),
   }) {
-    if (inputSubmitted != null) {
-      return inputSubmitted(this);
+    if (submittedTapped != null) {
+      return submittedTapped(this);
     }
     return orElse();
   }
 }
 
-abstract class _InputSubmitted implements EditProductEvent {
-  const factory _InputSubmitted() = _$_InputSubmitted;
+abstract class _Submitted implements EditProductEvent {
+  const factory _Submitted() = _$_Submitted;
 }
 
 /// @nodoc
@@ -405,7 +405,7 @@ class _$_ProductDetailsUpdated implements _ProductDetailsUpdated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() inputSubmitted,
+    required TResult Function() submittedTapped,
     required TResult Function(List<ProductDescriptionDetail> productDetails)
         updateProductDetails,
     required TResult Function(String description) updateSummary,
@@ -417,7 +417,7 @@ class _$_ProductDetailsUpdated implements _ProductDetailsUpdated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
@@ -429,7 +429,7 @@ class _$_ProductDetailsUpdated implements _ProductDetailsUpdated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
@@ -445,7 +445,7 @@ class _$_ProductDetailsUpdated implements _ProductDetailsUpdated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_InputSubmitted value) inputSubmitted,
+    required TResult Function(_Submitted value) submittedTapped,
     required TResult Function(_ProductDetailsUpdated value)
         updateProductDetails,
     required TResult Function(_SummaryUpdated value) updateSummary,
@@ -457,7 +457,7 @@ class _$_ProductDetailsUpdated implements _ProductDetailsUpdated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
   }) {
@@ -468,7 +468,7 @@ class _$_ProductDetailsUpdated implements _ProductDetailsUpdated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
     required TResult orElse(),
@@ -558,7 +558,7 @@ class _$_SummaryUpdated implements _SummaryUpdated {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() inputSubmitted,
+    required TResult Function() submittedTapped,
     required TResult Function(List<ProductDescriptionDetail> productDetails)
         updateProductDetails,
     required TResult Function(String description) updateSummary,
@@ -570,7 +570,7 @@ class _$_SummaryUpdated implements _SummaryUpdated {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
@@ -582,7 +582,7 @@ class _$_SummaryUpdated implements _SummaryUpdated {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? inputSubmitted,
+    TResult Function()? submittedTapped,
     TResult Function(List<ProductDescriptionDetail> productDetails)?
         updateProductDetails,
     TResult Function(String description)? updateSummary,
@@ -598,7 +598,7 @@ class _$_SummaryUpdated implements _SummaryUpdated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_InputSubmitted value) inputSubmitted,
+    required TResult Function(_Submitted value) submittedTapped,
     required TResult Function(_ProductDetailsUpdated value)
         updateProductDetails,
     required TResult Function(_SummaryUpdated value) updateSummary,
@@ -610,7 +610,7 @@ class _$_SummaryUpdated implements _SummaryUpdated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
   }) {
@@ -621,7 +621,7 @@ class _$_SummaryUpdated implements _SummaryUpdated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_InputSubmitted value)? inputSubmitted,
+    TResult Function(_Submitted value)? submittedTapped,
     TResult Function(_ProductDetailsUpdated value)? updateProductDetails,
     TResult Function(_SummaryUpdated value)? updateSummary,
     required TResult orElse(),
@@ -650,6 +650,7 @@ mixin _$EditProductState {
         initial,
     required TResult Function(bool isValid) validate,
     required TResult Function() refresh,
+    required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -657,6 +658,7 @@ mixin _$EditProductState {
     TResult Function(EditProductInputFields productInputFields)? initial,
     TResult Function(bool isValid)? validate,
     TResult Function()? refresh,
+    TResult Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -664,6 +666,7 @@ mixin _$EditProductState {
     TResult Function(EditProductInputFields productInputFields)? initial,
     TResult Function(bool isValid)? validate,
     TResult Function()? refresh,
+    TResult Function()? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -672,6 +675,7 @@ mixin _$EditProductState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Validate value) validate,
     required TResult Function(Refresh value) refresh,
+    required TResult Function(EditProductLoading value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -679,6 +683,7 @@ mixin _$EditProductState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Validate value)? validate,
     TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -686,6 +691,7 @@ mixin _$EditProductState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Validate value)? validate,
     TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -777,6 +783,7 @@ class _$_Initial implements _Initial {
         initial,
     required TResult Function(bool isValid) validate,
     required TResult Function() refresh,
+    required TResult Function() loading,
   }) {
     return initial(productInputFields);
   }
@@ -787,6 +794,7 @@ class _$_Initial implements _Initial {
     TResult Function(EditProductInputFields productInputFields)? initial,
     TResult Function(bool isValid)? validate,
     TResult Function()? refresh,
+    TResult Function()? loading,
   }) {
     return initial?.call(productInputFields);
   }
@@ -797,6 +805,7 @@ class _$_Initial implements _Initial {
     TResult Function(EditProductInputFields productInputFields)? initial,
     TResult Function(bool isValid)? validate,
     TResult Function()? refresh,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -811,6 +820,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Validate value) validate,
     required TResult Function(Refresh value) refresh,
+    required TResult Function(EditProductLoading value) loading,
   }) {
     return initial(this);
   }
@@ -821,6 +831,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Validate value)? validate,
     TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
   }) {
     return initial?.call(this);
   }
@@ -831,6 +842,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Validate value)? validate,
     TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -919,6 +931,7 @@ class _$_Validate implements _Validate {
         initial,
     required TResult Function(bool isValid) validate,
     required TResult Function() refresh,
+    required TResult Function() loading,
   }) {
     return validate(isValid);
   }
@@ -929,6 +942,7 @@ class _$_Validate implements _Validate {
     TResult Function(EditProductInputFields productInputFields)? initial,
     TResult Function(bool isValid)? validate,
     TResult Function()? refresh,
+    TResult Function()? loading,
   }) {
     return validate?.call(isValid);
   }
@@ -939,6 +953,7 @@ class _$_Validate implements _Validate {
     TResult Function(EditProductInputFields productInputFields)? initial,
     TResult Function(bool isValid)? validate,
     TResult Function()? refresh,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (validate != null) {
@@ -953,6 +968,7 @@ class _$_Validate implements _Validate {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Validate value) validate,
     required TResult Function(Refresh value) refresh,
+    required TResult Function(EditProductLoading value) loading,
   }) {
     return validate(this);
   }
@@ -963,6 +979,7 @@ class _$_Validate implements _Validate {
     TResult Function(_Initial value)? initial,
     TResult Function(_Validate value)? validate,
     TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
   }) {
     return validate?.call(this);
   }
@@ -973,6 +990,7 @@ class _$_Validate implements _Validate {
     TResult Function(_Initial value)? initial,
     TResult Function(_Validate value)? validate,
     TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
     required TResult orElse(),
   }) {
     if (validate != null) {
@@ -1033,6 +1051,7 @@ class _$Refresh implements Refresh {
         initial,
     required TResult Function(bool isValid) validate,
     required TResult Function() refresh,
+    required TResult Function() loading,
   }) {
     return refresh();
   }
@@ -1043,6 +1062,7 @@ class _$Refresh implements Refresh {
     TResult Function(EditProductInputFields productInputFields)? initial,
     TResult Function(bool isValid)? validate,
     TResult Function()? refresh,
+    TResult Function()? loading,
   }) {
     return refresh?.call();
   }
@@ -1053,6 +1073,7 @@ class _$Refresh implements Refresh {
     TResult Function(EditProductInputFields productInputFields)? initial,
     TResult Function(bool isValid)? validate,
     TResult Function()? refresh,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -1067,6 +1088,7 @@ class _$Refresh implements Refresh {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Validate value) validate,
     required TResult Function(Refresh value) refresh,
+    required TResult Function(EditProductLoading value) loading,
   }) {
     return refresh(this);
   }
@@ -1077,6 +1099,7 @@ class _$Refresh implements Refresh {
     TResult Function(_Initial value)? initial,
     TResult Function(_Validate value)? validate,
     TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
   }) {
     return refresh?.call(this);
   }
@@ -1087,6 +1110,7 @@ class _$Refresh implements Refresh {
     TResult Function(_Initial value)? initial,
     TResult Function(_Validate value)? validate,
     TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -1098,4 +1122,122 @@ class _$Refresh implements Refresh {
 
 abstract class Refresh implements EditProductState {
   const factory Refresh() = _$Refresh;
+}
+
+/// @nodoc
+abstract class _$$EditProductLoadingCopyWith<$Res> {
+  factory _$$EditProductLoadingCopyWith(_$EditProductLoading value,
+          $Res Function(_$EditProductLoading) then) =
+      __$$EditProductLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EditProductLoadingCopyWithImpl<$Res>
+    extends _$EditProductStateCopyWithImpl<$Res>
+    implements _$$EditProductLoadingCopyWith<$Res> {
+  __$$EditProductLoadingCopyWithImpl(
+      _$EditProductLoading _value, $Res Function(_$EditProductLoading) _then)
+      : super(_value, (v) => _then(v as _$EditProductLoading));
+
+  @override
+  _$EditProductLoading get _value => super._value as _$EditProductLoading;
+}
+
+/// @nodoc
+
+class _$EditProductLoading implements EditProductLoading {
+  const _$EditProductLoading();
+
+  @override
+  String toString() {
+    return 'EditProductState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EditProductLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EditProductInputFields productInputFields)
+        initial,
+    required TResult Function(bool isValid) validate,
+    required TResult Function() refresh,
+    required TResult Function() loading,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(EditProductInputFields productInputFields)? initial,
+    TResult Function(bool isValid)? validate,
+    TResult Function()? refresh,
+    TResult Function()? loading,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EditProductInputFields productInputFields)? initial,
+    TResult Function(bool isValid)? validate,
+    TResult Function()? refresh,
+    TResult Function()? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Validate value) validate,
+    required TResult Function(Refresh value) refresh,
+    required TResult Function(EditProductLoading value) loading,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Validate value)? validate,
+    TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Validate value)? validate,
+    TResult Function(Refresh value)? refresh,
+    TResult Function(EditProductLoading value)? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EditProductLoading implements EditProductState {
+  const factory EditProductLoading() = _$EditProductLoading;
 }
