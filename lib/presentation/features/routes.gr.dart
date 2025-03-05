@@ -1,133 +1,91 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// AutoRouteGenerator
+// AutoRouterGenerator
 // **************************************************************************
-//
+
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i8;
 import 'package:flutter/material.dart' as _i9;
+import 'package:rameshclothhouse/presentation/features/contactUs/contact_screen.dart'
+    as _i1;
+import 'package:rameshclothhouse/presentation/features/dashboard/dashboard_screen.dart'
+    as _i2;
+import 'package:rameshclothhouse/presentation/features/editProduct/bloc/edit_product_bloc.dart'
+    as _i10;
+import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart'
+    as _i3;
+import 'package:rameshclothhouse/presentation/features/home/views/home_page.dart'
+    as _i4;
+import 'package:rameshclothhouse/presentation/features/login/login_screen.dart'
+    as _i5;
+import 'package:rameshclothhouse/presentation/features/productDetails/product_details_page.dart'
+    as _i6;
+import 'package:rameshclothhouse/presentation/features/shop/shop_screen.dart'
+    as _i7;
 
-import 'contactUs/contact_screen.dart' as _i7;
-import 'dashboard/dashboard_screen.dart' as _i1;
-import 'editProduct/bloc/edit_product_bloc.dart' as _i10;
-import 'editProduct/edit_product.dart' as _i2;
-import 'home/home.dart' as _i3;
-import 'login/login_screen.dart' as _i5;
-import 'productDetails/product_details_page.dart' as _i4;
-import 'shop/shop_screen.dart' as _i6;
+/// generated route for
+/// [_i1.ContactScreen]
+class ContactRoute extends _i8.PageRouteInfo<void> {
+  const ContactRoute({List<_i8.PageRouteInfo>? children})
+    : super(ContactRoute.name, initialChildren: children);
 
-class AppRouter extends _i8.RootStackRouter {
-  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+  static const String name = 'ContactRoute';
 
-  @override
-  final Map<String, _i8.PageFactory> pagesMap = {
-    DashboardScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.DashboardScreen());
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.ContactScreen();
     },
-    EditProductScreenRoute.name: (routeData) {
-      final args = routeData.argsAs<EditProductScreenRouteArgs>();
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child:
-              _i2.EditProductScreen(key: args.key, viewModel: args.viewModel));
-    },
-    HomeScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.HomeScreen());
-    },
-    ProductDetailScreenRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<ProductDetailScreenRouteArgs>(
-          orElse: () => ProductDetailScreenRouteArgs(
-              productId: pathParams.getString('id')));
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i4.ProductDetailScreen(
-              key: args.key, productId: args.productId));
-    },
-    LoginScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.LoginScreen());
-    },
-    ShopScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i6.ShopScreen());
-    },
-    ContactScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i7.ContactScreen());
-    }
-  };
-
-  @override
-  List<_i8.RouteConfig> get routes => [
-        _i8.RouteConfig(DashboardScreenRoute.name, path: '/dashboard'),
-        _i8.RouteConfig(EditProductScreenRoute.name, path: '/product/:id'),
-        _i8.RouteConfig(HomeScreenRoute.name, path: '/', children: [
-          _i8.RouteConfig('*#redirect',
-              path: '*',
-              parent: HomeScreenRoute.name,
-              redirectTo: '',
-              fullMatch: true)
-        ]),
-        _i8.RouteConfig(ProductDetailScreenRoute.name, path: '/product/:id'),
-        _i8.RouteConfig(LoginScreenRoute.name, path: '/login', children: [
-          _i8.RouteConfig('*#redirect',
-              path: '*',
-              parent: LoginScreenRoute.name,
-              redirectTo: '',
-              fullMatch: true)
-        ]),
-        _i8.RouteConfig(ShopScreenRoute.name, path: 'shop', children: [
-          _i8.RouteConfig('*#redirect',
-              path: '*',
-              parent: ShopScreenRoute.name,
-              redirectTo: '',
-              fullMatch: true)
-        ]),
-        _i8.RouteConfig(ContactScreenRoute.name, path: '/contactus', children: [
-          _i8.RouteConfig('*#redirect',
-              path: '*',
-              parent: ContactScreenRoute.name,
-              redirectTo: '',
-              fullMatch: true)
-        ])
-      ];
+  );
 }
 
 /// generated route for
-/// [_i1.DashboardScreen]
-class DashboardScreenRoute extends _i8.PageRouteInfo<void> {
-  const DashboardScreenRoute()
-      : super(DashboardScreenRoute.name, path: '/dashboard');
+/// [_i2.DashboardScreen]
+class DashboardRoute extends _i8.PageRouteInfo<void> {
+  const DashboardRoute({List<_i8.PageRouteInfo>? children})
+    : super(DashboardRoute.name, initialChildren: children);
 
-  static const String name = 'DashboardScreenRoute';
+  static const String name = 'DashboardRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i2.DashboardScreen();
+    },
+  );
 }
 
 /// generated route for
-/// [_i2.EditProductScreen]
-class EditProductScreenRoute
-    extends _i8.PageRouteInfo<EditProductScreenRouteArgs> {
-  EditProductScreenRoute(
-      {_i9.Key? key, required _i10.AddProductViewModel viewModel})
-      : super(EditProductScreenRoute.name,
-            path: '/product/:id',
-            args: EditProductScreenRouteArgs(key: key, viewModel: viewModel));
+/// [_i3.EditProductScreen]
+class EditProductRoute extends _i8.PageRouteInfo<EditProductRouteArgs> {
+  EditProductRoute({
+    _i9.Key? key,
+    required _i10.AddProductViewModel viewModel,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
+         EditProductRoute.name,
+         args: EditProductRouteArgs(key: key, viewModel: viewModel),
+         initialChildren: children,
+       );
 
-  static const String name = 'EditProductScreenRoute';
+  static const String name = 'EditProductRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<EditProductRouteArgs>();
+      return _i3.EditProductScreen(key: args.key, viewModel: args.viewModel);
+    },
+  );
 }
 
-class EditProductScreenRouteArgs {
-  const EditProductScreenRouteArgs({this.key, required this.viewModel});
+class EditProductRouteArgs {
+  const EditProductRouteArgs({this.key, required this.viewModel});
 
   final _i9.Key? key;
 
@@ -135,34 +93,73 @@ class EditProductScreenRouteArgs {
 
   @override
   String toString() {
-    return 'EditProductScreenRouteArgs{key: $key, viewModel: $viewModel}';
+    return 'EditProductRouteArgs{key: $key, viewModel: $viewModel}';
   }
 }
 
 /// generated route for
-/// [_i3.HomeScreen]
-class HomeScreenRoute extends _i8.PageRouteInfo<void> {
-  const HomeScreenRoute({List<_i8.PageRouteInfo>? children})
-      : super(HomeScreenRoute.name, path: '/', initialChildren: children);
+/// [_i4.HomeScreen]
+class HomeRoute extends _i8.PageRouteInfo<void> {
+  const HomeRoute({List<_i8.PageRouteInfo>? children})
+    : super(HomeRoute.name, initialChildren: children);
 
-  static const String name = 'HomeScreenRoute';
+  static const String name = 'HomeRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i4.HomeScreen();
+    },
+  );
 }
 
 /// generated route for
-/// [_i4.ProductDetailScreen]
-class ProductDetailScreenRoute
-    extends _i8.PageRouteInfo<ProductDetailScreenRouteArgs> {
-  ProductDetailScreenRoute({_i9.Key? key, required String productId})
-      : super(ProductDetailScreenRoute.name,
-            path: '/product/:id',
-            args: ProductDetailScreenRouteArgs(key: key, productId: productId),
-            rawPathParams: {'id': productId});
+/// [_i5.LoginScreen]
+class LoginRoute extends _i8.PageRouteInfo<void> {
+  const LoginRoute({List<_i8.PageRouteInfo>? children})
+    : super(LoginRoute.name, initialChildren: children);
 
-  static const String name = 'ProductDetailScreenRoute';
+  static const String name = 'LoginRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i5.LoginScreen();
+    },
+  );
 }
 
-class ProductDetailScreenRouteArgs {
-  const ProductDetailScreenRouteArgs({this.key, required this.productId});
+/// generated route for
+/// [_i6.ProductDetailScreen]
+class ProductDetailRoute extends _i8.PageRouteInfo<ProductDetailRouteArgs> {
+  ProductDetailRoute({
+    _i9.Key? key,
+    required String productId,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
+         ProductDetailRoute.name,
+         args: ProductDetailRouteArgs(key: key, productId: productId),
+         rawPathParams: {'id': productId},
+         initialChildren: children,
+       );
+
+  static const String name = 'ProductDetailRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<ProductDetailRouteArgs>(
+        orElse:
+            () => ProductDetailRouteArgs(productId: pathParams.getString('id')),
+      );
+      return _i6.ProductDetailScreen(key: args.key, productId: args.productId);
+    },
+  );
+}
+
+class ProductDetailRouteArgs {
+  const ProductDetailRouteArgs({this.key, required this.productId});
 
   final _i9.Key? key;
 
@@ -170,34 +167,22 @@ class ProductDetailScreenRouteArgs {
 
   @override
   String toString() {
-    return 'ProductDetailScreenRouteArgs{key: $key, productId: $productId}';
+    return 'ProductDetailRouteArgs{key: $key, productId: $productId}';
   }
 }
 
 /// generated route for
-/// [_i5.LoginScreen]
-class LoginScreenRoute extends _i8.PageRouteInfo<void> {
-  const LoginScreenRoute({List<_i8.PageRouteInfo>? children})
-      : super(LoginScreenRoute.name, path: '/login', initialChildren: children);
+/// [_i7.ShopScreen]
+class ShopRoute extends _i8.PageRouteInfo<void> {
+  const ShopRoute({List<_i8.PageRouteInfo>? children})
+    : super(ShopRoute.name, initialChildren: children);
 
-  static const String name = 'LoginScreenRoute';
-}
+  static const String name = 'ShopRoute';
 
-/// generated route for
-/// [_i6.ShopScreen]
-class ShopScreenRoute extends _i8.PageRouteInfo<void> {
-  const ShopScreenRoute({List<_i8.PageRouteInfo>? children})
-      : super(ShopScreenRoute.name, path: 'shop', initialChildren: children);
-
-  static const String name = 'ShopScreenRoute';
-}
-
-/// generated route for
-/// [_i7.ContactScreen]
-class ContactScreenRoute extends _i8.PageRouteInfo<void> {
-  const ContactScreenRoute({List<_i8.PageRouteInfo>? children})
-      : super(ContactScreenRoute.name,
-            path: '/contactus', initialChildren: children);
-
-  static const String name = 'ContactScreenRoute';
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i7.ShopScreen();
+    },
+  );
 }

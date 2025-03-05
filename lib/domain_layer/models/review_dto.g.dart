@@ -11,7 +11,7 @@ ProductReviewDTO _$ProductReviewDTOFromJson(Map<String, dynamic> json) =>
       active: json['active'] as bool? ?? false,
       uniqueId: json['_id'] as String,
       review: json['review'] as String? ?? '',
-      rating: json['rating'] as int?,
+      rating: (json['rating'] as num?)?.toInt(),
       product: json['product'] as String,
       user: json['user'] == null
           ? null

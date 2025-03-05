@@ -96,19 +96,19 @@ Widget imageDialog(text, path, context) {
             children: [
               Text(
                 '$text',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               IconButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                icon: Icon(Icons.close_rounded),
+                icon: const Icon(Icons.close_rounded),
                 color: Colors.redAccent,
               ),
             ],
           ),
         ),
-        Container(
+        SizedBox(
           width: 220,
           height: 200,
           child: Image.network(
@@ -122,13 +122,15 @@ Widget imageDialog(text, path, context) {
 }
 
 class ImageDialog extends StatelessWidget {
+  const ImageDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
         width: 200,
         height: 200,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: ExactAssetImage('assets/tamas.jpg'), fit: BoxFit.cover)),
       ),

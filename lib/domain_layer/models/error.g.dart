@@ -24,7 +24,7 @@ Map<String, dynamic> _$ErrorModelToJson(ErrorModel instance) =>
     };
 
 Error _$ErrorFromJson(Map<String, dynamic> json) => Error(
-      statusCode: json['statusCode'] as int?,
+      statusCode: (json['statusCode'] as num?)?.toInt(),
       status: json['status'] as String? ?? '',
       isOperational: json['isOperational'] as bool? ?? false,
     );

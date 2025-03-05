@@ -1,7 +1,8 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'product_detail_page_bloc.dart';
 
@@ -9,110 +10,66 @@ part of 'product_detail_page_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProductDetailPageEvent {
-  String get productId => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String productId) getProductDetail,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String productId)? getProductDetail,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String productId)? getProductDetail,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetProductDetailEvent value) getProductDetail,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetProductDetailEvent value)? getProductDetail,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetProductDetailEvent value)? getProductDetail,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  String get productId;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductDetailPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ProductDetailPageEventCopyWith<ProductDetailPageEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$ProductDetailPageEventCopyWithImpl<ProductDetailPageEvent>(
+          this as ProductDetailPageEvent, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ProductDetailPageEvent &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, productId);
+
+  @override
+  String toString() {
+    return 'ProductDetailPageEvent(productId: $productId)';
+  }
 }
 
 /// @nodoc
-abstract class $ProductDetailPageEventCopyWith<$Res> {
+abstract mixin class $ProductDetailPageEventCopyWith<$Res> {
   factory $ProductDetailPageEventCopyWith(ProductDetailPageEvent value,
-          $Res Function(ProductDetailPageEvent) then) =
-      _$ProductDetailPageEventCopyWithImpl<$Res>;
+          $Res Function(ProductDetailPageEvent) _then) =
+      _$ProductDetailPageEventCopyWithImpl;
+  @useResult
   $Res call({String productId});
 }
 
 /// @nodoc
 class _$ProductDetailPageEventCopyWithImpl<$Res>
     implements $ProductDetailPageEventCopyWith<$Res> {
-  _$ProductDetailPageEventCopyWithImpl(this._value, this._then);
+  _$ProductDetailPageEventCopyWithImpl(this._self, this._then);
 
-  final ProductDetailPageEvent _value;
-  // ignore: unused_field
+  final ProductDetailPageEvent _self;
   final $Res Function(ProductDetailPageEvent) _then;
 
+  /// Create a copy of ProductDetailPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productId = freezed,
+    Object? productId = null,
   }) {
-    return _then(_value.copyWith(
-      productId: productId == freezed
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$GetProductDetailEventCopyWith<$Res>
-    implements $ProductDetailPageEventCopyWith<$Res> {
-  factory _$$GetProductDetailEventCopyWith(_$GetProductDetailEvent value,
-          $Res Function(_$GetProductDetailEvent) then) =
-      __$$GetProductDetailEventCopyWithImpl<$Res>;
-  @override
-  $Res call({String productId});
-}
-
-/// @nodoc
-class __$$GetProductDetailEventCopyWithImpl<$Res>
-    extends _$ProductDetailPageEventCopyWithImpl<$Res>
-    implements _$$GetProductDetailEventCopyWith<$Res> {
-  __$$GetProductDetailEventCopyWithImpl(_$GetProductDetailEvent _value,
-      $Res Function(_$GetProductDetailEvent) _then)
-      : super(_value, (v) => _then(v as _$GetProductDetailEvent));
-
-  @override
-  _$GetProductDetailEvent get _value => super._value as _$GetProductDetailEvent;
-
-  @override
-  $Res call({
-    Object? productId = freezed,
-  }) {
-    return _then(_$GetProductDetailEvent(
-      productId == freezed
-          ? _value.productId
+    return _then(_self.copyWith(
+      productId: null == productId
+          ? _self.productId
           : productId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -121,314 +78,173 @@ class __$$GetProductDetailEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetProductDetailEvent implements GetProductDetailEvent {
-  const _$GetProductDetailEvent(this.productId);
+class GetProductDetailEvent implements ProductDetailPageEvent {
+  const GetProductDetailEvent(this.productId);
 
   @override
   final String productId;
+
+  /// Create a copy of ProductDetailPageEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetProductDetailEventCopyWith<GetProductDetailEvent> get copyWith =>
+      _$GetProductDetailEventCopyWithImpl<GetProductDetailEvent>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GetProductDetailEvent &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, productId);
 
   @override
   String toString() {
     return 'ProductDetailPageEvent.getProductDetail(productId: $productId)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetProductDetailEvent &&
-            const DeepCollectionEquality().equals(other.productId, productId));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(productId));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$GetProductDetailEventCopyWith<_$GetProductDetailEvent> get copyWith =>
-      __$$GetProductDetailEventCopyWithImpl<_$GetProductDetailEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String productId) getProductDetail,
-  }) {
-    return getProductDetail(productId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String productId)? getProductDetail,
-  }) {
-    return getProductDetail?.call(productId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String productId)? getProductDetail,
-    required TResult orElse(),
-  }) {
-    if (getProductDetail != null) {
-      return getProductDetail(productId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetProductDetailEvent value) getProductDetail,
-  }) {
-    return getProductDetail(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetProductDetailEvent value)? getProductDetail,
-  }) {
-    return getProductDetail?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetProductDetailEvent value)? getProductDetail,
-    required TResult orElse(),
-  }) {
-    if (getProductDetail != null) {
-      return getProductDetail(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class GetProductDetailEvent implements ProductDetailPageEvent {
-  const factory GetProductDetailEvent(final String productId) =
-      _$GetProductDetailEvent;
+/// @nodoc
+abstract mixin class $GetProductDetailEventCopyWith<$Res>
+    implements $ProductDetailPageEventCopyWith<$Res> {
+  factory $GetProductDetailEventCopyWith(GetProductDetailEvent value,
+          $Res Function(GetProductDetailEvent) _then) =
+      _$GetProductDetailEventCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String productId});
+}
 
+/// @nodoc
+class _$GetProductDetailEventCopyWithImpl<$Res>
+    implements $GetProductDetailEventCopyWith<$Res> {
+  _$GetProductDetailEventCopyWithImpl(this._self, this._then);
+
+  final GetProductDetailEvent _self;
+  final $Res Function(GetProductDetailEvent) _then;
+
+  /// Create a copy of ProductDetailPageEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String get productId;
-  @override
-  @JsonKey(ignore: true)
-  _$$GetProductDetailEventCopyWith<_$GetProductDetailEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? productId = null,
+  }) {
+    return _then(GetProductDetailEvent(
+      null == productId
+          ? _self.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$ProductDetailPageState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(ProductDetailDTO product) loaded,
-    required TResult Function() loading,
-    required TResult Function(dynamic error, String errorMessage) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
-    required TResult Function(LoadedError value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ProductDetailPageStateCopyWith<$Res> {
-  factory $ProductDetailPageStateCopyWith(ProductDetailPageState value,
-          $Res Function(ProductDetailPageState) then) =
-      _$ProductDetailPageStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$ProductDetailPageStateCopyWithImpl<$Res>
-    implements $ProductDetailPageStateCopyWith<$Res> {
-  _$ProductDetailPageStateCopyWithImpl(this._value, this._then);
-
-  final ProductDetailPageState _value;
-  // ignore: unused_field
-  final $Res Function(ProductDetailPageState) _then;
-}
-
-/// @nodoc
-abstract class _$$InitialCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$ProductDetailPageStateCopyWithImpl<$Res>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
-      : super(_value, (v) => _then(v as _$Initial));
-
   @override
-  _$Initial get _value => super._value as _$Initial;
-}
-
-/// @nodoc
-
-class _$Initial implements Initial {
-  const _$Initial();
-
-  @override
-  String toString() {
-    return 'ProductDetailPageState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Initial);
+        (other.runtimeType == runtimeType && other is ProductDetailPageState);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(ProductDetailDTO product) loaded,
-    required TResult Function() loading,
-    required TResult Function(dynamic error, String errorMessage) error,
-  }) {
-    return initial();
+  String toString() {
+    return 'ProductDetailPageState()';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
-    required TResult Function(LoadedError value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Initial implements ProductDetailPageState {
-  const factory Initial() = _$Initial;
 }
 
 /// @nodoc
-abstract class _$$LoadedCopyWith<$Res> {
-  factory _$$LoadedCopyWith(_$Loaded value, $Res Function(_$Loaded) then) =
-      __$$LoadedCopyWithImpl<$Res>;
+class $ProductDetailPageStateCopyWith<$Res> {
+  $ProductDetailPageStateCopyWith(
+      ProductDetailPageState _, $Res Function(ProductDetailPageState) __);
+}
+
+/// @nodoc
+
+class Initial implements ProductDetailPageState {
+  const Initial();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Initial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'ProductDetailPageState.initial()';
+  }
+}
+
+/// @nodoc
+
+class Loaded implements ProductDetailPageState {
+  const Loaded(this.product);
+
+  final ProductDetailDTO product;
+
+  /// Create a copy of ProductDetailPageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $LoadedCopyWith<Loaded> get copyWith =>
+      _$LoadedCopyWithImpl<Loaded>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Loaded &&
+            (identical(other.product, product) || other.product == product));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, product);
+
+  @override
+  String toString() {
+    return 'ProductDetailPageState.loaded(product: $product)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $LoadedCopyWith<$Res>
+    implements $ProductDetailPageStateCopyWith<$Res> {
+  factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) _then) =
+      _$LoadedCopyWithImpl;
+  @useResult
   $Res call({ProductDetailDTO product});
 }
 
 /// @nodoc
-class __$$LoadedCopyWithImpl<$Res>
-    extends _$ProductDetailPageStateCopyWithImpl<$Res>
-    implements _$$LoadedCopyWith<$Res> {
-  __$$LoadedCopyWithImpl(_$Loaded _value, $Res Function(_$Loaded) _then)
-      : super(_value, (v) => _then(v as _$Loaded));
+class _$LoadedCopyWithImpl<$Res> implements $LoadedCopyWith<$Res> {
+  _$LoadedCopyWithImpl(this._self, this._then);
 
-  @override
-  _$Loaded get _value => super._value as _$Loaded;
+  final Loaded _self;
+  final $Res Function(Loaded) _then;
 
-  @override
+  /// Create a copy of ProductDetailPageState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? product = freezed,
+    Object? product = null,
   }) {
-    return _then(_$Loaded(
-      product == freezed
-          ? _value.product
+    return _then(Loaded(
+      null == product
+          ? _self.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDetailDTO,
     ));
@@ -437,388 +253,94 @@ class __$$LoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Loaded implements Loaded {
-  const _$Loaded(this.product);
+class Loading implements ProductDetailPageState {
+  const Loading();
 
   @override
-  final ProductDetailDTO product;
-
-  @override
-  String toString() {
-    return 'ProductDetailPageState.loaded(product: $product)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$Loaded &&
-            const DeepCollectionEquality().equals(other.product, product));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(product));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$LoadedCopyWith<_$Loaded> get copyWith =>
-      __$$LoadedCopyWithImpl<_$Loaded>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(ProductDetailDTO product) loaded,
-    required TResult Function() loading,
-    required TResult Function(dynamic error, String errorMessage) error,
-  }) {
-    return loaded(product);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-  }) {
-    return loaded?.call(product);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(product);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
-    required TResult Function(LoadedError value) error,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Loaded implements ProductDetailPageState {
-  const factory Loaded(final ProductDetailDTO product) = _$Loaded;
-
-  ProductDetailDTO get product;
-  @JsonKey(ignore: true)
-  _$$LoadedCopyWith<_$Loaded> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$ProductDetailPageStateCopyWithImpl<$Res>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
-      : super(_value, (v) => _then(v as _$Loading));
-
-  @override
-  _$Loading get _value => super._value as _$Loading;
-}
-
-/// @nodoc
-
-class _$Loading implements Loading {
-  const _$Loading();
-
-  @override
-  String toString() {
-    return 'ProductDetailPageState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is Loading);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(ProductDetailDTO product) loaded,
-    required TResult Function() loading,
-    required TResult Function(dynamic error, String errorMessage) error,
-  }) {
-    return loading();
+  String toString() {
+    return 'ProductDetailPageState.loading()';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
-    required TResult Function(LoadedError value) error,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Loading implements ProductDetailPageState {
-  const factory Loading() = _$Loading;
 }
 
 /// @nodoc
-abstract class _$$LoadedErrorCopyWith<$Res> {
-  factory _$$LoadedErrorCopyWith(
-          _$LoadedError value, $Res Function(_$LoadedError) then) =
-      __$$LoadedErrorCopyWithImpl<$Res>;
+
+class LoadedError implements ProductDetailPageState {
+  const LoadedError(this.error, this.errorMessage);
+
+  final dynamic error;
+  final String errorMessage;
+
+  /// Create a copy of ProductDetailPageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $LoadedErrorCopyWith<LoadedError> get copyWith =>
+      _$LoadedErrorCopyWithImpl<LoadedError>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is LoadedError &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), errorMessage);
+
+  @override
+  String toString() {
+    return 'ProductDetailPageState.error(error: $error, errorMessage: $errorMessage)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $LoadedErrorCopyWith<$Res>
+    implements $ProductDetailPageStateCopyWith<$Res> {
+  factory $LoadedErrorCopyWith(
+          LoadedError value, $Res Function(LoadedError) _then) =
+      _$LoadedErrorCopyWithImpl;
+  @useResult
   $Res call({dynamic error, String errorMessage});
 }
 
 /// @nodoc
-class __$$LoadedErrorCopyWithImpl<$Res>
-    extends _$ProductDetailPageStateCopyWithImpl<$Res>
-    implements _$$LoadedErrorCopyWith<$Res> {
-  __$$LoadedErrorCopyWithImpl(
-      _$LoadedError _value, $Res Function(_$LoadedError) _then)
-      : super(_value, (v) => _then(v as _$LoadedError));
+class _$LoadedErrorCopyWithImpl<$Res> implements $LoadedErrorCopyWith<$Res> {
+  _$LoadedErrorCopyWithImpl(this._self, this._then);
 
-  @override
-  _$LoadedError get _value => super._value as _$LoadedError;
+  final LoadedError _self;
+  final $Res Function(LoadedError) _then;
 
-  @override
+  /// Create a copy of ProductDetailPageState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? error = freezed,
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
   }) {
-    return _then(_$LoadedError(
-      error == freezed
-          ? _value.error
+    return _then(LoadedError(
+      freezed == error
+          ? _self.error
           : error // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      errorMessage == freezed
-          ? _value.errorMessage
+      null == errorMessage
+          ? _self.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
-/// @nodoc
-
-class _$LoadedError implements LoadedError {
-  const _$LoadedError(this.error, this.errorMessage);
-
-  @override
-  final dynamic error;
-  @override
-  final String errorMessage;
-
-  @override
-  String toString() {
-    return 'ProductDetailPageState.error(error: $error, errorMessage: $errorMessage)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedError &&
-            const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(errorMessage));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$LoadedErrorCopyWith<_$LoadedError> get copyWith =>
-      __$$LoadedErrorCopyWithImpl<_$LoadedError>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(ProductDetailDTO product) loaded,
-    required TResult Function() loading,
-    required TResult Function(dynamic error, String errorMessage) error,
-  }) {
-    return error(this.error, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-  }) {
-    return error?.call(this.error, errorMessage);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(ProductDetailDTO product)? loaded,
-    TResult Function()? loading,
-    TResult Function(dynamic error, String errorMessage)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this.error, errorMessage);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loaded value) loaded,
-    required TResult Function(Loading value) loading,
-    required TResult Function(LoadedError value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loaded value)? loaded,
-    TResult Function(Loading value)? loading,
-    TResult Function(LoadedError value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoadedError implements ProductDetailPageState {
-  const factory LoadedError(final dynamic error, final String errorMessage) =
-      _$LoadedError;
-
-  dynamic get error;
-  String get errorMessage;
-  @JsonKey(ignore: true)
-  _$$LoadedErrorCopyWith<_$LoadedError> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

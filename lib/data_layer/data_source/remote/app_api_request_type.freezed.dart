@@ -1,7 +1,8 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_api_request_type.dart';
 
@@ -9,102 +10,53 @@ part of 'app_api_request_type.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ApiRequestType {
-  HttpMethod get method => throw _privateConstructorUsedError;
-  APIRequestNodeType get nodeType => throw _privateConstructorUsedError;
-  AppURLsType get baseUrlType => throw _privateConstructorUsedError;
-  String get path => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        getAll,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        postData,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        product,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        auth,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllRequest value) getAll,
-    required TResult Function(_PostDataRequest value) postData,
-    required TResult Function(_ProductRequest value) product,
-    required TResult Function(_AuthRequest value) auth,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  HttpMethod get method;
+  APIRequestNodeType get nodeType;
+  AppURLsType get baseUrlType;
+  String get path;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ApiRequestTypeCopyWith<ApiRequestType> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$ApiRequestTypeCopyWithImpl<ApiRequestType>(
+          this as ApiRequestType, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ApiRequestType &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.nodeType, nodeType) ||
+                other.nodeType == nodeType) &&
+            (identical(other.baseUrlType, baseUrlType) ||
+                other.baseUrlType == baseUrlType) &&
+            (identical(other.path, path) || other.path == path));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, method, nodeType, baseUrlType, path);
+
+  @override
+  String toString() {
+    return 'ApiRequestType(method: $method, nodeType: $nodeType, baseUrlType: $baseUrlType, path: $path)';
+  }
 }
 
 /// @nodoc
-abstract class $ApiRequestTypeCopyWith<$Res> {
+abstract mixin class $ApiRequestTypeCopyWith<$Res> {
   factory $ApiRequestTypeCopyWith(
-          ApiRequestType value, $Res Function(ApiRequestType) then) =
-      _$ApiRequestTypeCopyWithImpl<$Res>;
+          ApiRequestType value, $Res Function(ApiRequestType) _then) =
+      _$ApiRequestTypeCopyWithImpl;
+  @useResult
   $Res call(
       {HttpMethod method,
       APIRequestNodeType nodeType,
@@ -115,87 +67,36 @@ abstract class $ApiRequestTypeCopyWith<$Res> {
 /// @nodoc
 class _$ApiRequestTypeCopyWithImpl<$Res>
     implements $ApiRequestTypeCopyWith<$Res> {
-  _$ApiRequestTypeCopyWithImpl(this._value, this._then);
+  _$ApiRequestTypeCopyWithImpl(this._self, this._then);
 
-  final ApiRequestType _value;
-  // ignore: unused_field
+  final ApiRequestType _self;
   final $Res Function(ApiRequestType) _then;
 
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? method = freezed,
-    Object? nodeType = freezed,
-    Object? baseUrlType = freezed,
-    Object? path = freezed,
+    Object? method = null,
+    Object? nodeType = null,
+    Object? baseUrlType = null,
+    Object? path = null,
   }) {
-    return _then(_value.copyWith(
-      method: method == freezed
-          ? _value.method
+    return _then(_self.copyWith(
+      method: null == method
+          ? _self.method
           : method // ignore: cast_nullable_to_non_nullable
               as HttpMethod,
-      nodeType: nodeType == freezed
-          ? _value.nodeType
+      nodeType: null == nodeType
+          ? _self.nodeType
           : nodeType // ignore: cast_nullable_to_non_nullable
               as APIRequestNodeType,
-      baseUrlType: baseUrlType == freezed
-          ? _value.baseUrlType
+      baseUrlType: null == baseUrlType
+          ? _self.baseUrlType
           : baseUrlType // ignore: cast_nullable_to_non_nullable
               as AppURLsType,
-      path: path == freezed
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_GetAllRequestCopyWith<$Res>
-    implements $ApiRequestTypeCopyWith<$Res> {
-  factory _$$_GetAllRequestCopyWith(
-          _$_GetAllRequest value, $Res Function(_$_GetAllRequest) then) =
-      __$$_GetAllRequestCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {HttpMethod method,
-      APIRequestNodeType nodeType,
-      AppURLsType baseUrlType,
-      String path});
-}
-
-/// @nodoc
-class __$$_GetAllRequestCopyWithImpl<$Res>
-    extends _$ApiRequestTypeCopyWithImpl<$Res>
-    implements _$$_GetAllRequestCopyWith<$Res> {
-  __$$_GetAllRequestCopyWithImpl(
-      _$_GetAllRequest _value, $Res Function(_$_GetAllRequest) _then)
-      : super(_value, (v) => _then(v as _$_GetAllRequest));
-
-  @override
-  _$_GetAllRequest get _value => super._value as _$_GetAllRequest;
-
-  @override
-  $Res call({
-    Object? method = freezed,
-    Object? nodeType = freezed,
-    Object? baseUrlType = freezed,
-    Object? path = freezed,
-  }) {
-    return _then(_$_GetAllRequest(
-      method: method == freezed
-          ? _value.method
-          : method // ignore: cast_nullable_to_non_nullable
-              as HttpMethod,
-      nodeType: nodeType == freezed
-          ? _value.nodeType
-          : nodeType // ignore: cast_nullable_to_non_nullable
-              as APIRequestNodeType,
-      baseUrlType: baseUrlType == freezed
-          ? _value.baseUrlType
-          : baseUrlType // ignore: cast_nullable_to_non_nullable
-              as AppURLsType,
-      path: path == freezed
-          ? _value.path
+      path: null == path
+          ? _self.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -204,8 +105,8 @@ class __$$_GetAllRequestCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetAllRequest implements _GetAllRequest {
-  const _$_GetAllRequest(
+class _GetAllRequest implements ApiRequestType {
+  const _GetAllRequest(
       {this.method = HttpMethod.get,
       required this.nodeType,
       this.baseUrlType = AppURLsType.ugc,
@@ -223,163 +124,45 @@ class _$_GetAllRequest implements _GetAllRequest {
   @JsonKey()
   final String path;
 
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$GetAllRequestCopyWith<_GetAllRequest> get copyWith =>
+      __$GetAllRequestCopyWithImpl<_GetAllRequest>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _GetAllRequest &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.nodeType, nodeType) ||
+                other.nodeType == nodeType) &&
+            (identical(other.baseUrlType, baseUrlType) ||
+                other.baseUrlType == baseUrlType) &&
+            (identical(other.path, path) || other.path == path));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, method, nodeType, baseUrlType, path);
+
   @override
   String toString() {
     return 'ApiRequestType.getAll(method: $method, nodeType: $nodeType, baseUrlType: $baseUrlType, path: $path)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_GetAllRequest &&
-            const DeepCollectionEquality().equals(other.method, method) &&
-            const DeepCollectionEquality().equals(other.nodeType, nodeType) &&
-            const DeepCollectionEquality()
-                .equals(other.baseUrlType, baseUrlType) &&
-            const DeepCollectionEquality().equals(other.path, path));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(method),
-      const DeepCollectionEquality().hash(nodeType),
-      const DeepCollectionEquality().hash(baseUrlType),
-      const DeepCollectionEquality().hash(path));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_GetAllRequestCopyWith<_$_GetAllRequest> get copyWith =>
-      __$$_GetAllRequestCopyWithImpl<_$_GetAllRequest>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        getAll,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        postData,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        product,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        auth,
-  }) {
-    return getAll(method, nodeType, baseUrlType, path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-  }) {
-    return getAll?.call(method, nodeType, baseUrlType, path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-    required TResult orElse(),
-  }) {
-    if (getAll != null) {
-      return getAll(method, nodeType, baseUrlType, path);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllRequest value) getAll,
-    required TResult Function(_PostDataRequest value) postData,
-    required TResult Function(_ProductRequest value) product,
-    required TResult Function(_AuthRequest value) auth,
-  }) {
-    return getAll(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-  }) {
-    return getAll?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-    required TResult orElse(),
-  }) {
-    if (getAll != null) {
-      return getAll(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetAllRequest implements ApiRequestType {
-  const factory _GetAllRequest(
-      {final HttpMethod method,
-      required final APIRequestNodeType nodeType,
-      final AppURLsType baseUrlType,
-      final String path}) = _$_GetAllRequest;
-
-  @override
-  HttpMethod get method;
-  @override
-  APIRequestNodeType get nodeType;
-  @override
-  AppURLsType get baseUrlType;
-  @override
-  String get path;
-  @override
-  @JsonKey(ignore: true)
-  _$$_GetAllRequestCopyWith<_$_GetAllRequest> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PostDataRequestCopyWith<$Res>
+abstract mixin class _$GetAllRequestCopyWith<$Res>
     implements $ApiRequestTypeCopyWith<$Res> {
-  factory _$$_PostDataRequestCopyWith(
-          _$_PostDataRequest value, $Res Function(_$_PostDataRequest) then) =
-      __$$_PostDataRequestCopyWithImpl<$Res>;
+  factory _$GetAllRequestCopyWith(
+          _GetAllRequest value, $Res Function(_GetAllRequest) _then) =
+      __$GetAllRequestCopyWithImpl;
   @override
+  @useResult
   $Res call(
       {HttpMethod method,
       APIRequestNodeType nodeType,
@@ -388,38 +171,38 @@ abstract class _$$_PostDataRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PostDataRequestCopyWithImpl<$Res>
-    extends _$ApiRequestTypeCopyWithImpl<$Res>
-    implements _$$_PostDataRequestCopyWith<$Res> {
-  __$$_PostDataRequestCopyWithImpl(
-      _$_PostDataRequest _value, $Res Function(_$_PostDataRequest) _then)
-      : super(_value, (v) => _then(v as _$_PostDataRequest));
+class __$GetAllRequestCopyWithImpl<$Res>
+    implements _$GetAllRequestCopyWith<$Res> {
+  __$GetAllRequestCopyWithImpl(this._self, this._then);
 
-  @override
-  _$_PostDataRequest get _value => super._value as _$_PostDataRequest;
+  final _GetAllRequest _self;
+  final $Res Function(_GetAllRequest) _then;
 
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? method = freezed,
-    Object? nodeType = freezed,
-    Object? baseUrlType = freezed,
-    Object? path = freezed,
+    Object? method = null,
+    Object? nodeType = null,
+    Object? baseUrlType = null,
+    Object? path = null,
   }) {
-    return _then(_$_PostDataRequest(
-      method: method == freezed
-          ? _value.method
+    return _then(_GetAllRequest(
+      method: null == method
+          ? _self.method
           : method // ignore: cast_nullable_to_non_nullable
               as HttpMethod,
-      nodeType: nodeType == freezed
-          ? _value.nodeType
+      nodeType: null == nodeType
+          ? _self.nodeType
           : nodeType // ignore: cast_nullable_to_non_nullable
               as APIRequestNodeType,
-      baseUrlType: baseUrlType == freezed
-          ? _value.baseUrlType
+      baseUrlType: null == baseUrlType
+          ? _self.baseUrlType
           : baseUrlType // ignore: cast_nullable_to_non_nullable
               as AppURLsType,
-      path: path == freezed
-          ? _value.path
+      path: null == path
+          ? _self.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -428,8 +211,8 @@ class __$$_PostDataRequestCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PostDataRequest implements _PostDataRequest {
-  const _$_PostDataRequest(
+class _PostDataRequest implements ApiRequestType {
+  const _PostDataRequest(
       {this.method = HttpMethod.post,
       required this.nodeType,
       this.baseUrlType = AppURLsType.ugc,
@@ -447,163 +230,45 @@ class _$_PostDataRequest implements _PostDataRequest {
   @JsonKey()
   final String path;
 
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PostDataRequestCopyWith<_PostDataRequest> get copyWith =>
+      __$PostDataRequestCopyWithImpl<_PostDataRequest>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PostDataRequest &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.nodeType, nodeType) ||
+                other.nodeType == nodeType) &&
+            (identical(other.baseUrlType, baseUrlType) ||
+                other.baseUrlType == baseUrlType) &&
+            (identical(other.path, path) || other.path == path));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, method, nodeType, baseUrlType, path);
+
   @override
   String toString() {
     return 'ApiRequestType.postData(method: $method, nodeType: $nodeType, baseUrlType: $baseUrlType, path: $path)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PostDataRequest &&
-            const DeepCollectionEquality().equals(other.method, method) &&
-            const DeepCollectionEquality().equals(other.nodeType, nodeType) &&
-            const DeepCollectionEquality()
-                .equals(other.baseUrlType, baseUrlType) &&
-            const DeepCollectionEquality().equals(other.path, path));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(method),
-      const DeepCollectionEquality().hash(nodeType),
-      const DeepCollectionEquality().hash(baseUrlType),
-      const DeepCollectionEquality().hash(path));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_PostDataRequestCopyWith<_$_PostDataRequest> get copyWith =>
-      __$$_PostDataRequestCopyWithImpl<_$_PostDataRequest>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        getAll,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        postData,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        product,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        auth,
-  }) {
-    return postData(method, nodeType, baseUrlType, path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-  }) {
-    return postData?.call(method, nodeType, baseUrlType, path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-    required TResult orElse(),
-  }) {
-    if (postData != null) {
-      return postData(method, nodeType, baseUrlType, path);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllRequest value) getAll,
-    required TResult Function(_PostDataRequest value) postData,
-    required TResult Function(_ProductRequest value) product,
-    required TResult Function(_AuthRequest value) auth,
-  }) {
-    return postData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-  }) {
-    return postData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-    required TResult orElse(),
-  }) {
-    if (postData != null) {
-      return postData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PostDataRequest implements ApiRequestType {
-  const factory _PostDataRequest(
-      {final HttpMethod method,
-      required final APIRequestNodeType nodeType,
-      final AppURLsType baseUrlType,
-      final String path}) = _$_PostDataRequest;
-
-  @override
-  HttpMethod get method;
-  @override
-  APIRequestNodeType get nodeType;
-  @override
-  AppURLsType get baseUrlType;
-  @override
-  String get path;
-  @override
-  @JsonKey(ignore: true)
-  _$$_PostDataRequestCopyWith<_$_PostDataRequest> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ProductRequestCopyWith<$Res>
+abstract mixin class _$PostDataRequestCopyWith<$Res>
     implements $ApiRequestTypeCopyWith<$Res> {
-  factory _$$_ProductRequestCopyWith(
-          _$_ProductRequest value, $Res Function(_$_ProductRequest) then) =
-      __$$_ProductRequestCopyWithImpl<$Res>;
+  factory _$PostDataRequestCopyWith(
+          _PostDataRequest value, $Res Function(_PostDataRequest) _then) =
+      __$PostDataRequestCopyWithImpl;
   @override
+  @useResult
   $Res call(
       {HttpMethod method,
       APIRequestNodeType nodeType,
@@ -612,38 +277,38 @@ abstract class _$$_ProductRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProductRequestCopyWithImpl<$Res>
-    extends _$ApiRequestTypeCopyWithImpl<$Res>
-    implements _$$_ProductRequestCopyWith<$Res> {
-  __$$_ProductRequestCopyWithImpl(
-      _$_ProductRequest _value, $Res Function(_$_ProductRequest) _then)
-      : super(_value, (v) => _then(v as _$_ProductRequest));
+class __$PostDataRequestCopyWithImpl<$Res>
+    implements _$PostDataRequestCopyWith<$Res> {
+  __$PostDataRequestCopyWithImpl(this._self, this._then);
 
-  @override
-  _$_ProductRequest get _value => super._value as _$_ProductRequest;
+  final _PostDataRequest _self;
+  final $Res Function(_PostDataRequest) _then;
 
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? method = freezed,
-    Object? nodeType = freezed,
-    Object? baseUrlType = freezed,
-    Object? path = freezed,
+    Object? method = null,
+    Object? nodeType = null,
+    Object? baseUrlType = null,
+    Object? path = null,
   }) {
-    return _then(_$_ProductRequest(
-      method: method == freezed
-          ? _value.method
+    return _then(_PostDataRequest(
+      method: null == method
+          ? _self.method
           : method // ignore: cast_nullable_to_non_nullable
               as HttpMethod,
-      nodeType: nodeType == freezed
-          ? _value.nodeType
+      nodeType: null == nodeType
+          ? _self.nodeType
           : nodeType // ignore: cast_nullable_to_non_nullable
               as APIRequestNodeType,
-      baseUrlType: baseUrlType == freezed
-          ? _value.baseUrlType
+      baseUrlType: null == baseUrlType
+          ? _self.baseUrlType
           : baseUrlType // ignore: cast_nullable_to_non_nullable
               as AppURLsType,
-      path: path == freezed
-          ? _value.path
+      path: null == path
+          ? _self.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -652,8 +317,8 @@ class __$$_ProductRequestCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProductRequest implements _ProductRequest {
-  const _$_ProductRequest(
+class _ProductRequest implements ApiRequestType {
+  const _ProductRequest(
       {this.method = HttpMethod.get,
       this.nodeType = APIRequestNodeType.product,
       this.baseUrlType = AppURLsType.ugc,
@@ -672,163 +337,45 @@ class _$_ProductRequest implements _ProductRequest {
   @JsonKey()
   final String path;
 
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductRequestCopyWith<_ProductRequest> get copyWith =>
+      __$ProductRequestCopyWithImpl<_ProductRequest>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ProductRequest &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.nodeType, nodeType) ||
+                other.nodeType == nodeType) &&
+            (identical(other.baseUrlType, baseUrlType) ||
+                other.baseUrlType == baseUrlType) &&
+            (identical(other.path, path) || other.path == path));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, method, nodeType, baseUrlType, path);
+
   @override
   String toString() {
     return 'ApiRequestType.product(method: $method, nodeType: $nodeType, baseUrlType: $baseUrlType, path: $path)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ProductRequest &&
-            const DeepCollectionEquality().equals(other.method, method) &&
-            const DeepCollectionEquality().equals(other.nodeType, nodeType) &&
-            const DeepCollectionEquality()
-                .equals(other.baseUrlType, baseUrlType) &&
-            const DeepCollectionEquality().equals(other.path, path));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(method),
-      const DeepCollectionEquality().hash(nodeType),
-      const DeepCollectionEquality().hash(baseUrlType),
-      const DeepCollectionEquality().hash(path));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_ProductRequestCopyWith<_$_ProductRequest> get copyWith =>
-      __$$_ProductRequestCopyWithImpl<_$_ProductRequest>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        getAll,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        postData,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        product,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        auth,
-  }) {
-    return product(method, nodeType, baseUrlType, path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-  }) {
-    return product?.call(method, nodeType, baseUrlType, path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-    required TResult orElse(),
-  }) {
-    if (product != null) {
-      return product(method, nodeType, baseUrlType, path);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllRequest value) getAll,
-    required TResult Function(_PostDataRequest value) postData,
-    required TResult Function(_ProductRequest value) product,
-    required TResult Function(_AuthRequest value) auth,
-  }) {
-    return product(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-  }) {
-    return product?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-    required TResult orElse(),
-  }) {
-    if (product != null) {
-      return product(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ProductRequest implements ApiRequestType {
-  const factory _ProductRequest(
-      {final HttpMethod method,
-      final APIRequestNodeType nodeType,
-      final AppURLsType baseUrlType,
-      final String path}) = _$_ProductRequest;
-
-  @override
-  HttpMethod get method;
-  @override
-  APIRequestNodeType get nodeType;
-  @override
-  AppURLsType get baseUrlType;
-  @override
-  String get path;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ProductRequestCopyWith<_$_ProductRequest> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AuthRequestCopyWith<$Res>
+abstract mixin class _$ProductRequestCopyWith<$Res>
     implements $ApiRequestTypeCopyWith<$Res> {
-  factory _$$_AuthRequestCopyWith(
-          _$_AuthRequest value, $Res Function(_$_AuthRequest) then) =
-      __$$_AuthRequestCopyWithImpl<$Res>;
+  factory _$ProductRequestCopyWith(
+          _ProductRequest value, $Res Function(_ProductRequest) _then) =
+      __$ProductRequestCopyWithImpl;
   @override
+  @useResult
   $Res call(
       {HttpMethod method,
       APIRequestNodeType nodeType,
@@ -837,38 +384,38 @@ abstract class _$$_AuthRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AuthRequestCopyWithImpl<$Res>
-    extends _$ApiRequestTypeCopyWithImpl<$Res>
-    implements _$$_AuthRequestCopyWith<$Res> {
-  __$$_AuthRequestCopyWithImpl(
-      _$_AuthRequest _value, $Res Function(_$_AuthRequest) _then)
-      : super(_value, (v) => _then(v as _$_AuthRequest));
+class __$ProductRequestCopyWithImpl<$Res>
+    implements _$ProductRequestCopyWith<$Res> {
+  __$ProductRequestCopyWithImpl(this._self, this._then);
 
-  @override
-  _$_AuthRequest get _value => super._value as _$_AuthRequest;
+  final _ProductRequest _self;
+  final $Res Function(_ProductRequest) _then;
 
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? method = freezed,
-    Object? nodeType = freezed,
-    Object? baseUrlType = freezed,
-    Object? path = freezed,
+    Object? method = null,
+    Object? nodeType = null,
+    Object? baseUrlType = null,
+    Object? path = null,
   }) {
-    return _then(_$_AuthRequest(
-      method: method == freezed
-          ? _value.method
+    return _then(_ProductRequest(
+      method: null == method
+          ? _self.method
           : method // ignore: cast_nullable_to_non_nullable
               as HttpMethod,
-      nodeType: nodeType == freezed
-          ? _value.nodeType
+      nodeType: null == nodeType
+          ? _self.nodeType
           : nodeType // ignore: cast_nullable_to_non_nullable
               as APIRequestNodeType,
-      baseUrlType: baseUrlType == freezed
-          ? _value.baseUrlType
+      baseUrlType: null == baseUrlType
+          ? _self.baseUrlType
           : baseUrlType // ignore: cast_nullable_to_non_nullable
               as AppURLsType,
-      path: path == freezed
-          ? _value.path
+      path: null == path
+          ? _self.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -877,8 +424,8 @@ class __$$_AuthRequestCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthRequest implements _AuthRequest {
-  const _$_AuthRequest(
+class _AuthRequest implements ApiRequestType {
+  const _AuthRequest(
       {this.method = HttpMethod.post,
       this.nodeType = APIRequestNodeType.auth,
       this.baseUrlType = AppURLsType.ugc,
@@ -897,152 +444,88 @@ class _$_AuthRequest implements _AuthRequest {
   @JsonKey()
   final String path;
 
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AuthRequestCopyWith<_AuthRequest> get copyWith =>
+      __$AuthRequestCopyWithImpl<_AuthRequest>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AuthRequest &&
+            (identical(other.method, method) || other.method == method) &&
+            (identical(other.nodeType, nodeType) ||
+                other.nodeType == nodeType) &&
+            (identical(other.baseUrlType, baseUrlType) ||
+                other.baseUrlType == baseUrlType) &&
+            (identical(other.path, path) || other.path == path));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, method, nodeType, baseUrlType, path);
+
   @override
   String toString() {
     return 'ApiRequestType.auth(method: $method, nodeType: $nodeType, baseUrlType: $baseUrlType, path: $path)';
   }
+}
 
+/// @nodoc
+abstract mixin class _$AuthRequestCopyWith<$Res>
+    implements $ApiRequestTypeCopyWith<$Res> {
+  factory _$AuthRequestCopyWith(
+          _AuthRequest value, $Res Function(_AuthRequest) _then) =
+      __$AuthRequestCopyWithImpl;
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AuthRequest &&
-            const DeepCollectionEquality().equals(other.method, method) &&
-            const DeepCollectionEquality().equals(other.nodeType, nodeType) &&
-            const DeepCollectionEquality()
-                .equals(other.baseUrlType, baseUrlType) &&
-            const DeepCollectionEquality().equals(other.path, path));
-  }
+  @useResult
+  $Res call(
+      {HttpMethod method,
+      APIRequestNodeType nodeType,
+      AppURLsType baseUrlType,
+      String path});
+}
 
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(method),
-      const DeepCollectionEquality().hash(nodeType),
-      const DeepCollectionEquality().hash(baseUrlType),
-      const DeepCollectionEquality().hash(path));
+/// @nodoc
+class __$AuthRequestCopyWithImpl<$Res> implements _$AuthRequestCopyWith<$Res> {
+  __$AuthRequestCopyWithImpl(this._self, this._then);
 
-  @JsonKey(ignore: true)
-  @override
-  _$$_AuthRequestCopyWith<_$_AuthRequest> get copyWith =>
-      __$$_AuthRequestCopyWithImpl<_$_AuthRequest>(this, _$identity);
+  final _AuthRequest _self;
+  final $Res Function(_AuthRequest) _then;
 
+  /// Create a copy of ApiRequestType
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        getAll,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        postData,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        product,
-    required TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)
-        auth,
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? method = null,
+    Object? nodeType = null,
+    Object? baseUrlType = null,
+    Object? path = null,
   }) {
-    return auth(method, nodeType, baseUrlType, path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-  }) {
-    return auth?.call(method, nodeType, baseUrlType, path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        getAll,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        postData,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        product,
-    TResult Function(HttpMethod method, APIRequestNodeType nodeType,
-            AppURLsType baseUrlType, String path)?
-        auth,
-    required TResult orElse(),
-  }) {
-    if (auth != null) {
-      return auth(method, nodeType, baseUrlType, path);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllRequest value) getAll,
-    required TResult Function(_PostDataRequest value) postData,
-    required TResult Function(_ProductRequest value) product,
-    required TResult Function(_AuthRequest value) auth,
-  }) {
-    return auth(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-  }) {
-    return auth?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllRequest value)? getAll,
-    TResult Function(_PostDataRequest value)? postData,
-    TResult Function(_ProductRequest value)? product,
-    TResult Function(_AuthRequest value)? auth,
-    required TResult orElse(),
-  }) {
-    if (auth != null) {
-      return auth(this);
-    }
-    return orElse();
+    return _then(_AuthRequest(
+      method: null == method
+          ? _self.method
+          : method // ignore: cast_nullable_to_non_nullable
+              as HttpMethod,
+      nodeType: null == nodeType
+          ? _self.nodeType
+          : nodeType // ignore: cast_nullable_to_non_nullable
+              as APIRequestNodeType,
+      baseUrlType: null == baseUrlType
+          ? _self.baseUrlType
+          : baseUrlType // ignore: cast_nullable_to_non_nullable
+              as AppURLsType,
+      path: null == path
+          ? _self.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
-abstract class _AuthRequest implements ApiRequestType {
-  const factory _AuthRequest(
-      {final HttpMethod method,
-      final APIRequestNodeType nodeType,
-      final AppURLsType baseUrlType,
-      final String path}) = _$_AuthRequest;
-
-  @override
-  HttpMethod get method;
-  @override
-  APIRequestNodeType get nodeType;
-  @override
-  AppURLsType get baseUrlType;
-  @override
-  String get path;
-  @override
-  @JsonKey(ignore: true)
-  _$$_AuthRequestCopyWith<_$_AuthRequest> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

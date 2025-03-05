@@ -9,7 +9,7 @@ import 'package:rameshclothhouse/presentation/components/app_controller.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/menu_drawer.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
 import 'package:rameshclothhouse/presentation/config/theme.dart';
-import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
+import 'package:rameshclothhouse/presentation/features/routes.dart';
 
 class App extends StatelessWidget {
   final _appRouter = getIt<AppRouter>();
@@ -26,9 +26,7 @@ class App extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       builder: ((builderContext, child) => AppView(child: child!)),
-      routerDelegate: _appRouter.delegate(
-        navigatorObservers: () => [AutoRouteObserver()],
-      ),
+      routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),
       locale: context.locale,
       // scrollBehavior: const ConstantScrollBehavior(),

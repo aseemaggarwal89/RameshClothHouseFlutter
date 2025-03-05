@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../domain_layer.dart';
 
 part 'get_products_count.g.dart';
 

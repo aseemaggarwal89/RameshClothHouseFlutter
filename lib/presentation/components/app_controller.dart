@@ -4,25 +4,23 @@ import 'package:rameshclothhouse/presentation/bloc/authentication_bloc/authentic
 import 'package:rameshclothhouse/presentation/components/appNavBar/desktop_nar_bar.dart';
 import 'package:rameshclothhouse/presentation/components/appNavBar/mobile_nav_bar.dart';
 import 'package:rameshclothhouse/presentation/components/responsive.dart';
-import 'package:rameshclothhouse/presentation/components/text_button_view.dart';
 
-import '../config/app_router.dart';
 
 class Controller extends StatelessWidget {
   final Widget child;
   final Widget? drawer;
   final Color? backgroundColor;
   final MobileNavBar mobileNavBar = const MobileNavBar();
-  final DesktopAppBar desktopNavBar = DesktopAppBar();
+  final DesktopAppBar desktopNavBar = const DesktopAppBar();
 
-  Controller({
+  const Controller({
     required this.child,
     this.drawer,
     this.backgroundColor,
     Key? key,
   }) : super(key: key);
 
-  Controller.basic({
+  const Controller.basic({
     required title,
     required this.child,
     this.drawer,

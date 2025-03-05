@@ -1,6 +1,5 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 
 enum MediaType { IMAGE, VIDEO }
 
@@ -11,12 +10,12 @@ class ProductShowcaseThumbnailWidget extends StatelessWidget {
   final Function()? onTap;
 
   const ProductShowcaseThumbnailWidget({
-    Key? key,
+    super.key,
     this.isSelected = false,
     required this.thumbnailUrl,
     required this.onTap,
     this.type = MediaType.IMAGE,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

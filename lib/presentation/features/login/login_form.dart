@@ -56,7 +56,7 @@ class LoginForm extends StatelessWidget {
 class _UsernameInput extends StatelessWidget {
   final FocusNode passwordFocusNode;
 
-  const _UsernameInput({super.key, required this.passwordFocusNode});
+  const _UsernameInput({required this.passwordFocusNode});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,7 @@ class _UsernameInput extends StatelessWidget {
               .add(LoginEvent.usernamechanges(username: username)),
           decoration: InputDecoration(
             labelText: 'username',
-            errorText: context.read<LoginBloc>().username.invalid
+            errorText: context.read<LoginBloc>().username.isNotValid
                 ? (context.read<LoginBloc>().username.error?.errorMessage() ??
                     "Please enter valid email address")
                 : null,
@@ -87,7 +87,7 @@ class _UsernameInput extends StatelessWidget {
 class _PasswordInput extends StatelessWidget {
   final FocusNode passwordFocusNode;
 
-  const _PasswordInput({super.key, required this.passwordFocusNode});
+  const _PasswordInput({required this.passwordFocusNode});
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +103,7 @@ class _PasswordInput extends StatelessWidget {
               .add(LoginEvent.passwordchanged(password: password)),
           decoration: InputDecoration(
             labelText: 'password',
-            errorText: context.read<LoginBloc>().password.invalid
+            errorText: context.read<LoginBloc>().password.isNotValid
                 ? (context.read<LoginBloc>().password.error?.errorMessage() ??
                     "Please enter password")
                 : null,

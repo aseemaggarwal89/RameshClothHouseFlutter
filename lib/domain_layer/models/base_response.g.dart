@@ -12,7 +12,7 @@ GetBaseResponseDTO<T> _$GetBaseResponseDTOFromJson<T>(
 ) =>
     GetBaseResponseDTO<T>(
       status: json['status'] as String,
-      results: json['results'] as int,
+      results: (json['results'] as num).toInt(),
       data: (json['data'] as List<dynamic>?)?.map(fromJsonT).toList(),
     );
 

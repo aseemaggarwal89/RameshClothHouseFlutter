@@ -6,7 +6,7 @@ import '../../networkLayer/appnetworking/api_contants.dart';
 part 'app_api_request_type.freezed.dart';
 
 @freezed
-class ApiRequestType with _$ApiRequestType {
+abstract class ApiRequestType with _$ApiRequestType {
   const factory ApiRequestType.getAll({
     @Default(HttpMethod.get) HttpMethod method,
     required APIRequestNodeType nodeType,
@@ -34,54 +34,36 @@ class ApiRequestType with _$ApiRequestType {
     @Default(AppURLsType.ugc) AppURLsType baseUrlType,
     @Default("") String path,
   }) = _AuthRequest;
-}
+  }
 
 extension ApiRequesstTypeExtension on ApiRequestType {
   Future<String> get urlPath async {
-    var urlPath = map(
-      product: (_ProductRequest value) => nodeType.nodeUrlEndPoint + path,
-      auth: (_AuthRequest value) => nodeType.nodeUrlEndPoint + path,
-      getAll: (_GetAllRequest value) => nodeType.nodeUrlEndPoint + path,
-      postData: (_PostDataRequest value) => nodeType.nodeUrlEndPoint + path,
-    );
-    // when(
-    //   auth: (HttpMethod method, APIRequestNodeType nodeType,
-    //       AppURLsType baseUrlType, String path) {
-    //     urlPath = nodeType.nodeUrlEndPoint + path;
-    //   },
-    //   product: (HttpMethod method, APIRequestNodeType nodeType,
-    //       AppURLsType baseUrlType, String path) {
-    //     urlPath = nodeType.nodeUrlEndPoint + path;
-    //   },
-    //   brand: (HttpMethod method, APIRequestNodeType nodeType,
-    //       AppURLsType baseUrlType, String path) {
-    //     urlPath = nodeType.nodeUrlEndPoint + path;
-    //   },
-    // );
-    return urlPath;
+    switch (this) {
+        case _AuthRequest(nodeType: var nodeType, path: var path):        
+          return nodeType.nodeUrlEndPoint + path;
+        case _PostDataRequest(nodeType: var nodeType, path: var path):
+          return nodeType.nodeUrlEndPoint + path;
+        case _GetAllRequest(nodeType: var nodeType, path: var path):
+          return nodeType.nodeUrlEndPoint + path;
+        case _ProductRequest(nodeType: var nodeType, path: var path):
+          return nodeType.nodeUrlEndPoint + path;
+    }
+    return "";
   }
 
   Future<Map<String, String>> get customHeaders async {
     var customHeaders = <String, String>{};
 
-    when(
-      product: (
-        HttpMethod method,
-        APIRequestNodeType nodeType,
-        AppURLsType baseUrlType,
-        String path,
-      ) {},
-      auth: (
-        HttpMethod method,
-        APIRequestNodeType nodeType,
-        AppURLsType baseUrlType,
-        String path,
-      ) {},
-      getAll: (HttpMethod method, APIRequestNodeType nodeType,
-          AppURLsType baseUrlType, String path) {},
-      postData: (HttpMethod method, APIRequestNodeType nodeType,
-          AppURLsType baseUrlType, String path) {},
-    );
+    switch (this) {
+        case _AuthRequest():        
+          break;
+        case _PostDataRequest():
+          break;
+        case _GetAllRequest():
+          break;
+        case _ProductRequest():
+          break;
+    }
 
     return customHeaders;
   }
@@ -95,14 +77,17 @@ extension ApiRequesstTypeExtension on ApiRequestType {
   }
 
   DataResponseType get responseType {
-    DataResponseType type = map(
-      auth: (_AuthRequest value) => value.nodeType.responseType,
-      product: (_ProductRequest value) => value.nodeType.responseType,
-      getAll: (_GetAllRequest value) => value.nodeType.responseType,
-      postData: (_PostDataRequest value) => value.nodeType.responseType,
-    );
-
-    return type;
+    switch (this) {
+        case _AuthRequest(nodeType: var nodeType):        
+          return nodeType.responseType;
+        case _PostDataRequest(nodeType: var nodeType):
+          return nodeType.responseType;
+        case _GetAllRequest(nodeType: var nodeType):
+          return nodeType.responseType;
+        case _ProductRequest(nodeType: var nodeType):
+          return nodeType.responseType;
+    }
+    return DataResponseType.json;
   }
 }
 

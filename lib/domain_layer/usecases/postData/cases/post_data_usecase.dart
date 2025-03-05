@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
 import 'package:rameshclothhouse/domain_layer/repositories/api_repository.dart';
 
-import '../../../models/product_param_dto.dart';
 
 abstract class IPostDataUseCases {
   Future<AuthenticateResponseDTO?> authenticateUser(

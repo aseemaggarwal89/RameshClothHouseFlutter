@@ -24,7 +24,6 @@ class AppAPIClient extends INetworkService {
       }
 
       ApiResult<T> data = await parseDataInBackground(response.data);
-      // return ApiResult.success(data);
       return data;
     } catch (e) {
       return ApiResult.failure(getException(e));
@@ -47,7 +46,7 @@ class AppAPIClient extends INetworkService {
         data: request.data,
         method: request.method.methodName,
         responseType: request.responseType.dioResponseType,
-        connectTimeout: 1000 * 30,
+        connectTimeout: const Duration(seconds: 1000 * 30),
       ),
     );
 
@@ -123,7 +122,7 @@ Future<ApiResult<T>> parseDataInBackground<T>(dynamic jsonData) async {
     ApiResult<T> result =
         await compute(_parse, jsonData, debugLabel: 'parseDataInBackground');
     return result;
-  } catch (e, stacktrace) {
+  } catch (e) {
     throw ApiResult.failure(
         NetworkExceptions.unhandledException(e as Exception));
   }

@@ -1,14 +1,11 @@
 // Home Screen Bloc Events
 
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:rameshclothhouse/presentation/features/home/view_models.dart';
 
 import '../../../../domain_layer/domain_layer.dart';
 
 @immutable
 abstract class HomeEvent {
-  @override
   List<Object> get props => [];
 }
 

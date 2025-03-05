@@ -19,11 +19,13 @@ class HomeInitialState extends HomeState {
 class HomePageListingState extends HomeState {
   HomePageListingState({
     this.itemList,
+    this.keys,
     this.error,
     this.nextPageKey = 0,
   });
 
-  final Set<ProductDTO>? itemList;
+  final List<List<ProductDTO>>? itemList;
+  final List<int>? keys;
   final dynamic error;
   final int? nextPageKey;
 }

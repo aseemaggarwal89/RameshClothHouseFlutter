@@ -9,7 +9,6 @@ import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view
 import 'package:rameshclothhouse/presentation/components/appNavBar/user_right_menu_bar.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
-import 'package:rameshclothhouse/presentation/config/app_router.dart';
 
 import '../../config/constants.dart';
 
@@ -27,7 +26,10 @@ class DesktopMenuBar extends StatelessWidget {
         if (state is Authenticated) {
           isAdmin = state.user.user.role == 'admin';
         }
-        menuItems.updateMenuItems(isAdmin);
+        Future.microtask(() {
+          menuItems.updateMenuItems(isAdmin);
+        });
+        
         return Container(
           decoration: BoxDecoration(
             color: Theme.of(context).appBarTheme.backgroundColor,

@@ -5,7 +5,7 @@ import 'package:rameshclothhouse/presentation/components/appNavBar/app_menu_view
 import 'package:rameshclothhouse/presentation/components/appNavBar/user_right_menu_bar.dart';
 import '../lato_text_view.dart';
 
-class MobileNavBar extends StatelessWidget with PreferredSizeWidget {
+class MobileNavBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final List<Widget>? actions;
   final Color? backgroundColor;

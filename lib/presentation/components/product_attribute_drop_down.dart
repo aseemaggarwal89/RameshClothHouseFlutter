@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:rameshclothhouse/gen/assets.gen.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 
 class ProductAttributeDropDown<T> extends StatefulWidget {
@@ -70,6 +68,7 @@ class _ProductAttributeDropDownState<T>
             if (widget.validator != null) {
               return widget.validator!(value);
             }
+            return null;
           },
           // underline: const SizedBox.shrink(),
           // icon: Padding(

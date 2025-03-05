@@ -2,9 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:html_unescape/html_unescape.dart';
 
 enum FontType { NORMAL, MEDIUM, BOLD, SEMIBOLD, EXTRABOLD }
@@ -161,10 +159,10 @@ class LatoTextView extends StatelessWidget {
       style = style?.copyWith(decoration: decoration);
     }
     if (isHtml) {
-      var unescape = new HtmlUnescape();
+      var unescape = HtmlUnescape();
       var text = unescape.convert(label);
       print(text);
-      final _htmlContent = """
+      const htmlContent = """
 <ul><li>List 1</li><li>List 2</li><li>List 3</li></ul>
   <div>
     <h1>This is a title</h1>

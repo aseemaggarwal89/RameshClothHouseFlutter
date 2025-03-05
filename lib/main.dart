@@ -2,14 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
-import 'package:provider/provider.dart';
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
 import 'package:rameshclothhouse/presentation/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rameshclothhouse/presentation/features/routes.dart';
 
 import 'presentation/core/language/app_language.dart';
 import 'presentation/features/app/app.dart';
 import 'presentation/features/routes.gr.dart';
+import 'package:auto_route/auto_route.dart';
 
 class SimpleBlocDelegate extends BlocObserver {
   @override

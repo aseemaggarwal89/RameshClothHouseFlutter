@@ -6,7 +6,6 @@ import 'package:rameshclothhouse/domain_layer/usecases/postData/cases/post_data_
 
 import '../data_layer/data_layer.dart';
 import 'app_configuration.dart';
-import 'repositories/authentication_api_repository.dart';
 
 export 'networkService/app_api_repository.dart';
 export 'utils/utils.dart';

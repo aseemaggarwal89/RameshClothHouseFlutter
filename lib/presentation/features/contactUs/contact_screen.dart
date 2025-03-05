@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
 
+@RoutePage()
 class ContactScreen extends StatelessWidget {
   const ContactScreen({super.key});
 

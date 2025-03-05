@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rameshclothhouse/presentation/components/lato_text_view.dart';
-import 'package:rameshclothhouse/presentation/components/text_button_view.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 

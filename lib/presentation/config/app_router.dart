@@ -1,8 +1,8 @@
 import 'package:rameshclothhouse/main.dart';
 import 'package:rameshclothhouse/presentation/features/editProduct/bloc/edit_product_bloc.dart';
 import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
+import 'package:rameshclothhouse/presentation/features/routes.dart';
 import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
-
 import '../components/appNavBar/app_menu_view_model.dart';
 
 class AppNavigator {
@@ -30,33 +30,31 @@ class AppNavigator {
   static void navigateToProductDetail(
     String producId,
   ) {
-    appRouter.navigate(ProductDetailScreenRoute(
-      productId: producId,
-    ));
+    appRouter.navigate(ProductDetailRoute(productId: producId));
   }
 
   static void navigateToHome() {
-    getIt<AppRouter>().navigate(const HomeScreenRoute());
+    getIt<AppRouter>().navigate(const HomeRoute());
   }
 
   static void navigateToShop() {
-    getIt<AppRouter>().navigate(const ShopScreenRoute());
+    getIt<AppRouter>().navigate(const ShopRoute());
   }
 
   static void navigateToContactUs() {
-    getIt<AppRouter>().navigate(const ContactScreenRoute());
+    getIt<AppRouter>().navigate(const ContactRoute());
   }
 
   static void navigateToLogin() {
-    getIt<AppRouter>().navigate(const LoginScreenRoute());
+    getIt<AppRouter>().navigate(const LoginRoute());
   }
 
   static void navigateToDashboard() {
-    getIt<AppRouter>().navigate(const DashboardScreenRoute());
+    getIt<AppRouter>().navigate(const DashboardRoute());
   }
 
   static void navigateToEditPage(AddProductViewModel viewModel) {
-    getIt<AppRouter>().navigate(EditProductScreenRoute(
+    getIt<AppRouter>().navigate(EditProductRoute(
       viewModel: viewModel,
     ));
   }

@@ -12,26 +12,34 @@ import 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState>
     implements GetAllUseCaseInjection {
-  final PagingController<int, ProductDTO> pagingController =
-      PagingController(firstPageKey: 1);
+  final _onPageRequest = StreamController<int>();
+  final _onNewListingStateController =
+      BehaviorSubject<PagingState<int, ProductDTO>>.seeded(PagingState());
+
+  late PagingController<int, ProductDTO> pagingController;
+
 
   HomeBloc() : super(HomeInitialState()) {
-    _onPageRequest.stream
-        .flatMap(_fetchProductList)
-        .listen(_onNewListingStateController.add)
-        .addTo(_subscriptions);
+    pagingController = PagingController(getNextPageKey: (state) {
+      return (state.keys?.last ?? 0) + 1;
+    }, fetchPage: (pageKey) async {
+        return _fetchProductList(pageKey).map((pagingState) {
+          return pagingState.items ?? [];
+        }).first;
+    });
+    
+    // _onPageRequest.stream
+    //     .flatMap(_fetchProductList)
+    //     .listen(_onNewListingStateController.add)
+    //     .addTo(_subscriptions);
 
     _onNewListingStateController.listen((listingState) {
-      pagingController.value = PagingState(
-        nextPageKey: listingState.nextPageKey,
-        error: listingState.error,
-        itemList: listingState.itemList?.toList(),
-      );
+      pagingController.value = listingState;
     }).addTo(_subscriptions);
-
-    pagingController.addPageRequestListener((pageKey) {
-      _onPageRequest.add(pageKey);
-    });
+    
+    // pagingController.addPageRequestListener((pageKey) {
+    //   _onPageRequest.add(pageKey);
+    // });
 
     on<ApplyFiltersEvent>(_applyFilterAndUpdateProductList);
     on<ApplySortByEvent>(_applySortByAndUpdateProductList);
@@ -50,8 +58,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
 
   static const int _pageSize = 5;
 
-  final _onPageRequest = StreamController<int>();
-
   final _onSelectedFilters = BehaviorSubject<List<FilterDTO>>();
 
   final _onSelectedSortBy =
@@ -60,10 +66,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
 
   final _subscriptions = CompositeSubscription();
 
-  final _onNewListingStateController =
-      BehaviorSubject<HomePageListingState>.seeded(HomePageListingState());
-
-  Stream<HomePageListingState> _fetchProductList(
+  Stream<PagingState<int, ProductDTO>> _fetchProductList(
     int pageKey,
   ) async* {
     final lastListingState = _onNewListingStateController.value;
@@ -79,25 +82,35 @@ class HomeBloc extends Bloc<HomeEvent, HomeState>
         _onSelectedSortBy.hasValue ? _onSelectedSortBy.value : null,
       );
       final isLastPage = newItems.length < _pageSize;
-      final nextPageKey = isLastPage ? null : pageKey + 1;
-      Set<ProductDTO> products = pageKey == 0
-          ? <ProductDTO>{...newItems}
-          : <ProductDTO>{...lastListingState.itemList ?? [], ...newItems};
+      // Set<ProductDTO> products = pageKey == 0
+      //     ? <ProductDTO>{...newItems}
+      //     : <ProductDTO>{...lastListingState.itemList ?? [], ...newItems};
 
-      yield HomePageListingState(
+      yield PagingState(
+        pages: [...?lastListingState.pages, newItems],
+        keys: [...?lastListingState.keys, pageKey],
         error: null,
-        nextPageKey: nextPageKey,
-        itemList: products,
+        hasNextPage: !isLastPage,
       );
+      // HomePageListingState(
+      //   error: null,
+      //   nextPageKey: nextPageKey,
+      //   itemList: products,
+      // );
     } catch (e) {
-      yield HomePageListingState(
-        error: e,
-        nextPageKey: lastListingState.nextPageKey,
-        itemList: lastListingState.itemList,
-      );
+      yield lastListingState.copyWith(error: e, isLoading: false);
+      // HomePageListingState(
+      //   error: e,
+      //   nextPageKey: lastListingState.nextPageKey,
+      //   itemList: lastListingState.itemList,
+      // );
     }
   }
 
+  PagingState<int, ProductDTO> currentPageState() {
+    return _onNewListingStateController.value;
+  }
+  
   void _applyFilterAndUpdateProductList(
     ApplyFiltersEvent event,
     Emitter<HomeState> emit,

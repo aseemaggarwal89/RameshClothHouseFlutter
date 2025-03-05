@@ -24,11 +24,11 @@ class DateTimeUtils {
 
   static String formatDate({DateTime? dateTime, String formatDate = 'dd'}) {
     var date = dateTime ?? DateTime.now();
-    return Jiffy(date).format(formatDate);
+    return Jiffy.parseFromDateTime(date).format(pattern: formatDate);
   }
 
   static String referenceTime(int milliseconds) {
-    return Jiffy(DateTime.fromMillisecondsSinceEpoch(milliseconds)).fromNow();
+    return Jiffy.parseFromDateTime(DateTime.fromMillisecondsSinceEpoch(milliseconds)).fromNow();
   }
 
   static DateTime get findFirstDateOfTheWeek {

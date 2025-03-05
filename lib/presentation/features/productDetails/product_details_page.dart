@@ -10,6 +10,7 @@ import 'package:rameshclothhouse/presentation/features/productDetails/bloc/produ
 import 'package:rameshclothhouse/presentation/features/productDetails/views/product_info_section.dart';
 import 'package:rameshclothhouse/presentation/features/productDetails/views/product_showcase_section.dart';
 
+@RoutePage()
 class ProductDetailScreen extends StatelessWidget {
   final String productId;
 
@@ -65,13 +66,16 @@ class _ProductDetailViewState extends State<ProductDetailView> {
           (current is Loading) ||
           (current is LoadedError);
     }, builder: (BuildContext context, ProductDetailPageState state) {
-      return state.map(
-        initial: (value) => buildLoading(),
-        loading: (value) => buildLoading(),
-        loaded: (value) => _buidloaded(value),
-        error: (value) =>
-            LatoTextView(label: (state as LoadedError).errorMessage),
-      );
+      switch (state) {
+        case Initial():
+        case Loading():
+          return buildLoading();
+        case Loaded():
+           return _buidloaded(state);
+        case LoadedError(errorMessage: var errorMessage):
+          return LatoTextView(label: errorMessage);
+      }
+      return Container();
     });
   }
 

@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:rameshclothhouse/main.dart';
 import 'package:rameshclothhouse/presentation/features/app/app.dart';
 
 void main() {

@@ -9,7 +9,7 @@ part of 'get_products_count.dart';
 GetProductCountResponse _$GetProductCountResponseFromJson(
         Map<String, dynamic> json) =>
     GetProductCountResponse(
-      json['data'] as int,
+      (json['data'] as num).toInt(),
       json['status'] as String,
     );
 

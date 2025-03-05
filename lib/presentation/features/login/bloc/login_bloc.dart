@@ -13,7 +13,7 @@ part 'login_bloc.freezed.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState>
     implements PostDataUseCaseInjection {
-  FormzStatus status = FormzStatus.pure;
+  bool status = false;
   final AuthenticationBloc _authenticationBloc;
   Username _username = const Username.pure();
   Password _password = const Password.pure();
@@ -31,7 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
   ) {
     _username = const Username.pure();
     _password = const Password.pure();
-    status = FormzStatus.pure;
+    status = false;
     _authenticationBloc.add(const AuthenticationEvent.userLogout());
   }
 
@@ -44,7 +44,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
   }
 
   void _onUserNameChanged(UsernameChanged event, Emitter<LoginState> emit) {
-    _username = Username.dirty(event.username);
+    _username = Username.dirty(value: event.username);
     status = Formz.validate([_password, _username]);
     emit(LoginState.currentStatus(
       username: _username,
@@ -56,7 +56,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
     PasswordChanged event,
     Emitter<LoginState> emit,
   ) {
-    _password = Password.dirty(event.password);
+    _password = Password.dirty(value: event.password);
     status = Formz.validate([_password, _username]);
     emit(LoginState.currentStatus(
       username: _username,
@@ -68,15 +68,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState>
     AuthenticateUser event,
     Emitter<LoginState> emit,
   ) async {
-    _password = Password.dirty(_password.value);
-    _username = Username.dirty(_username.value);
+    _password = Password.dirty(value: _password.value);
+    _username = Username.dirty(value:_username.value);
     status = Formz.validate([_password, _username]);
     emit(LoginState.currentStatus(
       username: _username,
       password: _password,
     ));
 
-    if (status.isValidated) {
+    if (status) {
       emit(const LoginState.loading());
       try {
         final result = await getPostDataUseCase.authenticateUser(

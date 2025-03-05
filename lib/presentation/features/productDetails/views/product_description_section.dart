@@ -51,6 +51,8 @@ class ProductDescriptionSection extends StatelessWidget {
           text,
           textStyle: Theme.of(context).textTheme.displayMedium,
           customStylesBuilder: ((element) {
+            return null;
+          
             // console.log(element);
           }),
         ),

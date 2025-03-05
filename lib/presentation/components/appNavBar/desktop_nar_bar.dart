@@ -4,11 +4,11 @@ import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 
 import '../../config/constants.dart';
 
-class DesktopAppBar extends StatelessWidget with PreferredSizeWidget {
+class DesktopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? child;
   final String? titleIcon;
 
-  DesktopAppBar({
+  const DesktopAppBar({
     Key? key,
     this.titleIcon,
   })  : child = const DesktopMenuBar(),

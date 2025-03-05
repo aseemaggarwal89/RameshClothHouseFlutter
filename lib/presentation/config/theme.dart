@@ -20,7 +20,6 @@ class CustomTheme with ChangeNotifier {
   static ThemeData get basicThemeData {
     return ThemeData(
       primarySwatch: CommonColors.themePrimary,
-      backgroundColor: CommonColors.canvasColor,
       canvasColor: CommonColors.canvasColor,
       fontFamily: 'Montserrat',
       scaffoldBackgroundColor: CommonColors.defaultPageBackgroundColor,

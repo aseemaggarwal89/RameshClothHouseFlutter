@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,8 @@ import '../../config/ui_helper.dart';
 import 'add_product_description.dart';
 import 'html_editor.dart';
 
+@RoutePage()
+// ignore: must_be_immutable
 class EditProductScreen extends StatelessWidget {
   AddProductViewModel viewModel;
   EditProductScreen({
@@ -37,17 +40,17 @@ class EditProductScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Add Product'),
           ),
-          body: EditProductPage()),
+          body: const EditProductPage()),
     );
   }
 }
 
 class EditProductPage extends StatelessWidget {
   static Route route() {
-    return MaterialPageRoute<void>(builder: (_) => EditProductPage());
+    return MaterialPageRoute<void>(builder: (_) => const EditProductPage());
   }
 
-  EditProductPage({Key? key}) : super(key: key);
+  const EditProductPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,7 @@ class EditProductPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Expanded(
+                const Expanded(
                   child: EditProductForm(),
                 ),
                 const SizedBox(height: 50),
@@ -101,7 +104,7 @@ class EditProductPage extends StatelessWidget {
 }
 
 class EditProductForm extends StatefulWidget {
-  EditProductForm({Key? key}) : super(key: key) {}
+  const EditProductForm({Key? key}) : super(key: key);
   @override
   State<EditProductForm> createState() => _EditProductFormState();
 }
@@ -232,7 +235,7 @@ class _EditProductFormState extends State<EditProductForm> {
                       Map results = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => AppHtmlEditor(title: '')),
+                            builder: (context) => const AppHtmlEditor(title: '')),
                       );
 
                       final html = results['html'];

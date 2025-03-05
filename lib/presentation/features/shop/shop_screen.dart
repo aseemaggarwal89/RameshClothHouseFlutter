@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class ShopScreen extends StatelessWidget {
   const ShopScreen({super.key});
 
@@ -9,10 +11,10 @@ class ShopScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Shop"),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             Text(
               'Shop Screen',
             ),

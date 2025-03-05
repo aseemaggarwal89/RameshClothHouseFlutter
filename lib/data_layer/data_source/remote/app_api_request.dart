@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
 import 'package:rameshclothhouse/data_layer/networkLayer/appnetworking/api_contants.dart';
 import '../../../domain_layer/domain_layer.dart';
 import 'app_api_request_type.dart';

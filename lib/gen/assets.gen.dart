@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 
@@ -183,6 +183,67 @@ class $AssetsIconGen {
 
   /// File path: assets/icon/verified.svg
   String get verified => 'assets/icon/verified.svg';
+
+  /// List of all assets
+  List<dynamic> get values => [
+    info,
+    addressBook,
+    backArrow,
+    bookmarkSimple,
+    bookmarks,
+    calendar,
+    cancelCircle,
+    caretCircleRight,
+    caretDown,
+    caretRight,
+    cart,
+    cashOnDelivery,
+    circle,
+    circleWavyCheck,
+    clear,
+    copySimple,
+    deliveredCheck,
+    deliveryTruck,
+    editPencil,
+    exploreProduct,
+    exportPost,
+    eye,
+    freeDelivery,
+    freeDeliveryIcon,
+    freeDeliveryInfo,
+    handPointing,
+    headset,
+    healofyTitleLogo,
+    healofyTitleLogoDark,
+    heart,
+    help,
+    home,
+    homeSelected,
+    longArrow,
+    mall,
+    mallSelected,
+    myOrder,
+    navMenu,
+    orderCancelledStatus,
+    outOfStock,
+    phoneCall,
+    phoneCallIcon,
+    post,
+    profile,
+    recentIcon,
+    refundPolicy,
+    relevantProduct,
+    returnPolicy,
+    rupeeSign,
+    savedBookmark,
+    search,
+    send,
+    share,
+    shareTip,
+    trash,
+    trustStampIcon,
+    verified,
+  ];
 }
 
 class $AssetsImagesGen {
@@ -313,6 +374,43 @@ class $AssetsImagesGen {
   /// File path: assets/images/zero_following_placeholder_2.png
   AssetGenImage get zeroFollowingPlaceholder2 =>
       const AssetGenImage('assets/images/zero_following_placeholder_2.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    calendar,
+    check,
+    defUser,
+    doctor,
+    drSumaiya,
+    emptyCart,
+    exploreAll,
+    filter,
+    filter1,
+    filterIcon,
+    happyFace,
+    icBaby,
+    icCancle,
+    icCorrect,
+    icFemale,
+    icHealofyBwlogo,
+    icHealofyLogo,
+    icMale,
+    icNewlyMarried,
+    icPregnancy,
+    icPregnant,
+    icRecentlyView,
+    icSpinwheel,
+    icTickBox,
+    icWomenBaby,
+    icons8CloseWindow96,
+    locationAccess,
+    orderConfirmed,
+    rameshClothHouse,
+    unchecked,
+    zeroFollowerPlaceholder,
+    zeroFollowingPlaceholder1,
+    zeroFollowingPlaceholder2,
+  ];
 }
 
 class $AssetsTranslationsGen {
@@ -320,20 +418,30 @@ class $AssetsTranslationsGen {
 
   /// File path: assets/translations/en.json
   String get en => 'assets/translations/en.json';
+
+  /// List of all assets
+  List<String> get values => [en];
 }
 
 class Assets {
-  Assets._();
+  const Assets._();
 
+  static const String aEnv = '.env';
   static const $AssetsIconGen icon = $AssetsIconGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
+
+  /// List of all assets
+  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
+
+  final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -353,10 +461,10 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = false,
+    bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
-    FilterQuality filterQuality = FilterQuality.low,
+    FilterQuality filterQuality = FilterQuality.medium,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -386,6 +494,10 @@ class AssetGenImage {
       cacheWidth: cacheWidth,
       cacheHeight: cacheHeight,
     );
+  }
+
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;

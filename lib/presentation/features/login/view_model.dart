@@ -16,7 +16,7 @@ extension UsernameValidationErrorMessage on UsernameValidationError {
 
 class Username extends FormzInput<String, UsernameValidationError> {
   const Username.pure() : super.pure('');
-  const Username.dirty([String value = '']) : super.dirty(value);
+  const Username.dirty({String value = ''}) : super.dirty(value);
 
   @override
   UsernameValidationError? validator(String? value) {
@@ -49,7 +49,7 @@ extension PasswordValidationErrorErrorMessage on PasswordValidationError {
 
 class Password extends FormzInput<String, PasswordValidationError> {
   const Password.pure() : super.pure('');
-  const Password.dirty([String value = '']) : super.dirty(value);
+  const Password.dirty({String value = ''}) : super.dirty(value);
 
   @override
   PasswordValidationError? validator(String? value) {

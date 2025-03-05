@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/config/app_colors.dart';
 
 import 'lato_text_view.dart';

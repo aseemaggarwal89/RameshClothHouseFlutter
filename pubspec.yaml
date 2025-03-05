@@ -20,7 +20,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,61 +31,67 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  extended_image: ^6.2.1
-  carousel_slider: ^4.1.1
-  google_fonts: ^3.0.1
-  flutter_svg: ^1.0.3
-  json_annotation: ^4.6.0
-  freezed_annotation: ^2.1.0
-  dio: ^4.0.6
-  jiffy: ^5.0.0
-  equatable: ^2.0.0
-  get_it: ^7.2.0
-  formz: ^0.4.0
-  easy_localization: ^3.0.1
-  logger: ^1.1.0
-  flutter_bloc: ^8.1.2
-  intl: ^0.17.0
-  auto_route: ^5.0.4
-  provider: ^6.0.3
-  infinite_scroll_pagination: ^3.2.0
-  rxdart: ^0.27.1
-  http: ^0.13.5
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  extended_image:
+  carousel_slider:
+  google_fonts:
+  flutter_svg:
+  json_annotation: ^4.9.0
+  freezed_annotation:
+  dio:
+  jiffy:
+  equatable:
+  get_it:
+  formz:
+  easy_localization:
+  logger:
+  flutter_bloc:
+  intl: ^0.19.0
+  auto_route:
+  provider:
+  infinite_scroll_pagination:
+  rxdart:
+  http:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  
+  build_runner:
+  auto_route_generator:
+  # html_editor_enhanced: ^2.5.1
+  # collection: ^1.19.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner:
-  json_serializable: ^6.3.2
-  freezed: any
-  flutter_gen_runner:
-  photo_view: ^0.14.0
-  flutter_rating_bar: ^4.0.1
-  enum_to_string: ^2.0.1
-  html_editor_enhanced: ^2.5.1
-  # flutter_resource_generator:
-  # objectbox_generator: any
-  # objectbox_flutter_libs: any
-  path_provider: ^2.0.9
-  flutter_secure_storage: ^6.0.0
-  hexcolor:
-  flutter_html: ^3.0.0-alpha.5
-  flutter_widget_from_html: ^0.9.1
-  html_unescape: ^2.0.0
-  font_awesome_flutter: ^10.3.0
-  email_validator: "^2.1.16"
-  shared_preferences: ^2.0.17
-  encrypt: ^5.0.1
-  # The "flutter_lints" package below contains a set of recommended lints to
+   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-  auto_route_generator: any
+  flutter_lints: ^5.0.0
+  json_serializable:
+  freezed: ^3.0.3
+  flutter_gen_runner:
+  photo_view:
+  flutter_rating_bar:
+  enum_to_string:
+  # html_editor_enhanced:
+  # flutter_resource_generator:
+  # objectbox_generator:
+  objectbox_flutter_libs:
+  path_provider:
+  # flutter_secure_storage: ^9.2.4
+  # file_picker: ^9.0.2
+  hexcolor:
+  flutter_html:
+  flutter_widget_from_html:
+  html_unescape:
+  font_awesome_flutter:
+  email_validator:
+  shared_preferences:
+  encrypt:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -95,6 +101,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true # Enables generation of localized strings from arb files
 
   assets:
     - assets/images/

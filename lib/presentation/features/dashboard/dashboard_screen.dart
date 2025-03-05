@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rameshclothhouse/presentation/components/elevated_button.dart';
@@ -6,11 +7,11 @@ import 'package:rameshclothhouse/presentation/config/app_router.dart';
 import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/features/dashboard/bloc/dashboard_bloc.dart';
 import 'package:rameshclothhouse/presentation/features/home/views/product_item_widget.dart';
-import 'package:provider/provider.dart';
 
 import '../../../domain_layer/domain_layer.dart';
 import '../editProduct/bloc/edit_product_bloc.dart';
 
+@RoutePage()
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
 

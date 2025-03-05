@@ -1,4 +1,4 @@
-import 'package:extended_image/extended_image.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rameshclothhouse/domain_layer/domain_layer.dart';
@@ -10,6 +10,7 @@ import 'package:rameshclothhouse/presentation/config/ui_helper.dart';
 import 'package:rameshclothhouse/presentation/features/login/bloc/login_bloc.dart';
 import 'package:rameshclothhouse/presentation/features/login/login_form.dart';
 
+@RoutePage()
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 

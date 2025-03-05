@@ -8,7 +8,7 @@ class SelectDropList extends StatefulWidget {
   final DropListModel dropListModel;
   final Function(OptionItem optionItem) onOptionSelected;
 
-  const SelectDropList(this.itemSelected, this.dropListModel, this.onOptionSelected);
+  const SelectDropList(this.itemSelected, this.dropListModel, this.onOptionSelected, {super.key});
 
   @override
   _SelectDropListState createState() => _SelectDropListState(itemSelected, dropListModel);

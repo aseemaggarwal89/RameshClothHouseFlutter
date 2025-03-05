@@ -51,11 +51,11 @@ class ProductInfoSection extends StatelessWidget {
                   LatoTextView(
                     label: '${product.ratingsAverage}',
                     fontType: AppTextType.TitleMedium,
-                    color: Theme.of(context).backgroundColor,
+                    color: Theme.of(context).canvasColor,
                   ),
                   Icon(
                     Icons.star_rounded,
-                    color: Theme.of(context).backgroundColor,
+                    color: Theme.of(context).canvasColor,
                   ),
                   const SizedBox(
                     width: 12.0,
@@ -100,15 +100,15 @@ class ProductInfoSection extends StatelessWidget {
         ),
         verticalSpaceRegular,
         if (!product.isStockAvailable)
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             // ignore: prefer_const_literals_to_create_immutables
             children: [
-              const LatoTextView(
+              LatoTextView(
                 label: 'SOLD OUT',
                 fontType: AppTextType.DisplayLarge,
               ),
-              const LatoTextView(
+              LatoTextView(
                 label: 'This item is currently out of stock',
                 fontType: AppTextType.DisplayNormal,
               )
@@ -116,15 +116,15 @@ class ProductInfoSection extends StatelessWidget {
           ),
         if (viewModel.isSelectedBatchStockNotAvailable() ||
             viewModel.isSelectedSizeStockNotAvailable())
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             // ignore: prefer_const_literals_to_create_immutables
             children: [
-              const LatoTextView(
+              LatoTextView(
                 label: 'SOLD OUT',
                 fontType: AppTextType.DisplayLarge,
               ),
-              const LatoTextView(
+              LatoTextView(
                 label: 'This item is currently out of stock',
                 fontType: AppTextType.DisplayNormal,
               )

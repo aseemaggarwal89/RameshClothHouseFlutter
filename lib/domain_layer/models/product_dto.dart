@@ -31,7 +31,7 @@ class ProductDTO extends Equatable {
   final String? discountPercent;
   final bool isStockAvailable;
 
-  ProductDTO({
+  const ProductDTO({
     required this.name,
     required this.description,
     required this.price,

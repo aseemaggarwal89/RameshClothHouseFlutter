@@ -10,8 +10,7 @@ import '../../../../domain_layer/domain_layer.dart';
 
 class ProductShowCaseSection extends StatelessWidget {
   final ProductDetailDTO product;
-  const ProductShowCaseSection({Key? key, required this.product})
-      : super(key: key);
+  const ProductShowCaseSection({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -109,14 +108,14 @@ class ProductBatchShowCaseProvider with ChangeNotifier {
   SizeInfo? selectedSizeInfo;
   int selectedQuantity = 1;
 
-  final _controller = CarouselController();
+  final _controller = CarouselSliderController();
 
   ProductBatchShowCaseProvider(this.product);
   int _currentIndex = 0;
 
   int get index => _currentIndex;
 
-  CarouselController get carouselController => _controller;
+  CarouselSliderController get carouselController => _controller;
 
   void onChangeIndex(int value) {
     _currentIndex = value;

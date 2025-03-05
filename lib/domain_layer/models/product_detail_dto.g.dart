@@ -107,7 +107,7 @@ ProductBatch _$ProductBatchFromJson(Map<String, dynamic> json) => ProductBatch(
           .toList(),
       (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       json['isAvailable'] as bool,
-      json['maxQuantityAllowed'] as int,
+      (json['maxQuantityAllowed'] as num).toInt(),
       json['_id'] as String,
       (json['sizesNotAvailable'] as List<dynamic>?)
           ?.map((e) => e as String)

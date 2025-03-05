@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -19,6 +20,7 @@ import 'package:rameshclothhouse/presentation/components/responsive.dart';
 import '../bloc_filter/home_filter_bloc.dart';
 import '../home.dart';
 
+@RoutePage()
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -57,7 +59,7 @@ class HomeScreenWrapper extends StatelessWidget {
       subTitle: '',
       tryAgain: () => BlocProvider.of<HomeBloc>(context)
           .pagingController
-          .retryLastFailedRequest(),
+          .fetchNextPage(),
     ),
     newPageProgressIndicatorBuilder: (_) => buildLoading(),
     // noItemsFoundIndicatorBuilder: (_) => NoItemsFoundIndicator(),
@@ -135,8 +137,7 @@ class HomeDesktopView extends StatelessWidget {
                       child: CustomScrollView(
                         slivers: <Widget>[
                           PagedSliverGrid<int, ProductDTO>(
-                            pagingController: BlocProvider.of<HomeBloc>(context)
-                                .pagingController,
+                            state: BlocProvider.of<HomeBloc>(context).currentPageState(),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                               childAspectRatio: 0.82,
@@ -144,7 +145,10 @@ class HomeDesktopView extends StatelessWidget {
                               mainAxisSpacing: 10,
                               crossAxisCount: 4,
                             ),
-                            builderDelegate: pageBuilder,
+                            builderDelegate: pageBuilder, 
+                            fetchNextPage: () { 
+                              BlocProvider.of<HomeBloc>(context).pagingController.fetchNextPage();
+                             },
                           ),
                         ],
                       ),
@@ -190,8 +194,6 @@ class HomePageMobileView extends StatelessWidget {
                 child: CustomScrollView(
                   slivers: <Widget>[
                     PagedSliverGrid<int, ProductDTO>(
-                      pagingController:
-                          BlocProvider.of<HomeBloc>(context).pagingController,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         childAspectRatio: 0.82,
@@ -199,7 +201,11 @@ class HomePageMobileView extends StatelessWidget {
                         mainAxisSpacing: 10,
                         crossAxisCount: 2,
                       ),
-                      builderDelegate: pageBuilder,
+                      builderDelegate: pageBuilder, 
+                      state: BlocProvider.of<HomeBloc>(context).currentPageState(), 
+                      fetchNextPage: () { 
+                        BlocProvider.of<HomeBloc>(context).pagingController.fetchNextPage();
+                       },
                     ),
                   ],
                 ),
@@ -223,7 +229,7 @@ class HomePageHeaderView extends StatelessWidget {
       buildWhen: (previous, current) => current is HomeProductResult,
       builder: (context, state) {
         HomeBloc bloc = BlocProvider.of<HomeBloc>(context);
-        if (bloc.pagingController.itemList?.isEmpty ??
+        if (bloc.pagingController.items?.isEmpty ??
             true && bloc.pagingController.error != null) {
           return Container();
         }

@@ -1,63 +1,54 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:rameshclothhouse/presentation/config/app_router.dart';
-import 'package:rameshclothhouse/presentation/features/contactUs/contact_screen.dart';
-import 'package:rameshclothhouse/presentation/features/dashboard/dashboard_screen.dart';
-import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
 // import 'package:rameshclothhouse/presentation/features/editProduct/edit_product.dart';
-import 'package:rameshclothhouse/presentation/features/login/login_screen.dart';
-import 'package:rameshclothhouse/presentation/features/productDetails/product_details_page.dart';
-import 'package:rameshclothhouse/presentation/features/shop/shop_screen.dart';
-import 'home/home.dart';
+import 'package:rameshclothhouse/presentation/features/routes.gr.dart';
 
-@MaterialAutoRouter(
-  replaceInRouteName: 'Page,Route,Screen',
-  routes: <AutoRoute>[
+@AutoRouterConfig()
+class AppRouter extends RootStackRouter {
+
+  @override
+  RouteType get defaultRouteType => const RouteType.material(); //.cupertino, .adaptive ..etc
+  
+  @override
+  List<AutoRoute> get routes => [
     AutoRoute(
-      page: DashboardScreen,
-      path: AppRoutes.dashboard,
+      page: DashboardRoute.page
     ),
     AutoRoute(
-      page: EditProductScreen,
-      path: AppRoutes.editPage,
+      page: EditProductRoute.page
     ),
     // AutoRoute(
     //   page: EditProductScreen,
     //   path: AppRoutes.createPage,
     // ),
     AutoRoute(
-      page: HomeScreen,
-      path: AppRoutes.home,
-      initial: true,
+      page: HomeRoute.page,
+      initial: false,
       children: [
         RedirectRoute(path: '*', redirectTo: ''),
       ],
     ),
     AutoRoute(
       initial: false,
-      path: AppRoutes.productDetail,
-      page: ProductDetailScreen,
+      page: ProductDetailRoute.page,
     ),
     //authentification routes
     AutoRoute(
-      initial: false,
-      path: AppRoutes.login,
-      page: LoginScreen,
+      initial: true,
+      page: LoginRoute.page,
       children: [
         RedirectRoute(path: '*', redirectTo: ''),
       ],
     ),
     AutoRoute(
       initial: false,
-      path: AppRoutes.shop,
-      page: ShopScreen,
+      page: ShopRoute.page,
       children: [
         RedirectRoute(path: '*', redirectTo: ''),
       ],
     ),
     AutoRoute(
       initial: false,
-      path: AppRoutes.contactUs,
-      page: ContactScreen,
+      page: ContactRoute.page,
       children: [
         RedirectRoute(path: '*', redirectTo: ''),
       ],
@@ -86,6 +77,10 @@ import 'home/home.dart';
 
     // redirect all other paths
     // RedirectRoute(path: '*', redirectTo: AppRoutes.home),
-  ],
-)
-class $AppRouter {}
+  ];
+
+  @override
+  List<AutoRouteGuard> get guards => [
+    // optionally add root guards here
+  ];
+}

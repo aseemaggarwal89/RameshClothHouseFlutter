@@ -44,21 +44,21 @@ class AppHttpClient extends IAppHttpClient {
     try {
       final data = await method();
       return data;
-    } on DioError catch (exception) {
+    } on DioException catch (exception) {
       switch (exception.type) {
-        case DioErrorType.cancel:
+        case DioExceptionType.cancel:
           throw AppNetworkException(
             reason: AppNetworkExceptionReason.canceled,
             exception: exception,
           );
-        case DioErrorType.connectTimeout:
-        case DioErrorType.receiveTimeout:
-        case DioErrorType.sendTimeout:
+        case DioExceptionType.connectionTimeout:
+        case DioExceptionType.receiveTimeout:
+        case DioExceptionType.sendTimeout:
           throw AppNetworkException(
             reason: AppNetworkExceptionReason.timedOut,
             exception: exception,
           );
-        case DioErrorType.response:
+        case DioExceptionType.badResponse:
           // For DioErrorType.response, we are guaranteed to have a
           // response object present on the exception.
           final response = exception.response;
@@ -73,7 +73,7 @@ class AppHttpClient extends IAppHttpClient {
                 statusCode: response.statusCode,
                 data: response,
               );
-        case DioErrorType.other:
+        case DioExceptionType.unknown:
         default:
           throw AppNetworkException(
               reason: AppNetworkExceptionReason.other, exception: exception);
@@ -109,8 +109,8 @@ class DioClient implements IDioClient {
   }) {
     _dio = Dio();
     _dio
-      ..options.connectTimeout = _defaultConnectTimeout
-      ..options.receiveTimeout = _defaultReceiveTimeout
+      ..options.connectTimeout = const Duration(milliseconds: 1000)
+      ..options.receiveTimeout = const Duration(milliseconds: 1000)
       ..httpClientAdapter
       ..options.headers = {'Content-Type': 'application/json; charset=UTF-8'};
 
